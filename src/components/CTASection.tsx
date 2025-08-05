@@ -74,7 +74,7 @@ const CTASection = () => {
                 <p className="text-copper font-medium text-lg mb-2">Recevez votre offre personnalisée en moins de 24h</p>
                 <p className="text-muted-foreground">Sans engagement – Expertise garantie</p>
               </div>
-              <Link to="/contact">
+              <Link to="/devis">
                 <Button 
                   size="lg" 
                   className="htg-button-primary text-lg px-8 py-4 group"

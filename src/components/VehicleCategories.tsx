@@ -165,7 +165,7 @@ const VehicleCategories = () => {
                 <p className="text-sm text-muted-foreground">Besoin d'un échange personnalisé ? Réservez un rendez-vous téléphonique ou en visio avec l'un de nos experts.</p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link to="/contact">
+                <Link to="/devis">
                   <Button className="htg-button-primary">
                     Demander un Devis Gratuit
                   </Button>

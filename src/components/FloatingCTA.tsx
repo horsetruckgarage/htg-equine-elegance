@@ -7,7 +7,7 @@ const FloatingCTA = () => {
     <>
       {/* Floating CTA Button */}
       <div className="fixed bottom-6 right-6 z-50">
-        <Link to="/contact">
+        <Link to="/devis">
           <Button 
             className="htg-button-primary shadow-luxury text-lg px-6 py-4 animate-pulse-glow"
             size="lg"

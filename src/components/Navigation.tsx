@@ -57,7 +57,7 @@ const Navigation = () => {
                 Contact
               </Button>
             </Link>
-            <Link to="/contact">
+            <Link to="/devis">
               <Button className="htg-button-primary">
                 Demander un Devis
               </Button>
@@ -97,7 +97,7 @@ const Navigation = () => {
                     Contact
                   </Button>
                 </Link>
-                <Link to="/contact">
+                <Link to="/devis">
                   <Button className="w-full htg-button-primary">
                     Demander un Devis
                   </Button>

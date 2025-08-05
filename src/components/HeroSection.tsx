@@ -109,7 +109,7 @@ const HeroSection = () => {
                       <p className="text-white/80 text-sm font-medium">Recevez votre offre personnalisée en moins de 24h – Sans engagement</p>
                     </div>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in">
-                      <Link to="/contact">
+                      <Link to="/devis">
                         <Button 
                           size="lg"
                           className="htg-button-primary group px-8 py-4 text-lg font-semibold shadow-2xl hover:shadow-copper/50 transition-all duration-300 w-full sm:w-auto"
