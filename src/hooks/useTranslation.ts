@@ -189,6 +189,36 @@ export interface Translations {
     absBreaking: string;
   };
   
+  // Promotions
+  promotions: {
+    winterSales: {
+      title: string;
+      subtitle: string;
+      description: string;
+      timeLeft: string;
+      vehicleCount: string;
+      badge: string;
+    };
+    specialVans: {
+      title: string;
+      subtitle: string;
+      description: string;
+      monthlyPayment: string;
+      timeLeft: string;
+      vehicleCount: string;
+      badge: string;
+    };
+    trailersPackage: {
+      title: string;
+      subtitle: string;
+      description: string;
+      giftValue: string;
+      timeLeft: string;
+      vehicleCount: string;
+      badge: string;
+    };
+  };
+  
   // Common
   common: {
     readMore: string;
@@ -485,6 +515,34 @@ const translations: Record<Language, Translations> = {
       horsesCapacity: "chevaux",
       absBreaking: "Freinage ABS"
     },
+    promotions: {
+      winterSales: {
+        title: "Soldes d'Hiver",
+        subtitle: "Jusqu'à -20% sur les camions chevaux",
+        description: "Profitez de remises exceptionnelles sur notre sélection de camions premium",
+        timeLeft: "14 jours restants",
+        vehicleCount: "8 véhicules",
+        badge: "Hot Deal"
+      },
+      specialVans: {
+        title: "Offre Spéciale Vans",
+        subtitle: "Financement 0% sur 24 mois",
+        description: "Aucun frais de dossier • Première mensualité offerte",
+        monthlyPayment: "À partir de 890€/mois",
+        timeLeft: "Offre limitée",
+        vehicleCount: "12 véhicules",
+        badge: "Exclusif"
+      },
+      trailersPackage: {
+        title: "Pack Remorques",
+        subtitle: "Remorque + Accessoires offerts",
+        description: "Tapis, sangles et kit d'éclairage LED inclus",
+        giftValue: "1 500€ d'accessoires offerts",
+        timeLeft: "Stock limité",
+        vehicleCount: "5 remorques",
+        badge: "Cadeau"
+      }
+    },
     common: {
       readMore: "Lire la suite",
       learnMore: "En savoir plus",
@@ -778,6 +836,34 @@ const translations: Record<Language, Translations> = {
       economical: "Economical",
       horsesCapacity: "horses",
       absBreaking: "ABS braking"
+    },
+    promotions: {
+      winterSales: {
+        title: "Winter Sales",
+        subtitle: "Up to -20% on horse trucks",
+        description: "Take advantage of exceptional discounts on our premium truck selection",
+        timeLeft: "14 days remaining",
+        vehicleCount: "8 vehicles",
+        badge: "Hot Deal"
+      },
+      specialVans: {
+        title: "Special Van Offer",
+        subtitle: "0% financing for 24 months",
+        description: "No processing fees • First payment offered",
+        monthlyPayment: "From €890/month",
+        timeLeft: "Limited offer",
+        vehicleCount: "12 vehicles",
+        badge: "Exclusive"
+      },
+      trailersPackage: {
+        title: "Trailer Package",
+        subtitle: "Trailer + Free Accessories",
+        description: "Mats, straps and LED lighting kit included",
+        giftValue: "€1,500 in free accessories",
+        timeLeft: "Limited stock",
+        vehicleCount: "5 trailers",
+        badge: "Gift"
+      }
     },
     common: {
       readMore: "Read more",
@@ -1073,6 +1159,34 @@ const translations: Record<Language, Translations> = {
       horsesCapacity: "caballos",
       absBreaking: "Frenado ABS"
     },
+    promotions: {
+      winterSales: {
+        title: "Rebajas de Invierno",
+        subtitle: "Hasta -20% en camiones para caballos",
+        description: "Aprovecha descuentos excepcionales en nuestra selección de camiones premium",
+        timeLeft: "14 días restantes",
+        vehicleCount: "8 vehículos",
+        badge: "Oferta Caliente"
+      },
+      specialVans: {
+        title: "Oferta Especial Furgonetas",
+        subtitle: "Financiación 0% a 24 meses",
+        description: "Sin gastos de gestión • Primera mensualidad ofrecida",
+        monthlyPayment: "Desde 890€/mes",
+        timeLeft: "Oferta limitada",
+        vehicleCount: "12 vehículos",
+        badge: "Exclusivo"
+      },
+      trailersPackage: {
+        title: "Pack Remolques",
+        subtitle: "Remolque + Accesorios gratis",
+        description: "Alfombrillas, correas y kit de iluminación LED incluidos",
+        giftValue: "1.500€ en accesorios gratis",
+        timeLeft: "Stock limitado",
+        vehicleCount: "5 remolques",
+        badge: "Regalo"
+      }
+    },
     common: {
       readMore: "Leer más",
       learnMore: "Saber más",
@@ -1366,6 +1480,34 @@ const translations: Record<Language, Translations> = {
       economical: "Wirtschaftlich",
       horsesCapacity: "Pferde",
       absBreaking: "ABS-Bremsen"
+    },
+    promotions: {
+      winterSales: {
+        title: "Winterverkauf",
+        subtitle: "Bis zu -20% auf Pferdetransporter",
+        description: "Profitieren Sie von außergewöhnlichen Rabatten auf unsere Premium-Transporter-Auswahl",
+        timeLeft: "14 Tage verbleibend",
+        vehicleCount: "8 Fahrzeuge",
+        badge: "Heißer Deal"
+      },
+      specialVans: {
+        title: "Spezial Van Angebot",
+        subtitle: "0% Finanzierung für 24 Monate",
+        description: "Keine Bearbeitungsgebühren • Erste Rate geschenkt",
+        monthlyPayment: "Ab 890€/Monat",
+        timeLeft: "Begrenztes Angebot",
+        vehicleCount: "12 Fahrzeuge",
+        badge: "Exklusiv"
+      },
+      trailersPackage: {
+        title: "Anhänger-Paket",
+        subtitle: "Anhänger + Kostenloses Zubehör",
+        description: "Matten, Gurte und LED-Beleuchtungskit inklusive",
+        giftValue: "1.500€ kostenloses Zubehör",
+        timeLeft: "Begrenzter Vorrat",
+        vehicleCount: "5 Anhänger",
+        badge: "Geschenk"
+      }
     },
     common: {
       readMore: "Mehr lesen",
