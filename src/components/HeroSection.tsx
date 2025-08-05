@@ -9,19 +9,12 @@ import heroTrailer from "@/assets/hero-trailer.jpg";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden htg-hero-gradient">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4AF37' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
-        }}></div>
-      </div>
-
+    <section className="relative min-h-screen overflow-hidden">
       {/* Floating Elements */}
-      <div className="absolute top-20 left-10 w-24 h-24 bg-copper/20 rounded-full blur-xl animate-float"></div>
-      <div className="absolute bottom-32 right-16 w-32 h-32 bg-bronze/20 rounded-full blur-xl animate-float" style={{ animationDelay: '2s' }}></div>
+      <div className="absolute top-20 left-10 w-24 h-24 bg-copper/20 rounded-full blur-xl animate-float z-10"></div>
+      <div className="absolute bottom-32 right-16 w-32 h-32 bg-bronze/20 rounded-full blur-xl animate-float z-10" style={{ animationDelay: '2s' }}></div>
 
-      {/* Background Carousel */}
+      {/* Full Width Background Carousel */}
       <Carousel 
         className="absolute inset-0 w-full h-full"
         plugins={[
