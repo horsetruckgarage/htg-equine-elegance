@@ -49,15 +49,13 @@ const Navigation = () => {
           </div>
 
           {/* Actions */}
-          <div className="flex items-center space-x-4">
+          <div className="hidden md:flex items-center space-x-4">
             <LanguageSelector />
-            <div className="hidden md:block">
-              <Link to="/devis">
-                <Button className="htg-button-primary">
-                  {t.nav.getQuote}
-                </Button>
-              </Link>
-            </div>
+            <Link to="/devis">
+              <Button className="htg-button-primary">
+                {t.nav.getQuote}
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
