@@ -30,31 +30,6 @@ const FloatingCTA = () => {
         </a>
       </div>
 
-      {/* Contact Rapide - Desktop */}
-      <div className="hidden lg:block fixed top-1/2 right-0 transform -translate-y-1/2 z-40">
-        <div className="htg-glass rounded-l-xl p-4 space-y-3">
-          <a href="tel:+33123456789">
-            <Button 
-              variant="outline" 
-              size="sm" 
-              className="w-full bg-white/90 hover:bg-copper hover:text-white"
-            >
-              <Phone className="w-4 h-4 mr-2" />
-              Appeler
-            </Button>
-          </a>
-          <Link to="/contact">
-            <Button 
-              variant="outline" 
-              size="sm" 
-              className="w-full bg-white/90 hover:bg-copper hover:text-white"
-            >
-              <Mail className="w-4 h-4 mr-2" />
-              Email
-            </Button>
-          </Link>
-        </div>
-      </div>
     </>
   );
 };
