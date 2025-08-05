@@ -2,8 +2,11 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Eye, Heart, Star, Calendar, Gauge, Users, Clock, TrendingUp, TrendingDown, Zap, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "@/hooks/useTranslation";
+import { getLocalizedPath } from "@/hooks/useLocalizedRouting";
 
 const OffresEtVehicules = () => {
+  const { t, language } = useTranslation();
   const featuredVehicles = [
     {
       id: 1,
@@ -251,7 +254,7 @@ const OffresEtVehicules = () => {
                   </div>
                   
                   <div className="flex gap-2 pt-2">
-                    <Link to={`/${vehicle.category.toLowerCase().includes('camion') ? 'camions' : vehicle.category.toLowerCase().includes('van') ? 'vans' : 'remorques'}`} className="flex-1">
+                    <Link to={getLocalizedPath(`/${vehicle.category.toLowerCase().includes('camion') ? 'camions' : vehicle.category.toLowerCase().includes('van') ? 'vans' : 'remorques'}`, language)} className="flex-1">
                       <Button className="htg-button-primary w-full" title="Découvrir toutes les caractéristiques de ce véhicule">
                         Voir Détails
                       </Button>
@@ -267,7 +270,7 @@ const OffresEtVehicules = () => {
 
           {/* CTA Véhicules */}
           <div className="text-center">
-            <Link to="/occasions">
+            <Link to={getLocalizedPath("/occasions", language)}>
               <Button 
                 size="lg" 
                 className="htg-button-primary"

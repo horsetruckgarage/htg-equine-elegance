@@ -2,10 +2,13 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Star, Quote, CheckCircle, Users, Award, Shield, Phone, Mail, MapPin, ArrowRight, Heart, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "@/hooks/useTranslation";
+import { getLocalizedPath } from "@/hooks/useLocalizedRouting";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 
 const ConfianceEtContact = () => {
+  const { t, language } = useTranslation();
   const reviews = [
     {
       id: 1,
@@ -99,10 +102,10 @@ const ConfianceEtContact = () => {
   ];
 
   const stats = [
-    { number: "15+", label: "Années d'expérience", icon: Award },
-    { number: "2500+", label: "Clients satisfaits", icon: Users },
-    { number: "98%", label: "Taux de satisfaction", icon: Heart },
-    { number: "24h", label: "Réponse garantie", icon: CheckCircle }
+    { number: "15+", label: t.trust.stats.experience, icon: Award },
+    { number: "2500+", label: t.trust.stats.clients, icon: Users },
+    { number: "98%", label: t.trust.stats.satisfaction, icon: Heart },
+    { number: "24h", label: t.trust.stats.response, icon: CheckCircle }
   ];
 
   return (
@@ -112,15 +115,14 @@ const ConfianceEtContact = () => {
         <div className="text-center mb-16 space-y-6">
           <div className="inline-flex items-center space-x-2 bg-copper/10 rounded-full px-4 py-2">
             <Shield className="w-4 h-4 text-copper" />
-            <span className="text-copper font-semibold">Confiance & Expertise</span>
+            <span className="text-copper font-semibold">{t.trust.badge}</span>
           </div>
           <h2 className="text-4xl lg:text-5xl font-bold">
-            <span className="text-foreground">Votre Partenaire</span>
-            <span className="block htg-text-gradient">de Confiance</span>
+            <span className="text-foreground">{t.trust.title}</span>
+            <span className="block htg-text-gradient">{t.trust.subtitle}</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Découvrez pourquoi plus de 2500 clients nous font confiance pour leurs véhicules équestres. 
-            Excellence, expertise et service personnalisé depuis plus de 15 ans.
+            {t.trust.description}
           </p>
         </div>
 
@@ -166,10 +168,10 @@ const ConfianceEtContact = () => {
               </div>
             </div>
             <h3 className="text-3xl lg:text-4xl font-bold text-foreground">
-              Ce que Disent Nos Clients
+              {t.trust.reviewsTitle}
             </h3>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Des témoignages authentiques de professionnels et passionnés qui nous font confiance
+              {t.trust.reviewsDescription}
             </p>
           </div>
 
@@ -224,9 +226,9 @@ const ConfianceEtContact = () => {
 
           {/* Review CTA */}
           <div className="text-center">
-            <Link to="/contact">
+            <Link to={getLocalizedPath("/contact", language)}>
               <Button variant="outline" className="htg-button-secondary">
-                Laisser un Avis
+                {t.trust.leaveReview}
                 <Star className="w-4 h-4 ml-2" />
               </Button>
             </Link>
@@ -237,10 +239,10 @@ const ConfianceEtContact = () => {
         <div className="mb-20">
           <div className="text-center mb-12 space-y-4">
             <h3 className="text-3xl lg:text-4xl font-bold text-foreground">
-              Nos Partenaires de Confiance
+              {t.trust.partnersTitle}
             </h3>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Nous travaillons exclusivement avec les plus grandes marques du secteur équestre
+              {t.trust.partnersDescription}
             </p>
           </div>
 
@@ -280,9 +282,9 @@ const ConfianceEtContact = () => {
 
         {/* Contact CTA Section */}
         <div className="text-center">
-          <Link to="/devis">
+          <Link to={getLocalizedPath("/devis", language)}>
             <Button className="htg-button-primary">
-              Demander un Devis Gratuit
+              {t.trust.getQuote}
             </Button>
           </Link>
         </div>

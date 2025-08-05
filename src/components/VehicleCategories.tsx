@@ -1,43 +1,47 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { useTranslation } from "@/hooks/useTranslation";
+import { getLocalizedPath } from "@/hooks/useLocalizedRouting";
 import camionChevaux from "@/assets/camion-chevaux.jpg";
 import vanChevaux from "@/assets/van-chevaux.jpg";
 import remorqueChevaux from "@/assets/remorque-chevaux.jpg";
 
 const VehicleCategories = () => {
+  const { t, language } = useTranslation();
+  
   const categories = [
     {
       id: "camions",
-      title: "Camions Chevaux",
-      description: "Transport professionnel haute capacité pour vos champions",
+      title: t.categories.horseTrucks.title,
+      description: t.categories.horseTrucks.description,
       image: camionChevaux,
-      features: ["4-6 chevaux", "Suspension pneumatique", "Cabine couchette", "Boîte automatique"],
+      features: t.categories.horseTrucks.features,
       count: "25+ modèles",
       promo: "Jusqu'à -15%",
-      startingPrice: "À partir de 45 000€",
+      startingPrice: t.categories.horseTrucks.from + " 45 000€",
       highlight: "Bestseller"
     },
     {
       id: "vans",
-      title: "Vans Chevaux",
-      description: "Polyvalence et maniabilité urbaine pour tous vos déplacements",
+      title: t.categories.horseVans.title,
+      description: t.categories.horseVans.description,
       image: vanChevaux,
-      features: ["2-4 chevaux", "Compact & agile", "Économique", "Conduite facile"],
+      features: t.categories.horseVans.features,
       count: "18+ modèles",
       promo: "Offres spéciales",
-      startingPrice: "À partir de 28 000€",
+      startingPrice: t.categories.horseVans.from + " 28 000€",
       highlight: "Plus demandé"
     },
     {
       id: "remorques",
-      title: "Remorques Chevaux",
-      description: "Solution flexible et économique pour vos concours",
+      title: t.categories.horseTrailers.title,
+      description: t.categories.horseTrailers.description,
       image: remorqueChevaux,
-      features: ["1-3 chevaux", "Ultra-léger", "Facile à manœuvrer", "Excellent rapport qualité/prix"],
+      features: t.categories.horseTrailers.features,
       count: "12+ modèles",
       promo: "Nouveautés 2024",
-      startingPrice: "À partir de 15 000€",
+      startingPrice: t.categories.horseTrailers.from + " 15 000€",
       highlight: "Meilleur prix"
     }
   ];
@@ -51,8 +55,8 @@ const VehicleCategories = () => {
             <span className="text-copper font-semibold">Nos Spécialités</span>
           </div>
           <h2 className="text-4xl lg:text-5xl font-bold">
-            <span className="text-foreground">Trouvez le Véhicule</span>
-            <span className="block htg-text-gradient">Parfait pour Vos Besoins</span>
+            <span className="text-foreground">{t.categories.title}</span>
+            <span className="block htg-text-gradient">{t.categories.subtitle}</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Chaque discipline équestre a ses exigences. Découvrez notre sélection organisée 
@@ -97,9 +101,9 @@ const VehicleCategories = () => {
 
                   {/* Hover Overlay */}
                   <div className="absolute inset-0 bg-copper/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <Link to={`/${category.id}`}>
+                    <Link to={getLocalizedPath(`/${category.id}`, language)}>
                       <Button className="htg-button-primary">
-                        Explorer
+                        {t.categories.horseTrucks.explore}
                         <ArrowRight className="w-4 h-4 ml-2" />
                       </Button>
                     </Link>
@@ -136,7 +140,7 @@ const VehicleCategories = () => {
                     <p className="text-sm text-muted-foreground leading-relaxed">
                       Découvrez notre collection exclusive de véhicules sélectionnés pour répondre aux standards les plus exigeants du transport équin.
                     </p>
-                    <Link to={`/${category.id}`}>
+                    <Link to={getLocalizedPath(`/${category.id}`, language)}>
                       <Button 
                         variant="outline" 
                         className="w-full htg-button-secondary group"
@@ -157,28 +161,27 @@ const VehicleCategories = () => {
           <div className="htg-card max-w-4xl mx-auto p-8 lg:p-12">
             <div className="space-y-6">
               <h3 className="text-3xl font-bold text-foreground">
-                Besoin d'un Conseil Personnalisé ?
+                {t.categories.ctaTitle}
               </h3>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-6">
-                Nos experts sont là pour vous accompagner dans le choix du véhicule parfait. 
-                Contactez-nous pour une étude personnalisée de vos besoins.
+                {t.categories.ctaDescription}
               </p>
               <div className="text-center space-y-4 mb-6">
                 <p className="text-copper font-medium text-lg">Recevez votre offre personnalisée en moins de 24h – Sans engagement</p>
                 <p className="text-sm text-muted-foreground">Besoin d'un échange personnalisé ? Réservez un rendez-vous téléphonique ou en visio avec l'un de nos experts.</p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link to="/devis">
+                <Link to={getLocalizedPath("/devis", language)}>
                   <Button className="htg-button-primary">
-                    Demander un Devis Gratuit
+                    {t.categories.getFreeQuote}
                   </Button>
                 </Link>
-                <Link to="/contact">
+                <Link to={getLocalizedPath("/contact", language)}>
                   <Button 
                     variant="outline" 
                     className="htg-button-secondary"
                   >
-                    Prendre Rendez-vous
+                    {t.categories.makeAppointment}
                   </Button>
                 </Link>
               </div>

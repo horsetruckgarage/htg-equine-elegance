@@ -1,32 +1,38 @@
 import { Phone, Mail, MapPin, Clock, Facebook, Instagram, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { useTranslation } from "@/hooks/useTranslation";
+import { getLocalizedPath } from "@/hooks/useLocalizedRouting";
 
 const Footer = () => {
+  const { t, language } = useTranslation();
+  
   const footerSections = [
     {
-      title: "Véhicules",
+      title: t.footer.vehicles.title,
       links: [
-        { name: "Camions Chevaux", href: "/camions" },
-        { name: "Vans Chevaux", href: "/vans" },
-        { name: "Remorques Chevaux", href: "/remorques" },
-        { name: "Occasions", href: "/occasions" },
-        { name: "Demander un Devis", href: "/devis" }
+        { name: t.footer.vehicles.horseTrucks, href: getLocalizedPath("/camions", language) },
+        { name: t.footer.vehicles.horseVans, href: getLocalizedPath("/vans", language) },
+        { name: t.footer.vehicles.horseTrailers, href: getLocalizedPath("/remorques", language) },
+        { name: t.footer.vehicles.occasions, href: getLocalizedPath("/occasions", language) },
+        { name: t.nav.getQuote, href: getLocalizedPath("/devis", language) }
       ]
     },
     {
-      title: "Entreprise",
+      title: t.footer.company2.title,
       links: [
-        { name: "À Propos", href: "/about" },
-        { name: "Contact", href: "/contact" },
-        { name: "Demander un Devis", href: "/devis" }
+        { name: t.footer.company2.about, href: getLocalizedPath("/about", language) },
+        { name: t.footer.company2.contact, href: getLocalizedPath("/contact", language) },
+        { name: t.nav.getQuote, href: getLocalizedPath("/devis", language) }
       ]
     },
     {
-      title: "Contact Rapide",
+      title: t.footer.services.title,
       links: [
-        { name: "Demander un Devis", href: "/devis" },
-        { name: "Prendre Rendez-vous", href: "/contact" }
+        { name: t.footer.services.financing, href: getLocalizedPath("/devis", language) },
+        { name: t.footer.services.insurance, href: getLocalizedPath("/contact", language) },
+        { name: t.footer.services.warranty, href: getLocalizedPath("/contact", language) },
+        { name: t.footer.services.maintenance, href: getLocalizedPath("/contact", language) }
       ]
     }
   ];
@@ -44,19 +50,19 @@ const Footer = () => {
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center space-y-6">
             <h3 className="text-3xl font-bold text-gray-800">
-              Restez Informé des Dernières Nouveautés
+              {t.footer.newsletter.title}
             </h3>
             <p className="text-lg text-gray-600">
-              Recevez en avant-première les nouveaux arrivages, offres exclusives et promotions flash HTG.
+              {t.footer.newsletter.description}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
               <input
                 type="email"
-                placeholder="Votre adresse email"
+                placeholder={t.footer.newsletter.placeholder}
                 className="flex-1 px-4 py-3 rounded-lg bg-white border border-gray-300 text-gray-800"
               />
               <Button className="htg-button-primary whitespace-nowrap">
-                S'abonner
+                {t.footer.newsletter.subscribe}
               </Button>
             </div>
           </div>
@@ -77,13 +83,12 @@ const Footer = () => {
                 />
                 <div>
                   <h3 className="text-2xl font-bold text-copper">HTG</h3>
-                  <p className="text-gray-600">Horse Truck Garage</p>
+                  <p className="text-gray-600">{t.footer.company.title}</p>
                 </div>
               </div>
               
               <p className="text-gray-600 leading-relaxed">
-                Spécialiste français du transport équin depuis plus de 15 ans. 
-                Nous vous accompagnons dans le choix et l'acquisition de votre véhicule idéal.
+                {t.footer.company.description}
               </p>
 
               {/* Contact Info */}
@@ -165,19 +170,19 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-center md:text-left">
               <p className="text-gray-600">
-                © 2024 Horse Truck Garage (HTG). Tous droits réservés.
+                © 2024 {t.footer.company.title}. {t.footer.copyright}
               </p>
             </div>
             
             <div className="flex flex-wrap justify-center md:justify-end gap-6 text-sm">
-              <Link to="/about" className="text-gray-600 hover:text-copper transition-colors">
-                À Propos
+              <Link to={getLocalizedPath("/about", language)} className="text-gray-600 hover:text-copper transition-colors">
+                {t.footer.company2.about}
               </Link>
-              <Link to="/contact" className="text-gray-600 hover:text-copper transition-colors">
-                Contact
+              <Link to={getLocalizedPath("/contact", language)} className="text-gray-600 hover:text-copper transition-colors">
+                {t.footer.company2.contact}
               </Link>
-              <Link to="/devis" className="text-gray-600 hover:text-copper transition-colors">
-                Demander un Devis
+              <Link to={getLocalizedPath("/devis", language)} className="text-gray-600 hover:text-copper transition-colors">
+                {t.nav.getQuote}
               </Link>
             </div>
           </div>
