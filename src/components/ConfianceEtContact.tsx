@@ -2,6 +2,8 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Star, Quote, CheckCircle, Users, Award, Shield, Phone, Mail, MapPin, ArrowRight, Heart, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 
 const ConfianceEtContact = () => {
   const reviews = [
@@ -184,27 +186,38 @@ const ConfianceEtContact = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-            {partners.map((partner, index) => (
-              <div 
-                key={index} 
-                className="htg-card p-6 text-center space-y-3 group hover:scale-105 transition-all duration-300"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="h-12 flex items-center justify-center">
-                  <img 
-                    src={partner.logo} 
-                    alt={`Logo ${partner.name}`}
-                    className="max-h-10 max-w-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
-                  />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-foreground">{partner.name}</h4>
-                  <p className="text-xs text-muted-foreground mt-1">{partner.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <Carousel 
+            className="w-full"
+            plugins={[
+              Autoplay({
+                delay: 3000,
+              }),
+            ]}
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+          >
+            <CarouselContent className="-ml-2 md:-ml-4">
+              {partners.map((partner, index) => (
+                <CarouselItem key={index} className="pl-2 md:pl-4 basis-1/2 md:basis-1/3 lg:basis-1/4">
+                  <div className="htg-card p-6 text-center space-y-3 group hover:scale-105 transition-all duration-300 h-full">
+                    <div className="h-12 flex items-center justify-center">
+                      <img 
+                        src={partner.logo} 
+                        alt={`Logo ${partner.name}`}
+                        className="max-h-10 max-w-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                      />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-foreground">{partner.name}</h4>
+                      <p className="text-xs text-muted-foreground mt-1">{partner.description}</p>
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
         </div>
 
         {/* Contact CTA Section */}
