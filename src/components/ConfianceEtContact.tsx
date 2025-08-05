@@ -9,97 +9,12 @@ import Autoplay from "embla-carousel-autoplay";
 
 const ConfianceEtContact = () => {
   const { t, language } = useTranslation();
-  const reviews = [
-    {
-      id: 1,
-      name: "Marie Dubois",
-      location: "Normandie",
-      rating: 5,
-      text: "Service exceptionnel ! J'ai acheté mon van chez HTG il y a 2 ans et je suis toujours aussi satisfaite. L'équipe est professionnelle et de bon conseil.",
-      vehicleType: "Van Chevaux Renault Master",
-      date: "Il y a 3 semaines",
-      verified: true
-    },
-    {
-      id: 2,
-      name: "Pierre Martin",
-      location: "Île-de-France",
-      rating: 5,
-      text: "Excellent rapport qualité-prix pour mon camion 4 places. La livraison s'est parfaitement déroulée et le véhicule était impeccable.",
-      vehicleType: "Camion Iveco Daily",
-      date: "Il y a 1 mois",
-      verified: true
-    },
-    {
-      id: 3,
-      name: "Sophie Lemoine",
-      location: "Bretagne",
-      rating: 5,
-      text: "Je recommande vivement HTG ! Leur expertise m'a permis de trouver la remorque parfaite pour mes besoins. Suivi irréprochable.",
-      vehicleType: "Remorque Böckmann",
-      date: "Il y a 2 mois",
-      verified: true
-    },
-    {
-      id: 4,
-      name: "Jean-Claude Bertrand",
-      location: "Provence-Alpes-Côte d'Azur",
-      rating: 5,
-      text: "20 ans d'expérience dans l'équestre, et je n'ai jamais vu un service aussi professionnel. Mon nouveau van Mercedes est parfait pour mes compétitions.",
-      vehicleType: "Van Mercedes Sprinter",
-      date: "Il y a 1 semaine",
-      verified: true
-    },
-    {
-      id: 5,
-      name: "Camille Rousseau",
-      location: "Nouvelle-Aquitaine",
-      rating: 4,
-      text: "Très satisfaite de mon achat ! L'équipe a su me conseiller sur le bon modèle. Juste un petit délai de livraison mais le résultat en valait la peine.",
-      vehicleType: "Remorque Ifor Williams",
-      date: "Il y a 3 jours",
-      verified: true
-    },
-    {
-      id: 6,
-      name: "Thomas Moreau",
-      location: "Centre-Val de Loire",
-      rating: 5,
-      text: "Service après-vente au top ! Mon camion a eu un petit souci et ils ont tout réglé rapidement. Une équipe vraiment fiable, je recommande sans hésiter.",
-      vehicleType: "Camion Renault Master",
-      date: "Il y a 2 semaines",
-      verified: true
-    },
-    {
-      id: 7,
-      name: "Isabelle Durand",
-      location: "Occitanie",
-      rating: 5,
-      text: "Achat d'une remorque 2 places pour mes chevaux de dressage. Produit de qualité, conseil expert et prix compétitif. Parfait !",
-      vehicleType: "Remorque Humbaur",
-      date: "Il y a 5 jours",
-      verified: true
-    },
-    {
-      id: 8,
-      name: "Antoine Lefevre",
-      location: "Hauts-de-France",
-      rating: 4,
-      text: "Bonne expérience globale. Le personnel connaît vraiment bien les produits équestres. Mon van correspond exactement à mes attentes pour les concours.",
-      vehicleType: "Van Iveco Daily",
-      date: "Il y a 4 semaines",
-      verified: true
-    }
-  ];
+  
+  // Utilise les avis traduits selon la langue sélectionnée
+  const reviews = t.trust.reviews;
 
-  const partners = [
-    { name: "Iveco", logo: "/lovable-uploads/2b478b96-e19a-4288-ac04-f0410f56f0bc.png", description: "Partenaire officiel depuis 2015" },
-    { name: "Mercedes", logo: "/lovable-uploads/bee66bcd-4af5-4ce6-a9d1-a044053fa657.png", description: "Distributeur agréé" },
-    { name: "Renault", logo: "/lovable-uploads/2307287b-f2a8-4858-984f-44b3a646dd23.png", description: "Concessionnaire certifié" },
-    { name: "Böckmann", logo: "/lovable-uploads/35ff85cc-4513-4a11-9b8b-eda640027c91.png", description: "Revendeur exclusif région" },
-    { name: "Ifor Williams", logo: "/lovable-uploads/a3bc9f31-af5a-4053-a835-56933ae8d26b.png", description: "Distributeur autorisé" },
-    { name: "Humbaur", logo: "/lovable-uploads/243f1cf5-f2ce-48a8-a2dd-8c9d7334fa5a.png", description: "Partenaire premium" }
-  ];
+  // Utilise les partenaires traduits selon la langue sélectionnée  
+  const partners = t.trust.partners;
 
   const stats = [
     { number: "15+", label: t.trust.stats.experience, icon: Award },

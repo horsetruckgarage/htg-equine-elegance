@@ -79,25 +79,40 @@ export interface Translations {
       disciplineDescription: string;
     };
   
-  // Trust & Contact
-  trust: {
-    badge: string;
-    title: string;
-    subtitle: string;
-    description: string;
-    stats: {
-      experience: string;
-      clients: string;
-      satisfaction: string;
-      response: string;
+    // Trust & Contact
+    trust: {
+      badge: string;
+      title: string;
+      subtitle: string;
+      description: string;
+      stats: {
+        experience: string;
+        clients: string;
+        satisfaction: string;
+        response: string;
+      };
+      reviewsTitle: string;
+      reviewsDescription: string;
+      leaveReview: string;
+      partnersTitle: string;
+      partnersDescription: string;
+      getQuote: string;
+      partners: Array<{
+        name: string;
+        logo: string;
+        description: string;
+      }>;
+      reviews: Array<{
+        id: number;
+        name: string;
+        location: string;
+        rating: number;
+        text: string;
+        vehicleType: string;
+        date: string;
+        verified: boolean;
+      }>;
     };
-    reviewsTitle: string;
-    reviewsDescription: string;
-    leaveReview: string;
-    partnersTitle: string;
-    partnersDescription: string;
-    getQuote: string;
-  };
   
   // Footer
   footer: {
@@ -309,7 +324,97 @@ const translations: Record<Language, Translations> = {
       leaveReview: "Laisser un Avis",
       partnersTitle: "Nos Partenaires de Confiance",
       partnersDescription: "Nous travaillons exclusivement avec les plus grandes marques du secteur équestre",
-      getQuote: "Demander un Devis Gratuit"
+      partners: [
+        { name: "Iveco", logo: "/lovable-uploads/2b478b96-e19a-4288-ac04-f0410f56f0bc.png", description: "Partenaire officiel depuis 2015" },
+        { name: "Mercedes", logo: "/lovable-uploads/bee66bcd-4af5-4ce6-a9d1-a044053fa657.png", description: "Distributeur agréé" },
+        { name: "Renault", logo: "/lovable-uploads/2307287b-f2a8-4858-984f-44b3a646dd23.png", description: "Concessionnaire certifié" },
+        { name: "Böckmann", logo: "/lovable-uploads/35ff85cc-4513-4a11-9b8b-eda640027c91.png", description: "Revendeur exclusif région" },
+        { name: "Ifor Williams", logo: "/lovable-uploads/a3bc9f31-af5a-4053-a835-56933ae8d26b.png", description: "Distributeur autorisé" },
+        { name: "Humbaur", logo: "/lovable-uploads/243f1cf5-f2ce-48a8-a2dd-8c9d7334fa5a.png", description: "Partenaire premium" }
+      ],
+      getQuote: "Demander un Devis Gratuit",
+      reviews: [
+        {
+          id: 1,
+          name: "Marie Dubois",
+          location: "Normandie",
+          rating: 5,
+          text: "Service exceptionnel ! J'ai acheté mon van chez HTG il y a 2 ans et je suis toujours aussi satisfaite. L'équipe est professionnelle et de bon conseil.",
+          vehicleType: "Van Chevaux Renault Master",
+          date: "Il y a 3 semaines",
+          verified: true
+        },
+        {
+          id: 2,
+          name: "Pierre Martin",
+          location: "Île-de-France",
+          rating: 5,
+          text: "Excellent rapport qualité-prix pour mon camion 4 places. La livraison s'est parfaitement déroulée et le véhicule était impeccable.",
+          vehicleType: "Camion Iveco Daily",
+          date: "Il y a 1 mois",
+          verified: true
+        },
+        {
+          id: 3,
+          name: "Sophie Lemoine",
+          location: "Bretagne",
+          rating: 5,
+          text: "Je recommande vivement HTG ! Leur expertise m'a permis de trouver la remorque parfaite pour mes besoins. Suivi irréprochable.",
+          vehicleType: "Remorque Böckmann",
+          date: "Il y a 2 mois",
+          verified: true
+        },
+        {
+          id: 4,
+          name: "Jean-Claude Bertrand",
+          location: "Provence-Alpes-Côte d'Azur",
+          rating: 5,
+          text: "20 ans d'expérience dans l'équestre, et je n'ai jamais vu un service aussi professionnel. Mon nouveau van Mercedes est parfait pour mes compétitions.",
+          vehicleType: "Van Mercedes Sprinter",
+          date: "Il y a 1 semaine",
+          verified: true
+        },
+        {
+          id: 5,
+          name: "Camille Rousseau",
+          location: "Nouvelle-Aquitaine",
+          rating: 4,
+          text: "Très satisfaite de mon achat ! L'équipe a su me conseiller sur le bon modèle. Juste un petit délai de livraison mais le résultat en valait la peine.",
+          vehicleType: "Remorque Ifor Williams",
+          date: "Il y a 3 jours",
+          verified: true
+        },
+        {
+          id: 6,
+          name: "Thomas Moreau",
+          location: "Centre-Val de Loire",
+          rating: 5,
+          text: "Service après-vente au top ! Mon camion a eu un petit souci et ils ont tout réglé rapidement. Une équipe vraiment fiable, je recommande sans hésiter.",
+          vehicleType: "Camion Renault Master",
+          date: "Il y a 2 semaines",
+          verified: true
+        },
+        {
+          id: 7,
+          name: "Isabelle Durand",
+          location: "Occitanie",
+          rating: 5,
+          text: "Achat d'une remorque 2 places pour mes chevaux de dressage. Produit de qualité, conseil expert et prix compétitif. Parfait !",
+          vehicleType: "Remorque Humbaur",
+          date: "Il y a 5 jours",
+          verified: true
+        },
+        {
+          id: 8,
+          name: "Antoine Lefevre",
+          location: "Hauts-de-France",
+          rating: 4,
+          text: "Bonne expérience globale. Le personnel connaît vraiment bien les produits équestres. Mon van correspond exactement à mes attentes pour les concours.",
+          vehicleType: "Van Iveco Daily",
+          date: "Il y a 4 semaines",
+          verified: true
+        }
+      ]
     },
     footer: {
       newsletter: {
@@ -513,7 +618,97 @@ const translations: Record<Language, Translations> = {
       leaveReview: "Leave a Review",
       partnersTitle: "Our Trusted Partners",
       partnersDescription: "We work exclusively with the biggest brands in the equestrian sector",
-      getQuote: "Get Free Quote"
+      partners: [
+        { name: "Iveco", logo: "/lovable-uploads/2b478b96-e19a-4288-ac04-f0410f56f0bc.png", description: "Official partner since 2015" },
+        { name: "Mercedes", logo: "/lovable-uploads/bee66bcd-4af5-4ce6-a9d1-a044053fa657.png", description: "Authorized distributor" },
+        { name: "Renault", logo: "/lovable-uploads/2307287b-f2a8-4858-984f-44b3a646dd23.png", description: "Certified dealer" },
+        { name: "Böckmann", logo: "/lovable-uploads/35ff85cc-4513-4a11-9b8b-eda640027c91.png", description: "Exclusive regional dealer" },
+        { name: "Ifor Williams", logo: "/lovable-uploads/a3bc9f31-af5a-4053-a835-56933ae8d26b.png", description: "Authorized distributor" },
+        { name: "Humbaur", logo: "/lovable-uploads/243f1cf5-f2ce-48a8-a2dd-8c9d7334fa5a.png", description: "Premium partner" }
+      ],
+      getQuote: "Get Free Quote",
+      reviews: [
+        {
+          id: 1,
+          name: "Emily Johnson",
+          location: "Gloucestershire",
+          rating: 5,
+          text: "Outstanding service! I bought my horse van from HTG 2 years ago and I'm still extremely satisfied. The team is professional and provides excellent advice.",
+          vehicleType: "Horse Van Renault Master",
+          date: "3 weeks ago",
+          verified: true
+        },
+        {
+          id: 2,
+          name: "James Thompson",
+          location: "Yorkshire",
+          rating: 5,
+          text: "Excellent value for money for my 4-horse truck. The delivery went perfectly and the vehicle was immaculate.",
+          vehicleType: "Iveco Daily Truck",
+          date: "1 month ago",
+          verified: true
+        },
+        {
+          id: 3,
+          name: "Sarah Williams",
+          location: "Devon",
+          rating: 5,
+          text: "I highly recommend HTG! Their expertise helped me find the perfect trailer for my needs. Impeccable follow-up service.",
+          vehicleType: "Böckmann Trailer",
+          date: "2 months ago",
+          verified: true
+        },
+        {
+          id: 4,
+          name: "Michael Brown",
+          location: "Kent",
+          rating: 5,
+          text: "20 years of experience in equestrian sports, and I've never seen such professional service. My new Mercedes van is perfect for competitions.",
+          vehicleType: "Mercedes Sprinter Van",
+          date: "1 week ago",
+          verified: true
+        },
+        {
+          id: 5,
+          name: "Jessica Davis",
+          location: "Sussex",
+          rating: 4,
+          text: "Very satisfied with my purchase! The team advised me on the right model. Just a small delivery delay but the result was worth it.",
+          vehicleType: "Ifor Williams Trailer",
+          date: "3 days ago",
+          verified: true
+        },
+        {
+          id: 6,
+          name: "David Wilson",
+          location: "Norfolk",
+          rating: 5,
+          text: "Top-notch after-sales service! My truck had a small issue and they sorted it out quickly. A truly reliable team, I recommend without hesitation.",
+          vehicleType: "Renault Master Truck",
+          date: "2 weeks ago",
+          verified: true
+        },
+        {
+          id: 7,
+          name: "Rebecca Miller",
+          location: "Dorset",
+          rating: 5,
+          text: "Purchased a 2-horse trailer for my dressage horses. Quality product, expert advice and competitive price. Perfect!",
+          vehicleType: "Humbaur Trailer",
+          date: "5 days ago",
+          verified: true
+        },
+        {
+          id: 8,
+          name: "Andrew Taylor",
+          location: "Somerset",
+          rating: 4,
+          text: "Good overall experience. The staff really knows equestrian products well. My van matches exactly my expectations for competitions.",
+          vehicleType: "Iveco Daily Van",
+          date: "4 weeks ago",
+          verified: true
+        }
+      ]
     },
     footer: {
       newsletter: {
@@ -717,7 +912,97 @@ const translations: Record<Language, Translations> = {
       leaveReview: "Dejar una Reseña",
       partnersTitle: "Nuestros Socios de Confianza",
       partnersDescription: "Trabajamos exclusivamente con las marcas más grandes del sector ecuestre",
-      getQuote: "Solicitar Presupuesto Gratuito"
+      partners: [
+        { name: "Iveco", logo: "/lovable-uploads/2b478b96-e19a-4288-ac04-f0410f56f0bc.png", description: "Socio oficial desde 2015" },
+        { name: "Mercedes", logo: "/lovable-uploads/bee66bcd-4af5-4ce6-a9d1-a044053fa657.png", description: "Distribuidor autorizado" },
+        { name: "Renault", logo: "/lovable-uploads/2307287b-f2a8-4858-984f-44b3a646dd23.png", description: "Concesionario certificado" },
+        { name: "Böckmann", logo: "/lovable-uploads/35ff85cc-4513-4a11-9b8b-eda640027c91.png", description: "Distribuidor exclusivo regional" },
+        { name: "Ifor Williams", logo: "/lovable-uploads/a3bc9f31-af5a-4053-a835-56933ae8d26b.png", description: "Distribuidor autorizado" },
+        { name: "Humbaur", logo: "/lovable-uploads/243f1cf5-f2ce-48a8-a2dd-8c9d7334fa5a.png", description: "Socio premium" }
+      ],
+      getQuote: "Solicitar Presupuesto Gratuito",
+      reviews: [
+        {
+          id: 1,
+          name: "Carmen García",
+          location: "Andalucía",
+          rating: 5,
+          text: "¡Servicio excepcional! Compré mi furgoneta para caballos en HTG hace 2 años y sigo muy satisfecha. El equipo es profesional y da buenos consejos.",
+          vehicleType: "Furgoneta para Caballos Renault Master",
+          date: "Hace 3 semanas",
+          verified: true
+        },
+        {
+          id: 2,
+          name: "José Luis Martín",
+          location: "Madrid",
+          rating: 5,
+          text: "Excelente relación calidad-precio para mi camión de 4 plazas. La entrega se desarrolló perfectamente y el vehículo estaba impecable.",
+          vehicleType: "Camión Iveco Daily",
+          date: "Hace 1 mes",
+          verified: true
+        },
+        {
+          id: 3,
+          name: "Ana Rodríguez",
+          location: "Cataluña",
+          rating: 5,
+          text: "¡Recomiendo encarecidamente HTG! Su experiencia me permitió encontrar el remolque perfecto para mis necesidades. Seguimiento irreprochable.",
+          vehicleType: "Remolque Böckmann",
+          date: "Hace 2 meses",
+          verified: true
+        },
+        {
+          id: 4,
+          name: "Miguel Fernández",
+          location: "Valencia",
+          rating: 5,
+          text: "20 años de experiencia en ecuestre, y nunca he visto un servicio tan profesional. Mi nueva furgoneta Mercedes es perfecta para mis competiciones.",
+          vehicleType: "Furgoneta Mercedes Sprinter",
+          date: "Hace 1 semana",
+          verified: true
+        },
+        {
+          id: 5,
+          name: "Laura Sánchez",
+          location: "Galicia",
+          rating: 4,
+          text: "¡Muy satisfecha con mi compra! El equipo supo aconsejarme sobre el modelo correcto. Solo un pequeño retraso en la entrega pero el resultado valió la pena.",
+          vehicleType: "Remolque Ifor Williams",
+          date: "Hace 3 días",
+          verified: true
+        },
+        {
+          id: 6,
+          name: "Carlos López",
+          location: "Castilla y León",
+          rating: 5,
+          text: "¡Servicio postventa de primera! Mi camión tuvo un pequeño problema y lo solucionaron rápidamente. Un equipo realmente confiable, lo recomiendo sin dudar.",
+          vehicleType: "Camión Renault Master",
+          date: "Hace 2 semanas",
+          verified: true
+        },
+        {
+          id: 7,
+          name: "Patricia Ruiz",
+          location: "País Vasco",
+          rating: 5,
+          text: "Compra de un remolque de 2 plazas para mis caballos de doma. Producto de calidad, consejo experto y precio competitivo. ¡Perfecto!",
+          vehicleType: "Remolque Humbaur",
+          date: "Hace 5 días",
+          verified: true
+        },
+        {
+          id: 8,
+          name: "Roberto Jiménez",
+          location: "Aragón",
+          rating: 4,
+          text: "Buena experiencia global. El personal conoce realmente bien los productos ecuestres. Mi furgoneta corresponde exactamente a mis expectativas para las competiciones.",
+          vehicleType: "Furgoneta Iveco Daily",
+          date: "Hace 4 semanas",
+          verified: true
+        }
+      ]
     },
     footer: {
       newsletter: {
@@ -921,7 +1206,97 @@ const translations: Record<Language, Translations> = {
       leaveReview: "Bewertung hinterlassen",
       partnersTitle: "Unsere Vertrauenspartner",
       partnersDescription: "Wir arbeiten ausschließlich mit den größten Marken der Reitsportbranche zusammen",
-      getQuote: "Kostenloses Angebot anfordern"
+      partners: [
+        { name: "Iveco", logo: "/lovable-uploads/2b478b96-e19a-4288-ac04-f0410f56f0bc.png", description: "Offizieller Partner seit 2015" },
+        { name: "Mercedes", logo: "/lovable-uploads/bee66bcd-4af5-4ce6-a9d1-a044053fa657.png", description: "Autorisierter Händler" },
+        { name: "Renault", logo: "/lovable-uploads/2307287b-f2a8-4858-984f-44b3a646dd23.png", description: "Zertifizierter Händler" },
+        { name: "Böckmann", logo: "/lovable-uploads/35ff85cc-4513-4a11-9b8b-eda640027c91.png", description: "Exklusiver regionaler Händler" },
+        { name: "Ifor Williams", logo: "/lovable-uploads/a3bc9f31-af5a-4053-a835-56933ae8d26b.png", description: "Autorisierter Händler" },
+        { name: "Humbaur", logo: "/lovable-uploads/243f1cf5-f2ce-48a8-a2dd-8c9d7334fa5a.png", description: "Premium Partner" }
+      ],
+      getQuote: "Kostenloses Angebot anfordern",
+      reviews: [
+        {
+          id: 1,
+          name: "Anna Weber",
+          location: "Bayern",
+          rating: 5,
+          text: "Außergewöhnlicher Service! Ich habe meinen Pferdetransporter vor 2 Jahren bei HTG gekauft und bin immer noch sehr zufrieden. Das Team ist professionell und berät gut.",
+          vehicleType: "Pferdetransporter Renault Master",
+          date: "Vor 3 Wochen",
+          verified: true
+        },
+        {
+          id: 2,
+          name: "Klaus Müller",
+          location: "Nordrhein-Westfalen",
+          rating: 5,
+          text: "Ausgezeichnetes Preis-Leistungs-Verhältnis für meinen 4-Pferde-LKW. Die Lieferung verlief perfekt und das Fahrzeug war tadellos.",
+          vehicleType: "Iveco Daily LKW",
+          date: "Vor 1 Monat",
+          verified: true
+        },
+        {
+          id: 3,
+          name: "Petra Schmidt",
+          location: "Baden-Württemberg",
+          rating: 5,
+          text: "Ich empfehle HTG wärmstens! Ihre Expertise half mir, den perfekten Anhänger für meine Bedürfnisse zu finden. Tadellose Nachbetreuung.",
+          vehicleType: "Böckmann Anhänger",
+          date: "Vor 2 Monaten",
+          verified: true
+        },
+        {
+          id: 4,
+          name: "Hans Wagner",
+          location: "Hessen",
+          rating: 5,
+          text: "20 Jahre Erfahrung im Reitsport, und ich habe noch nie einen so professionellen Service gesehen. Mein neuer Mercedes-Transporter ist perfekt für Wettkämpfe.",
+          vehicleType: "Mercedes Sprinter Transporter",
+          date: "Vor 1 Woche",
+          verified: true
+        },
+        {
+          id: 5,
+          name: "Sabine Fischer",
+          location: "Niedersachsen",
+          rating: 4,
+          text: "Sehr zufrieden mit meinem Kauf! Das Team wusste mich über das richtige Modell zu beraten. Nur eine kleine Lieferverzögerung, aber das Ergebnis war es wert.",
+          vehicleType: "Ifor Williams Anhänger",
+          date: "Vor 3 Tagen",
+          verified: true
+        },
+        {
+          id: 6,
+          name: "Thomas Becker",
+          location: "Schleswig-Holstein",
+          rating: 5,
+          text: "Erstklassiger Kundendienst! Mein LKW hatte ein kleines Problem und sie haben es schnell gelöst. Ein wirklich zuverlässiges Team, ich empfehle ohne zu zögern.",
+          vehicleType: "Renault Master LKW",
+          date: "Vor 2 Wochen",
+          verified: true
+        },
+        {
+          id: 7,
+          name: "Monika Hoffmann",
+          location: "Rheinland-Pfalz",
+          rating: 5,
+          text: "Kauf eines 2-Pferde-Anhängers für meine Dressurpferde. Qualitätsprodukt, Expertenberatung und wettbewerbsfähiger Preis. Perfekt!",
+          vehicleType: "Humbaur Anhänger",
+          date: "Vor 5 Tagen",
+          verified: true
+        },
+        {
+          id: 8,
+          name: "Jürgen Krause",
+          location: "Brandenburg",
+          rating: 4,
+          text: "Gute Gesamterfahrung. Das Personal kennt sich wirklich gut mit Reitprodukten aus. Mein Transporter entspricht genau meinen Erwartungen für Wettkämpfe.",
+          vehicleType: "Iveco Daily Transporter",
+          date: "Vor 4 Wochen",
+          verified: true
+        }
+      ]
     },
     footer: {
       newsletter: {
