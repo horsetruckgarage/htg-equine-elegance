@@ -11,45 +11,32 @@ const Footer = () => {
         { name: "Vans Chevaux", href: "/vans" },
         { name: "Remorques Chevaux", href: "/remorques" },
         { name: "Occasions", href: "/occasions" },
-        { name: "Neufs", href: "/neufs" }
-      ]
-    },
-    {
-      title: "Services",
-      links: [
-        { name: "Expertise Véhicule", href: "/expertise" },
-        { name: "Financement", href: "/financement" },
-        { name: "Assurance", href: "/assurance" },
-        { name: "Garantie", href: "/garantie" },
-        { name: "SAV", href: "/sav" }
+        { name: "Demander un Devis", href: "/devis" }
       ]
     },
     {
       title: "Entreprise",
       links: [
         { name: "À Propos", href: "/about" },
-        { name: "Notre Histoire", href: "/histoire" },
-        { name: "Équipe", href: "/equipe" },
-        { name: "Témoignages", href: "/temoignages" },
-        { name: "Carrières", href: "/carrieres" }
+        { name: "Contact", href: "/contact" },
+        { name: "Demander un Devis", href: "/devis" }
       ]
     },
     {
-      title: "Support",
+      title: "Contact Rapide",
       links: [
-        { name: "Contact", href: "/contact" },
-        { name: "FAQ", href: "/faq" },
-        { name: "Guide d'Achat", href: "/guide" },
-        { name: "Documentation", href: "/docs" },
-        { name: "Blog", href: "/blog" }
+        { name: "Téléphone", href: "tel:+33123456789" },
+        { name: "Email", href: "mailto:contact@htg-france.com" },
+        { name: "Demander un Devis", href: "/devis" },
+        { name: "Prendre Rendez-vous", href: "/contact" }
       ]
     }
   ];
 
   const socialLinks = [
-    { icon: Facebook, href: "#", name: "Facebook" },
-    { icon: Instagram, href: "#", name: "Instagram" },
-    { icon: Linkedin, href: "#", name: "LinkedIn" }
+    { icon: Facebook, href: "https://facebook.com/htg", name: "Facebook" },
+    { icon: Instagram, href: "https://instagram.com/htg", name: "Instagram" },
+    { icon: Linkedin, href: "https://linkedin.com/company/htg", name: "LinkedIn" }
   ];
 
   return (
@@ -105,11 +92,15 @@ const Footer = () => {
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <Phone className="w-5 h-5 text-copper" />
-                  <span className="text-gray-800">+33 1 23 45 67 89</span>
+                  <a href="tel:+33123456789" className="text-gray-800 hover:text-copper transition-colors">
+                    +33 1 23 45 67 89
+                  </a>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Mail className="w-5 h-5 text-copper" />
-                  <span className="text-gray-800">contact@htg-france.com</span>
+                  <a href="mailto:contact@htg-france.com" className="text-gray-800 hover:text-copper transition-colors">
+                    contact@htg-france.com
+                  </a>
                 </div>
                 <div className="flex items-center space-x-3">
                   <MapPin className="w-5 h-5 text-copper" />
@@ -181,15 +172,15 @@ const Footer = () => {
             </div>
             
             <div className="flex flex-wrap justify-center md:justify-end gap-6 text-sm">
-              <a href="/privacy" className="text-gray-600 hover:text-copper transition-colors">
-                Politique de Confidentialité
-              </a>
-              <a href="/terms" className="text-gray-600 hover:text-copper transition-colors">
-                Conditions Générales
-              </a>
-              <a href="/cookies" className="text-gray-600 hover:text-copper transition-colors">
-                Cookies
-              </a>
+              <Link to="/about" className="text-gray-600 hover:text-copper transition-colors">
+                À Propos
+              </Link>
+              <Link to="/contact" className="text-gray-600 hover:text-copper transition-colors">
+                Contact
+              </Link>
+              <Link to="/devis" className="text-gray-600 hover:text-copper transition-colors">
+                Demander un Devis
+              </Link>
             </div>
           </div>
         </div>
