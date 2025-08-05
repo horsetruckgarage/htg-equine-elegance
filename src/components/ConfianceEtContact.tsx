@@ -147,7 +147,11 @@ const ConfianceEtContact = () => {
           <div className="text-center mb-12 space-y-4">
             <div className="inline-flex items-center space-x-3 bg-white rounded-full px-6 py-3 border border-gray-200 shadow-sm">
               <div className="flex items-center space-x-2">
-                <div className="w-6 h-6 bg-gradient-to-r from-blue-500 to-green-500 text-white rounded flex items-center justify-center text-sm font-bold">G</div>
+                <img 
+                  src="/lovable-uploads/b90c9439-0e85-44c0-aa34-cdc82bc8b364.png" 
+                  alt="Google"
+                  className="w-6 h-6"
+                />
                 <span className="text-gray-700 font-semibold">Google</span>
               </div>
               <div className="w-px h-4 bg-gray-300"></div>
