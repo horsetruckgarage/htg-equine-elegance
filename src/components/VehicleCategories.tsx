@@ -6,29 +6,38 @@ const VehicleCategories = () => {
     {
       id: "camions",
       title: "Camions Chevaux",
-      description: "Transport professionnel haute capacité",
+      description: "Transport professionnel haute capacité pour vos champions",
       icon: Truck,
-      features: ["4-6 chevaux", "Suspension pneumatique", "Cabine couchette"],
+      features: ["4-6 chevaux", "Suspension pneumatique", "Cabine couchette", "Boîte automatique"],
       image: "/api/placeholder/400/300",
-      count: "25+ modèles"
+      count: "25+ modèles",
+      promo: "Jusqu'à -15%",
+      startingPrice: "À partir de 45 000€",
+      highlight: "Bestseller"
     },
     {
       id: "vans",
       title: "Vans Chevaux",
-      description: "Polyvalence et maniabilité urbaine",
+      description: "Polyvalence et maniabilité urbaine pour tous vos déplacements",
       icon: Car,
-      features: ["2-4 chevaux", "Compact", "Économique"],
+      features: ["2-4 chevaux", "Compact & agile", "Économique", "Conduite facile"],
       image: "/api/placeholder/400/300",
-      count: "18+ modèles"
+      count: "18+ modèles",
+      promo: "Offres spéciales",
+      startingPrice: "À partir de 28 000€",
+      highlight: "Plus demandé"
     },
     {
       id: "remorques",
       title: "Remorques Chevaux",
-      description: "Solution flexible et économique",
+      description: "Solution flexible et économique pour vos concours",
       icon: Zap,
-      features: ["1-3 chevaux", "Léger", "Facile à manœuvrer"],
+      features: ["1-3 chevaux", "Ultra-léger", "Facile à manœuvrer", "Excellent rapport qualité/prix"],
       image: "/api/placeholder/400/300",
-      count: "12+ modèles"
+      count: "12+ modèles",
+      promo: "Nouveautés 2024",
+      startingPrice: "À partir de 15 000€",
+      highlight: "Meilleur prix"
     }
   ];
 
@@ -67,10 +76,20 @@ const VehicleCategories = () => {
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                   
-                  {/* Badge */}
-                  <div className="absolute top-4 right-4">
+                  {/* Badge & Promo */}
+                  <div className="absolute top-4 right-4 flex flex-col gap-2">
                     <div className="htg-glass rounded-lg px-3 py-1">
                       <span className="text-copper text-sm font-semibold">{category.count}</span>
+                    </div>
+                    <div className="bg-red-600 text-white text-xs px-2 py-1 rounded-lg font-semibold animate-pulse">
+                      {category.promo}
+                    </div>
+                  </div>
+                  
+                  {/* Highlight Badge */}
+                  <div className="absolute top-4 left-4">
+                    <div className="bg-copper text-black text-xs px-3 py-1 rounded-full font-semibold">
+                      {category.highlight}
                     </div>
                   </div>
 
@@ -105,7 +124,11 @@ const VehicleCategories = () => {
                   </div>
 
                   {/* Action */}
-                  <div className="pt-4 space-y-3">
+                  <div className="pt-4 space-y-4">
+                    <div className="text-center space-y-1">
+                      <p className="text-copper font-bold text-lg">{category.startingPrice}</p>
+                      <p className="text-xs text-muted-foreground">{category.promo}</p>
+                    </div>
                     <p className="text-sm text-muted-foreground leading-relaxed">
                       Découvrez notre collection exclusive de véhicules sélectionnés pour répondre aux standards les plus exigeants du transport équin.
                     </p>
