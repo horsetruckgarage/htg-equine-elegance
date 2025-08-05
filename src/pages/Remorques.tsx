@@ -147,11 +147,17 @@ const Remorques = () => {
             </div>
             <h1 className="text-4xl lg:text-6xl font-bold">
               <span className="text-foreground">{t.nav.horseTrailers}</span>
-              <span className="block htg-text-gradient">Flexibles</span>
+              <span className="block htg-text-gradient">
+                {language === 'fr' ? 'Flexibles' : 
+                 language === 'en' ? 'Flexible' :
+                 language === 'es' ? 'Flexibles' : 'Flexibel'}
+              </span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Découvrez notre collection de remorques chevaux, solution flexible et économique. 
-              De 1 à 3 chevaux, ultra-légères et faciles à manœuvrer.
+              {language === 'fr' ? 'Découvrez notre collection de remorques chevaux, solution flexible et économique. De 1 à 3 chevaux, ultra-légères et faciles à manœuvrer.' :
+               language === 'en' ? 'Discover our collection of horse trailers, flexible and economical solution. From 1 to 3 horses, ultra-light and easy to maneuver.' :
+               language === 'es' ? 'Descubre nuestra colección de remolques para caballos, solución flexible y económica. De 1 a 3 caballos, ultraligeros y fáciles de maniobrar.' :
+               'Entdecken Sie unsere Kollektion von Pferdeanhängern, flexible und wirtschaftliche Lösung. Von 1 bis 3 Pferden, ultraleicht und einfach zu manövrieren.'}
             </p>
           </div>
         </div>
@@ -168,11 +174,21 @@ const Remorques = () => {
               </Button>
               <Button variant="outline" size="sm">{t.trucksPage?.filters?.capacity || "Capacité"}</Button>
               <Button variant="outline" size="sm">{t.trucksPage?.filters?.price || "Prix"}</Button>
-              <Button variant="outline" size="sm">État</Button>
-              <Button variant="outline" size="sm">Marque</Button>
+              <Button variant="outline" size="sm">
+                {language === 'fr' ? 'État' : 
+                 language === 'en' ? 'Condition' :
+                 language === 'es' ? 'Estado' : 'Zustand'}
+              </Button>
+              <Button variant="outline" size="sm">
+                {language === 'fr' ? 'Marque' : 
+                 language === 'en' ? 'Brand' :
+                 language === 'es' ? 'Marca' : 'Marke'}
+              </Button>
             </div>
             <div className="text-muted-foreground">
-              {remorques.length} remorques trouvées
+              {remorques.length} {language === 'fr' ? 'remorques trouvées' : 
+                                 language === 'en' ? 'trailers found' :
+                                 language === 'es' ? 'remolques encontrados' : 'Anhänger gefunden'}
             </div>
           </div>
         </div>
@@ -292,7 +308,11 @@ const Remorques = () => {
                       )}
                     </div>
                     <div className="text-xs text-muted-foreground">
-                      {remorque.km === 'Neuf' ? 'Garantie constructeur incluse' : `${t.trucksPage?.vehicle?.pricing?.financing || "Financement disponible dès"} 290€${t.trucksPage?.vehicle?.pricing?.perMonth || "/mois"}`}
+                      {remorque.km === 'Neuf' ? 
+                        (language === 'fr' ? 'Garantie constructeur incluse' :
+                         language === 'en' ? 'Manufacturer warranty included' :
+                         language === 'es' ? 'Garantía del fabricante incluida' : 'Herstellergarantie inbegriffen') :
+                        `${t.trucksPage?.vehicle?.pricing?.financing || "Financement disponible dès"} 290€${t.trucksPage?.vehicle?.pricing?.perMonth || "/mois"}`}
                     </div>
                   </div>
                   
@@ -316,10 +336,15 @@ const Remorques = () => {
             <div className="htg-card max-w-4xl mx-auto p-8 lg:p-12">
               <div className="space-y-6">
                 <h3 className="text-3xl font-bold text-foreground">
-                  Choisissez la Remorque Idéale
+                  {language === 'fr' ? 'Choisissez la Remorque Idéale' :
+                   language === 'en' ? 'Choose the Ideal Trailer' :
+                   language === 'es' ? 'Elige el Remolque Ideal' : 'Wählen Sie den Idealen Anhänger'}
                 </h3>
                 <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                  De la remorque 1 place pour débuter aux modèles 3 places premium, trouvez celle qui vous convient.
+                  {language === 'fr' ? 'De la remorque 1 place pour débuter aux modèles 3 places premium, trouvez celle qui vous convient.' :
+                   language === 'en' ? 'From 1-horse trailers for beginners to premium 3-horse models, find the one that suits you.' :
+                   language === 'es' ? 'Desde remolques de 1 caballo para principiantes hasta modelos premium de 3 caballos, encuentra el que te conviene.' :
+                   'Von 1-Pferde-Anhängern für Anfänger bis hin zu Premium-3-Pferde-Modellen, finden Sie den passenden für Sie.'}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Link to={getLocalizedPath('/devis', language)}>
@@ -329,7 +354,9 @@ const Remorques = () => {
                   </Link>
                   <Link to={getLocalizedPath('/contact', language)}>
                     <Button variant="outline" className="htg-button-secondary">
-                      Conseil Personnalisé
+                      {language === 'fr' ? 'Conseil Personnalisé' :
+                       language === 'en' ? 'Personalized Advice' :
+                       language === 'es' ? 'Consejo Personalizado' : 'Persönliche Beratung'}
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </Button>
                   </Link>
