@@ -169,6 +169,8 @@ export interface Translations {
     timeLeft: string;
     vehicles: string;
     savings: string;
+    expertiseGuaranteed: string;
+    featuredVehicles: string;
   };
 }
 
@@ -326,7 +328,9 @@ const translations: Record<Language, Translations> = {
       reviews: "avis",
       timeLeft: "Temps restant",
       vehicles: "véhicules",
-      savings: "d'économie"
+      savings: "d'économie",
+      expertiseGuaranteed: "Expertise garantie",
+      featuredVehicles: "Véhicules Vedettes"
     }
   },
   en: {
@@ -482,7 +486,9 @@ const translations: Record<Language, Translations> = {
       reviews: "reviews",
       timeLeft: "Time left",
       vehicles: "vehicles",
-      savings: "savings"
+      savings: "savings",
+      expertiseGuaranteed: "Expertise guaranteed",
+      featuredVehicles: "Featured Vehicles"
     }
   },
   es: {
@@ -638,7 +644,9 @@ const translations: Record<Language, Translations> = {
       reviews: "reseñas",
       timeLeft: "Tiempo restante",
       vehicles: "vehículos",
-      savings: "de ahorro"
+      savings: "de ahorro",
+      expertiseGuaranteed: "Experiencia garantizada",
+      featuredVehicles: "Vehículos Destacados"
     }
   },
   de: {
@@ -794,7 +802,9 @@ const translations: Record<Language, Translations> = {
       reviews: "Bewertungen",
       timeLeft: "Verbleibende Zeit",
       vehicles: "Fahrzeuge",
-      savings: "Ersparnis"
+      savings: "Ersparnis",
+      expertiseGuaranteed: "Expertise garantiert",
+      featuredVehicles: "Ausgewählte Fahrzeuge"
     }
   }
 };

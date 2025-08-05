@@ -113,18 +113,18 @@ const OffresEtVehicules = () => {
           <div className="flex justify-center items-center gap-4 mt-6">
             <div className="flex items-center gap-2 bg-red-600/10 rounded-full px-4 py-2">
               <div className="w-2 h-2 bg-red-600 rounded-full animate-pulse"></div>
-              <span className="text-red-600 font-medium text-sm">Promotions limitées</span>
+              <span className="text-red-600 font-medium text-sm">{t.common.limitedOffer}</span>
             </div>
             <div className="flex items-center gap-2 bg-copper/10 rounded-full px-4 py-2">
               <div className="w-2 h-2 bg-copper rounded-full"></div>
-              <span className="text-copper font-medium text-sm">Expertise garantie</span>
+              <span className="text-copper font-medium text-sm">{t.common.expertiseGuaranteed}</span>
             </div>
           </div>
         </div>
 
         {/* Featured Vehicles */}
         <div className="mb-20">
-          <h3 className="text-2xl font-bold text-foreground mb-8 text-center">Véhicules Vedettes</h3>
+          <h3 className="text-2xl font-bold text-foreground mb-8 text-center">{t.common.featuredVehicles}</h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {featuredVehicles.map((vehicle, index) => (
               <div 
@@ -243,7 +243,7 @@ const OffresEtVehicules = () => {
                       {vehicle.promo && vehicle.savings && (
                         <div className="text-right">
                           <div className="text-green-600 font-semibold text-sm">
-                            Économisez {vehicle.savings}€
+                            {t.common.savings} {vehicle.savings}€
                           </div>
                         </div>
                       )}
@@ -256,7 +256,7 @@ const OffresEtVehicules = () => {
                   <div className="flex gap-2 pt-2">
                     <Link to={getLocalizedPath(`/${vehicle.category.toLowerCase().includes('camion') ? 'camions' : vehicle.category.toLowerCase().includes('van') ? 'vans' : 'remorques'}`, language)} className="flex-1">
                       <Button className="htg-button-primary w-full" title="Découvrir toutes les caractéristiques de ce véhicule">
-                        Voir Détails
+                        {t.common.viewDetails}
                       </Button>
                     </Link>
                     <Button variant="outline" className="htg-button-secondary px-3" title="Ajouter à ma sélection">
@@ -275,7 +275,7 @@ const OffresEtVehicules = () => {
                 size="lg" 
                 className="htg-button-primary"
               >
-                Voir Tous les Véhicules
+                {t.common.viewAll} {t.common.vehicles}
               </Button>
             </Link>
           </div>

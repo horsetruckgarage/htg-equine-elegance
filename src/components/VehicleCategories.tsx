@@ -103,7 +103,9 @@ const VehicleCategories = () => {
                   <div className="absolute inset-0 bg-copper/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                     <Link to={getLocalizedPath(`/${category.id}`, language)}>
                       <Button className="htg-button-primary">
-                        {t.categories.horseTrucks.explore}
+                        {category.id === 'camions' ? t.categories.horseTrucks.explore : 
+                         category.id === 'vans' ? t.categories.horseVans.explore : 
+                         t.categories.horseTrailers.explore}
                         <ArrowRight className="w-4 h-4 ml-2" />
                       </Button>
                     </Link>
@@ -145,7 +147,7 @@ const VehicleCategories = () => {
                         variant="outline" 
                         className="w-full htg-button-secondary group"
                       >
-                        Voir la Collection
+                        {t.common.viewAll}
                         <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                       </Button>
                     </Link>
