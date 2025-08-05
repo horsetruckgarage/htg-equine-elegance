@@ -36,6 +36,56 @@ const ConfianceEtContact = () => {
       vehicleType: "Remorque Böckmann",
       date: "Il y a 2 mois",
       verified: true
+    },
+    {
+      id: 4,
+      name: "Jean-Claude Bertrand",
+      location: "Provence-Alpes-Côte d'Azur",
+      rating: 5,
+      text: "20 ans d'expérience dans l'équestre, et je n'ai jamais vu un service aussi professionnel. Mon nouveau van Mercedes est parfait pour mes compétitions.",
+      vehicleType: "Van Mercedes Sprinter",
+      date: "Il y a 1 semaine",
+      verified: true
+    },
+    {
+      id: 5,
+      name: "Camille Rousseau",
+      location: "Nouvelle-Aquitaine",
+      rating: 4,
+      text: "Très satisfaite de mon achat ! L'équipe a su me conseiller sur le bon modèle. Juste un petit délai de livraison mais le résultat en valait la peine.",
+      vehicleType: "Remorque Ifor Williams",
+      date: "Il y a 3 jours",
+      verified: true
+    },
+    {
+      id: 6,
+      name: "Thomas Moreau",
+      location: "Centre-Val de Loire",
+      rating: 5,
+      text: "Service après-vente au top ! Mon camion a eu un petit souci et ils ont tout réglé rapidement. Une équipe vraiment fiable, je recommande sans hésiter.",
+      vehicleType: "Camion Renault Master",
+      date: "Il y a 2 semaines",
+      verified: true
+    },
+    {
+      id: 7,
+      name: "Isabelle Durand",
+      location: "Occitanie",
+      rating: 5,
+      text: "Achat d'une remorque 2 places pour mes chevaux de dressage. Produit de qualité, conseil expert et prix compétitif. Parfait !",
+      vehicleType: "Remorque Humbaur",
+      date: "Il y a 5 jours",
+      verified: true
+    },
+    {
+      id: 8,
+      name: "Antoine Lefevre",
+      location: "Hauts-de-France",
+      rating: 4,
+      text: "Bonne expérience globale. Le personnel connaît vraiment bien les produits équestres. Mon van correspond exactement à mes attentes pour les concours.",
+      vehicleType: "Van Iveco Daily",
+      date: "Il y a 4 semaines",
+      verified: true
     }
   ];
 
@@ -95,16 +145,20 @@ const ConfianceEtContact = () => {
         {/* Reviews Section */}
         <div className="mb-20">
           <div className="text-center mb-12 space-y-4">
-            <div className="inline-flex items-center space-x-2 bg-blue-50 rounded-full px-4 py-2 border border-blue-200">
-              <div className="flex items-center space-x-1">
-                <div className="w-5 h-5 bg-blue-500 text-white rounded-sm flex items-center justify-center text-xs font-bold">G</div>
-                <span className="text-blue-600 font-semibold">Avis Google</span>
+            <div className="inline-flex items-center space-x-3 bg-white rounded-full px-6 py-3 border border-gray-200 shadow-sm">
+              <div className="flex items-center space-x-2">
+                <div className="w-6 h-6 bg-gradient-to-r from-blue-500 to-green-500 text-white rounded flex items-center justify-center text-sm font-bold">G</div>
+                <span className="text-gray-700 font-semibold">Google</span>
               </div>
+              <div className="w-px h-4 bg-gray-300"></div>
               <div className="flex items-center space-x-1">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-3 h-3 text-yellow-400 fill-yellow-400" />
+                  <Star key={i} className="w-4 h-4 text-yellow-400 fill-yellow-400" />
                 ))}
-                <span className="text-sm text-gray-600 ml-1">4.9/5</span>
+                <span className="text-sm text-gray-600 ml-2 font-medium">4.9</span>
+              </div>
+              <div className="text-sm text-gray-500">
+                ({reviews.length} avis)
               </div>
             </div>
             <h3 className="text-3xl lg:text-4xl font-bold text-foreground">
@@ -115,8 +169,8 @@ const ConfianceEtContact = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {reviews.map((review, index) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-12">
+            {reviews.slice(0, 8).map((review, index) => (
               <div 
                 key={review.id} 
                 className="htg-card p-6 space-y-4 group hover:scale-105 transition-all duration-300"
