@@ -19,10 +19,10 @@ const OffresEtVehicules = () => {
       year: 2019,
       km: "125 000",
       capacity: "4 " + t.common.horsesCapacity,
-      features: ["Suspension pneumatique", "Climatisation", "Cabine couchette", "Boîte automatique"],
+      features: [t.features.pneumaticSuspension, t.features.airConditioning, t.features.sleepingCabin, t.features.automaticTransmission],
       badge: t.common.bestseller,
       rating: 4.9,
-      urgency: "Plus que 3 " + t.common.timeLeft.toLowerCase(),
+      urgency: t.common.onlyXDaysLeft,
       savings: "9 600"
     },
     {
@@ -33,8 +33,8 @@ const OffresEtVehicules = () => {
       year: 2020,
       km: "89 500",
       capacity: "2 " + t.common.horsesCapacity,
-      features: ["Plancher antidérapant", "Éclairage LED", "Ventilation", "Kit mains libres"],
-      badge: "Coup de Cœur",
+      features: [t.features.nonSlipFlooring, t.features.ledLighting, t.features.ventilation, t.features.handsFreeeKit],
+      badge: t.common.favorite,
       rating: 4.8
     },
     {
@@ -45,7 +45,7 @@ const OffresEtVehicules = () => {
       year: 2021,
       km: t.common.newArrival,
       capacity: "2 " + t.common.horsesCapacity,
-      features: ["Aluminium", "Suspension AL-KO", "Plancher caoutchouc", "Éclairage LED"],
+      features: [t.features.aluminum, t.features.alkoSuspension, t.features.rubberFlooring, t.features.ledLighting],
       badge: t.common.promotion,
       rating: 5.0
     }
@@ -221,7 +221,7 @@ const OffresEtVehicules = () => {
                     ))}
                     {vehicle.features.length > 3 && (
                       <div className="text-xs text-copper font-medium">
-                        +{vehicle.features.length - 3} autres équipements
+                        +{vehicle.features.length - 3} {t.common.moreEquipment}
                       </div>
                     )}
                   </div>
@@ -248,17 +248,17 @@ const OffresEtVehicules = () => {
                       )}
                     </div>
                     <div className="text-xs text-muted-foreground">
-                      {vehicle.promo ? 'Prix promotionnel • ' + t.common.limitedOffer : 'Financement disponible dès 299€/mois'}
+                      {vehicle.promo ? t.common.promotionalPrice + ' • ' + t.common.limitedOffer : t.common.financingAvailable}
                     </div>
                   </div>
                   
                   <div className="flex gap-2 pt-2">
                     <Link to={getLocalizedPath(`/${vehicle.category.toLowerCase().includes('camion') ? 'camions' : vehicle.category.toLowerCase().includes('van') ? 'vans' : 'remorques'}`, language)} className="flex-1">
-                      <Button className="htg-button-primary w-full" title="Découvrir toutes les caractéristiques de ce véhicule">
+                      <Button className="htg-button-primary w-full" title={t.common.discoverCharacteristics}>
                         {t.common.viewDetails}
                       </Button>
                     </Link>
-                    <Button variant="outline" className="htg-button-secondary px-3" title="Ajouter à ma sélection">
+                    <Button variant="outline" className="htg-button-secondary px-3" title={t.common.addToMySelection}>
                       <Heart className="w-4 h-4" />
                     </Button>
                   </div>

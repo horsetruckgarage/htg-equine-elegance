@@ -151,13 +151,35 @@ export interface Translations {
     quote24h: string;
   };
   
+  // Vehicle Features
+  features: {
+    pneumaticSuspension: string;
+    airConditioning: string;
+    sleepingCabin: string;
+    automaticTransmission: string;
+    nonSlipFlooring: string;
+    ledLighting: string;
+    ventilation: string;
+    handsFreeeKit: string;
+    aluminum: string;
+    alkoSuspension: string;
+    rubberFlooring: string;
+    tackCompartment: string;
+    ventilationSystem: string;
+    compactSize: string;
+    bLicenseDriving: string;
+    modularLayout: string;
+    economical: string;
+    horsesCapacity: string;
+    absBreaking: string;
+  };
+  
   // Common
   common: {
     readMore: string;
     learnMore: string;
     viewAll: string;
     viewDetails: string;
-    addToSelection: string;
     inStock: string;
     promotion: string;
     newArrival: string;
@@ -189,6 +211,13 @@ export interface Translations {
     receiveOffer24h: string;
     personalizedExchange: string;
     discoverCollection: string;
+    moreEquipment: string;
+    promotionalPrice: string;
+    financingAvailable: string;
+    discoverCharacteristics: string;
+    addToMySelection: string;
+    onlyXDaysLeft: string;
+    favorite: string;
   };
 }
 
@@ -330,12 +359,33 @@ const translations: Record<Language, Translations> = {
     floating: {
       quote24h: "Devis Gratuit 24h"
     },
+    features: {
+      pneumaticSuspension: "Suspension pneumatique",
+      airConditioning: "Climatisation",
+      sleepingCabin: "Cabine couchette",
+      automaticTransmission: "Boîte automatique",
+      nonSlipFlooring: "Plancher antidérapant",
+      ledLighting: "Éclairage LED",
+      ventilation: "Ventilation",
+      handsFreeeKit: "Kit mains libres",
+      aluminum: "Aluminium",
+      alkoSuspension: "Suspension AL-KO",
+      rubberFlooring: "Plancher caoutchouc",
+      tackCompartment: "Compartiment sellerie",
+      ventilationSystem: "Système ventilation",
+      compactSize: "Format compact",
+      bLicenseDriving: "Conduite permis B",
+      modularLayout: "Aménagement modulable",
+      economical: "Économique",
+      horsesCapacity: "chevaux",
+      absBreaking: "Freinage ABS"
+    },
     common: {
       readMore: "Lire la suite",
       learnMore: "En savoir plus",
       viewAll: "Voir tout",
       viewDetails: "Voir les détails",
-      addToSelection: "Ajouter à la sélection",
+      
       inStock: "En stock",
       promotion: "Promotion",
       newArrival: "Nouveauté",
@@ -366,7 +416,14 @@ const translations: Record<Language, Translations> = {
       upTo15Off: "Jusqu'à -15%",
       receiveOffer24h: "Recevez votre offre personnalisée en moins de 24h – Sans engagement",
       personalizedExchange: "Besoin d'un échange personnalisé ? Réservez un rendez-vous téléphonique ou en visio avec l'un de nos experts.",
-      discoverCollection: "Découvrez notre collection exclusive de véhicules sélectionnés pour répondre aux standards les plus exigeants du transport équin."
+      discoverCollection: "Découvrez notre collection exclusive de véhicules sélectionnés pour répondre aux standards les plus exigeants du transport équin.",
+      moreEquipment: "autres équipements",
+      promotionalPrice: "Prix promotionnel",
+      financingAvailable: "Financement disponible dès 299€/mois",
+      discoverCharacteristics: "Découvrir toutes les caractéristiques de ce véhicule",
+      addToMySelection: "Ajouter à ma sélection",
+      onlyXDaysLeft: "Plus que 3 jours",
+      favorite: "Coup de Cœur"
     }
   },
   en: {
@@ -506,12 +563,33 @@ const translations: Record<Language, Translations> = {
     floating: {
       quote24h: "Free Quote 24h"
     },
+    features: {
+      pneumaticSuspension: "Air suspension",
+      airConditioning: "Air conditioning",
+      sleepingCabin: "Sleeping cabin",
+      automaticTransmission: "Automatic transmission",
+      nonSlipFlooring: "Non-slip flooring",
+      ledLighting: "LED lighting",
+      ventilation: "Ventilation",
+      handsFreeeKit: "Hands-free kit",
+      aluminum: "Aluminum",
+      alkoSuspension: "AL-KO suspension",
+      rubberFlooring: "Rubber flooring",
+      tackCompartment: "Tack compartment",
+      ventilationSystem: "Ventilation system",
+      compactSize: "Compact size",
+      bLicenseDriving: "B license driving",
+      modularLayout: "Modular layout",
+      economical: "Economical",
+      horsesCapacity: "horses",
+      absBreaking: "ABS braking"
+    },
     common: {
       readMore: "Read more",
       learnMore: "Learn more",
       viewAll: "View all",
       viewDetails: "View details",
-      addToSelection: "Add to selection",
+      
       inStock: "In stock",
       promotion: "Promotion",
       newArrival: "New arrival",
@@ -542,7 +620,14 @@ const translations: Record<Language, Translations> = {
       upTo15Off: "Up to -15%",
       receiveOffer24h: "Receive your personalized offer in less than 24h – No commitment",
       personalizedExchange: "Need a personalized exchange? Book a phone or video appointment with one of our experts.",
-      discoverCollection: "Discover our exclusive collection of vehicles selected to meet the most demanding standards of equestrian transport."
+      discoverCollection: "Discover our exclusive collection of vehicles selected to meet the most demanding standards of equestrian transport.",
+      moreEquipment: "more equipment",
+      promotionalPrice: "Promotional price",
+      financingAvailable: "Financing available from €299/month",
+      discoverCharacteristics: "Discover all characteristics of this vehicle",
+      addToMySelection: "Add to selection",
+      onlyXDaysLeft: "Only 3 days left",
+      favorite: "Favorite"
     }
   },
   es: {
@@ -682,12 +767,33 @@ const translations: Record<Language, Translations> = {
     floating: {
       quote24h: "Presupuesto Gratuito 24h"
     },
+    features: {
+      pneumaticSuspension: "Suspensión neumática",
+      airConditioning: "Aire acondicionado",
+      sleepingCabin: "Cabina con cama",
+      automaticTransmission: "Transmisión automática",
+      nonSlipFlooring: "Suelo antideslizante",
+      ledLighting: "Iluminación LED",
+      ventilation: "Ventilación",
+      handsFreeeKit: "Kit manos libres",
+      aluminum: "Aluminio",
+      alkoSuspension: "Suspensión AL-KO",
+      rubberFlooring: "Suelo de goma",
+      tackCompartment: "Compartimento guarnicionería",
+      ventilationSystem: "Sistema ventilación",
+      compactSize: "Tamaño compacto",
+      bLicenseDriving: "Conducción permiso B",
+      modularLayout: "Diseño modular",
+      economical: "Económico",
+      horsesCapacity: "caballos",
+      absBreaking: "Frenado ABS"
+    },
     common: {
       readMore: "Leer más",
       learnMore: "Saber más",
       viewAll: "Ver todo",
       viewDetails: "Ver detalles",
-      addToSelection: "Añadir a la selección",
+      
       inStock: "En stock",
       promotion: "Promoción",
       newArrival: "Novedad",
@@ -718,7 +824,14 @@ const translations: Record<Language, Translations> = {
       upTo15Off: "Hasta -15%",
       receiveOffer24h: "Reciba su oferta personalizada en menos de 24h – Sin compromiso",
       personalizedExchange: "¿Necesita un intercambio personalizado? Reserve una cita telefónica o por video con uno de nuestros expertos.",
-      discoverCollection: "Descubra nuestra colección exclusiva de vehículos seleccionados para satisfacer los estándares más exigentes del transporte ecuestre."
+      discoverCollection: "Descubra nuestra colección exclusiva de vehículos seleccionados para satisfacer los estándares más exigentes del transporte ecuestre.",
+      moreEquipment: "más equipamiento",
+      promotionalPrice: "Precio promocional",
+      financingAvailable: "Financiación disponible desde 299€/mes",
+      discoverCharacteristics: "Descubrir todas las características de este vehículo",
+      addToMySelection: "Añadir a la selección",
+      onlyXDaysLeft: "Solo quedan 3 días",
+      favorite: "Favorito"
     }
   },
   de: {
@@ -858,12 +971,33 @@ const translations: Record<Language, Translations> = {
     floating: {
       quote24h: "Kostenloses Angebot 24h"
     },
+    features: {
+      pneumaticSuspension: "Luftfederung",
+      airConditioning: "Klimaanlage",
+      sleepingCabin: "Schlafkabine",
+      automaticTransmission: "Automatikgetriebe",
+      nonSlipFlooring: "Rutschfester Boden",
+      ledLighting: "LED-Beleuchtung",
+      ventilation: "Belüftung",
+      handsFreeeKit: "Freisprecheinrichtung",
+      aluminum: "Aluminium",
+      alkoSuspension: "AL-KO Federung",
+      rubberFlooring: "Gummiboden",
+      tackCompartment: "Sattelkammer",
+      ventilationSystem: "Belüftungssystem",
+      compactSize: "Kompakte Größe",
+      bLicenseDriving: "B-Führerschein",
+      modularLayout: "Modularer Aufbau",
+      economical: "Wirtschaftlich",
+      horsesCapacity: "Pferde",
+      absBreaking: "ABS-Bremsen"
+    },
     common: {
       readMore: "Mehr lesen",
       learnMore: "Mehr erfahren",
       viewAll: "Alle anzeigen",
       viewDetails: "Details anzeigen",
-      addToSelection: "Zur Auswahl hinzufügen",
+      
       inStock: "Auf Lager",
       promotion: "Aktion",
       newArrival: "Neuheit",
@@ -894,7 +1028,14 @@ const translations: Record<Language, Translations> = {
       upTo15Off: "Bis zu -15%",
       receiveOffer24h: "Erhalten Sie Ihr personalisiertes Angebot in weniger als 24h – Unverbindlich",
       personalizedExchange: "Brauchen Sie einen persönlichen Austausch? Buchen Sie einen Telefon- oder Videotermin mit einem unserer Experten.",
-      discoverCollection: "Entdecken Sie unsere exklusive Kollektion von Fahrzeugen, die ausgewählt wurden, um den anspruchsvollsten Standards des Pferdetransports zu entsprechen."
+      discoverCollection: "Entdecken Sie unsere exklusive Kollektion von Fahrzeugen, die ausgewählt wurden, um den anspruchsvollsten Standards des Pferdetransports zu entsprechen.",
+      moreEquipment: "weitere Ausstattung",
+      promotionalPrice: "Aktionspreis",
+      financingAvailable: "Finanzierung ab 299€/Monat verfügbar",
+      discoverCharacteristics: "Alle Eigenschaften dieses Fahrzeugs entdecken",
+      addToMySelection: "Zur Auswahl hinzufügen",
+      onlyXDaysLeft: "Nur noch 3 Tage",
+      favorite: "Favorit"
     }
   }
 };
