@@ -96,10 +96,12 @@ const VehicleCategories = () => {
 
                   {/* Hover Overlay */}
                   <div className="absolute inset-0 bg-copper/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <Button className="htg-button-primary">
-                      Explorer
-                      <ArrowRight className="w-4 h-4 ml-2" />
-                    </Button>
+                    <Link to={`/${category.id}`}>
+                      <Button className="htg-button-primary">
+                        Explorer
+                        <ArrowRight className="w-4 h-4 ml-2" />
+                      </Button>
+                    </Link>
                   </div>
                 </div>
 
