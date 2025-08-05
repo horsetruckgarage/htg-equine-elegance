@@ -164,7 +164,9 @@ const CustomerReviews = () => {
                 <p className="text-sm text-muted-foreground">Partagez votre expérience avec HTG – Votre avis compte.</p>
               </div>
               <div className="flex justify-center">
-                <button className="htg-button-secondary">
+                <button className="htg-button-secondary" onClick={() => {
+                  window.open('https://www.google.com/search?q=HTG+Horse+Truck+Garage+avis', '_blank');
+                }}>
                   Laisser un Avis
                 </button>
               </div>

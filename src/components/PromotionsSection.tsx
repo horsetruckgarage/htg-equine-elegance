@@ -1,6 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Clock, TrendingDown, Star, Zap, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const PromotionsSection = () => {
   const promotions = [
@@ -154,10 +155,12 @@ const PromotionsSection = () => {
                 </div>
 
                 {/* CTA */}
-                <Button className="w-full htg-button-primary group">
-                  Voir les Offres
-                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
+                <Link to="/occasions">
+                  <Button className="w-full htg-button-primary group">
+                    Voir les Offres
+                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </Link>
               </div>
             </div>
           ))}
@@ -181,7 +184,10 @@ const PromotionsSection = () => {
                 placeholder="Votre email" 
                 className="flex-1 px-4 py-3 rounded-lg border border-border bg-background"
               />
-              <Button className="htg-button-primary">
+              <Button className="htg-button-primary" onClick={() => {
+                const email = (document.querySelector('input[type="email"]') as HTMLInputElement)?.value;
+                if (email) alert(`Merci ! Vous serez alerté des prochaines promotions sur ${email}`);
+              }}>
                 S'abonner
               </Button>
             </div>
