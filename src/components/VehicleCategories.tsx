@@ -1,6 +1,9 @@
-import { ArrowRight, Truck, Car, Zap } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import camionChevaux from "@/assets/camion-chevaux.jpg";
+import vanChevaux from "@/assets/van-chevaux.jpg";
+import remorqueChevaux from "@/assets/remorque-chevaux.jpg";
 
 const VehicleCategories = () => {
   const categories = [
@@ -8,9 +11,8 @@ const VehicleCategories = () => {
       id: "camions",
       title: "Camions Chevaux",
       description: "Transport professionnel haute capacité pour vos champions",
-      icon: Truck,
+      image: camionChevaux,
       features: ["4-6 chevaux", "Suspension pneumatique", "Cabine couchette", "Boîte automatique"],
-      image: "/api/placeholder/400/300",
       count: "25+ modèles",
       promo: "Jusqu'à -15%",
       startingPrice: "À partir de 45 000€",
@@ -20,9 +22,8 @@ const VehicleCategories = () => {
       id: "vans",
       title: "Vans Chevaux",
       description: "Polyvalence et maniabilité urbaine pour tous vos déplacements",
-      icon: Car,
+      image: vanChevaux,
       features: ["2-4 chevaux", "Compact & agile", "Économique", "Conduite facile"],
-      image: "/api/placeholder/400/300",
       count: "18+ modèles",
       promo: "Offres spéciales",
       startingPrice: "À partir de 28 000€",
@@ -32,9 +33,8 @@ const VehicleCategories = () => {
       id: "remorques",
       title: "Remorques Chevaux",
       description: "Solution flexible et économique pour vos concours",
-      icon: Zap,
+      image: remorqueChevaux,
       features: ["1-3 chevaux", "Ultra-léger", "Facile à manœuvrer", "Excellent rapport qualité/prix"],
-      image: "/api/placeholder/400/300",
       count: "12+ modèles",
       promo: "Nouveautés 2024",
       startingPrice: "À partir de 15 000€",
@@ -62,19 +62,20 @@ const VehicleCategories = () => {
 
         {/* Categories Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {categories.map((category, index) => {
-            const IconComponent = category.icon;
-            return (
-              <div 
-                key={category.id} 
-                className="htg-card group cursor-pointer p-0 overflow-hidden"
-                style={{ animationDelay: `${index * 0.2}s` }}
-              >
-                {/* Image Section */}
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <div className="w-full h-full bg-gradient-to-br from-leather/40 to-copper/20 flex items-center justify-center">
-                    <IconComponent className="w-16 h-16 text-copper" />
-                  </div>
+        {categories.map((category, index) => {
+          return (
+            <div 
+              key={category.id} 
+              className="htg-card group cursor-pointer p-0 overflow-hidden"
+              style={{ animationDelay: `${index * 0.2}s` }}
+            >
+              {/* Image Section */}
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <img 
+                  src={category.image} 
+                  alt={category.title}
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                   
                   {/* Badge & Promo */}
