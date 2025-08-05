@@ -1,8 +1,11 @@
 import { MessageCircle, Phone, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const FloatingCTA = () => {
+  const { t } = useTranslation();
+  
   return (
     <>
       {/* Floating CTA Button */}
@@ -13,7 +16,7 @@ const FloatingCTA = () => {
             size="lg"
           >
             <MessageCircle className="w-5 h-5 mr-2" />
-            Devis Gratuit 24h
+            {t.floating.quote24h}
           </Button>
         </Link>
       </div>

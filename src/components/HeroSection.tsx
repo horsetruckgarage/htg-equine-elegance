@@ -4,45 +4,47 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import Autoplay from "embla-carousel-autoplay";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "@/hooks/useTranslation";
 import heroTruck from "@/assets/hero-truck.jpg";
 import heroTruck2 from "@/assets/hero-truck-2.jpg";
 import heroVan from "@/assets/hero-van.jpg";
 import heroTrailer from "@/assets/hero-trailer.jpg";
 
-const slides = [
-  {
-    id: 1,
-    image: heroTruck,
-    title: "Transport Équin d'Excellence",
-    subtitle: "L'expertise française au service de vos champions",
-    description: "Découvrez notre gamme premium de camions chevaux conçus pour le confort et la sécurité de vos équidés",
-  },
-  {
-    id: 2,
-    image: heroTruck2,
-    title: "Véhicules Haut de Gamme",
-    subtitle: "Innovation et tradition française",
-    description: "Des solutions de transport sur mesure adaptées aux besoins les plus exigeants du monde équestre",
-  },
-  {
-    id: 3,
-    image: heroVan,
-    title: "Sécurité & Performance",
-    subtitle: "Chaque voyage compte",
-    description: "Technologies avancées et finitions premium pour un transport équin sans compromis",
-  },
-  {
-    id: 4,
-    image: heroTrailer,
-    title: "Remorques d'Exception",
-    subtitle: "Mobilité et élégance",
-    description: "Solutions compactes et performantes pour tous vos déplacements équestres",
-  },
-];
-
 const HeroSection = () => {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
+  const { t } = useTranslation();
+
+  const slides = [
+    {
+      id: 1,
+      image: heroTruck,
+      title: t.hero.slide1.title,
+      subtitle: t.hero.slide1.subtitle,
+      description: t.hero.slide1.description,
+    },
+    {
+      id: 2,
+      image: heroTruck2,
+      title: t.hero.slide2.title,
+      subtitle: t.hero.slide2.subtitle,
+      description: t.hero.slide2.description,
+    },
+    {
+      id: 3,
+      image: heroVan,
+      title: t.hero.slide3.title,
+      subtitle: t.hero.slide3.subtitle,
+      description: t.hero.slide3.description,
+    },
+    {
+      id: 4,
+      image: heroTrailer,
+      title: t.hero.slide4.title,
+      subtitle: t.hero.slide4.subtitle,
+      description: t.hero.slide4.description,
+    },
+  ];
 
   useEffect(() => {
     if (!api) return;
@@ -114,7 +116,7 @@ const HeroSection = () => {
                           size="lg"
                           className="htg-button-primary group px-8 py-4 text-lg font-semibold shadow-2xl hover:shadow-copper/50 transition-all duration-300 w-full sm:w-auto"
                         >
-                          Demander un Devis Gratuit
+                          {t.hero.cta}
                           <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
                         </Button>
                       </Link>

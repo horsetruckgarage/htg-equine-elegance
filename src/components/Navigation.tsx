@@ -2,17 +2,20 @@ import { useState } from "react";
 import { Menu, X, Phone, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { useTranslation } from "@/hooks/useTranslation";
+import LanguageSelector from "@/components/LanguageSelector";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { t } = useTranslation();
 
   const navItems = [
-    { name: "Accueil", href: "/" },
-    { name: "Camions Chevaux", href: "/camions" },
-    { name: "Vans Chevaux", href: "/vans" },
-    { name: "Remorques Chevaux", href: "/remorques" },
-    { name: "À Propos", href: "/about" },
-    { name: "Contact", href: "/contact" },
+    { name: t.nav.home, href: "/" },
+    { name: t.nav.horseTrucks, href: "/camions" },
+    { name: t.nav.horseVans, href: "/vans" },
+    { name: t.nav.horseTrailers, href: "/remorques" },
+    { name: t.nav.about, href: "/about" },
+    { name: t.nav.contact, href: "/contact" },
   ];
 
   return (
@@ -47,9 +50,10 @@ const Navigation = () => {
 
           {/* Actions */}
           <div className="hidden md:flex items-center space-x-4">
+            <LanguageSelector />
             <Link to="/devis">
               <Button className="htg-button-primary">
-                Demander un Devis
+                {t.nav.getQuote}
               </Button>
             </Link>
           </div>
@@ -77,10 +81,13 @@ const Navigation = () => {
                   {item.name}
                 </Link>
               ))}
-              <div className="pt-4">
+              <div className="pt-4 space-y-3">
+                <div className="flex justify-center">
+                  <LanguageSelector />
+                </div>
                 <Link to="/devis">
                   <Button className="w-full htg-button-primary">
-                    Demander un Devis
+                    {t.nav.getQuote}
                   </Button>
                 </Link>
               </div>
