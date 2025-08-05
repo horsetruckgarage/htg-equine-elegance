@@ -5,8 +5,52 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Truck, Calendar, Gauge, Users, Eye, Heart, Star, Filter, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "@/hooks/useTranslation";
+import { getLocalizedPath } from "@/hooks/useLocalizedRouting";
 
 const Camions = () => {
+  const { t, language } = useTranslation();
+  
+  const getLocalizedFeatures = (features: string[]) => {
+    const featureMap: { [key: string]: string } = {
+      "Suspension pneumatique": t.trucksPage.vehicle.features.pneumaticSuspension,
+      "Climatisation": t.trucksPage.vehicle.features.airConditioning,
+      "Cabine couchette": t.trucksPage.vehicle.features.sleepingCabin,
+      "Boîte automatique": t.trucksPage.vehicle.features.automaticTransmission,
+      "GPS intégré": t.trucksPage.vehicle.features.integratedGPS,
+      "Cabine grand confort": t.trucksPage.vehicle.features.grandComfortCabin,
+      "Boîte manuelle": t.trucksPage.vehicle.features.manualTransmission,
+      "BlueEFFICIENCY": t.trucksPage.vehicle.features.blueEfficiency,
+      "Climatisation automatique": t.trucksPage.vehicle.features.automaticAirConditioning,
+      "Régulateur de vitesse": t.trucksPage.vehicle.features.cruiseControl,
+      "Système télématique": t.trucksPage.vehicle.features.telematicSystem,
+      "Moteur DTI": t.trucksPage.vehicle.features.dtiEngine,
+      "Direction assistée": t.trucksPage.vehicle.features.powerSteering,
+      "Vitres électriques": t.trucksPage.vehicle.features.electricWindows,
+      "Verrouillage centralisé": t.trucksPage.vehicle.features.centralLocking,
+      "Euro 6": t.trucksPage.vehicle.features.euro6,
+      "Système AdBlue": t.trucksPage.vehicle.features.adBlueSystem,
+      "Cabine spacieuse": t.trucksPage.vehicle.features.spaciousCabin,
+      "Transmission manuelle": t.trucksPage.vehicle.features.manualTransmission,
+      "Moteur efficient": t.trucksPage.vehicle.features.efficientEngine,
+      "Maintenance facilité": t.trucksPage.vehicle.features.easilyMaintained,
+      "Cabine ergonomique": t.trucksPage.vehicle.features.ergonomicCabin
+    };
+    return features.map(feature => featureMap[feature] || feature);
+  };
+
+  const getLocalizedBadge = (badge: string) => {
+    const badgeMap: { [key: string]: string } = {
+      "Bestseller": t.trucksPage.vehicle.badges.bestseller,
+      "Premium": t.trucksPage.vehicle.badges.premium,
+      "Promotion": t.trucksPage.vehicle.badges.promotion,
+      "Occasion Certifiée": t.trucksPage.vehicle.badges.certifiedUsed,
+      "Récent": t.trucksPage.vehicle.badges.recent,
+      "Fiable": t.trucksPage.vehicle.badges.reliable
+    };
+    return badgeMap[badge] || badge;
+  };
+
   const camions = [
     {
       id: 1,
@@ -16,7 +60,7 @@ const Camions = () => {
       promo: true,
       year: 2019,
       km: "125 000",
-      capacity: "4 chevaux",
+      capacity: `4 ${t.trucksPage.vehicle.specs.horses}`,
       features: ["Suspension pneumatique", "Climatisation", "Cabine couchette", "Boîte automatique"],
       badge: "Bestseller",
       rating: 4.9,
@@ -28,7 +72,7 @@ const Camions = () => {
       price: "95 500",
       year: 2020,
       km: "89 000",
-      capacity: "6 chevaux",
+      capacity: `6 ${t.trucksPage.vehicle.specs.horses}`,
       features: ["Suspension pneumatique", "GPS intégré", "Cabine grand confort", "Boîte manuelle"],
       badge: "Premium",
       rating: 4.8
@@ -41,7 +85,7 @@ const Camions = () => {
       promo: true,
       year: 2018,
       km: "156 000",
-      capacity: "5 chevaux",
+      capacity: `5 ${t.trucksPage.vehicle.specs.horses}`,
       features: ["BlueEFFICIENCY", "Climatisation automatique", "Régulateur de vitesse", "Système télématique"],
       badge: "Promotion",
       rating: 4.7,
@@ -53,7 +97,7 @@ const Camions = () => {
       price: "68 900",
       year: 2019,
       km: "142 000",
-      capacity: "4 chevaux",
+      capacity: `4 ${t.trucksPage.vehicle.specs.horses}`,
       features: ["Moteur DTI", "Direction assistée", "Vitres électriques", "Verrouillage centralisé"],
       badge: "Occasion Certifiée",
       rating: 4.6
@@ -64,7 +108,7 @@ const Camions = () => {
       price: "105 900",
       year: 2021,
       km: "67 000",
-      capacity: "6 chevaux",
+      capacity: `6 ${t.trucksPage.vehicle.specs.horses}`,
       features: ["Euro 6", "Système AdBlue", "Cabine spacieuse", "Transmission manuelle"],
       badge: "Récent",
       rating: 4.9
@@ -75,7 +119,7 @@ const Camions = () => {
       price: "72 500",
       year: 2018,
       km: "178 000",
-      capacity: "4 chevaux",
+      capacity: `4 ${t.trucksPage.vehicle.specs.horses}`,
       features: ["Moteur efficient", "Maintenance facilité", "Cabine ergonomique", "Boîte manuelle"],
       badge: "Fiable",
       rating: 4.5
@@ -92,15 +136,14 @@ const Camions = () => {
           <div className="text-center space-y-6">
             <div className="inline-flex items-center space-x-2 bg-copper/10 rounded-full px-4 py-2">
               <Truck className="w-4 h-4 text-copper" />
-              <span className="text-copper font-semibold">Camions Chevaux</span>
+              <span className="text-copper font-semibold">{t.trucksPage.title}</span>
             </div>
             <h1 className="text-4xl lg:text-6xl font-bold">
-              <span className="text-foreground">Camions Chevaux</span>
-              <span className="block htg-text-gradient">Professionnels</span>
+              <span className="text-foreground">{t.trucksPage.title}</span>
+              <span className="block htg-text-gradient">{t.trucksPage.subtitle}</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Découvrez notre sélection de camions chevaux haute capacité pour le transport professionnel. 
-              4 à 6 chevaux, suspension pneumatique et tout le confort nécessaire.
+              {t.trucksPage.description}
             </p>
           </div>
         </div>
@@ -113,15 +156,15 @@ const Camions = () => {
             <div className="flex flex-wrap gap-3">
               <Button variant="outline" className="htg-button-secondary">
                 <Filter className="w-4 h-4 mr-2" />
-                Tous les filtres
+                {t.trucksPage.filters.allFilters}
               </Button>
-              <Button variant="outline" size="sm">Capacité</Button>
-              <Button variant="outline" size="sm">Prix</Button>
-              <Button variant="outline" size="sm">Année</Button>
-              <Button variant="outline" size="sm">Kilométrage</Button>
+              <Button variant="outline" size="sm">{t.trucksPage.filters.capacity}</Button>
+              <Button variant="outline" size="sm">{t.trucksPage.filters.price}</Button>
+              <Button variant="outline" size="sm">{t.trucksPage.filters.year}</Button>
+              <Button variant="outline" size="sm">{t.trucksPage.filters.mileage}</Button>
             </div>
             <div className="text-muted-foreground">
-              {camions.length} camions trouvés
+              {camions.length} {t.trucksPage.filters.found}
             </div>
           </div>
         </div>
@@ -142,7 +185,7 @@ const Camions = () => {
                   <div className="w-full h-full bg-gradient-to-br from-leather/30 to-copper/10 flex items-center justify-center">
                     <div className="text-center space-y-2">
                       <Truck className="w-16 h-16 text-copper mx-auto" />
-                      <p className="text-copper font-semibold text-lg">Camion Chevaux</p>
+                      <p className="text-copper font-semibold text-lg">{t.trucksPage.vehicle.horseTruck}</p>
                     </div>
                   </div>
                   
@@ -154,7 +197,7 @@ const Camions = () => {
                       camion.badge === 'Promotion' ? 'bg-red-600 text-white' :
                       'bg-copper/90 text-black'
                     }`}>
-                      {camion.badge}
+                      {getLocalizedBadge(camion.badge)}
                     </Badge>
                     {camion.promo && (
                       <Badge variant="destructive" className="bg-red-600 animate-pulse">
@@ -189,7 +232,7 @@ const Camions = () => {
                     <h3 className="text-xl font-bold text-foreground group-hover:text-copper transition-colors">
                       {camion.title}
                     </h3>
-                    <p className="text-copper text-sm font-medium">Camion Chevaux</p>
+                    <p className="text-copper text-sm font-medium">{t.trucksPage.vehicle.horseTruck}</p>
                   </div>
 
                   {/* Specs */}
@@ -200,7 +243,7 @@ const Camions = () => {
                     </div>
                     <div className="text-center">
                       <Gauge className="w-4 h-4 text-copper mx-auto mb-1" />
-                      <span className="text-muted-foreground">{camion.km} km</span>
+                      <span className="text-muted-foreground">{camion.km} {t.trucksPage.vehicle.specs.km}</span>
                     </div>
                     <div className="text-center">
                       <Users className="w-4 h-4 text-copper mx-auto mb-1" />
@@ -210,7 +253,7 @@ const Camions = () => {
 
                   {/* Features */}
                   <div className="space-y-1">
-                    {camion.features.slice(0, 3).map((feature, idx) => (
+                    {getLocalizedFeatures(camion.features).slice(0, 3).map((feature, idx) => (
                       <div key={idx} className="flex items-center space-x-2">
                         <div className="w-1.5 h-1.5 bg-copper rounded-full"></div>
                         <span className="text-sm text-muted-foreground">{feature}</span>
@@ -234,20 +277,20 @@ const Camions = () => {
                       {camion.promo && camion.savings && (
                         <div className="text-right">
                           <div className="text-green-600 font-semibold text-sm">
-                            Économisez {camion.savings}€
+                            {t.trucksPage.vehicle.pricing.save} {camion.savings}€
                           </div>
                         </div>
                       )}
                     </div>
                     <div className="text-xs text-muted-foreground">
-                      Financement disponible dès 890€/mois
+                      {t.trucksPage.vehicle.pricing.financing} 890€{t.trucksPage.vehicle.pricing.perMonth}
                     </div>
                   </div>
                   
                   <div className="flex gap-2 pt-2">
-                    <Link to="/contact" className="flex-1">
+                    <Link to={getLocalizedPath('/contact', language)} className="flex-1">
                       <Button className="htg-button-primary w-full">
-                        Voir Détails
+                        {t.trucksPage.vehicle.actions.seeDetails}
                       </Button>
                     </Link>
                     <Button variant="outline" className="htg-button-secondary px-3">
@@ -264,20 +307,20 @@ const Camions = () => {
             <div className="htg-card max-w-4xl mx-auto p-8 lg:p-12">
               <div className="space-y-6">
                 <h3 className="text-3xl font-bold text-foreground">
-                  Besoin d'un Conseil sur nos Camions ?
+                  {t.trucksPage.cta.title}
                 </h3>
                 <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                  Nos experts vous accompagnent dans le choix du camion parfait pour vos besoins professionnels.
+                  {t.trucksPage.cta.description}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link to="/devis">
+                  <Link to={getLocalizedPath('/devis', language)}>
                     <Button className="htg-button-primary">
-                      Demander un Devis Gratuit
+                      {t.trucksPage.cta.getQuote}
                     </Button>
                   </Link>
-                  <Link to="/contact">
+                  <Link to={getLocalizedPath('/contact', language)}>
                     <Button variant="outline" className="htg-button-secondary">
-                      Contacter un Expert
+                      {t.trucksPage.cta.contactExpert}
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </Button>
                   </Link>

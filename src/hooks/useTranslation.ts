@@ -234,6 +234,76 @@ export interface Translations {
     onlyXDaysLeft: string;
     favorite: string;
   };
+
+  // Trucks Page
+  trucksPage: {
+    title: string;
+    subtitle: string;
+    description: string;
+    filters: {
+      allFilters: string;
+      capacity: string;
+      price: string;
+      year: string;
+      mileage: string;
+      found: string;
+    };
+    vehicle: {
+      horseTruck: string;
+      features: {
+        pneumaticSuspension: string;
+        airConditioning: string;
+        sleepingCabin: string;
+        automaticTransmission: string;
+        integratedGPS: string;
+        grandComfortCabin: string;
+        manualTransmission: string;
+        blueEfficiency: string;
+        automaticAirConditioning: string;
+        cruiseControl: string;
+        telematicSystem: string;
+        dtiEngine: string;
+        powerSteering: string;
+        electricWindows: string;
+        centralLocking: string;
+        euro6: string;
+        adBlueSystem: string;
+        spaciousCabin: string;
+        efficientEngine: string;
+        easilyMaintained: string;
+        ergonomicCabin: string;
+      };
+      badges: {
+        bestseller: string;
+        premium: string;
+        promotion: string;
+        certifiedUsed: string;
+        recent: string;
+        reliable: string;
+      };
+      specs: {
+        horses: string;
+        year: string;
+        km: string;
+        capacity: string;
+      };
+      pricing: {
+        save: string;
+        financing: string;
+        perMonth: string;
+      };
+      actions: {
+        seeDetails: string;
+        addToFavorites: string;
+      };
+    };
+    cta: {
+      title: string;
+      description: string;
+      getQuote: string;
+      contactExpert: string;
+    };
+  };
 }
 
 const translations: Record<Language, Translations> = {
@@ -529,6 +599,74 @@ const translations: Record<Language, Translations> = {
       addToMySelection: "Ajouter à ma sélection",
       onlyXDaysLeft: "Plus que 3 jours",
       favorite: "Coup de Cœur"
+    },
+    trucksPage: {
+      title: "Camions Chevaux",
+      subtitle: "Professionnels",
+      description: "Découvrez notre sélection de camions chevaux haute capacité pour le transport professionnel. 4 à 6 chevaux, suspension pneumatique et tout le confort nécessaire.",
+      filters: {
+        allFilters: "Tous les filtres",
+        capacity: "Capacité",
+        price: "Prix",
+        year: "Année",
+        mileage: "Kilométrage",
+        found: "camions trouvés"
+      },
+      vehicle: {
+        horseTruck: "Camion Chevaux",
+        features: {
+          pneumaticSuspension: "Suspension pneumatique",
+          airConditioning: "Climatisation",
+          sleepingCabin: "Cabine couchette",
+          automaticTransmission: "Boîte automatique",
+          integratedGPS: "GPS intégré",
+          grandComfortCabin: "Cabine grand confort",
+          manualTransmission: "Boîte manuelle",
+          blueEfficiency: "BlueEFFICIENCY",
+          automaticAirConditioning: "Climatisation automatique",
+          cruiseControl: "Régulateur de vitesse",
+          telematicSystem: "Système télématique",
+          dtiEngine: "Moteur DTI",
+          powerSteering: "Direction assistée",
+          electricWindows: "Vitres électriques",
+          centralLocking: "Verrouillage centralisé",
+          euro6: "Euro 6",
+          adBlueSystem: "Système AdBlue",
+          spaciousCabin: "Cabine spacieuse",
+          efficientEngine: "Moteur efficient",
+          easilyMaintained: "Maintenance facilité",
+          ergonomicCabin: "Cabine ergonomique"
+        },
+        badges: {
+          bestseller: "Bestseller",
+          premium: "Premium",
+          promotion: "Promotion",
+          certifiedUsed: "Occasion Certifiée",
+          recent: "Récent",
+          reliable: "Fiable"
+        },
+        specs: {
+          horses: "chevaux",
+          year: "Année",
+          km: "km",
+          capacity: "Capacité"
+        },
+        pricing: {
+          save: "Économisez",
+          financing: "Financement disponible dès",
+          perMonth: "/mois"
+        },
+        actions: {
+          seeDetails: "Voir Détails",
+          addToFavorites: "Ajouter aux favoris"
+        }
+      },
+      cta: {
+        title: "Besoin d'un Conseil sur nos Camions ?",
+        description: "Nos experts vous accompagnent dans le choix du camion parfait pour vos besoins professionnels.",
+        getQuote: "Demander un Devis Gratuit",
+        contactExpert: "Contacter un Expert"
+      }
     }
   },
   en: {
@@ -823,6 +961,74 @@ const translations: Record<Language, Translations> = {
       addToMySelection: "Add to selection",
       onlyXDaysLeft: "Only 3 days left",
       favorite: "Favorite"
+    },
+    trucksPage: {
+      title: "Horse Trucks",
+      subtitle: "Professional",
+      description: "Discover our selection of high-capacity horse trucks for professional transport. 4 to 6 horses, pneumatic suspension and all necessary comfort.",
+      filters: {
+        allFilters: "All filters",
+        capacity: "Capacity",
+        price: "Price",
+        year: "Year",
+        mileage: "Mileage",
+        found: "trucks found"
+      },
+      vehicle: {
+        horseTruck: "Horse Truck",
+        features: {
+          pneumaticSuspension: "Pneumatic suspension",
+          airConditioning: "Air conditioning",
+          sleepingCabin: "Sleeping cabin",
+          automaticTransmission: "Automatic transmission",
+          integratedGPS: "Integrated GPS",
+          grandComfortCabin: "Grand comfort cabin",
+          manualTransmission: "Manual transmission",
+          blueEfficiency: "BlueEFFICIENCY",
+          automaticAirConditioning: "Automatic air conditioning",
+          cruiseControl: "Cruise control",
+          telematicSystem: "Telematic system",
+          dtiEngine: "DTI engine",
+          powerSteering: "Power steering",
+          electricWindows: "Electric windows",
+          centralLocking: "Central locking",
+          euro6: "Euro 6",
+          adBlueSystem: "AdBlue system",
+          spaciousCabin: "Spacious cabin",
+          efficientEngine: "Efficient engine",
+          easilyMaintained: "Easily maintained",
+          ergonomicCabin: "Ergonomic cabin"
+        },
+        badges: {
+          bestseller: "Bestseller",
+          premium: "Premium",
+          promotion: "Promotion",
+          certifiedUsed: "Certified Used",
+          recent: "Recent",
+          reliable: "Reliable"
+        },
+        specs: {
+          horses: "horses",
+          year: "Year",
+          km: "km",
+          capacity: "Capacity"
+        },
+        pricing: {
+          save: "Save",
+          financing: "Financing available from",
+          perMonth: "/month"
+        },
+        actions: {
+          seeDetails: "View Details",
+          addToFavorites: "Add to Favorites"
+        }
+      },
+      cta: {
+        title: "Need Advice on our Trucks?",
+        description: "Our experts accompany you in choosing the perfect truck for your professional needs.",
+        getQuote: "Request a Free Quote",
+        contactExpert: "Contact an Expert"
+      }
     }
   },
   es: {
@@ -1117,6 +1323,74 @@ const translations: Record<Language, Translations> = {
       addToMySelection: "Añadir a la selección",
       onlyXDaysLeft: "Solo quedan 3 días",
       favorite: "Favorito"
+    },
+    trucksPage: {
+      title: "Camiones para Caballos",
+      subtitle: "Profesionales",
+      description: "Descubra nuestra selección de camiones para caballos de alta capacidad para transporte profesional. 4 a 6 caballos, suspensión neumática y toda la comodidad necesaria.",
+      filters: {
+        allFilters: "Todos los filtros",
+        capacity: "Capacidad",
+        price: "Precio",
+        year: "Año",
+        mileage: "Kilometraje",
+        found: "camiones encontrados"
+      },
+      vehicle: {
+        horseTruck: "Camión para Caballos",
+        features: {
+          pneumaticSuspension: "Suspensión neumática",
+          airConditioning: "Aire acondicionado",
+          sleepingCabin: "Cabina con cama",
+          automaticTransmission: "Transmisión automática",
+          integratedGPS: "GPS integrado",
+          grandComfortCabin: "Cabina gran confort",
+          manualTransmission: "Transmisión manual",
+          blueEfficiency: "BlueEFFICIENCY",
+          automaticAirConditioning: "Aire acondicionado automático",
+          cruiseControl: "Control de crucero",
+          telematicSystem: "Sistema telemático",
+          dtiEngine: "Motor DTI",
+          powerSteering: "Dirección asistida",
+          electricWindows: "Ventanas eléctricas",
+          centralLocking: "Cierre centralizado",
+          euro6: "Euro 6",
+          adBlueSystem: "Sistema AdBlue",
+          spaciousCabin: "Cabina espaciosa",
+          efficientEngine: "Motor eficiente",
+          easilyMaintained: "Mantenimiento fácil",
+          ergonomicCabin: "Cabina ergonómica"
+        },
+        badges: {
+          bestseller: "Más vendido",
+          premium: "Premium",
+          promotion: "Promoción",
+          certifiedUsed: "Ocasión Certificada",
+          recent: "Reciente",
+          reliable: "Confiable"
+        },
+        specs: {
+          horses: "caballos",
+          year: "Año",
+          km: "km",
+          capacity: "Capacidad"
+        },
+        pricing: {
+          save: "Ahorre",
+          financing: "Financiación disponible desde",
+          perMonth: "/mes"
+        },
+        actions: {
+          seeDetails: "Ver Detalles",
+          addToFavorites: "Añadir a Favoritos"
+        }
+      },
+      cta: {
+        title: "¿Necesita Consejo sobre nuestros Camiones?",
+        description: "Nuestros expertos le acompañan en la elección del camión perfecto para sus necesidades profesionales.",
+        getQuote: "Solicitar Presupuesto Gratuito",
+        contactExpert: "Contactar a un Experto"
+      }
     }
   },
   de: {
@@ -1411,6 +1685,74 @@ const translations: Record<Language, Translations> = {
       addToMySelection: "Zur Auswahl hinzufügen",
       onlyXDaysLeft: "Nur noch 3 Tage",
       favorite: "Favorit"
+    },
+    trucksPage: {
+      title: "Pferdetransporter",
+      subtitle: "Professionell",
+      description: "Entdecken Sie unsere Auswahl an hochwertigen Pferdetransportern für den professionellen Transport. 4 bis 6 Pferde, Luftfederung und allen notwendigen Komfort.",
+      filters: {
+        allFilters: "Alle Filter",
+        capacity: "Kapazität",
+        price: "Preis",
+        year: "Jahr",
+        mileage: "Laufleistung",
+        found: "LKWs gefunden"
+      },
+      vehicle: {
+        horseTruck: "Pferdetransporter",
+        features: {
+          pneumaticSuspension: "Luftfederung",
+          airConditioning: "Klimaanlage",
+          sleepingCabin: "Schlafkabine",
+          automaticTransmission: "Automatikgetriebe",
+          integratedGPS: "Integriertes GPS",
+          grandComfortCabin: "Komfort-Kabine",
+          manualTransmission: "Schaltgetriebe",
+          blueEfficiency: "BlueEFFICIENCY",
+          automaticAirConditioning: "Automatische Klimaanlage",
+          cruiseControl: "Tempomat",
+          telematicSystem: "Telematik-System",
+          dtiEngine: "DTI-Motor",
+          powerSteering: "Servolenkung",
+          electricWindows: "Elektrische Fensterheber",
+          centralLocking: "Zentralverriegelung",
+          euro6: "Euro 6",
+          adBlueSystem: "AdBlue-System",
+          spaciousCabin: "Geräumige Kabine",
+          efficientEngine: "Effizienter Motor",
+          easilyMaintained: "Wartungsfreundlich",
+          ergonomicCabin: "Ergonomische Kabine"
+        },
+        badges: {
+          bestseller: "Bestseller",
+          premium: "Premium",
+          promotion: "Aktion",
+          certifiedUsed: "Zertifizierter Gebrauchtwagen",
+          recent: "Aktuell",
+          reliable: "Zuverlässig"
+        },
+        specs: {
+          horses: "Pferde",
+          year: "Jahr",
+          km: "km",
+          capacity: "Kapazität"
+        },
+        pricing: {
+          save: "Sparen Sie",
+          financing: "Finanzierung verfügbar ab",
+          perMonth: "/Monat"
+        },
+        actions: {
+          seeDetails: "Details ansehen",
+          addToFavorites: "Zu Favoriten hinzufügen"
+        }
+      },
+      cta: {
+        title: "Brauchen Sie Beratung zu unseren LKWs?",
+        description: "Unsere Experten begleiten Sie bei der Auswahl des perfekten LKWs für Ihre beruflichen Bedürfnisse.",
+        getQuote: "Kostenloses Angebot anfordern",
+        contactExpert: "Experten kontaktieren"
+      }
     }
   }
 };
