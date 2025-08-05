@@ -1,6 +1,11 @@
 import { ArrowRight, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 import heroTruck from "@/assets/hero-truck.jpg";
+import heroTruck2 from "@/assets/hero-truck-2.jpg";
+import heroVan from "@/assets/hero-van.jpg";
+import heroTrailer from "@/assets/hero-trailer.jpg";
 
 const HeroSection = () => {
   return (
@@ -69,26 +74,75 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Visual */}
+          {/* Visual - Carousel */}
           <div className="relative animate-slide-in" style={{ animationDelay: '0.3s' }}>
             <div className="relative">
-              {/* Main Image Container */}
-              <div className="relative overflow-hidden rounded-2xl shadow-luxury">
-                <img 
-                  src={heroTruck} 
-                  alt="Camion chevaux premium HTG" 
-                  className="w-full h-full object-cover"
-                />
-                
-                {/* Overlay Effects */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
-                <div className="absolute bottom-6 left-6 right-6">
-                  <div className="htg-glass rounded-lg p-4">
-                    <h3 className="font-bold text-copper">Camion Chevaux Premium</h3>
-                    <p className="text-sm text-muted-foreground">4 chevaux • Suspension pneumatique</p>
-                  </div>
-                </div>
-              </div>
+              {/* Carousel Container */}
+              <Carousel 
+                className="w-full"
+                plugins={[
+                  Autoplay({
+                    delay: 4000,
+                  }),
+                ]}
+                opts={{
+                  align: "start",
+                  loop: true,
+                }}
+              >
+                <CarouselContent>
+                  <CarouselItem>
+                    <div className="relative overflow-hidden rounded-2xl shadow-luxury">
+                      <img 
+                        src={heroTruck} 
+                        alt="Camion chevaux premium HTG" 
+                        className="w-full h-[400px] lg:h-[500px] object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+                      <div className="absolute bottom-6 left-6 right-6">
+                        <div className="htg-glass rounded-lg p-4">
+                          <h3 className="font-bold text-copper">Camion Chevaux Premium</h3>
+                          <p className="text-sm text-muted-foreground">4 chevaux • Suspension pneumatique</p>
+                        </div>
+                      </div>
+                    </div>
+                  </CarouselItem>
+                  <CarouselItem>
+                    <div className="relative overflow-hidden rounded-2xl shadow-luxury">
+                      <img 
+                        src={heroTruck2} 
+                        alt="Camion chevaux de luxe HTG" 
+                        className="w-full h-[400px] lg:h-[500px] object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+                      <div className="absolute bottom-6 left-6 right-6">
+                        <div className="htg-glass rounded-lg p-4">
+                          <h3 className="font-bold text-copper">Camion Chevaux Luxe</h3>
+                          <p className="text-sm text-muted-foreground">6 chevaux • Équipement premium</p>
+                        </div>
+                      </div>
+                    </div>
+                  </CarouselItem>
+                  <CarouselItem>
+                    <div className="relative overflow-hidden rounded-2xl shadow-luxury">
+                      <img 
+                        src={heroVan} 
+                        alt="Van chevaux HTG" 
+                        className="w-full h-[400px] lg:h-[500px] object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+                      <div className="absolute bottom-6 left-6 right-6">
+                        <div className="htg-glass rounded-lg p-4">
+                          <h3 className="font-bold text-copper">Van Chevaux Élégant</h3>
+                          <p className="text-sm text-muted-foreground">2 chevaux • Compact et pratique</p>
+                        </div>
+                      </div>
+                    </div>
+                  </CarouselItem>
+                </CarouselContent>
+                <CarouselPrevious className="left-4 bg-black/30 border-copper text-copper hover:bg-copper hover:text-black" />
+                <CarouselNext className="right-4 bg-black/30 border-copper text-copper hover:bg-copper hover:text-black" />
+              </Carousel>
 
               {/* Floating Cards */}
               <div className="absolute -top-6 -right-6 htg-card p-4 w-48 animate-pulse-glow">
