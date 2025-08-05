@@ -50,6 +50,12 @@ All colors MUST be HSL.
     --bronze: 30 45% 40%;
     --gold-matte: 45 60% 45%;
     
+    /* Header/Footer blancs pour contraste avec logo */
+    --header-bg: 0 0% 100%;
+    --header-foreground: 220 15% 8%;
+    --footer-bg: 0 0% 98%;
+    --footer-foreground: 220 15% 12%;
+    
     /* Gradients sophistiqués */
     --gradient-hero: linear-gradient(135deg, hsl(220 25% 8%) 0%, hsl(220 20% 12%) 50%, hsl(25 35% 15%) 100%);
     --gradient-card: linear-gradient(145deg, hsl(220 20% 12%) 0%, hsl(220 15% 10%) 100%);
@@ -59,6 +65,7 @@ All colors MUST be HSL.
     --shadow-luxury: 0 25px 50px -12px hsl(220 25% 5% / 0.8);
     --shadow-card: 0 10px 30px -5px hsl(220 25% 5% / 0.6);
     --shadow-copper: 0 8px 25px -8px hsl(25 75% 35% / 0.4);
+    --shadow-header: 0 4px 20px hsl(220 15% 8% / 0.1);
     
     /* Transitions fluides */
     --transition-luxury: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);

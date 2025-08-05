@@ -52,22 +52,22 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-background border-t border-border">
+    <footer className="bg-white border-t border-gray-200">
       {/* Newsletter Section */}
       <div className="bg-gradient-to-r from-copper/10 to-bronze/10 py-16">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center space-y-6">
-            <h3 className="text-3xl font-bold text-foreground">
+            <h3 className="text-3xl font-bold text-gray-800">
               Restez Informé des Dernières Nouveautés
             </h3>
-            <p className="text-lg text-muted-foreground">
+            <p className="text-lg text-gray-600">
               Recevez en avant-première les nouveaux arrivages et les offres exclusives HTG.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
               <input
                 type="email"
                 placeholder="Votre adresse email"
-                className="flex-1 px-4 py-3 rounded-lg bg-card border border-border text-foreground"
+                className="flex-1 px-4 py-3 rounded-lg bg-white border border-gray-300 text-gray-800"
               />
               <Button className="htg-button-primary whitespace-nowrap">
                 S'abonner
@@ -91,11 +91,11 @@ const Footer = () => {
                 />
                 <div>
                   <h3 className="text-2xl font-bold text-copper">HTG</h3>
-                  <p className="text-muted-foreground">Horse Truck Garage</p>
+                  <p className="text-gray-600">Horse Truck Garage</p>
                 </div>
               </div>
               
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-gray-600 leading-relaxed">
                 Spécialiste français du transport équin depuis plus de 15 ans. 
                 Nous vous accompagnons dans le choix et l'acquisition de votre véhicule idéal.
               </p>
@@ -104,19 +104,19 @@ const Footer = () => {
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <Phone className="w-5 h-5 text-copper" />
-                  <span className="text-foreground">+33 1 23 45 67 89</span>
+                  <span className="text-gray-800">+33 1 23 45 67 89</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Mail className="w-5 h-5 text-copper" />
-                  <span className="text-foreground">contact@htg-france.com</span>
+                  <span className="text-gray-800">contact@htg-france.com</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <MapPin className="w-5 h-5 text-copper" />
-                  <span className="text-foreground">Zone Industrielle, 69000 Lyon</span>
+                  <span className="text-gray-800">Zone Industrielle, 69000 Lyon</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Clock className="w-5 h-5 text-copper" />
-                  <span className="text-foreground">Lun-Ven: 8h-18h, Sam: 9h-17h</span>
+                  <span className="text-gray-800">Lun-Ven: 8h-18h, Sam: 9h-17h</span>
                 </div>
               </div>
 
@@ -147,7 +147,7 @@ const Footer = () => {
                     <li key={link.name}>
                       <a
                         href={link.href}
-                        className="text-muted-foreground hover:text-copper transition-colors"
+                        className="text-gray-600 hover:text-copper transition-colors"
                       >
                         {link.name}
                       </a>
@@ -161,23 +161,23 @@ const Footer = () => {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-border py-8">
+      <div className="border-t border-gray-200 py-8">
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-center md:text-left">
-              <p className="text-muted-foreground">
+              <p className="text-gray-600">
                 © 2024 Horse Truck Garage (HTG). Tous droits réservés.
               </p>
             </div>
             
             <div className="flex flex-wrap justify-center md:justify-end gap-6 text-sm">
-              <a href="/privacy" className="text-muted-foreground hover:text-copper transition-colors">
+              <a href="/privacy" className="text-gray-600 hover:text-copper transition-colors">
                 Politique de Confidentialité
               </a>
-              <a href="/terms" className="text-muted-foreground hover:text-copper transition-colors">
+              <a href="/terms" className="text-gray-600 hover:text-copper transition-colors">
                 Conditions Générales
               </a>
-              <a href="/cookies" className="text-muted-foreground hover:text-copper transition-colors">
+              <a href="/cookies" className="text-gray-600 hover:text-copper transition-colors">
                 Cookies
               </a>
             </div>

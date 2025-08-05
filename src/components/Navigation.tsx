@@ -15,7 +15,7 @@ const Navigation = () => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 htg-glass">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-lg border-b border-gray-200">
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
@@ -27,7 +27,7 @@ const Navigation = () => {
             />
             <div className="hidden sm:block">
               <h1 className="text-xl font-bold text-copper">HTG</h1>
-              <p className="text-xs text-muted-foreground">Horse Truck Garage</p>
+              <p className="text-xs text-gray-600">Horse Truck Garage</p>
             </div>
           </div>
 
@@ -37,7 +37,7 @@ const Navigation = () => {
               <a
                 key={item.name}
                 href={item.href}
-                className="text-foreground hover:text-copper transition-colors duration-300 font-medium"
+                className="text-gray-700 hover:text-copper transition-colors duration-300 font-medium"
               >
                 {item.name}
               </a>
@@ -70,13 +70,13 @@ const Navigation = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="lg:hidden absolute top-full left-0 right-0 htg-glass border-t border-border">
+          <div className="lg:hidden absolute top-full left-0 right-0 bg-white shadow-lg border-t border-gray-200">
             <div className="px-6 py-6 space-y-4">
               {navItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  className="block text-foreground hover:text-copper transition-colors duration-300 font-medium py-2"
+                  className="block text-gray-700 hover:text-copper transition-colors duration-300 font-medium py-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
