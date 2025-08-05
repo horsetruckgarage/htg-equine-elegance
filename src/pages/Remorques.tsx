@@ -9,6 +9,55 @@ import { useTranslation } from "@/hooks/useTranslation";
 import { getLocalizedPath } from "@/hooks/useLocalizedRouting";
 
 const Remorques = () => {
+  const { t, language } = useTranslation();
+  
+  const getLocalizedFeatures = (features: string[]) => {
+    const featureMap: { [key: string]: string } = {
+      "Aluminium": "Aluminium",
+      "Suspension AL-KO": "Suspension AL-KO", 
+      "Plancher caoutchouc": "Plancher caoutchouc",
+      "Éclairage LED": "Éclairage LED",
+      "Système de freinage AL-KO": "Système de freinage AL-KO",
+      "Éclairage full LED": "Éclairage full LED",
+      "Sellerie cuir": "Sellerie cuir",
+      "Plancher bois": "Plancher bois",
+      "Construction robuste": "Construction robuste",
+      "Plancher antidérapant": "Plancher antidérapant",
+      "Ventilation optimale": "Ventilation optimale",
+      "Facilité d'entretien": "Facilité d'entretien",
+      "Made in France": "Made in France",
+      "Suspension pneumatique": "Suspension pneumatique",
+      "Plancher bois massif": "Plancher bois massif",
+      "Design moderne": "Design moderne",
+      "Compact": "Compact",
+      "Légère": "Légère",
+      "Manœuvrable": "Manœuvrable",
+      "Idéale débutant": "Idéale débutant",
+      "Technologie avancée": "Technologie avancée",
+      "Suspension independent": "Suspension independent",
+      "Confort maximum": "Confort maximum",
+      "Sécurité renforcée": "Sécurité renforcée"
+    };
+    return features.map(feature => featureMap[feature] || feature);
+  };
+
+  const getLocalizedBadge = (badge: string) => {
+    const badgeMap: { [key: string]: string } = {
+      "Premium": "Premium",
+      "Nouveauté": "Nouveauté",
+      "Promotion": "Promotion",
+      "Français": "Français",
+      "Économique": "Économique",
+      "Innovant": "Innovant"
+    };
+    return badgeMap[badge] || badge;
+  };
+
+  const getLocalizedCondition = (condition: string) => {
+    return condition === "Neuf" ? "Neuf" : 
+           condition === "Occasion" ? "Occasion" : condition;
+  };
+
   const remorques = [
     {
       id: 1,
@@ -94,10 +143,10 @@ const Remorques = () => {
           <div className="text-center space-y-6">
             <div className="inline-flex items-center space-x-2 bg-copper/10 rounded-full px-4 py-2">
               <Zap className="w-4 h-4 text-copper" />
-              <span className="text-copper font-semibold">Remorques Chevaux</span>
+              <span className="text-copper font-semibold">{t.nav.horseTrailers}</span>
             </div>
             <h1 className="text-4xl lg:text-6xl font-bold">
-              <span className="text-foreground">Remorques Chevaux</span>
+              <span className="text-foreground">{t.nav.horseTrailers}</span>
               <span className="block htg-text-gradient">Flexibles</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -115,10 +164,10 @@ const Remorques = () => {
             <div className="flex flex-wrap gap-3">
               <Button variant="outline" className="htg-button-secondary">
                 <Filter className="w-4 h-4 mr-2" />
-                Tous les filtres
+                {t.trucksPage?.filters?.allFilters || "Tous les filtres"}
               </Button>
-              <Button variant="outline" size="sm">Capacité</Button>
-              <Button variant="outline" size="sm">Prix</Button>
+              <Button variant="outline" size="sm">{t.trucksPage?.filters?.capacity || "Capacité"}</Button>
+              <Button variant="outline" size="sm">{t.trucksPage?.filters?.price || "Prix"}</Button>
               <Button variant="outline" size="sm">État</Button>
               <Button variant="outline" size="sm">Marque</Button>
             </div>
@@ -144,7 +193,7 @@ const Remorques = () => {
                   <div className="w-full h-full bg-gradient-to-br from-leather/30 to-copper/10 flex items-center justify-center">
                     <div className="text-center space-y-2">
                       <Zap className="w-16 h-16 text-copper mx-auto" />
-                      <p className="text-copper font-semibold text-lg">Remorque Chevaux</p>
+                      <p className="text-copper font-semibold text-lg">{t.nav.horseTrailers}</p>
                     </div>
                   </div>
                   
@@ -157,7 +206,7 @@ const Remorques = () => {
                       remorque.badge === 'Français' ? 'bg-blue-600 text-white' :
                       'bg-copper/90 text-black'
                     }`}>
-                      {remorque.badge}
+                      {getLocalizedBadge(remorque.badge)}
                     </Badge>
                     {remorque.promo && (
                       <Badge variant="destructive" className="bg-red-600 animate-pulse">
@@ -192,7 +241,7 @@ const Remorques = () => {
                     <h3 className="text-xl font-bold text-foreground group-hover:text-copper transition-colors">
                       {remorque.title}
                     </h3>
-                    <p className="text-copper text-sm font-medium">Remorque Chevaux</p>
+                    <p className="text-copper text-sm font-medium">{t.nav.horseTrailers}</p>
                   </div>
 
                   {/* Specs */}
@@ -203,7 +252,7 @@ const Remorques = () => {
                     </div>
                     <div className="text-center">
                       <Gauge className="w-4 h-4 text-copper mx-auto mb-1" />
-                      <span className="text-muted-foreground">{remorque.km}</span>
+                      <span className="text-muted-foreground">{getLocalizedCondition(remorque.km)}</span>
                     </div>
                     <div className="text-center">
                       <Users className="w-4 h-4 text-copper mx-auto mb-1" />
@@ -213,7 +262,7 @@ const Remorques = () => {
 
                   {/* Features */}
                   <div className="space-y-1">
-                    {remorque.features.slice(0, 3).map((feature, idx) => (
+                    {getLocalizedFeatures(remorque.features).slice(0, 3).map((feature, idx) => (
                       <div key={idx} className="flex items-center space-x-2">
                         <div className="w-1.5 h-1.5 bg-copper rounded-full"></div>
                         <span className="text-sm text-muted-foreground">{feature}</span>
@@ -237,20 +286,20 @@ const Remorques = () => {
                       {remorque.promo && remorque.savings && (
                         <div className="text-right">
                           <div className="text-green-600 font-semibold text-sm">
-                            Économisez {remorque.savings}€
+                            {t.trucksPage?.vehicle?.pricing?.save || "Économisez"} {remorque.savings}€
                           </div>
                         </div>
                       )}
                     </div>
                     <div className="text-xs text-muted-foreground">
-                      {remorque.km === 'Neuf' ? 'Garantie constructeur incluse' : 'Financement disponible dès 290€/mois'}
+                      {remorque.km === 'Neuf' ? 'Garantie constructeur incluse' : `${t.trucksPage?.vehicle?.pricing?.financing || "Financement disponible dès"} 290€${t.trucksPage?.vehicle?.pricing?.perMonth || "/mois"}`}
                     </div>
                   </div>
                   
                   <div className="flex gap-2 pt-2">
-                    <Link to="/contact" className="flex-1">
+                    <Link to={getLocalizedPath('/contact', language)} className="flex-1">
                       <Button className="htg-button-primary w-full">
-                        Voir Détails
+                        {t.trucksPage?.vehicle?.actions?.seeDetails || "Voir Détails"}
                       </Button>
                     </Link>
                     <Button variant="outline" className="htg-button-secondary px-3">
@@ -273,12 +322,12 @@ const Remorques = () => {
                   De la remorque 1 place pour débuter aux modèles 3 places premium, trouvez celle qui vous convient.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link to="/devis">
+                  <Link to={getLocalizedPath('/devis', language)}>
                     <Button className="htg-button-primary">
-                      Demander un Devis Gratuit
+                      {t.nav.getQuote}
                     </Button>
                   </Link>
-                  <Link to="/contact">
+                  <Link to={getLocalizedPath('/contact', language)}>
                     <Button variant="outline" className="htg-button-secondary">
                       Conseil Personnalisé
                       <ArrowRight className="w-4 h-4 ml-2" />
