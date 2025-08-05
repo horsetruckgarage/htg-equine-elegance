@@ -2,41 +2,67 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+/* HTG Horse Truck Garage - Design System Haut de Gamme
 All colors MUST be HSL.
 */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Palette principale - Sophistiquée et puissante */
+    --background: 220 15% 8%;
+    --foreground: 30 8% 92%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 220 20% 12%;
+    --card-foreground: 30 8% 92%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 220 25% 10%;
+    --popover-foreground: 30 8% 92%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Cuivre/Bronze premium pour les accents */
+    --primary: 25 75% 55%;
+    --primary-foreground: 220 15% 8%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Gris anthracite élégant */
+    --secondary: 220 12% 20%;
+    --secondary-foreground: 30 8% 92%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Tons neutres subtils */
+    --muted: 220 15% 15%;
+    --muted-foreground: 30 5% 65%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Or mat pour les éléments interactifs */
+    --accent: 35 65% 50%;
+    --accent-foreground: 220 15% 8%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 30 8% 92%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 220 20% 18%;
+    --input: 220 20% 15%;
+    --ring: 25 75% 55%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+
+    /* Couleurs étendues pour l'expérience premium */
+    --leather: 25 35% 25%;
+    --leather-light: 25 25% 35%;
+    --copper: 25 75% 55%;
+    --bronze: 30 45% 40%;
+    --gold-matte: 45 60% 45%;
+    
+    /* Gradients sophistiqués */
+    --gradient-hero: linear-gradient(135deg, hsl(220 25% 8%) 0%, hsl(220 20% 12%) 50%, hsl(25 35% 15%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(220 20% 12%) 0%, hsl(220 15% 10%) 100%);
+    --gradient-copper: linear-gradient(135deg, hsl(25 75% 55%) 0%, hsl(30 65% 45%) 100%);
+    
+    /* Ombres luxueuses */
+    --shadow-luxury: 0 25px 50px -12px hsl(220 25% 5% / 0.8);
+    --shadow-card: 0 10px 30px -5px hsl(220 25% 5% / 0.6);
+    --shadow-copper: 0 8px 25px -8px hsl(25 75% 35% / 0.4);
+    
+    /* Transitions fluides */
+    --transition-luxury: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     --sidebar-background: 0 0% 98%;
 
@@ -101,5 +127,98 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+}
+
+@layer components {
+  /* Composants luxueux HTG */
+  .htg-hero-gradient {
+    background: var(--gradient-hero);
+  }
+  
+  .htg-card {
+    @apply bg-card border border-border rounded-lg;
+    background: var(--gradient-card);
+    box-shadow: var(--shadow-card);
+    transition: var(--transition-smooth);
+  }
+  
+  .htg-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-luxury);
+  }
+  
+  .htg-button-primary {
+    @apply bg-primary text-primary-foreground px-8 py-4 rounded-lg font-semibold;
+    background: var(--gradient-copper);
+    box-shadow: var(--shadow-copper);
+    transition: var(--transition-luxury);
+    border: 2px solid transparent;
+  }
+  
+  .htg-button-primary:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: var(--shadow-luxury);
+    border-color: hsl(var(--copper));
+  }
+  
+  .htg-button-secondary {
+    @apply bg-secondary text-secondary-foreground px-6 py-3 rounded-lg font-medium border-2;
+    border-color: hsl(var(--copper));
+    transition: var(--transition-smooth);
+  }
+  
+  .htg-button-secondary:hover {
+    @apply bg-copper text-black;
+    transform: translateY(-1px);
+  }
+  
+  .htg-text-gradient {
+    background: var(--gradient-copper);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .htg-parallax {
+    transform-style: preserve-3d;
+    transition: var(--transition-luxury);
+  }
+  
+  .htg-glass {
+    backdrop-filter: blur(10px);
+    background: hsl(220 20% 12% / 0.8);
+    border: 1px solid hsl(220 20% 20% / 0.3);
+  }
+}
+
+@layer utilities {
+  .text-copper {
+    color: hsl(var(--copper));
+  }
+  
+  .text-bronze {
+    color: hsl(var(--bronze));
+  }
+  
+  .text-leather {
+    color: hsl(var(--leather-light));
+  }
+  
+  .bg-copper {
+    background-color: hsl(var(--copper));
+  }
+  
+  .bg-leather {
+    background-color: hsl(var(--leather));
+  }
+  
+  .shadow-luxury {
+    box-shadow: var(--shadow-luxury);
+  }
+  
+  .shadow-copper {
+    box-shadow: var(--shadow-copper);
   }
 }
