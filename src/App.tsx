@@ -8,6 +8,10 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import DemandeDevis from "./pages/DemandeDevis";
 import NotFound from "./pages/NotFound";
+import Camions from "./pages/Camions";
+import Vans from "./pages/Vans";
+import Remorques from "./pages/Remorques";
+import Occasions from "./pages/Occasions";
 
 const queryClient = new QueryClient();
 
@@ -22,10 +26,10 @@ const App = () => (
           <Route path="/devis" element={<DemandeDevis />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/camions" element={<Index />} />
-          <Route path="/vans" element={<Index />} />
-          <Route path="/remorques" element={<Index />} />
-          <Route path="/occasions" element={<Index />} />
+          <Route path="/camions" element={<Camions />} />
+          <Route path="/vans" element={<Vans />} />
+          <Route path="/remorques" element={<Remorques />} />
+          <Route path="/occasions" element={<Occasions />} />
           <Route path="/neufs" element={<Index />} />
           <Route path="/expertise" element={<Index />} />
           <Route path="/financement" element={<Index />} />
