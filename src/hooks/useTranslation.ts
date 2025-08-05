@@ -371,6 +371,80 @@ export interface Translations {
       contactExpert: string;
     };
   };
+
+  // Trailers Page
+  trailersPage: {
+    title: string;
+    subtitle: string;
+    description: string;
+    filters: {
+      allFilters: string;
+      capacity: string;
+      price: string;
+      condition: string;
+      brand: string;
+      found: string;
+    };
+    vehicle: {
+      horseTrailer: string;
+      specs: {
+        horses: string;
+        condition: {
+          new: string;
+          used: string;
+        };
+      };
+      features: {
+        aluminum: string;
+        alkoSuspension: string;
+        rubberFlooring: string;
+        ledLighting: string;
+        alkoBraking: string;
+        fullLedLighting: string;
+        leatherInterior: string;
+        woodFlooring: string;
+        robustConstruction: string;
+        nonSlipFlooring: string;
+        optimalVentilation: string;
+        easyMaintenance: string;
+        madeInFrance: string;
+        pneumaticSuspension: string;
+        solidWoodFlooring: string;
+        modernDesign: string;
+        compact: string;
+        lightweight: string;
+        maneuverable: string;
+        idealBeginner: string;
+        advancedTechnology: string;
+        independentSuspension: string;
+        maximumComfort: string;
+        reinforcedSecurity: string;
+      };
+      badges: {
+        premium: string;
+        newArrival: string;
+        promotion: string;
+        french: string;
+        economical: string;
+        innovative: string;
+      };
+      pricing: {
+        save: string;
+        manufacturerWarranty: string;
+        financing: string;
+        perMonth: string;
+      };
+      actions: {
+        seeDetails: string;
+      };
+    };
+    cta: {
+      title: string;
+      description: string;
+      getQuote: string;
+      contactExpert: string;
+    };
+  };
 }
 
 const translations: Record<Language, Translations> = {
