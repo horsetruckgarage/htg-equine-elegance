@@ -51,14 +51,21 @@ export const getLocalizedPath = (path: string, language: Language): string => {
   return `/${language}${translatedPath === '/' ? '' : translatedPath}`;
 };
 
-// Fonction pour extraire la langue de l'URL
+// Fonction pour extraire la langue de l'URL et convertir le chemin localisé en chemin de base
 export const extractLanguageFromPath = (pathname: string): { language: Language; basePath: string } => {
   const segments = pathname.split('/');
   const possibleLang = segments[1] as Language;
   
   if (['fr', 'en', 'es', 'de'].includes(possibleLang)) {
-    const basePath = '/' + segments.slice(2).join('/');
-    return { language: possibleLang, basePath: basePath === '/' ? '/' : basePath };
+    const localizedPath = '/' + segments.slice(2).join('/');
+    
+    // Convertir le chemin localisé en chemin de base
+    const reverseMapping = Object.entries(routeTranslations[possibleLang]).find(
+      ([basePath, translatedPath]) => translatedPath === localizedPath
+    );
+    
+    const basePath = reverseMapping ? reverseMapping[0] : (localizedPath === '/' ? '/' : localizedPath);
+    return { language: possibleLang, basePath };
   }
   
   // Si pas de langue dans l'URL, retourner français par défaut
