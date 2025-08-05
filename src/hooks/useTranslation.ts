@@ -304,6 +304,73 @@ export interface Translations {
       contactExpert: string;
     };
   };
+
+  // Vans Page
+  vansPage: {
+    title: string;
+    subtitle: string;
+    description: string;
+    filters: {
+      allFilters: string;
+      capacity: string;
+      price: string;
+      year: string;
+      mileage: string;
+      found: string;
+    };
+    vehicle: {
+      horseVan: string;
+      specs: {
+        horses: string;
+        km: string;
+      };
+      features: {
+        nonSlipFlooring: string;
+        ledLighting: string;
+        ventilation: string;
+        handsFreeMobile: string;
+        blueTecEngine: string;
+        automaticTransmission: string;
+        reverseCamera: string;
+        parkingSensors: string;
+        optimizedVolume: string;
+        cruiseControl: string;
+        airConditioning: string;
+        ecoBlue: string;
+        sync3: string;
+        parkingAssist: string;
+        tdiBlueMotion: string;
+        esp: string;
+        hillStartAssist: string;
+        blueHdi: string;
+        mirrorScreen: string;
+        fatigueSensor: string;
+      };
+      badges: {
+        favorite: string;
+        bestseller: string;
+        premium: string;
+        promotion: string;
+        certifiedUsed: string;
+        recent: string;
+        economical: string;
+      };
+      pricing: {
+        save: string;
+        financing: string;
+        perMonth: string;
+      };
+      actions: {
+        seeDetails: string;
+      };
+    };
+    cta: {
+      title: string;
+      description: string;
+      getQuote: string;
+      contactExpert: string;
+    };
+  };
 }
 
 const translations: Record<Language, Translations> = {
@@ -667,6 +734,72 @@ const translations: Record<Language, Translations> = {
         getQuote: "Demander un Devis Gratuit",
         contactExpert: "Contacter un Expert"
       }
+    },
+
+    vansPage: {
+      title: "Vans Chevaux",
+      subtitle: "Polyvalents",
+      description: "Découvrez notre gamme de vans chevaux alliant polyvalence et maniabilité. Parfaits pour vos déplacements urbains et ruraux avec 2 à 4 chevaux.",
+      filters: {
+        allFilters: "Tous les filtres",
+        capacity: "Capacité",
+        price: "Prix",
+        year: "Année",
+        mileage: "Kilométrage",
+        found: "vans trouvés"
+      },
+      vehicle: {
+        horseVan: "Van Chevaux",
+        specs: {
+          horses: "chevaux",
+          km: "km"
+        },
+        features: {
+          nonSlipFlooring: "Plancher antidérapant",
+          ledLighting: "Éclairage LED",
+          ventilation: "Ventilation",
+          handsFreeMobile: "Kit mains libres",
+          blueTecEngine: "Moteur BlueTEC",
+          automaticTransmission: "Boîte automatique",
+          reverseCamera: "Caméra de recul",
+          parkingSensors: "Radar de recul",
+          optimizedVolume: "Volume optimisé",
+          cruiseControl: "Régulateur de vitesse",
+          airConditioning: "Climatisation",
+          ecoBlue: "EcoBlue",
+          sync3: "SYNC 3",
+          parkingAssist: "Aide au stationnement",
+          tdiBlueMotion: "TDI BlueMotion",
+          esp: "ESP",
+          hillStartAssist: "Assistant de démarrage en côte",
+          blueHdi: "BlueHDi",
+          mirrorScreen: "Mirror Screen",
+          fatigueSensor: "Détecteur de fatigue"
+        },
+        badges: {
+          favorite: "Coup de Cœur",
+          bestseller: "Bestseller",
+          premium: "Premium",
+          promotion: "Promotion",
+          certifiedUsed: "Occasion Certifiée",
+          recent: "Récent",
+          economical: "Économique"
+        },
+        pricing: {
+          save: "Économisez",
+          financing: "Financement disponible dès",
+          perMonth: "/mois"
+        },
+        actions: {
+          seeDetails: "Voir Détails"
+        }
+      },
+      cta: {
+        title: "Trouvez le Van Parfait pour Vous",
+        description: "Nos experts vous conseillent pour choisir le van chevaux adapté à vos besoins et votre budget.",
+        getQuote: "Demander un Devis Gratuit",
+        contactExpert: "Prendre Rendez-vous"
+      }
     }
   },
   en: {
@@ -1028,6 +1161,72 @@ const translations: Record<Language, Translations> = {
         description: "Our experts accompany you in choosing the perfect truck for your professional needs.",
         getQuote: "Request a Free Quote",
         contactExpert: "Contact an Expert"
+      }
+    },
+
+    vansPage: {
+      title: "Horse Vans",
+      subtitle: "Versatile",
+      description: "Discover our range of horse vans combining versatility and maneuverability. Perfect for your urban and rural travels with 2 to 4 horses.",
+      filters: {
+        allFilters: "All filters",
+        capacity: "Capacity",
+        price: "Price",
+        year: "Year",
+        mileage: "Mileage",
+        found: "vans found"
+      },
+      vehicle: {
+        horseVan: "Horse Van",
+        specs: {
+          horses: "horses",
+          km: "km"
+        },
+        features: {
+          nonSlipFlooring: "Non-slip flooring",
+          ledLighting: "LED lighting",
+          ventilation: "Ventilation",
+          handsFreeMobile: "Hands-free kit",
+          blueTecEngine: "BlueTEC engine",
+          automaticTransmission: "Automatic transmission",
+          reverseCamera: "Reverse camera",
+          parkingSensors: "Parking sensors",
+          optimizedVolume: "Optimized volume",
+          cruiseControl: "Cruise control",
+          airConditioning: "Air conditioning",
+          ecoBlue: "EcoBlue",
+          sync3: "SYNC 3",
+          parkingAssist: "Parking assist",
+          tdiBlueMotion: "TDI BlueMotion",
+          esp: "ESP",
+          hillStartAssist: "Hill start assist",
+          blueHdi: "BlueHDi",
+          mirrorScreen: "Mirror Screen",
+          fatigueSensor: "Fatigue detector"
+        },
+        badges: {
+          favorite: "Favorite",
+          bestseller: "Bestseller",
+          premium: "Premium",
+          promotion: "Promotion",
+          certifiedUsed: "Certified Used",
+          recent: "Recent",
+          economical: "Economical"
+        },
+        pricing: {
+          save: "Save",
+          financing: "Financing available from",
+          perMonth: "/month"
+        },
+        actions: {
+          seeDetails: "See Details"
+        }
+      },
+      cta: {
+        title: "Find the Perfect Van for You",
+        description: "Our experts advise you to choose the horse van suited to your needs and budget.",
+        getQuote: "Get a Free Quote",
+        contactExpert: "Make an Appointment"
       }
     }
   },
@@ -1391,6 +1590,22 @@ const translations: Record<Language, Translations> = {
         getQuote: "Solicitar Presupuesto Gratuito",
         contactExpert: "Contactar a un Experto"
       }
+    },
+
+    vansPage: {
+      title: "Furgonetas para Caballos",
+      subtitle: "Versátiles",
+      description: "Descubre nuestra gama de furgonetas para caballos que combinan versatilidad y maniobrabilidad. Perfectas para tus viajes urbanos y rurales con 2 a 4 caballos.",
+      filters: { allFilters: "Todos los filtros", capacity: "Capacidad", price: "Precio", year: "Año", mileage: "Kilometraje", found: "furgonetas encontradas" },
+      vehicle: {
+        horseVan: "Furgoneta para Caballos",
+        specs: { horses: "caballos", km: "km" },
+        features: { nonSlipFlooring: "Suelo antideslizante", ledLighting: "Iluminación LED", ventilation: "Ventilación", handsFreeMobile: "Kit manos libres", blueTecEngine: "Motor BlueTEC", automaticTransmission: "Transmisión automática", reverseCamera: "Cámara trasera", parkingSensors: "Sensores de aparcamiento", optimizedVolume: "Volumen optimizado", cruiseControl: "Control de crucero", airConditioning: "Aire acondicionado", ecoBlue: "EcoBlue", sync3: "SYNC 3", parkingAssist: "Asistente de aparcamiento", tdiBlueMotion: "TDI BlueMotion", esp: "ESP", hillStartAssist: "Asistente de arranque en pendiente", blueHdi: "BlueHDi", mirrorScreen: "Mirror Screen", fatigueSensor: "Detector de fatiga" },
+        badges: { favorite: "Favorito", bestseller: "Más Vendido", premium: "Premium", promotion: "Promoción", certifiedUsed: "Seminuevo Certificado", recent: "Reciente", economical: "Económico" },
+        pricing: { save: "Ahorra", financing: "Financiación disponible desde", perMonth: "/mes" },
+        actions: { seeDetails: "Ver Detalles" }
+      },
+      cta: { title: "Encuentra la Furgoneta Perfecta para Ti", description: "Nuestros expertos te aconsejan para elegir la furgoneta para caballos adecuada a tus necesidades y presupuesto.", getQuote: "Solicitar Presupuesto Gratuito", contactExpert: "Concertar Cita" }
     }
   },
   de: {
@@ -1753,6 +1968,22 @@ const translations: Record<Language, Translations> = {
         getQuote: "Kostenloses Angebot anfordern",
         contactExpert: "Experten kontaktieren"
       }
+    },
+
+    vansPage: {
+      title: "Pferde-Transporter",
+      subtitle: "Vielseitig", 
+      description: "Entdecken Sie unsere Palette von Pferdetransportern, die Vielseitigkeit und Wendigkeit vereinen. Perfekt für Ihre Stadt- und Landfahrten mit 2 bis 4 Pferden.",
+      filters: { allFilters: "Alle Filter", capacity: "Kapazität", price: "Preis", year: "Jahr", mileage: "Laufleistung", found: "Transporter gefunden" },
+      vehicle: {
+        horseVan: "Pferde-Transporter",
+        specs: { horses: "Pferde", km: "km" },
+        features: { nonSlipFlooring: "Rutschfester Boden", ledLighting: "LED-Beleuchtung", ventilation: "Belüftung", handsFreeMobile: "Freisprecheinrichtung", blueTecEngine: "BlueTEC Motor", automaticTransmission: "Automatikgetriebe", reverseCamera: "Rückfahrkamera", parkingSensors: "Einparkhilfe", optimizedVolume: "Optimiertes Volumen", cruiseControl: "Tempomat", airConditioning: "Klimaanlage", ecoBlue: "EcoBlue", sync3: "SYNC 3", parkingAssist: "Einparkhilfe", tdiBlueMotion: "TDI BlueMotion", esp: "ESP", hillStartAssist: "Berganfahrhilfe", blueHdi: "BlueHDi", mirrorScreen: "Mirror Screen", fatigueSensor: "Müdigkeitserkennung" },
+        badges: { favorite: "Favorit", bestseller: "Bestseller", premium: "Premium", promotion: "Aktion", certifiedUsed: "Zertifiziert Gebraucht", recent: "Neu", economical: "Sparsam" },
+        pricing: { save: "Sparen", financing: "Finanzierung verfügbar ab", perMonth: "/Monat" },
+        actions: { seeDetails: "Details Anzeigen" }
+      },
+      cta: { title: "Finden Sie den Perfekten Transporter für Sie", description: "Unsere Experten beraten Sie bei der Auswahl des für Ihre Bedürfnisse und Ihr Budget geeigneten Pferdetransporters.", getQuote: "Kostenloses Angebot Anfordern", contactExpert: "Termin Vereinbaren" }
     }
   }
 };

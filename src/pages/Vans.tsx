@@ -5,8 +5,51 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Car, Calendar, Gauge, Users, Eye, Heart, Star, Filter, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "@/hooks/useTranslation";
+import { getLocalizedPath } from "@/hooks/useLocalizedRouting";
 
 const Vans = () => {
+  const { t, language } = useTranslation();
+  
+  const getLocalizedFeatures = (features: string[]) => {
+    const featureMap: { [key: string]: string } = {
+      "Plancher antidérapant": t.vansPage.vehicle.features.nonSlipFlooring,
+      "Éclairage LED": t.vansPage.vehicle.features.ledLighting,
+      "Ventilation": t.vansPage.vehicle.features.ventilation,
+      "Kit mains libres": t.vansPage.vehicle.features.handsFreeMobile,
+      "Moteur BlueTEC": t.vansPage.vehicle.features.blueTecEngine,
+      "Boîte automatique": t.vansPage.vehicle.features.automaticTransmission,
+      "Caméra de recul": t.vansPage.vehicle.features.reverseCamera,
+      "Radar de recul": t.vansPage.vehicle.features.parkingSensors,
+      "Volume optimisé": t.vansPage.vehicle.features.optimizedVolume,
+      "Régulateur de vitesse": t.vansPage.vehicle.features.cruiseControl,
+      "Climatisation": t.vansPage.vehicle.features.airConditioning,
+      "EcoBlue": t.vansPage.vehicle.features.ecoBlue,
+      "SYNC 3": t.vansPage.vehicle.features.sync3,
+      "Aide au stationnement": t.vansPage.vehicle.features.parkingAssist,
+      "TDI BlueMotion": t.vansPage.vehicle.features.tdiBlueMotion,
+      "ESP": t.vansPage.vehicle.features.esp,
+      "Assistant de démarrage en côte": t.vansPage.vehicle.features.hillStartAssist,
+      "BlueHDi": t.vansPage.vehicle.features.blueHdi,
+      "Mirror Screen": t.vansPage.vehicle.features.mirrorScreen,
+      "Détecteur de fatigue": t.vansPage.vehicle.features.fatigueSensor
+    };
+    return features.map(feature => featureMap[feature] || feature);
+  };
+
+  const getLocalizedBadge = (badge: string) => {
+    const badgeMap: { [key: string]: string } = {
+      "Coup de Cœur": t.vansPage.vehicle.badges.favorite,
+      "Bestseller": t.vansPage.vehicle.badges.bestseller,
+      "Premium": t.vansPage.vehicle.badges.premium,
+      "Promotion": t.vansPage.vehicle.badges.promotion,
+      "Occasion Certifiée": t.vansPage.vehicle.badges.certifiedUsed,
+      "Récent": t.vansPage.vehicle.badges.recent,
+      "Économique": t.vansPage.vehicle.badges.economical
+    };
+    return badgeMap[badge] || badge;
+  };
+
   const vans = [
     {
       id: 1,
@@ -14,7 +57,7 @@ const Vans = () => {
       price: "67 900",
       year: 2020,
       km: "89 500",
-      capacity: "2 chevaux",
+      capacity: `2 ${t.vansPage.vehicle.specs.horses}`,
       features: ["Plancher antidérapant", "Éclairage LED", "Ventilation", "Kit mains libres"],
       badge: "Coup de Cœur",
       rating: 4.8
@@ -27,7 +70,7 @@ const Vans = () => {
       promo: true,
       year: 2018,
       km: "156 000",
-      capacity: "3 chevaux",
+      capacity: `3 ${t.vansPage.vehicle.specs.horses}`,
       features: ["Moteur BlueTEC", "Boîte automatique", "Caméra de recul", "Radar de recul"],
       badge: "Promotion",
       rating: 4.7,
@@ -39,7 +82,7 @@ const Vans = () => {
       price: "54 900",
       year: 2019,
       km: "98 000",
-      capacity: "2 chevaux",
+      capacity: `2 ${t.vansPage.vehicle.specs.horses}`,
       features: ["Volume optimisé", "Kit mains libres", "Régulateur de vitesse", "Climatisation"],
       badge: "Occasion Certifiée",
       rating: 4.6
@@ -50,7 +93,7 @@ const Vans = () => {
       price: "61 500",
       year: 2021,
       km: "45 000",
-      capacity: "3 chevaux",
+      capacity: `3 ${t.vansPage.vehicle.specs.horses}`,
       features: ["EcoBlue", "SYNC 3", "Caméra de recul", "Aide au stationnement"],
       badge: "Récent",
       rating: 4.7
@@ -63,7 +106,7 @@ const Vans = () => {
       promo: true,
       year: 2019,
       km: "112 000",
-      capacity: "3 chevaux",
+      capacity: `3 ${t.vansPage.vehicle.specs.horses}`,
       features: ["TDI BlueMotion", "Climatisation", "ESP", "Assistant de démarrage en côte"],
       badge: "Bestseller",
       rating: 4.8,
@@ -75,7 +118,7 @@ const Vans = () => {
       price: "58 900",
       year: 2020,
       km: "78 000",
-      capacity: "2 chevaux",
+      capacity: `2 ${t.vansPage.vehicle.specs.horses}`,
       features: ["BlueHDi", "Mirror Screen", "Régulateur de vitesse", "Détecteur de fatigue"],
       badge: "Économique",
       rating: 4.5
@@ -92,15 +135,14 @@ const Vans = () => {
           <div className="text-center space-y-6">
             <div className="inline-flex items-center space-x-2 bg-copper/10 rounded-full px-4 py-2">
               <Car className="w-4 h-4 text-copper" />
-              <span className="text-copper font-semibold">Vans Chevaux</span>
+              <span className="text-copper font-semibold">{t.vansPage.title}</span>
             </div>
             <h1 className="text-4xl lg:text-6xl font-bold">
-              <span className="text-foreground">Vans Chevaux</span>
-              <span className="block htg-text-gradient">Polyvalents</span>
+              <span className="text-foreground">{t.vansPage.title}</span>
+              <span className="block htg-text-gradient">{t.vansPage.subtitle}</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Découvrez notre gamme de vans chevaux alliant polyvalence et maniabilité. 
-              Parfaits pour vos déplacements urbains et ruraux avec 2 à 4 chevaux.
+              {t.vansPage.description}
             </p>
           </div>
         </div>
@@ -113,15 +155,15 @@ const Vans = () => {
             <div className="flex flex-wrap gap-3">
               <Button variant="outline" className="htg-button-secondary">
                 <Filter className="w-4 h-4 mr-2" />
-                Tous les filtres
+                {t.vansPage.filters.allFilters}
               </Button>
-              <Button variant="outline" size="sm">Capacité</Button>
-              <Button variant="outline" size="sm">Prix</Button>
-              <Button variant="outline" size="sm">Année</Button>
-              <Button variant="outline" size="sm">Kilométrage</Button>
+              <Button variant="outline" size="sm">{t.vansPage.filters.capacity}</Button>
+              <Button variant="outline" size="sm">{t.vansPage.filters.price}</Button>
+              <Button variant="outline" size="sm">{t.vansPage.filters.year}</Button>
+              <Button variant="outline" size="sm">{t.vansPage.filters.mileage}</Button>
             </div>
             <div className="text-muted-foreground">
-              {vans.length} vans trouvés
+              {vans.length} {t.vansPage.filters.found}
             </div>
           </div>
         </div>
@@ -142,7 +184,7 @@ const Vans = () => {
                   <div className="w-full h-full bg-gradient-to-br from-leather/30 to-copper/10 flex items-center justify-center">
                     <div className="text-center space-y-2">
                       <Car className="w-16 h-16 text-copper mx-auto" />
-                      <p className="text-copper font-semibold text-lg">Van Chevaux</p>
+                      <p className="text-copper font-semibold text-lg">{t.vansPage.vehicle.horseVan}</p>
                     </div>
                   </div>
                   
@@ -155,7 +197,7 @@ const Vans = () => {
                       van.badge === 'Coup de Cœur' ? 'bg-pink-600 text-white' :
                       'bg-copper/90 text-black'
                     }`}>
-                      {van.badge}
+                      {getLocalizedBadge(van.badge)}
                     </Badge>
                     {van.promo && (
                       <Badge variant="destructive" className="bg-red-600 animate-pulse">
@@ -190,7 +232,7 @@ const Vans = () => {
                     <h3 className="text-xl font-bold text-foreground group-hover:text-copper transition-colors">
                       {van.title}
                     </h3>
-                    <p className="text-copper text-sm font-medium">Van Chevaux</p>
+                    <p className="text-copper text-sm font-medium">{t.vansPage.vehicle.horseVan}</p>
                   </div>
 
                   {/* Specs */}
@@ -201,7 +243,7 @@ const Vans = () => {
                     </div>
                     <div className="text-center">
                       <Gauge className="w-4 h-4 text-copper mx-auto mb-1" />
-                      <span className="text-muted-foreground">{van.km} km</span>
+                      <span className="text-muted-foreground">{van.km} {t.vansPage.vehicle.specs.km}</span>
                     </div>
                     <div className="text-center">
                       <Users className="w-4 h-4 text-copper mx-auto mb-1" />
@@ -211,7 +253,7 @@ const Vans = () => {
 
                   {/* Features */}
                   <div className="space-y-1">
-                    {van.features.slice(0, 3).map((feature, idx) => (
+                    {getLocalizedFeatures(van.features).slice(0, 3).map((feature, idx) => (
                       <div key={idx} className="flex items-center space-x-2">
                         <div className="w-1.5 h-1.5 bg-copper rounded-full"></div>
                         <span className="text-sm text-muted-foreground">{feature}</span>
@@ -235,20 +277,20 @@ const Vans = () => {
                       {van.promo && van.savings && (
                         <div className="text-right">
                           <div className="text-green-600 font-semibold text-sm">
-                            Économisez {van.savings}€
+                            {t.vansPage.vehicle.pricing.save} {van.savings}€
                           </div>
                         </div>
                       )}
                     </div>
                     <div className="text-xs text-muted-foreground">
-                      Financement disponible dès 590€/mois
+                      {t.vansPage.vehicle.pricing.financing} 590€{t.vansPage.vehicle.pricing.perMonth}
                     </div>
                   </div>
                   
                   <div className="flex gap-2 pt-2">
-                    <Link to="/contact" className="flex-1">
+                    <Link to={getLocalizedPath('/contact', language)} className="flex-1">
                       <Button className="htg-button-primary w-full">
-                        Voir Détails
+                        {t.vansPage.vehicle.actions.seeDetails}
                       </Button>
                     </Link>
                     <Button variant="outline" className="htg-button-secondary px-3">
@@ -265,20 +307,20 @@ const Vans = () => {
             <div className="htg-card max-w-4xl mx-auto p-8 lg:p-12">
               <div className="space-y-6">
                 <h3 className="text-3xl font-bold text-foreground">
-                  Trouvez le Van Parfait pour Vous
+                  {t.vansPage.cta.title}
                 </h3>
                 <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                  Nos experts vous conseillent pour choisir le van chevaux adapté à vos besoins et votre budget.
+                  {t.vansPage.cta.description}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link to="/devis">
+                  <Link to={getLocalizedPath('/devis', language)}>
                     <Button className="htg-button-primary">
-                      Demander un Devis Gratuit
+                      {t.vansPage.cta.getQuote}
                     </Button>
                   </Link>
-                  <Link to="/contact">
+                  <Link to={getLocalizedPath('/contact', language)}>
                     <Button variant="outline" className="htg-button-secondary">
-                      Prendre Rendez-vous
+                      {t.vansPage.cta.contactExpert}
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </Button>
                   </Link>
