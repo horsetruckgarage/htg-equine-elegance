@@ -105,7 +105,10 @@ const VehicleCategories = () => {
                   </div>
 
                   {/* Action */}
-                  <div className="pt-4">
+                  <div className="pt-4 space-y-3">
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      Découvrez notre collection exclusive de véhicules sélectionnés pour répondre aux standards les plus exigeants du transport équin.
+                    </p>
                     <Button 
                       variant="outline" 
                       className="w-full htg-button-secondary group"
@@ -127,10 +130,14 @@ const VehicleCategories = () => {
               <h3 className="text-3xl font-bold text-foreground">
                 Besoin d'un Conseil Personnalisé ?
               </h3>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-6">
                 Nos experts sont là pour vous accompagner dans le choix du véhicule parfait. 
                 Contactez-nous pour une étude personnalisée de vos besoins.
               </p>
+              <div className="text-center space-y-4 mb-6">
+                <p className="text-copper font-medium text-lg">Recevez votre offre personnalisée en moins de 24h – Sans engagement</p>
+                <p className="text-sm text-muted-foreground">Besoin d'un échange personnalisé ? Réservez un rendez-vous téléphonique ou en visio avec l'un de nos experts.</p>
+              </div>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button className="htg-button-primary">
                   Demander un Devis Gratuit

@@ -104,20 +104,16 @@ const HeroSection = () => {
                     </p>
                     
                     {/* Call to Action */}
+                    <div className="flex flex-col gap-2 justify-center items-center animate-fade-in mb-6">
+                      <p className="text-white/80 text-sm font-medium">Recevez votre offre personnalisée en moins de 24h – Sans engagement</p>
+                    </div>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in">
                       <Button 
                         size="lg"
                         className="htg-button-primary group px-8 py-4 text-lg font-semibold shadow-2xl hover:shadow-copper/50 transition-all duration-300 w-full sm:w-auto"
                       >
-                        Demander un Devis
+                        Demander un Devis Gratuit
                         <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-                      </Button>
-                      <Button 
-                        size="lg"
-                        variant="outline" 
-                        className="border-2 border-white/30 text-white bg-white/10 backdrop-blur-sm hover:bg-white hover:text-black px-8 py-4 text-lg font-semibold transition-all duration-300 w-full sm:w-auto"
-                      >
-                        Voir nos Véhicules
                       </Button>
                     </div>
                   </div>

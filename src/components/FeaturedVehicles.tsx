@@ -173,7 +173,7 @@ const FeaturedVehicles = () => {
                       </div>
                     )}
                   </div>
-                  <Button className="htg-button-primary">
+                  <Button className="htg-button-primary" title="En savoir plus sur ce modèle">
                     Voir Détails
                   </Button>
                 </div>
@@ -183,7 +183,10 @@ const FeaturedVehicles = () => {
         </div>
 
         {/* CTA */}
-        <div className="text-center">
+        <div className="text-center space-y-4">
+          <p className="text-muted-foreground max-w-xl mx-auto">
+            Parcourez l'ensemble de notre gamme, véhicules neufs et d'occasion.
+          </p>
           <Button 
             size="lg" 
             className="htg-button-primary"
