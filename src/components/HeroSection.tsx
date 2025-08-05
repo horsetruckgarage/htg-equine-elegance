@@ -127,11 +127,11 @@ const HeroSection = () => {
           ))}
         </CarouselContent>
         
-        {/* Custom Navigation Arrows */}
-        <CarouselPrevious className="absolute left-4 sm:left-6 top-1/2 -translate-y-1/2 z-30 bg-black/20 backdrop-blur-sm border-white/20 text-white hover:bg-copper hover:text-black hover:border-copper transition-all duration-300 w-12 h-12 sm:w-14 sm:h-14">
+        {/* Custom Navigation Arrows - Hidden on mobile */}
+        <CarouselPrevious className="absolute left-4 sm:left-6 top-1/2 -translate-y-1/2 z-30 bg-black/20 backdrop-blur-sm border-white/20 text-white hover:bg-copper hover:text-black hover:border-copper transition-all duration-300 w-12 h-12 sm:w-14 sm:h-14 hidden md:flex">
           <ChevronLeft className="w-6 h-6 sm:w-7 sm:h-7" />
         </CarouselPrevious>
-        <CarouselNext className="absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 z-30 bg-black/20 backdrop-blur-sm border-white/20 text-white hover:bg-copper hover:text-black hover:border-copper transition-all duration-300 w-12 h-12 sm:w-14 sm:h-14">
+        <CarouselNext className="absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 z-30 bg-black/20 backdrop-blur-sm border-white/20 text-white hover:bg-copper hover:text-black hover:border-copper transition-all duration-300 w-12 h-12 sm:w-14 sm:h-14 hidden md:flex">
           <ChevronRight className="w-6 h-6 sm:w-7 sm:h-7" />
         </CarouselNext>
       </Carousel>
