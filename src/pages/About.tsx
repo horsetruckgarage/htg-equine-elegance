@@ -8,65 +8,55 @@ const About = () => {
   const { t } = useTranslation();
   
   const stats = [
-    { icon: Calendar, value: "15+", label: t.trust.stats.experience || "Années d'Expertise" },
-    { icon: Users, value: "2500+", label: t.trust.stats.clients || "Clients Satisfaits" },
-    { icon: Shield, value: "100%", label: "Véhicules Certifiés" },
-    { icon: Award, value: "98%", label: t.trust.stats.satisfaction || "Recommandations" }
+    { icon: Calendar, value: "15+", label: (t as any).aboutPage?.stats?.experience || "Années d'Expertise" },
+    { icon: Users, value: "2500+", label: (t as any).aboutPage?.stats?.clients || "Clients Satisfaits" },
+    { icon: Shield, value: "100%", label: (t as any).aboutPage?.stats?.certified || "Véhicules Certifiés" },
+    { icon: Award, value: "98%", label: (t as any).aboutPage?.stats?.recommendations || "Recommandations" }
   ];
 
   const values = [
     {
       icon: Heart,
-      title: "Passion Équestre",
-      description: "Notre équipe partage votre passion pour le monde équin et comprend l'importance du bien-être animal."
+      title: (t as any).aboutPage?.values?.passion?.title || "Passion Équestre",
+      description: (t as any).aboutPage?.values?.passion?.description || "Notre équipe partage votre passion pour le monde équin et comprend l'importance du bien-être animal."
     },
     {
       icon: Shield,
-      title: "Expertise Reconnue", 
-      description: "15 ans d'expérience dans le transport équin nous permettent de sélectionner les meilleurs véhicules."
+      title: (t as any).aboutPage?.values?.expertise?.title || "Expertise Reconnue",
+      description: (t as any).aboutPage?.values?.expertise?.description || "15 ans d'expérience dans le transport équin nous permettent de sélectionner les meilleurs véhicules."
     },
     {
       icon: Star,
-      title: "Excellence du Service",
-      description: "De la première visite à l'après-vente, nous nous engageons à vous offrir un service exceptionnel."
+      title: (t as any).aboutPage?.values?.excellence?.title || "Excellence du Service",
+      description: (t as any).aboutPage?.values?.excellence?.description || "De la première visite à l'après-vente, nous nous engageons à vous offrir un service exceptionnel."
     },
     {
       icon: Wrench,
-      title: "Accompagnement Complet",
-      description: "Financement, assurance, entretien : nous vous accompagnons dans tous les aspects de votre achat."
+      title: (t as any).aboutPage?.values?.support?.title || "Accompagnement Complet",
+      description: (t as any).aboutPage?.values?.support?.description || "Financement, assurance, entretien : nous vous accompagnons dans tous les aspects de votre achat."
     }
   ];
 
   const team = [
     {
       name: "Jean-Pierre Dubois",
-      role: "Directeur & Fondateur",
-      experience: "20 ans dans le transport équin",
-      speciality: "Expert en camions chevaux premium"
+      role: (t as any).aboutPage?.team?.director?.role || "Directeur & Fondateur",
+      experience: (t as any).aboutPage?.team?.director?.experience || "20 ans dans le transport équin",
+      speciality: (t as any).aboutPage?.team?.director?.speciality || "Expert en camions chevaux premium"
     },
     {
-      name: "Marie Leclerc", 
-      role: "Responsable Commerciale",
-      experience: "12 ans chez HTG",
-      speciality: "Spécialiste vans et remorques"
+      name: "Marie Leclerc",
+      role: (t as any).aboutPage?.team?.sales?.role || "Responsable Commerciale",
+      experience: (t as any).aboutPage?.team?.sales?.experience || "12 ans chez HTG",
+      speciality: (t as any).aboutPage?.team?.sales?.speciality || "Spécialiste vans et remorques"
     },
     {
       name: "Thomas Martin",
-      role: "Expert Technique", 
-      experience: "15 ans mécanicien spécialisé",
-      speciality: "Contrôle qualité et expertise"
+      role: (t as any).aboutPage?.team?.technical?.role || "Expert Technique",
+      experience: (t as any).aboutPage?.team?.technical?.experience || "15 ans mécanicien spécialisé",
+      speciality: (t as any).aboutPage?.team?.technical?.speciality || "Contrôle qualité et expertise"
     }
   ];
-
-  // Traductions simples basées sur la langue
-  const getLocalizedText = (fr: string, en: string, es: string, de: string) => {
-    switch ((t as any).nav.home === 'Home' ? 'en' : (t as any).nav.home === 'Inicio' ? 'es' : (t as any).nav.home === 'Startseite' ? 'de' : 'fr') {
-      case 'en': return en;
-      case 'es': return es; 
-      case 'de': return de;
-      default: return fr;
-    }
-  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -78,19 +68,14 @@ const About = () => {
           <div className="text-center max-w-4xl mx-auto space-y-6">
             <div className="inline-flex items-center space-x-2 bg-copper/10 rounded-full px-4 py-2">
               <Heart className="w-4 h-4 text-copper" />
-              <span className="text-copper font-semibold">{getLocalizedText("Notre Histoire", "Our Story", "Nuestra Historia", "Unsere Geschichte")}</span>
+              <span className="text-copper font-semibold">{(t as any).aboutPage?.hero?.badge || "Notre Histoire"}</span>
             </div>
             <h1 className="text-4xl lg:text-6xl font-bold">
-              <span className="text-foreground">{getLocalizedText("L'Excellence", "Excellence", "La Excelencia", "Exzellenz")}</span>
-              <span className="block htg-text-gradient">{getLocalizedText("au Service des Chevaux", "in Service of Horses", "al Servicio de los Caballos", "im Dienste der Pferde")}</span>
+              <span className="text-foreground">{(t as any).aboutPage?.hero?.title1 || "L'Excellence"}</span>
+              <span className="block htg-text-gradient">{(t as any).aboutPage?.hero?.title2 || "au Service des Chevaux"}</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              {getLocalizedText(
-                "Depuis 2008, Horse Truck Garage accompagne les passionnés d'équitation dans le choix de leurs véhicules de transport. Notre expertise française au service de vos champions.",
-                "Since 2008, Horse Truck Garage has been supporting equestrian enthusiasts in choosing their transport vehicles. Our French expertise at the service of your champions.",
-                "Desde 2008, Horse Truck Garage acompaña a los apasionados de la equitación en la elección de sus vehículos de transporte. Nuestra experiencia francesa al servicio de sus campeones.",
-                "Seit 2008 begleitet Horse Truck Garage Reitsport-Enthusiasten bei der Auswahl ihrer Transportfahrzeuge. Unsere französische Expertise im Dienste Ihrer Champions."
-              )}
+              {(t as any).aboutPage?.hero?.description || "Depuis 2008, Horse Truck Garage accompagne les passionnés d'équitation dans le choix de leurs véhicules de transport. Notre expertise française au service de vos champions."}
             </p>
           </div>
         </div>
@@ -124,52 +109,37 @@ const About = () => {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-6">
               <h2 className="text-3xl lg:text-4xl font-bold">
-                <span className="text-foreground">{getLocalizedText("Une Passion", "A Passion", "Una Pasión", "Eine Leidenschaft")}</span>
-                <span className="block htg-text-gradient">{getLocalizedText("Devenue Expertise", "Becoming Expertise", "Convertida en Experiencia", "Zur Expertise Geworden")}</span>
+                <span className="text-foreground">{(t as any).aboutPage?.story?.title1 || "Une Passion"}</span>
+                <span className="block htg-text-gradient">{(t as any).aboutPage?.story?.title2 || "Devenue Expertise"}</span>
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                {getLocalizedText(
-                  "Tout a commencé en 2008 avec une simple conviction : les chevaux méritent le meilleur transport possible. Jean-Pierre Dubois, cavalier passionné et entrepreneur, a fondé HTG avec l'ambition de révolutionner le marché du transport équin en France.",
-                  "It all started in 2008 with a simple conviction: horses deserve the best possible transport. Jean-Pierre Dubois, passionate rider and entrepreneur, founded HTG with the ambition to revolutionize the equine transport market in France.",
-                  "Todo comenzó en 2008 con una simple convicción: los caballos merecen el mejor transporte posible. Jean-Pierre Dubois, jinete apasionado y empresario, fundó HTG con la ambición de revolucionar el mercado del transporte equino en Francia.",
-                  "Alles begann 2008 mit einer einfachen Überzeugung: Pferde verdienen den bestmöglichen Transport. Jean-Pierre Dubois, leidenschaftlicher Reiter und Unternehmer, gründete HTG mit dem Ehrgeiz, den Pferdetransportmarkt in Frankreich zu revolutionieren."
-                )}
+                {(t as any).aboutPage?.story?.paragraph1 || "Tout a commencé en 2008 avec une simple conviction : les chevaux méritent le meilleur transport possible. Jean-Pierre Dubois, cavalier passionné et entrepreneur, a fondé HTG avec l'ambition de révolutionner le marché du transport équin en France."}
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                {getLocalizedText(
-                  "Aujourd'hui, nous sommes fiers d'être devenus la référence française en matière de véhicules de transport équin, avec plus de 2500 clients qui nous font confiance pour leurs champions.",
-                  "Today, we are proud to have become the French reference for equine transport vehicles, with more than 2500 clients who trust us for their champions.",
-                  "Hoy, estamos orgullosos de habernos convertido en la referencia francesa en vehículos de transporte equino, con más de 2500 clientes que confían en nosotros para sus campeones.",
-                  "Heute sind wir stolz darauf, die französische Referenz für Pferdetransportfahrzeuge geworden zu sein, mit mehr als 2500 Kunden, die uns für ihre Champions vertrauen."
-                )}
+                {(t as any).aboutPage?.story?.paragraph2 || "Aujourd'hui, nous sommes fiers d'être devenus la référence française en matière de véhicules de transport équin, avec plus de 2500 clients qui nous font confiance pour leurs champions."}
               </p>
               <Button className="htg-button-primary">
-                {t.nav.getQuote}
+                {(t as any).aboutPage?.story?.cta || "Demander un Devis Personnalisé"}
               </Button>
             </div>
             <div className="relative">
               <div className="htg-card p-8 space-y-6">
-                <h3 className="text-2xl font-bold text-foreground">{getLocalizedText("Notre Mission", "Our Mission", "Nuestra Misión", "Unser Auftrag")}</h3>
+                <h3 className="text-2xl font-bold text-foreground">{(t as any).aboutPage?.mission?.title || "Notre Mission"}</h3>
                 <p className="text-muted-foreground">
-                  {getLocalizedText(
-                    "Offrir aux passionnés d'équitation des solutions de transport qui allient sécurité, confort et performance, tout en garantissant le bien-être de leurs chevaux.",
-                    "Offer equestrian enthusiasts transport solutions that combine safety, comfort and performance, while ensuring the well-being of their horses.",
-                    "Ofrecer a los entusiastas de la equitación soluciones de transporte que combinen seguridad, comodidad y rendimiento, garantizando el bienestar de sus caballos.",
-                    "Reitsport-Enthusiasten Transportlösungen bieten, die Sicherheit, Komfort und Leistung kombinieren und dabei das Wohlbefinden ihrer Pferde gewährleisten."
-                  )}
+                  {(t as any).aboutPage?.mission?.description || "Offrir aux passionnés d'équitation des solutions de transport qui allient sécurité, confort et performance, tout en garantissant le bien-être de leurs chevaux."}
                 </p>
                 <div className="space-y-4">
                   <div className="flex items-center space-x-3">
                     <div className="w-2 h-2 bg-copper rounded-full"></div>
-                    <span className="text-sm">{getLocalizedText("Sélection rigoureuse des véhicules", "Rigorous vehicle selection", "Selección rigurosa de vehículos", "Rigorose Fahrzeugauswahl")}</span>
+                    <span className="text-sm">{(t as any).aboutPage?.mission?.point1 || "Sélection rigoureuse des véhicules"}</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <div className="w-2 h-2 bg-copper rounded-full"></div>
-                    <span className="text-sm">{getLocalizedText("Expertise technique reconnue", "Recognized technical expertise", "Experiencia técnica reconocida", "Anerkannte technische Expertise")}</span>
+                    <span className="text-sm">{(t as any).aboutPage?.mission?.point2 || "Expertise technique reconnue"}</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <div className="w-2 h-2 bg-copper rounded-full"></div>
-                    <span className="text-sm">{getLocalizedText("Service client personnalisé", "Personalized customer service", "Servicio al cliente personalizado", "Personalisierter Kundenservice")}</span>
+                    <span className="text-sm">{(t as any).aboutPage?.mission?.point3 || "Service client personnalisé"}</span>
                   </div>
                 </div>
               </div>
@@ -183,16 +153,11 @@ const About = () => {
         <div className="container mx-auto px-6">
           <div className="text-center mb-16 space-y-4">
             <h2 className="text-3xl lg:text-4xl font-bold">
-              <span className="text-foreground">{getLocalizedText("Nos", "Our", "Nuestros", "Unsere")}</span>
-              <span className="htg-text-gradient">{getLocalizedText(" Valeurs", " Values", " Valores", " Werte")}</span>
+              <span className="text-foreground">{(t as any).aboutPage?.valuesSection?.title1 || "Nos"}</span>
+              <span className="htg-text-gradient">{(t as any).aboutPage?.valuesSection?.title2 || " Valeurs"}</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              {getLocalizedText(
-                "Les principes qui guident notre action depuis plus de 15 ans",
-                "The principles that have guided our actions for over 15 years",
-                "Los principios que guían nuestra acción desde hace más de 15 años",
-                "Die Prinzipien, die unser Handeln seit über 15 Jahren leiten"
-              )}
+              {(t as any).aboutPage?.valuesSection?.subtitle || "Les principes qui guident notre action depuis plus de 15 ans"}
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -217,16 +182,11 @@ const About = () => {
         <div className="container mx-auto px-6">
           <div className="text-center mb-16 space-y-4">
             <h2 className="text-3xl lg:text-4xl font-bold">
-              <span className="text-foreground">{getLocalizedText("Notre", "Our", "Nuestro", "Unser")}</span>
-              <span className="htg-text-gradient">{getLocalizedText(" Équipe", " Team", " Equipo", " Team")}</span>
+              <span className="text-foreground">{(t as any).aboutPage?.teamSection?.title1 || "Notre"}</span>
+              <span className="htg-text-gradient">{(t as any).aboutPage?.teamSection?.title2 || " Équipe"}</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              {getLocalizedText(
-                "Des experts passionnés à votre service",
-                "Passionate experts at your service",
-                "Expertos apasionados a su servicio",
-                "Leidenschaftliche Experten zu Ihren Diensten"
-              )}
+              {(t as any).aboutPage?.teamSection?.subtitle || "Des experts passionnés à votre service"}
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
@@ -252,27 +212,17 @@ const About = () => {
         <div className="container mx-auto px-6">
           <div className="htg-card max-w-4xl mx-auto p-8 lg:p-12 text-center space-y-6">
             <h3 className="text-3xl font-bold text-foreground">
-              {getLocalizedText(
-                "Prêt à Faire Confiance à Notre Expertise ?",
-                "Ready to Trust Our Expertise?",
-                "¿Listo para Confiar en Nuestra Experiencia?",
-                "Bereit, unserem Fachwissen zu vertrauen?"
-              )}
+              {(t as any).aboutPage?.cta?.title || "Prêt à Faire Confiance à Notre Expertise ?"}
             </h3>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              {getLocalizedText(
-                "Découvrez pourquoi plus de 2500 passionnés d'équitation nous font confiance pour leurs véhicules de transport.",
-                "Discover why more than 2500 equestrian enthusiasts trust us for their transport vehicles.",
-                "Descubra por qué más de 2500 entusiastas de la equitación confían en nosotros para sus vehículos de transporte.",
-                "Entdecken Sie, warum uns mehr als 2500 Reitsport-Enthusiasten für ihre Transportfahrzeuge vertrauen."
-              )}
+              {(t as any).aboutPage?.cta?.description || "Découvrez pourquoi plus de 2500 passionnés d'équitation nous font confiance pour leurs véhicules de transport."}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button className="htg-button-primary">
-                {getLocalizedText("Voir Nos Véhicules", "View Our Vehicles", "Ver Nuestros Vehículos", "Unsere Fahrzeuge Ansehen")}
+                {(t as any).aboutPage?.cta?.button1 || "Voir Nos Véhicules"}
               </Button>
               <Button variant="outline" className="htg-button-secondary">
-                {getLocalizedText("Prendre Rendez-vous", "Make an Appointment", "Concertar una Cita", "Termin Vereinbaren")}
+                {(t as any).aboutPage?.cta?.button2 || "Prendre Rendez-vous"}
               </Button>
             </div>
           </div>
