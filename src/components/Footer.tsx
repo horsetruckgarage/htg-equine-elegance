@@ -25,8 +25,6 @@ const Footer = () => {
     {
       title: "Contact Rapide",
       links: [
-        { name: "Téléphone", href: "tel:+33123456789" },
-        { name: "Email", href: "mailto:contact@htg-france.com" },
         { name: "Demander un Devis", href: "/devis" },
         { name: "Prendre Rendez-vous", href: "/contact" }
       ]
