@@ -154,6 +154,16 @@ const ConfianceEtContact = () => {
                 />
                 <span className="text-gray-700 font-semibold">Google</span>
               </div>
+              <div className="w-px h-4 bg-gray-300"></div>
+              <div className="flex items-center space-x-1">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 text-yellow-400 fill-yellow-400" />
+                ))}
+                <span className="text-sm text-gray-600 ml-2 font-medium">4.9</span>
+              </div>
+              <div className="text-sm text-gray-500">
+                ({reviews.length} avis)
+              </div>
             </div>
             <h3 className="text-3xl lg:text-4xl font-bold text-foreground">
               Ce que Disent Nos Clients
