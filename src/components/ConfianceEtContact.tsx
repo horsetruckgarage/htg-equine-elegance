@@ -221,108 +221,12 @@ const ConfianceEtContact = () => {
         </div>
 
         {/* Contact CTA Section */}
-        <div className="htg-card max-w-6xl mx-auto p-8 lg:p-12">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left Content */}
-            <div className="space-y-6">
-              <div className="space-y-4">
-                <h3 className="text-3xl lg:text-4xl font-bold text-foreground">
-                  Prêt à Trouver Votre Véhicule Idéal ?
-                </h3>
-                <p className="text-lg text-muted-foreground">
-                  Nos experts vous accompagnent personnellement dans votre projet. 
-                  Devis gratuit, conseil sur-mesure et service après-vente garanti.
-                </p>
-              </div>
-
-              <div className="space-y-4">
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="w-5 h-5 text-green-600" />
-                  <span className="text-muted-foreground">Conseil personnalisé gratuit</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="w-5 h-5 text-green-600" />
-                  <span className="text-muted-foreground">Devis détaillé en moins de 24h</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="w-5 h-5 text-green-600" />
-                  <span className="text-muted-foreground">Garantie et SAV inclus</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="w-5 h-5 text-green-600" />
-                  <span className="text-muted-foreground">Financement sur mesure</span>
-                </div>
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link to="/devis" className="flex-1">
-                  <Button className="htg-button-primary w-full">
-                    Demander un Devis Gratuit
-                  </Button>
-                </Link>
-                <Link to="/contact">
-                  <Button variant="outline" className="htg-button-secondary flex-1">
-                    Prendre Rendez-vous
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
-                </Link>
-              </div>
-            </div>
-
-            {/* Right Content - Contact Info */}
-            <div className="space-y-6">
-              <div className="space-y-4">
-                <h4 className="text-xl font-semibold text-foreground">Contactez-nous</h4>
-                <div className="space-y-3">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-10 h-10 bg-copper/10 rounded-lg flex items-center justify-center">
-                      <Phone className="w-5 h-5 text-copper" />
-                    </div>
-                    <div>
-                      <p className="font-medium text-foreground">Téléphone</p>
-                      <a href="tel:+33123456789" className="text-copper hover:underline">
-                        +33 1 23 45 67 89
-                      </a>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center space-x-3">
-                    <div className="w-10 h-10 bg-copper/10 rounded-lg flex items-center justify-center">
-                      <Mail className="w-5 h-5 text-copper" />
-                    </div>
-                    <div>
-                      <p className="font-medium text-foreground">Email</p>
-                      <a href="mailto:contact@htg-horsetrucks.fr" className="text-copper hover:underline">
-                        contact@htg-horsetrucks.fr
-                      </a>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center space-x-3">
-                    <div className="w-10 h-10 bg-copper/10 rounded-lg flex items-center justify-center">
-                      <MapPin className="w-5 h-5 text-copper" />
-                    </div>
-                    <div>
-                      <p className="font-medium text-foreground">Showroom</p>
-                      <p className="text-muted-foreground">123 Route des Chevaux<br />75001 Paris</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-copper/5 rounded-lg p-4">
-                <div className="flex items-center space-x-2 mb-2">
-                  <Clock className="w-4 h-4 text-copper" />
-                  <span className="font-medium text-foreground">Horaires d'ouverture</span>
-                </div>
-                <div className="text-sm text-muted-foreground space-y-1">
-                  <p>Lun - Ven : 9h00 - 18h00</p>
-                  <p>Sam : 9h00 - 17h00</p>
-                  <p>Dim : Sur rendez-vous</p>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div className="text-center">
+          <Link to="/devis">
+            <Button className="htg-button-primary">
+              Demander un Devis Gratuit
+            </Button>
+          </Link>
         </div>
       </div>
     </section>
