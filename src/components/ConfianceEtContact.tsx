@@ -38,12 +38,12 @@ const ConfianceEtContact = () => {
   ];
 
   const partners = [
-    { name: "Iveco", logo: "🚛", description: "Partenaire officiel depuis 2015" },
-    { name: "Mercedes", logo: "⭐", description: "Distributeur agréé" },
-    { name: "Renault", logo: "🔷", description: "Concessionnaire certifié" },
-    { name: "Böckmann", logo: "🏆", description: "Revendeur exclusif région" },
-    { name: "Ifor Williams", logo: "🛡️", description: "Distributeur autorisé" },
-    { name: "Humbaur", logo: "⚡", description: "Partenaire premium" }
+    { name: "Iveco", logo: "/lovable-uploads/2b478b96-e19a-4288-ac04-f0410f56f0bc.png", description: "Partenaire officiel depuis 2015" },
+    { name: "Mercedes", logo: "/lovable-uploads/bee66bcd-4af5-4ce6-a9d1-a044053fa657.png", description: "Distributeur agréé" },
+    { name: "Renault", logo: "/lovable-uploads/2307287b-f2a8-4858-984f-44b3a646dd23.png", description: "Concessionnaire certifié" },
+    { name: "Böckmann", logo: "/lovable-uploads/35ff85cc-4513-4a11-9b8b-eda640027c91.png", description: "Revendeur exclusif région" },
+    { name: "Ifor Williams", logo: "/lovable-uploads/a3bc9f31-af5a-4053-a835-56933ae8d26b.png", description: "Distributeur autorisé" },
+    { name: "Humbaur", logo: "/lovable-uploads/243f1cf5-f2ce-48a8-a2dd-8c9d7334fa5a.png", description: "Partenaire premium" }
   ];
 
   const stats = [
@@ -191,7 +191,13 @@ const ConfianceEtContact = () => {
                 className="htg-card p-6 text-center space-y-3 group hover:scale-105 transition-all duration-300"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="text-4xl">{partner.logo}</div>
+                <div className="h-12 flex items-center justify-center">
+                  <img 
+                    src={partner.logo} 
+                    alt={`Logo ${partner.name}`}
+                    className="max-h-10 max-w-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                  />
+                </div>
                 <div>
                   <h4 className="font-semibold text-foreground">{partner.name}</h4>
                   <p className="text-xs text-muted-foreground mt-1">{partner.description}</p>
