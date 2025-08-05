@@ -87,16 +87,7 @@ const Navigation = () => {
                   {item.name}
                 </Link>
               ))}
-              <div className="pt-4 space-y-3">
-                <Link to="/contact">
-                  <Button 
-                    variant="outline" 
-                    className="w-full htg-button-secondary border-copper text-copper"
-                  >
-                    <Phone className="w-4 h-4 mr-2" />
-                    Contact
-                  </Button>
-                </Link>
+              <div className="pt-4">
                 <Link to="/devis">
                   <Button className="w-full htg-button-primary">
                     Demander un Devis
