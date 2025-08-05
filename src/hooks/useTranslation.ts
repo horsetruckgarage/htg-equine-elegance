@@ -645,7 +645,7 @@ const translations: Record<Language, Translations> = {
     nav: {
       home: "Startseite",
       horseTrucks: "Pferdetransporter",
-      horseVans: "Pferdetransporter",
+      horseVans: "Pferde-Vans",
       horseTrailers: "Pferdeanhänger",
       about: "Über uns",
       contact: "Kontakt",
@@ -691,7 +691,7 @@ const translations: Record<Language, Translations> = {
         explore: "LKWs erkunden"
       },
       horseVans: {
-        title: "Pferdetransporter",
+        title: "Pferde-Vans",
         description: "Kompakte und vielseitige Lösungen für 1-3 Pferde, perfekt für den täglichen Gebrauch",
         features: ["Kompakte Größe", "B-Führerschein", "Modularer Aufbau", "Wirtschaftlich"],
         from: "Ab",
@@ -748,7 +748,7 @@ const translations: Record<Language, Translations> = {
       vehicles: {
         title: "Fahrzeuge",
         horseTrucks: "Pferdetransporter",
-        horseVans: "Pferdetransporter",
+        horseVans: "Pferde-Vans",
         horseTrailers: "Pferdeanhänger",
         occasions: "Gebrauchtwagen"
       },
