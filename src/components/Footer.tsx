@@ -61,7 +61,7 @@ const Footer = () => {
               Restez Informé des Dernières Nouveautés
             </h3>
             <p className="text-lg text-gray-600">
-              Recevez en avant-première les nouveaux arrivages et les offres exclusives HTG.
+              Recevez en avant-première les nouveaux arrivages, offres exclusives et promotions flash HTG.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
               <input

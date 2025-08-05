@@ -11,7 +11,7 @@ const FloatingCTA = () => {
           size="lg"
         >
           <MessageCircle className="w-5 h-5 mr-2" />
-          Devis Gratuit
+          Devis Gratuit 24h
         </Button>
       </div>
 
