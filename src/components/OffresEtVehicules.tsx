@@ -251,7 +251,7 @@ const OffresEtVehicules = () => {
                   </div>
                   
                   <div className="flex gap-2 pt-2">
-                    <Link to="/contact" className="flex-1">
+                    <Link to={`/${vehicle.category.toLowerCase().includes('camion') ? 'camions' : vehicle.category.toLowerCase().includes('van') ? 'vans' : 'remorques'}`} className="flex-1">
                       <Button className="htg-button-primary w-full" title="Découvrir toutes les caractéristiques de ce véhicule">
                         Voir Détails
                       </Button>
@@ -404,19 +404,6 @@ const OffresEtVehicules = () => {
                 </p>
               </div>
               
-              <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-                <input 
-                  type="email" 
-                  placeholder="Votre email" 
-                  className="flex-1 px-4 py-3 rounded-lg border border-border bg-background"
-                />
-                <Button className="htg-button-primary" onClick={() => {
-                  const email = (document.querySelector('input[type="email"]') as HTMLInputElement)?.value;
-                  if (email) alert(`Merci ! Vous serez alerté des prochaines promotions sur ${email}`);
-                }}>
-                  S'abonner
-                </Button>
-              </div>
               
               <div className="flex justify-center items-center gap-6 text-sm text-muted-foreground">
                 <div className="flex items-center gap-2">

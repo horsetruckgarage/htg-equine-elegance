@@ -47,16 +47,6 @@ const Navigation = () => {
 
           {/* Actions */}
           <div className="hidden md:flex items-center space-x-4">
-            <Link to="/contact">
-              <Button 
-                variant="outline" 
-                size="sm"
-                className="htg-button-secondary border-copper text-copper hover:bg-copper hover:text-black"
-              >
-                <Phone className="w-4 h-4 mr-2" />
-                Contact
-              </Button>
-            </Link>
             <Link to="/devis">
               <Button className="htg-button-primary">
                 Demander un Devis
