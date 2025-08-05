@@ -1,5 +1,6 @@
 import { ArrowRight, Truck, Car, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const VehicleCategories = () => {
   const categories = [
@@ -132,13 +133,15 @@ const VehicleCategories = () => {
                     <p className="text-sm text-muted-foreground leading-relaxed">
                       Découvrez notre collection exclusive de véhicules sélectionnés pour répondre aux standards les plus exigeants du transport équin.
                     </p>
-                    <Button 
-                      variant="outline" 
-                      className="w-full htg-button-secondary group"
-                    >
-                      Voir la Collection
-                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                    </Button>
+                    <Link to={`/${category.id}`}>
+                      <Button 
+                        variant="outline" 
+                        className="w-full htg-button-secondary group"
+                      >
+                        Voir la Collection
+                        <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -162,15 +165,19 @@ const VehicleCategories = () => {
                 <p className="text-sm text-muted-foreground">Besoin d'un échange personnalisé ? Réservez un rendez-vous téléphonique ou en visio avec l'un de nos experts.</p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button className="htg-button-primary">
-                  Demander un Devis Gratuit
-                </Button>
-                <Button 
-                  variant="outline" 
-                  className="htg-button-secondary"
-                >
-                  Prendre Rendez-vous
-                </Button>
+                <Link to="/contact">
+                  <Button className="htg-button-primary">
+                    Demander un Devis Gratuit
+                  </Button>
+                </Link>
+                <Link to="/contact">
+                  <Button 
+                    variant="outline" 
+                    className="htg-button-secondary"
+                  >
+                    Prendre Rendez-vous
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>

@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle, Clock, Euro, Shield } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const CTASection = () => {
   const benefits = [
@@ -73,13 +74,15 @@ const CTASection = () => {
                 <p className="text-copper font-medium text-lg mb-2">Recevez votre offre personnalisée en moins de 24h</p>
                 <p className="text-muted-foreground">Sans engagement – Expertise garantie</p>
               </div>
-              <Button 
-                size="lg" 
-                className="htg-button-primary text-lg px-8 py-4 group"
-              >
-                Demander un Devis Gratuit
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
+              <Link to="/contact">
+                <Button 
+                  size="lg" 
+                  className="htg-button-primary text-lg px-8 py-4 group"
+                >
+                  Demander un Devis Gratuit
+                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
               
               <div className="flex items-center space-x-4 text-muted-foreground">
                 <span className="hidden sm:block w-px h-6 bg-border"></span>

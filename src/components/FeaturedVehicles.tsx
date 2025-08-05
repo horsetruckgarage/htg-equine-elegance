@@ -1,6 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Eye, Heart, Star, Calendar, Gauge, Users, Clock, TrendingUp } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const FeaturedVehicles = () => {
   const featuredVehicles = [
@@ -253,9 +254,11 @@ const FeaturedVehicles = () => {
                 </div>
                 
                 <div className="flex gap-2 pt-2">
-                  <Button className="htg-button-primary flex-1" title="Découvrir toutes les caractéristiques de ce véhicule">
-                    Voir Détails
-                  </Button>
+                  <Link to="/contact" className="flex-1">
+                    <Button className="htg-button-primary w-full" title="Découvrir toutes les caractéristiques de ce véhicule">
+                      Voir Détails
+                    </Button>
+                  </Link>
                   <Button variant="outline" className="htg-button-secondary px-3" title="Ajouter à ma sélection">
                     <Heart className="w-4 h-4" />
                   </Button>
@@ -270,12 +273,14 @@ const FeaturedVehicles = () => {
           <p className="text-muted-foreground max-w-xl mx-auto">
             Parcourez l'ensemble de notre gamme, véhicules neufs et d'occasion.
           </p>
-          <Button 
-            size="lg" 
-            className="htg-button-primary"
-          >
-            Voir Tous les Véhicules
-          </Button>
+          <Link to="/occasions">
+            <Button 
+              size="lg" 
+              className="htg-button-primary"
+            >
+              Voir Tous les Véhicules
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

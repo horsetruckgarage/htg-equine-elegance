@@ -47,17 +47,21 @@ const Navigation = () => {
 
           {/* Actions */}
           <div className="hidden md:flex items-center space-x-4">
-            <Button 
-              variant="outline" 
-              size="sm"
-              className="htg-button-secondary border-copper text-copper hover:bg-copper hover:text-black"
-            >
-              <Phone className="w-4 h-4 mr-2" />
-              Contact
-            </Button>
-            <Button className="htg-button-primary">
-              Demander un Devis
-            </Button>
+            <Link to="/contact">
+              <Button 
+                variant="outline" 
+                size="sm"
+                className="htg-button-secondary border-copper text-copper hover:bg-copper hover:text-black"
+              >
+                <Phone className="w-4 h-4 mr-2" />
+                Contact
+              </Button>
+            </Link>
+            <Link to="/contact">
+              <Button className="htg-button-primary">
+                Demander un Devis
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -84,16 +88,20 @@ const Navigation = () => {
                 </Link>
               ))}
               <div className="pt-4 space-y-3">
-                <Button 
-                  variant="outline" 
-                  className="w-full htg-button-secondary border-copper text-copper"
-                >
-                  <Phone className="w-4 h-4 mr-2" />
-                  Contact
-                </Button>
-                <Button className="w-full htg-button-primary">
-                  Demander un Devis
-                </Button>
+                <Link to="/contact">
+                  <Button 
+                    variant="outline" 
+                    className="w-full htg-button-secondary border-copper text-copper"
+                  >
+                    <Phone className="w-4 h-4 mr-2" />
+                    Contact
+                  </Button>
+                </Link>
+                <Link to="/contact">
+                  <Button className="w-full htg-button-primary">
+                    Demander un Devis
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
