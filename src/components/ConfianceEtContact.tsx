@@ -93,6 +93,18 @@ const ConfianceEtContact = () => {
         {/* Reviews Section */}
         <div className="mb-20">
           <div className="text-center mb-12 space-y-4">
+            <div className="inline-flex items-center space-x-2 bg-blue-50 rounded-full px-4 py-2 border border-blue-200">
+              <div className="flex items-center space-x-1">
+                <div className="w-5 h-5 bg-blue-500 text-white rounded-sm flex items-center justify-center text-xs font-bold">G</div>
+                <span className="text-blue-600 font-semibold">Avis Google</span>
+              </div>
+              <div className="flex items-center space-x-1">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-3 h-3 text-yellow-400 fill-yellow-400" />
+                ))}
+                <span className="text-sm text-gray-600 ml-1">4.9/5</span>
+              </div>
+            </div>
             <h3 className="text-3xl lg:text-4xl font-bold text-foreground">
               Ce que Disent Nos Clients
             </h3>
