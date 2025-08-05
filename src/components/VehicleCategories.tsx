@@ -17,10 +17,10 @@ const VehicleCategories = () => {
       description: t.categories.horseTrucks.description,
       image: camionChevaux,
       features: t.categories.horseTrucks.features,
-      count: "25+ modèles",
-      promo: "Jusqu'à -15%",
+      count: "25+ " + t.common.models,
+      promo: t.common.upTo15Off,
       startingPrice: t.categories.horseTrucks.from + " 45 000€",
-      highlight: "Bestseller"
+      highlight: t.common.bestseller
     },
     {
       id: "vans",
@@ -28,10 +28,10 @@ const VehicleCategories = () => {
       description: t.categories.horseVans.description,
       image: vanChevaux,
       features: t.categories.horseVans.features,
-      count: "18+ modèles",
-      promo: "Offres spéciales",
+      count: "18+ " + t.common.models,
+      promo: t.common.specialOffers,
       startingPrice: t.categories.horseVans.from + " 28 000€",
-      highlight: "Plus demandé"
+      highlight: t.common.mostRequested
     },
     {
       id: "remorques",
@@ -39,10 +39,10 @@ const VehicleCategories = () => {
       description: t.categories.horseTrailers.description,
       image: remorqueChevaux,
       features: t.categories.horseTrailers.features,
-      count: "12+ modèles",
-      promo: "Nouveautés 2024",
+      count: "12+ " + t.common.models,
+      promo: t.common.newArrivals2024,
       startingPrice: t.categories.horseTrailers.from + " 15 000€",
-      highlight: "Meilleur prix"
+      highlight: t.common.bestPrice
     }
   ];
 
@@ -52,15 +52,14 @@ const VehicleCategories = () => {
         {/* Header */}
         <div className="text-center mb-16 space-y-4">
           <div className="inline-flex items-center space-x-2 bg-copper/10 rounded-full px-4 py-2">
-            <span className="text-copper font-semibold">Nos Spécialités</span>
+            <span className="text-copper font-semibold">{t.categories.specialties}</span>
           </div>
           <h2 className="text-4xl lg:text-5xl font-bold">
             <span className="text-foreground">{t.categories.title}</span>
             <span className="block htg-text-gradient">{t.categories.subtitle}</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Chaque discipline équestre a ses exigences. Découvrez notre sélection organisée 
-            par type de véhicule pour trouver la solution idéale.
+            {t.categories.disciplineDescription}
           </p>
         </div>
 
@@ -140,7 +139,7 @@ const VehicleCategories = () => {
                       <p className="text-xs text-muted-foreground">{category.promo}</p>
                     </div>
                     <p className="text-sm text-muted-foreground leading-relaxed">
-                      Découvrez notre collection exclusive de véhicules sélectionnés pour répondre aux standards les plus exigeants du transport équin.
+                      {t.common.discoverCollection}
                     </p>
                     <Link to={getLocalizedPath(`/${category.id}`, language)}>
                       <Button 
@@ -169,8 +168,8 @@ const VehicleCategories = () => {
                 {t.categories.ctaDescription}
               </p>
               <div className="text-center space-y-4 mb-6">
-                <p className="text-copper font-medium text-lg">Recevez votre offre personnalisée en moins de 24h – Sans engagement</p>
-                <p className="text-sm text-muted-foreground">Besoin d'un échange personnalisé ? Réservez un rendez-vous téléphonique ou en visio avec l'un de nos experts.</p>
+                <p className="text-copper font-medium text-lg">{t.common.receiveOffer24h}</p>
+                <p className="text-sm text-muted-foreground">{t.common.personalizedExchange}</p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to={getLocalizedPath("/devis", language)}>

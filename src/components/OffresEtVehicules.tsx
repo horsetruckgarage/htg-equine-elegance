@@ -11,28 +11,28 @@ const OffresEtVehicules = () => {
     {
       id: 1,
       title: "Iveco Daily 70C21",
-      category: "Camion Chevaux",
+      category: t.categories.horseTrucks.title,
       price: "79 900",
       originalPrice: "89 500",
       promo: true,
       promoText: "-11%",
       year: 2019,
       km: "125 000",
-      capacity: "4 chevaux",
+      capacity: "4 " + t.common.horsesCapacity,
       features: ["Suspension pneumatique", "Climatisation", "Cabine couchette", "Boîte automatique"],
-      badge: "Bestseller",
+      badge: t.common.bestseller,
       rating: 4.9,
-      urgency: "Plus que 3 jours",
+      urgency: "Plus que 3 " + t.common.timeLeft.toLowerCase(),
       savings: "9 600"
     },
     {
       id: 2,
       title: "Renault Master L3H2",
-      category: "Van Chevaux",
+      category: t.categories.horseVans.title,
       price: "67 900",
       year: 2020,
       km: "89 500",
-      capacity: "2 chevaux",
+      capacity: "2 " + t.common.horsesCapacity,
       features: ["Plancher antidérapant", "Éclairage LED", "Ventilation", "Kit mains libres"],
       badge: "Coup de Cœur",
       rating: 4.8
@@ -40,13 +40,13 @@ const OffresEtVehicules = () => {
     {
       id: 3,
       title: "Böckmann Comfort",
-      category: "Remorque Chevaux",
+      category: t.categories.horseTrailers.title,
       price: "32 900",
       year: 2021,
-      km: "Neuf",
-      capacity: "2 chevaux",
+      km: t.common.newArrival,
+      capacity: "2 " + t.common.horsesCapacity,
       features: ["Aluminium", "Suspension AL-KO", "Plancher caoutchouc", "Éclairage LED"],
-      badge: "Premium",
+      badge: t.common.promotion,
       rating: 5.0
     }
   ];
@@ -100,15 +100,14 @@ const OffresEtVehicules = () => {
         <div className="text-center mb-16 space-y-6">
           <div className="inline-flex items-center space-x-2 bg-copper/10 rounded-full px-4 py-2">
             <TrendingUp className="w-4 h-4 text-copper" />
-            <span className="text-copper font-semibold">Sélection Premium</span>
+            <span className="text-copper font-semibold">{t.common.premiumSelection}</span>
           </div>
           <h2 className="text-4xl lg:text-5xl font-bold">
-            <span className="text-foreground">Nos Meilleures</span>
-            <span className="block htg-text-gradient">Offres & Véhicules</span>
+            <span className="text-foreground">{t.common.ourBest}</span>
+            <span className="block htg-text-gradient">{t.common.offersVehicles}</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Découvrez notre sélection de véhicules vedettes et profitez de nos promotions exceptionnelles. 
-            Chaque véhicule est rigoureusement contrôlé par nos experts.
+            {t.common.discoverSelection}
           </p>
           <div className="flex justify-center items-center gap-4 mt-6">
             <div className="flex items-center gap-2 bg-red-600/10 rounded-full px-4 py-2">
@@ -204,7 +203,7 @@ const OffresEtVehicules = () => {
                     </div>
                     <div className="text-center">
                       <Gauge className="w-4 h-4 text-copper mx-auto mb-1" />
-                      <span className="text-muted-foreground">{vehicle.km} {vehicle.km !== 'Neuf' ? 'km' : ''}</span>
+                      <span className="text-muted-foreground">{vehicle.km} {vehicle.km !== t.common.newArrival ? t.common.km : ''}</span>
                     </div>
                     <div className="text-center">
                       <Users className="w-4 h-4 text-copper mx-auto mb-1" />
@@ -249,7 +248,7 @@ const OffresEtVehicules = () => {
                       )}
                     </div>
                     <div className="text-xs text-muted-foreground">
-                      {vehicle.promo ? 'Prix promotionnel • Offre limitée' : 'Financement disponible dès 299€/mois'}
+                      {vehicle.promo ? 'Prix promotionnel • ' + t.common.limitedOffer : 'Financement disponible dès 299€/mois'}
                     </div>
                   </div>
                   

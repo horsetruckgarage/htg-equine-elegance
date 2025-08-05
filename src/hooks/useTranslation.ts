@@ -70,11 +70,14 @@ export interface Translations {
       from: string;
       explore: string;
     };
-    ctaTitle: string;
-    ctaDescription: string;
-    getFreeQuote: string;
-    makeAppointment: string;
-  };
+      ctaTitle: string;
+      ctaDescription: string;
+      getFreeQuote: string;
+      makeAppointment: string;
+      specialties: string;
+      findPerfectVehicle: string;
+      disciplineDescription: string;
+    };
   
   // Trust & Contact
   trust: {
@@ -171,6 +174,21 @@ export interface Translations {
     savings: string;
     expertiseGuaranteed: string;
     featuredVehicles: string;
+    premiumSelection: string;
+    ourBest: string;
+    offersVehicles: string;
+    discoverSelection: string;
+    rigorouslyControlled: string;
+    models: string;
+    specialOffers: string;
+    newArrivals2024: string;
+    bestseller: string;
+    mostRequested: string;
+    bestPrice: string;
+    upTo15Off: string;
+    receiveOffer24h: string;
+    personalizedExchange: string;
+    discoverCollection: string;
   };
 }
 
@@ -241,7 +259,10 @@ const translations: Record<Language, Translations> = {
       ctaTitle: "Besoin de Conseils Personnalisés ?",
       ctaDescription: "Nos experts vous accompagnent dans le choix du véhicule idéal pour vos besoins",
       getFreeQuote: "Demander un Devis Gratuit",
-      makeAppointment: "Prendre Rendez-vous"
+      makeAppointment: "Prendre Rendez-vous",
+      specialties: "Nos Spécialités",
+      findPerfectVehicle: "Trouvez le Véhicule Parfait pour Vos Besoins",
+      disciplineDescription: "Chaque discipline équestre a ses exigences. Découvrez notre sélection organisée par type de véhicule pour trouver la solution idéale."
     },
     trust: {
       badge: "Confiance & Expertise",
@@ -330,7 +351,22 @@ const translations: Record<Language, Translations> = {
       vehicles: "véhicules",
       savings: "d'économie",
       expertiseGuaranteed: "Expertise garantie",
-      featuredVehicles: "Véhicules Vedettes"
+      featuredVehicles: "Véhicules Vedettes",
+      premiumSelection: "Sélection Premium",
+      ourBest: "Nos Meilleures",
+      offersVehicles: "Offres & Véhicules",
+      discoverSelection: "Découvrez notre sélection de véhicules vedettes et profitez de nos promotions exceptionnelles. Chaque véhicule est rigoureusement contrôlé par nos experts.",
+      rigorouslyControlled: "rigoureusement contrôlé",
+      models: "modèles",
+      specialOffers: "Offres spéciales",
+      newArrivals2024: "Nouveautés 2024",
+      bestseller: "Bestseller",
+      mostRequested: "Plus demandé",
+      bestPrice: "Meilleur prix",
+      upTo15Off: "Jusqu'à -15%",
+      receiveOffer24h: "Recevez votre offre personnalisée en moins de 24h – Sans engagement",
+      personalizedExchange: "Besoin d'un échange personnalisé ? Réservez un rendez-vous téléphonique ou en visio avec l'un de nos experts.",
+      discoverCollection: "Découvrez notre collection exclusive de véhicules sélectionnés pour répondre aux standards les plus exigeants du transport équin."
     }
   },
   en: {
@@ -399,7 +435,10 @@ const translations: Record<Language, Translations> = {
       ctaTitle: "Need Personalized Advice?",
       ctaDescription: "Our experts help you choose the ideal vehicle for your needs",
       getFreeQuote: "Get Free Quote",
-      makeAppointment: "Make Appointment"
+      makeAppointment: "Make Appointment",
+      specialties: "Our Specialties",
+      findPerfectVehicle: "Find the Perfect Vehicle for Your Needs",
+      disciplineDescription: "Each equestrian discipline has its requirements. Discover our selection organized by vehicle type to find the ideal solution."
     },
     trust: {
       badge: "Trust & Expertise",
@@ -488,7 +527,22 @@ const translations: Record<Language, Translations> = {
       vehicles: "vehicles",
       savings: "savings",
       expertiseGuaranteed: "Expertise guaranteed",
-      featuredVehicles: "Featured Vehicles"
+      featuredVehicles: "Featured Vehicles",
+      premiumSelection: "Premium Selection",
+      ourBest: "Our Best",
+      offersVehicles: "Offers & Vehicles",
+      discoverSelection: "Discover our selection of featured vehicles and enjoy our exceptional promotions. Each vehicle is rigorously controlled by our experts.",
+      rigorouslyControlled: "rigorously controlled",
+      models: "models",
+      specialOffers: "Special Offers",
+      newArrivals2024: "New Arrivals 2024",
+      bestseller: "Bestseller",
+      mostRequested: "Most Requested",
+      bestPrice: "Best Price",
+      upTo15Off: "Up to -15%",
+      receiveOffer24h: "Receive your personalized offer in less than 24h – No commitment",
+      personalizedExchange: "Need a personalized exchange? Book a phone or video appointment with one of our experts.",
+      discoverCollection: "Discover our exclusive collection of vehicles selected to meet the most demanding standards of equestrian transport."
     }
   },
   es: {
@@ -557,7 +611,10 @@ const translations: Record<Language, Translations> = {
       ctaTitle: "¿Necesita Consejo Personalizado?",
       ctaDescription: "Nuestros expertos le ayudan a elegir el vehículo ideal para sus necesidades",
       getFreeQuote: "Solicitar Presupuesto Gratuito",
-      makeAppointment: "Concertar Cita"
+      makeAppointment: "Concertar Cita",
+      specialties: "Nuestras Especialidades",
+      findPerfectVehicle: "Encuentre el Vehículo Perfecto para Sus Necesidades",
+      disciplineDescription: "Cada disciplina ecuestre tiene sus exigencias. Descubra nuestra selección organizada por tipo de vehículo para encontrar la solución ideal."
     },
     trust: {
       badge: "Confianza y Experiencia",
@@ -646,7 +703,22 @@ const translations: Record<Language, Translations> = {
       vehicles: "vehículos",
       savings: "de ahorro",
       expertiseGuaranteed: "Experiencia garantizada",
-      featuredVehicles: "Vehículos Destacados"
+      featuredVehicles: "Vehículos Destacados",
+      premiumSelection: "Selección Premium",
+      ourBest: "Nuestros Mejores",
+      offersVehicles: "Ofertas y Vehículos",
+      discoverSelection: "Descubra nuestra selección de vehículos destacados y aproveche nuestras promociones excepcionales. Cada vehículo es rigurosamente controlado por nuestros expertos.",
+      rigorouslyControlled: "rigurosamente controlado",
+      models: "modelos",
+      specialOffers: "Ofertas Especiales",
+      newArrivals2024: "Novedades 2024",
+      bestseller: "Bestseller",
+      mostRequested: "Más Solicitado",
+      bestPrice: "Mejor Precio",
+      upTo15Off: "Hasta -15%",
+      receiveOffer24h: "Reciba su oferta personalizada en menos de 24h – Sin compromiso",
+      personalizedExchange: "¿Necesita un intercambio personalizado? Reserve una cita telefónica o por video con uno de nuestros expertos.",
+      discoverCollection: "Descubra nuestra colección exclusiva de vehículos seleccionados para satisfacer los estándares más exigentes del transporte ecuestre."
     }
   },
   de: {
@@ -715,7 +787,10 @@ const translations: Record<Language, Translations> = {
       ctaTitle: "Brauchen Sie persönliche Beratung?",
       ctaDescription: "Unsere Experten helfen Ihnen bei der Wahl des idealen Fahrzeugs für Ihre Bedürfnisse",
       getFreeQuote: "Kostenloses Angebot anfordern",
-      makeAppointment: "Termin vereinbaren"
+      makeAppointment: "Termin vereinbaren",
+      specialties: "Unsere Spezialitäten",
+      findPerfectVehicle: "Finden Sie das perfekte Fahrzeug für Ihre Bedürfnisse",
+      disciplineDescription: "Jede Reitsportdisziplin hat ihre Anforderungen. Entdecken Sie unsere nach Fahrzeugtyp organisierte Auswahl, um die ideale Lösung zu finden."
     },
     trust: {
       badge: "Vertrauen & Expertise",
@@ -804,7 +879,22 @@ const translations: Record<Language, Translations> = {
       vehicles: "Fahrzeuge",
       savings: "Ersparnis",
       expertiseGuaranteed: "Expertise garantiert",
-      featuredVehicles: "Ausgewählte Fahrzeuge"
+      featuredVehicles: "Ausgewählte Fahrzeuge",
+      premiumSelection: "Premium-Auswahl",
+      ourBest: "Unsere Besten",
+      offersVehicles: "Angebote & Fahrzeuge",
+      discoverSelection: "Entdecken Sie unsere Auswahl an Topfahrzeugen und profitieren Sie von unseren außergewöhnlichen Aktionen. Jedes Fahrzeug wird von unseren Experten streng kontrolliert.",
+      rigorouslyControlled: "streng kontrolliert",
+      models: "Modelle",
+      specialOffers: "Sonderangebote",
+      newArrivals2024: "Neuheiten 2024",
+      bestseller: "Bestseller",
+      mostRequested: "Am meisten gefragt",
+      bestPrice: "Bester Preis",
+      upTo15Off: "Bis zu -15%",
+      receiveOffer24h: "Erhalten Sie Ihr personalisiertes Angebot in weniger als 24h – Unverbindlich",
+      personalizedExchange: "Brauchen Sie einen persönlichen Austausch? Buchen Sie einen Telefon- oder Videotermin mit einem unserer Experten.",
+      discoverCollection: "Entdecken Sie unsere exklusive Kollektion von Fahrzeugen, die ausgewählt wurden, um den anspruchsvollsten Standards des Pferdetransports zu entsprechen."
     }
   }
 };
