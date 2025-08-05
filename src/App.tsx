@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { TranslationProvider } from "@/components/TranslationProvider";
 import ScrollToTop from "@/components/ScrollToTop";
 import Index from "./pages/Index";
@@ -19,34 +19,72 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TranslationProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
+    <BrowserRouter>
+      <TranslationProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
           <ScrollToTop />
           <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/devis" element={<DemandeDevis />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/camions" element={<Camions />} />
-          <Route path="/vans" element={<Vans />} />
-          <Route path="/remorques" element={<Remorques />} />
-          <Route path="/occasions" element={<Occasions />} />
-          <Route path="/neufs" element={<Index />} />
-          <Route path="/expertise" element={<Index />} />
-          <Route path="/financement" element={<Index />} />
-          <Route path="/assurance" element={<Index />} />
-          <Route path="/garantie" element={<Index />} />
-          <Route path="/sav" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </TranslationProvider>
-</QueryClientProvider>
+            {/* Redirect root to French */}
+            <Route path="/" element={<Navigate to="/fr" replace />} />
+            
+            {/* French routes */}
+            <Route path="/fr" element={<Index />} />
+            <Route path="/fr/camions-chevaux" element={<Camions />} />
+            <Route path="/fr/vans-chevaux" element={<Vans />} />
+            <Route path="/fr/remorques-chevaux" element={<Remorques />} />
+            <Route path="/fr/a-propos" element={<About />} />
+            <Route path="/fr/contact" element={<Contact />} />
+            <Route path="/fr/demande-devis" element={<DemandeDevis />} />
+            <Route path="/fr/occasions" element={<Occasions />} />
+            
+            {/* English routes */}
+            <Route path="/en" element={<Index />} />
+            <Route path="/en/horse-trucks" element={<Camions />} />
+            <Route path="/en/horse-vans" element={<Vans />} />
+            <Route path="/en/horse-trailers" element={<Remorques />} />
+            <Route path="/en/about" element={<About />} />
+            <Route path="/en/contact" element={<Contact />} />
+            <Route path="/en/quote" element={<DemandeDevis />} />
+            <Route path="/en/used-vehicles" element={<Occasions />} />
+            
+            {/* Spanish routes */}
+            <Route path="/es" element={<Index />} />
+            <Route path="/es/camiones-para-caballos" element={<Camions />} />
+            <Route path="/es/furgonetas-para-caballos" element={<Vans />} />
+            <Route path="/es/remolques-para-caballos" element={<Remorques />} />
+            <Route path="/es/acerca-de" element={<About />} />
+            <Route path="/es/contacto" element={<Contact />} />
+            <Route path="/es/presupuesto" element={<DemandeDevis />} />
+            <Route path="/es/ocasiones" element={<Occasions />} />
+            
+            {/* German routes */}
+            <Route path="/de" element={<Index />} />
+            <Route path="/de/pferdetransporter" element={<Camions />} />
+            <Route path="/de/pferde-vans" element={<Vans />} />
+            <Route path="/de/pferde-anhaenger" element={<Remorques />} />
+            <Route path="/de/ueber-uns" element={<About />} />
+            <Route path="/de/kontakt" element={<Contact />} />
+            <Route path="/de/angebot" element={<DemandeDevis />} />
+            <Route path="/de/gebrauchte" element={<Occasions />} />
+            
+            {/* Legacy redirects (without language prefix) */}
+            <Route path="/camions" element={<Navigate to="/fr/camions-chevaux" replace />} />
+            <Route path="/vans" element={<Navigate to="/fr/vans-chevaux" replace />} />
+            <Route path="/remorques" element={<Navigate to="/fr/remorques-chevaux" replace />} />
+            <Route path="/about" element={<Navigate to="/fr/a-propos" replace />} />
+            <Route path="/contact" element={<Navigate to="/fr/contact" replace />} />
+            <Route path="/devis" element={<Navigate to="/fr/demande-devis" replace />} />
+            <Route path="/occasions" element={<Navigate to="/fr/occasions" replace />} />
+            
+            {/* Catch-all */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </TooltipProvider>
+      </TranslationProvider>
+    </BrowserRouter>
+  </QueryClientProvider>
 );
 
 export default App;

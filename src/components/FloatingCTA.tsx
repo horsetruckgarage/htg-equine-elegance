@@ -2,15 +2,16 @@ import { MessageCircle, Phone, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useTranslation } from "@/hooks/useTranslation";
+import { getLocalizedPath } from "@/hooks/useLocalizedRouting";
 
 const FloatingCTA = () => {
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
   
   return (
     <>
       {/* Floating CTA Button */}
       <div className="fixed bottom-6 right-6 z-50">
-        <Link to="/devis">
+        <Link to={getLocalizedPath("/devis", language)}>
           <Button 
             className="htg-button-primary shadow-luxury text-lg px-6 py-4 animate-pulse-glow"
             size="lg"

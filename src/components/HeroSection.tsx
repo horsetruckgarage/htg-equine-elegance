@@ -5,6 +5,7 @@ import Autoplay from "embla-carousel-autoplay";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "@/hooks/useTranslation";
+import { getLocalizedPath } from "@/hooks/useLocalizedRouting";
 import heroTruck from "@/assets/hero-truck.jpg";
 import heroTruck2 from "@/assets/hero-truck-2.jpg";
 import heroVan from "@/assets/hero-van.jpg";
@@ -13,7 +14,7 @@ import heroTrailer from "@/assets/hero-trailer.jpg";
 const HeroSection = () => {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
 
   const slides = [
     {
@@ -111,7 +112,7 @@ const HeroSection = () => {
                       <p className="text-white/80 text-sm font-medium">Recevez votre offre personnalisée en moins de 24h – Sans engagement</p>
                     </div>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in">
-                      <Link to="/devis">
+                      <Link to={getLocalizedPath("/devis", language)}>
                         <Button 
                           size="lg"
                           className="htg-button-primary group px-8 py-4 text-lg font-semibold shadow-2xl hover:shadow-copper/50 transition-all duration-300 w-full sm:w-auto"

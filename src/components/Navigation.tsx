@@ -3,19 +3,20 @@ import { Menu, X, Phone, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useTranslation } from "@/hooks/useTranslation";
+import { getLocalizedPath } from "@/hooks/useLocalizedRouting";
 import LanguageSelector from "@/components/LanguageSelector";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
 
   const navItems = [
-    { name: t.nav.home, href: "/" },
-    { name: t.nav.horseTrucks, href: "/camions" },
-    { name: t.nav.horseVans, href: "/vans" },
-    { name: t.nav.horseTrailers, href: "/remorques" },
-    { name: t.nav.about, href: "/about" },
-    { name: t.nav.contact, href: "/contact" },
+    { name: t.nav.home, href: getLocalizedPath("/", language) },
+    { name: t.nav.horseTrucks, href: getLocalizedPath("/camions", language) },
+    { name: t.nav.horseVans, href: getLocalizedPath("/vans", language) },
+    { name: t.nav.horseTrailers, href: getLocalizedPath("/remorques", language) },
+    { name: t.nav.about, href: getLocalizedPath("/about", language) },
+    { name: t.nav.contact, href: getLocalizedPath("/contact", language) },
   ];
 
   return (
@@ -23,7 +24,7 @@ const Navigation = () => {
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <div className="flex items-center space-x-3">
+          <Link to={getLocalizedPath("/", language)} className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
             <img 
               src="/lovable-uploads/a0f80a95-a142-4cef-ae8c-1b305dc07a0e.png" 
               alt="HTG Horse Truck Garage" 
@@ -33,7 +34,7 @@ const Navigation = () => {
               <h1 className="text-xl font-bold text-copper">HTG</h1>
               <p className="text-xs text-gray-600">Horse Truck Garage</p>
             </div>
-          </div>
+          </Link>
 
           {/* Navigation Desktop */}
           <div className="hidden lg:flex items-center space-x-8">
@@ -51,20 +52,23 @@ const Navigation = () => {
           {/* Actions */}
           <div className="hidden md:flex items-center space-x-4">
             <LanguageSelector />
-            <Link to="/devis">
+            <Link to={getLocalizedPath("/devis", language)}>
               <Button className="htg-button-primary">
                 {t.nav.getQuote}
               </Button>
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden p-2 text-copper hover:text-gold-matte transition-colors"
-          >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          {/* Mobile Actions */}
+          <div className="flex md:hidden items-center space-x-3">
+            <LanguageSelector />
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="p-2 text-copper hover:text-gold-matte transition-colors"
+            >
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
@@ -81,11 +85,8 @@ const Navigation = () => {
                   {item.name}
                 </Link>
               ))}
-              <div className="pt-4 space-y-3">
-                <div className="flex justify-center">
-                  <LanguageSelector />
-                </div>
-                <Link to="/devis">
+              <div className="pt-4">
+                <Link to={getLocalizedPath("/devis", language)}>
                   <Button className="w-full htg-button-primary">
                     {t.nav.getQuote}
                   </Button>
