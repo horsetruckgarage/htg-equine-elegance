@@ -2,7 +2,6 @@ import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
 import VehicleCategories from "@/components/VehicleCategories";
 import OffresEtVehicules from "@/components/OffresEtVehicules";
-import ConfianceEtContact from "@/components/ConfianceEtContact";
 import Footer from "@/components/Footer";
 import FloatingCTA from "@/components/FloatingCTA";
 
@@ -13,7 +12,6 @@ const Index = () => {
       <HeroSection />
       <VehicleCategories />
       <OffresEtVehicules />
-      <ConfianceEtContact />
       <Footer />
       <FloatingCTA />
     </div>
