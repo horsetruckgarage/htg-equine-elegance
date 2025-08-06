@@ -46,21 +46,21 @@ const Contact = () => {
   const services = [
     {
       icon: Car,
-      title: "Expertise Véhicule",
-      description: "Contrôle technique complet avant achat",
-      duration: "Sous 48h"
+      title: t.contactPage.services.expertise.title,
+      description: t.contactPage.services.expertise.description,
+      duration: t.contactPage.services.expertise.duration
     },
     {
       icon: Calculator,
-      title: "Simulation Financement",
-      description: "Calculez vos mensualités en temps réel",
-      duration: "Immédiat"
+      title: t.contactPage.services.financing.title,
+      description: t.contactPage.services.financing.description,
+      duration: t.contactPage.services.financing.duration
     },
     {
       icon: MessageSquare,
-      title: "Conseil Personnalisé",
-      description: "Aide au choix selon vos besoins",
-      duration: "30 min"
+      title: t.contactPage.services.advice.title,
+      description: t.contactPage.services.advice.description,
+      duration: t.contactPage.services.advice.duration
     }
   ];
 
@@ -92,8 +92,8 @@ const Contact = () => {
         <div className="container mx-auto px-6">
           <div className="text-center mb-16 space-y-4">
             <h2 className="text-3xl lg:text-4xl font-bold">
-              <span className="text-foreground">Comment Nous</span>
-              <span className="htg-text-gradient"> Joindre ?</span>
+              <span className="text-foreground">{t.contactPage.contactMethods.title}</span>
+              <span className="htg-text-gradient"> {t.contactPage.contactMethods.subtitle}</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Choisissez le canal de communication qui vous convient
@@ -130,11 +130,11 @@ const Contact = () => {
             <div className="space-y-8">
               <div className="space-y-4">
                 <h2 className="text-3xl font-bold">
-                  <span className="text-foreground">Informations</span>
-                  <span className="htg-text-gradient"> Pratiques</span>
+                  <span className="text-foreground">{t.contactPage.contactInfo.title}</span>
+                  <span className="htg-text-gradient"> {t.contactPage.contactInfo.subtitle}</span>
                 </h2>
                 <p className="text-lg text-muted-foreground">
-                  Retrouvez-nous dans notre showroom ou contactez-nous directement.
+                  {t.contactPage.contactInfo.description}
                 </p>
               </div>
 
@@ -144,11 +144,14 @@ const Contact = () => {
                     <MapPin className="w-6 h-6 text-copper" />
                   </div>
                   <div className="space-y-1">
-                    <h4 className="font-semibold text-foreground">Adresse</h4>
+                    <h4 className="font-semibold text-foreground">{t.contactPage.contactInfo.address.title}</h4>
                     <p className="text-muted-foreground">
-                      Zone Industrielle de la Forêt<br />
-                      123 Rue des Chevaux<br />
-                      45000 Orléans, France
+                      {t.contactPage.contactInfo.address.value.split('\n').map((line, index) => (
+                        <span key={index}>
+                          {line}
+                          {index < t.contactPage.contactInfo.address.value.split('\n').length - 1 && <br />}
+                        </span>
+                      ))}
                     </p>
                   </div>
                 </div>
@@ -158,11 +161,11 @@ const Contact = () => {
                     <Clock className="w-6 h-6 text-copper" />
                   </div>
                   <div className="space-y-1">
-                    <h4 className="font-semibold text-foreground">Horaires</h4>
+                    <h4 className="font-semibold text-foreground">{t.contactPage.contactInfo.hours.title}</h4>
                     <div className="text-muted-foreground space-y-1">
-                      <p>Lundi - Vendredi : 8h - 18h</p>
-                      <p>Samedi : 9h - 17h</p>
-                      <p>Dimanche : Sur rendez-vous</p>
+                      <p>{t.contactPage.contactInfo.hours.weekdays}</p>
+                      <p>{t.contactPage.contactInfo.hours.saturday}</p>
+                      <p>{t.contactPage.contactInfo.hours.sunday}</p>
                     </div>
                   </div>
                 </div>
@@ -172,8 +175,8 @@ const Contact = () => {
                     <Phone className="w-6 h-6 text-copper" />
                   </div>
                   <div className="space-y-1">
-                    <h4 className="font-semibold text-foreground">Téléphone</h4>
-                    <p className="text-muted-foreground">01 23 45 67 89</p>
+                    <h4 className="font-semibold text-foreground">{t.contactPage.contactInfo.phone.title}</h4>
+                    <p className="text-muted-foreground">{t.contactPage.contactInfo.phone.value}</p>
                   </div>
                 </div>
 
@@ -182,15 +185,15 @@ const Contact = () => {
                     <Mail className="w-6 h-6 text-copper" />
                   </div>
                   <div className="space-y-1">
-                    <h4 className="font-semibold text-foreground">Email</h4>
-                    <p className="text-muted-foreground">contact@htg-france.com</p>
+                    <h4 className="font-semibold text-foreground">{t.contactPage.contactInfo.email.title}</h4>
+                    <p className="text-muted-foreground">{t.contactPage.contactInfo.email.value}</p>
                   </div>
                 </div>
               </div>
 
               {/* Services Quick Access */}
               <div className="space-y-6">
-                <h3 className="text-xl font-bold text-foreground">Services Express</h3>
+                <h3 className="text-xl font-bold text-foreground">{t.contactPage.services.title}</h3>
                 <div className="space-y-4">
                   {services.map((service, index) => {
                     const IconComponent = service.icon;
@@ -213,79 +216,79 @@ const Contact = () => {
             <div className="htg-card p-8">
               <div className="space-y-6">
                 <div className="space-y-2">
-                  <h3 className="text-2xl font-bold text-foreground">Demande de Contact</h3>
+                  <h3 className="text-2xl font-bold text-foreground">{t.contactPage.form.title}</h3>
                   <p className="text-muted-foreground">
-                    Remplissez ce formulaire et recevez une réponse personnalisée sous 24h.
+                    {t.contactPage.form.description}
                   </p>
                 </div>
 
                 <form className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <label className="text-sm font-medium text-foreground">Prénom *</label>
-                      <Input placeholder="Votre prénom" />
+                      <label className="text-sm font-medium text-foreground">{t.contactPage.form.firstName}</label>
+                      <Input placeholder={t.contactPage.form.firstNamePlaceholder} />
                     </div>
                     <div className="space-y-2">
-                      <label className="text-sm font-medium text-foreground">Nom *</label>
-                      <Input placeholder="Votre nom" />
+                      <label className="text-sm font-medium text-foreground">{t.contactPage.form.lastName}</label>
+                      <Input placeholder={t.contactPage.form.lastNamePlaceholder} />
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-foreground">Email *</label>
-                    <Input type="email" placeholder="votre@email.com" />
+                    <label className="text-sm font-medium text-foreground">{t.contactPage.form.email}</label>
+                    <Input type="email" placeholder={t.contactPage.form.emailPlaceholder} />
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-foreground">Téléphone</label>
-                    <Input placeholder="06 12 34 56 78" />
+                    <label className="text-sm font-medium text-foreground">{t.contactPage.form.phone}</label>
+                    <Input placeholder={t.contactPage.form.phonePlaceholder} />
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-foreground">Type de véhicule recherché</label>
+                    <label className="text-sm font-medium text-foreground">{t.contactPage.form.vehicleType}</label>
                     <Select>
                       <SelectTrigger>
-                        <SelectValue placeholder="Sélectionnez un type" />
+                        <SelectValue placeholder={t.contactPage.form.vehicleTypePlaceholder} />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="camion">Camion Chevaux</SelectItem>
-                        <SelectItem value="van">Van Chevaux</SelectItem>
-                        <SelectItem value="remorque">Remorque Chevaux</SelectItem>
-                        <SelectItem value="autre">Autre / Conseil</SelectItem>
+                        <SelectItem value="camion">{t.contactPage.form.vehicleTypes.truck}</SelectItem>
+                        <SelectItem value="van">{t.contactPage.form.vehicleTypes.van}</SelectItem>
+                        <SelectItem value="remorque">{t.contactPage.form.vehicleTypes.trailer}</SelectItem>
+                        <SelectItem value="autre">{t.contactPage.form.vehicleTypes.other}</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-foreground">Budget estimé</label>
+                    <label className="text-sm font-medium text-foreground">{t.contactPage.form.budget}</label>
                     <Select>
                       <SelectTrigger>
-                        <SelectValue placeholder="Sélectionnez votre budget" />
+                        <SelectValue placeholder={t.contactPage.form.budgetPlaceholder} />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="moins-30k">Moins de 30 000€</SelectItem>
-                        <SelectItem value="30k-50k">30 000€ - 50 000€</SelectItem>
-                        <SelectItem value="50k-80k">50 000€ - 80 000€</SelectItem>
-                        <SelectItem value="80k-plus">Plus de 80 000€</SelectItem>
+                        <SelectItem value="moins-30k">{t.contactPage.form.budgetRanges.under30k}</SelectItem>
+                        <SelectItem value="30k-50k">{t.contactPage.form.budgetRanges.range30k50k}</SelectItem>
+                        <SelectItem value="50k-80k">{t.contactPage.form.budgetRanges.range50k80k}</SelectItem>
+                        <SelectItem value="80k-plus">{t.contactPage.form.budgetRanges.over80k}</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-foreground">Message *</label>
+                    <label className="text-sm font-medium text-foreground">{t.contactPage.form.message}</label>
                     <Textarea 
-                      placeholder="Décrivez-nous votre projet, vos besoins spécifiques, le nombre de chevaux à transporter..."
+                      placeholder={t.contactPage.form.messagePlaceholder}
                       rows={4}
                     />
                   </div>
 
                   <div className="space-y-4">
                     <div className="text-center space-y-2">
-                      <p className="text-copper font-medium">Recevez votre réponse personnalisée en moins de 24h</p>
-                      <p className="text-sm text-muted-foreground">Sans engagement • Conseil gratuit</p>
+                      <p className="text-copper font-medium">{t.contactPage.form.responseTime}</p>
+                      <p className="text-sm text-muted-foreground">{t.contactPage.form.noCommitment}</p>
                     </div>
                     <Button className="htg-button-primary w-full text-lg py-3">
-                      Envoyer ma Demande
+                      {t.contactPage.form.submitButton}
                     </Button>
                   </div>
                 </form>
