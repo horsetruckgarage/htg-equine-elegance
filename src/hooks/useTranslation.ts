@@ -570,6 +570,67 @@ export interface Translations {
       required: string;
     };
   };
+
+  // Quote Page
+  quotePage: {
+    benefits: {
+      response24h: {
+        title: string;
+        description: string;
+      };
+      free: {
+        title: string;
+        description: string;
+      };
+      expertise: {
+        title: string;
+        description: string;
+      };
+    };
+    hero: {
+      badge: string;
+      title1: string;
+      title2: string;
+      description: string;
+    };
+    form: {
+      title: string;
+      subtitle: string;
+      // Réutilise les champs du formulaire de contact
+      fields: {
+        firstName: string;
+        lastName: string;
+        email: string;
+        phone: string;
+        vehicleType: string;
+        budget: string;
+        message: string;
+      };
+      placeholders: {
+        firstName: string;
+        lastName: string;
+        email: string;
+        phone: string;
+        vehicleTypeSelect: string;
+        budgetSelect: string;
+        message: string;
+      };
+      vehicleTypes: {
+        truck: string;
+        van: string;
+        trailer: string;
+        other: string;
+      };
+      budgetRanges: {
+        under30k: string;
+        range30to50k: string;
+        range50to80k: string;
+        over80k: string;
+      };
+      submitButton: string;
+      required: string;
+    };
+  };
 }
 
 const translations: Record<Language, Translations> = {
@@ -1194,6 +1255,35 @@ const translations: Record<Language, Translations> = {
         submitButton: "Envoyer ma Demande",
         required: "*"
       }
+    },
+    quotePage: {
+      benefits: {
+        response24h: { title: "Réponse Sous 24h", description: "Votre devis personnalisé dans votre boîte mail" },
+        free: { title: "100% Gratuit", description: "Aucun frais, aucun engagement de votre part" },
+        expertise: { title: "Prix Transparent", description: "Tous les coûts inclus, aucune surprise" }
+      },
+      hero: {
+        badge: "Devis Gratuit",
+        title1: "Obtenez Votre Devis",
+        title2: "Personnalisé",
+        description: "Recevez une estimation précise pour votre véhicule de transport équin en moins de 24h."
+      },
+      form: {
+        title: "Formulaire de Demande",
+        subtitle: "Complétez ce formulaire pour recevoir votre devis personnalisé",
+        fields: {
+          firstName: "Prénom", lastName: "Nom", email: "Email", phone: "Téléphone",
+          vehicleType: "Type de véhicule", budget: "Budget estimé", message: "Message"
+        },
+        placeholders: {
+          firstName: "Votre prénom", lastName: "Votre nom", email: "votre@email.com", phone: "06 12 34 56 78",
+          vehicleTypeSelect: "Sélectionnez un type", budgetSelect: "Sélectionnez votre budget",
+          message: "Décrivez vos besoins..."
+        },
+        vehicleTypes: { truck: "Camion Chevaux", van: "Van Chevaux", trailer: "Remorque Chevaux", other: "Autre" },
+        budgetRanges: { under30k: "Moins de 30 000€", range30to50k: "30 000€ - 50 000€", range50to80k: "50 000€ - 80 000€", over80k: "Plus de 80 000€" },
+        submitButton: "Demander mon Devis", required: "*"
+      }
     }
   },
   en: {
@@ -1817,6 +1907,35 @@ const translations: Record<Language, Translations> = {
         submitButton: "Send My Request",
         required: "*"
       }
+    },
+    quotePage: {
+      benefits: {
+        response24h: { title: "Response Within 24h", description: "Your personalized quote in your mailbox" },
+        free: { title: "100% Free", description: "No fees, no commitment on your part" },
+        expertise: { title: "Transparent Pricing", description: "All costs included, no surprises" }
+      },
+      hero: {
+        badge: "Free Quote",
+        title1: "Get Your",
+        title2: "Personalized Quote",
+        description: "Receive an accurate estimate for your equestrian transport vehicle in less than 24h."
+      },
+      form: {
+        title: "Request Form",
+        subtitle: "Complete this form to receive your personalized quote",
+        fields: {
+          firstName: "First Name", lastName: "Last Name", email: "Email", phone: "Phone",
+          vehicleType: "Vehicle type", budget: "Estimated budget", message: "Message"
+        },
+        placeholders: {
+          firstName: "Your first name", lastName: "Your last name", email: "your@email.com", phone: "06 12 34 56 78",
+          vehicleTypeSelect: "Select a type", budgetSelect: "Select your budget",
+          message: "Describe your needs..."
+        },
+        vehicleTypes: { truck: "Horse Truck", van: "Horse Van", trailer: "Horse Trailer", other: "Other" },
+        budgetRanges: { under30k: "Less than €30,000", range30to50k: "€30,000 - €50,000", range50to80k: "€50,000 - €80,000", over80k: "More than €80,000" },
+        submitButton: "Request My Quote", required: "*"
+      }
     }
   },
   es: {
@@ -2390,6 +2509,35 @@ const translations: Record<Language, Translations> = {
         submitButton: "Enviar mi Solicitud",
         required: "*"
       }
+    },
+    quotePage: {
+      benefits: {
+        response24h: { title: "Respuesta en 24h", description: "Tu presupuesto personalizado en tu buzón" },
+        free: { title: "100% Gratuito", description: "Sin costos, sin compromiso de tu parte" },
+        expertise: { title: "Precio Transparente", description: "Todos los costos incluidos, sin sorpresas" }
+      },
+      hero: {
+        badge: "Presupuesto Gratuito",
+        title1: "Obtén Tu",
+        title2: "Presupuesto Personalizado",
+        description: "Recibe una estimación precisa para tu vehículo de transporte ecuestre en menos de 24h."
+      },
+      form: {
+        title: "Formulario de Solicitud",
+        subtitle: "Completa este formulario para recibir tu presupuesto personalizado",
+        fields: {
+          firstName: "Nombre", lastName: "Apellido", email: "Email", phone: "Teléfono",
+          vehicleType: "Tipo de vehículo", budget: "Presupuesto estimado", message: "Mensaje"
+        },
+        placeholders: {
+          firstName: "Tu nombre", lastName: "Tu apellido", email: "tu@email.com", phone: "06 12 34 56 78",
+          vehicleTypeSelect: "Selecciona un tipo", budgetSelect: "Selecciona tu presupuesto",
+          message: "Describe tus necesidades..."
+        },
+        vehicleTypes: { truck: "Camión para Caballos", van: "Furgoneta para Caballos", trailer: "Remolque para Caballos", other: "Otro" },
+        budgetRanges: { under30k: "Menos de 30.000€", range30to50k: "30.000€ - 50.000€", range50to80k: "50.000€ - 80.000€", over80k: "Más de 80.000€" },
+        submitButton: "Solicitar mi Presupuesto", required: "*"
+      }
     }
   },
   de: {
@@ -2894,6 +3042,35 @@ const translations: Record<Language, Translations> = {
         submitSubtitle: "Unverbindlich • Kostenlose Beratung",
         submitButton: "Meine Anfrage senden",
         required: "*"
+      }
+    },
+    quotePage: {
+      benefits: {
+        response24h: { title: "Antwort innerhalb 24h", description: "Ihr persönliches Angebot in Ihrem Postfach" },
+        free: { title: "100% Kostenlos", description: "Keine Gebühren, keine Verpflichtung Ihrerseits" },
+        expertise: { title: "Transparente Preise", description: "Alle Kosten enthalten, keine Überraschungen" }
+      },
+      hero: {
+        badge: "Kostenloses Angebot",
+        title1: "Erhalten Sie Ihr",
+        title2: "Persönliches Angebot",
+        description: "Erhalten Sie eine genaue Schätzung für Ihr Reitfahrzeug in weniger als 24h."
+      },
+      form: {
+        title: "Anfrageformular",
+        subtitle: "Füllen Sie dieses Formular aus, um Ihr persönliches Angebot zu erhalten",
+        fields: {
+          firstName: "Vorname", lastName: "Nachname", email: "E-Mail", phone: "Telefon",
+          vehicleType: "Fahrzeugtyp", budget: "Geschätztes Budget", message: "Nachricht"
+        },
+        placeholders: {
+          firstName: "Ihr Vorname", lastName: "Ihr Nachname", email: "ihre@email.com", phone: "06 12 34 56 78",
+          vehicleTypeSelect: "Typ auswählen", budgetSelect: "Budget auswählen",
+          message: "Beschreiben Sie Ihre Bedürfnisse..."
+        },
+        vehicleTypes: { truck: "Pferdetransporter", van: "Pferde-Van", trailer: "Pferdeanhänger", other: "Andere" },
+        budgetRanges: { under30k: "Weniger als 30.000€", range30to50k: "30.000€ - 50.000€", range50to80k: "50.000€ - 80.000€", over80k: "Mehr als 80.000€" },
+        submitButton: "Mein Angebot anfordern", required: "*"
       }
     }
   }

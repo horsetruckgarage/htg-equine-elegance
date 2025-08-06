@@ -13,18 +13,18 @@ const DemandeDevis = () => {
   const benefits = [
     {
       icon: Clock,
-      title: "Réponse Sous 24h",
-      description: "Votre devis personnalisé dans votre boîte mail"
+      title: t.quotePage.benefits.response24h.title,
+      description: t.quotePage.benefits.response24h.description
     },
     {
       icon: Calculator,
-      title: "100% Gratuit",
-      description: "Aucun frais, aucun engagement de votre part"
+      title: t.quotePage.benefits.free.title,
+      description: t.quotePage.benefits.free.description
     },
     {
       icon: Shield,
-      title: "Prix Transparent",
-      description: "Tous les coûts inclus, aucune surprise"
+      title: t.quotePage.benefits.expertise.title,
+      description: t.quotePage.benefits.expertise.description
     },
     {
       icon: CheckCircle,
