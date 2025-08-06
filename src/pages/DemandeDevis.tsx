@@ -161,10 +161,10 @@ const DemandeDevis = () => {
             <div className="htg-card p-8 lg:p-12">
               <div className="text-center mb-8">
                 <h2 className="text-3xl font-bold text-foreground mb-4">
-                  Formulaire de Demande de Devis
+                  {t.quotePage.form.title}
                 </h2>
                 <p className="text-lg text-muted-foreground">
-                  Plus vous nous donnez d'informations, plus votre devis sera précis et adapté
+                  {t.quotePage.form.subtitle}
                 </p>
               </div>
 
@@ -172,35 +172,35 @@ const DemandeDevis = () => {
                 {/* Personal Info */}
                 <div className="space-y-6">
                   <h3 className="text-xl font-semibold text-foreground border-b border-border pb-2">
-                    📋 Vos Informations
+                    {t.quotePage.form.personalInfo}
                   </h3>
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <label className="text-sm font-medium text-foreground">Prénom *</label>
-                      <Input placeholder="Votre prénom" required />
+                      <label className="text-sm font-medium text-foreground">{t.quotePage.form.fields.firstName} *</label>
+                      <Input placeholder={t.quotePage.form.placeholders.firstName} required />
                     </div>
                     <div className="space-y-2">
-                      <label className="text-sm font-medium text-foreground">Nom *</label>
-                      <Input placeholder="Votre nom" required />
+                      <label className="text-sm font-medium text-foreground">{t.quotePage.form.fields.lastName} *</label>
+                      <Input placeholder={t.quotePage.form.placeholders.lastName} required />
                     </div>
                   </div>
                   
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <label className="text-sm font-medium text-foreground">Email *</label>
-                      <Input type="email" placeholder="votre@email.com" required />
+                      <label className="text-sm font-medium text-foreground">{t.quotePage.form.fields.email} *</label>
+                      <Input type="email" placeholder={t.quotePage.form.placeholders.email} required />
                     </div>
                     <div className="space-y-2">
-                      <label className="text-sm font-medium text-foreground">Téléphone</label>
-                      <Input placeholder="06 12 34 56 78" />
+                      <label className="text-sm font-medium text-foreground">{t.quotePage.form.fields.phone}</label>
+                      <Input placeholder={t.quotePage.form.placeholders.phone} />
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-foreground">Région</label>
+                    <label className="text-sm font-medium text-foreground">{t.quotePage.form.fields.region}</label>
                     <div className="flex items-center space-x-2">
                       <MapPin className="w-4 h-4 text-copper" />
-                      <Input placeholder="Votre région (pour optimiser la livraison)" />
+                      <Input placeholder={t.quotePage.form.placeholders.region} />
                     </div>
                   </div>
                 </div>
@@ -208,38 +208,38 @@ const DemandeDevis = () => {
                 {/* Vehicle Requirements */}
                 <div className="space-y-6">
                   <h3 className="text-xl font-semibold text-foreground border-b border-border pb-2">
-                    🚗 Votre Véhicule Idéal
+                    {t.quotePage.form.vehicleRequirements}
                   </h3>
                   
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <label className="text-sm font-medium text-foreground">Type de véhicule *</label>
+                      <label className="text-sm font-medium text-foreground">{t.quotePage.form.fields.vehicleType} *</label>
                       <Select required>
                         <SelectTrigger>
-                          <SelectValue placeholder="Choisissez le type" />
+                          <SelectValue placeholder={t.quotePage.form.placeholders.vehicleTypeSelect} />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="camion">Camion Chevaux</SelectItem>
-                          <SelectItem value="van">Van Chevaux</SelectItem>
-                          <SelectItem value="remorque">Remorque Chevaux</SelectItem>
-                          <SelectItem value="hesitant">Je ne sais pas encore</SelectItem>
+                          <SelectItem value="camion">{t.quotePage.form.options.vehicleTypes.truck}</SelectItem>
+                          <SelectItem value="van">{t.quotePage.form.options.vehicleTypes.van}</SelectItem>
+                          <SelectItem value="remorque">{t.quotePage.form.options.vehicleTypes.trailer}</SelectItem>
+                          <SelectItem value="hesitant">{t.quotePage.form.options.vehicleTypes.unsure}</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
                     
                     <div className="space-y-2">
-                      <label className="text-sm font-medium text-foreground">Nombre de chevaux à transporter *</label>
+                      <label className="text-sm font-medium text-foreground">{t.quotePage.form.fields.horsesNumber} *</label>
                       <Select required>
                         <SelectTrigger>
-                          <SelectValue placeholder="Sélectionnez" />
+                          <SelectValue placeholder={t.quotePage.form.placeholders.horsesSelect} />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="1">1 cheval</SelectItem>
-                          <SelectItem value="2">2 chevaux</SelectItem>
-                          <SelectItem value="3">3 chevaux</SelectItem>
-                          <SelectItem value="4">4 chevaux</SelectItem>
-                          <SelectItem value="5">5 chevaux</SelectItem>
-                          <SelectItem value="6+">6 chevaux et plus</SelectItem>
+                          <SelectItem value="1">{t.quotePage.form.options.horsesNumber.one}</SelectItem>
+                          <SelectItem value="2">{t.quotePage.form.options.horsesNumber.two}</SelectItem>
+                          <SelectItem value="3">{t.quotePage.form.options.horsesNumber.three}</SelectItem>
+                          <SelectItem value="4">{t.quotePage.form.options.horsesNumber.four}</SelectItem>
+                          <SelectItem value="5">{t.quotePage.form.options.horsesNumber.five}</SelectItem>
+                          <SelectItem value="6+">{t.quotePage.form.options.horsesNumber.sixPlus}</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
@@ -247,32 +247,32 @@ const DemandeDevis = () => {
 
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <label className="text-sm font-medium text-foreground">État souhaité</label>
+                      <label className="text-sm font-medium text-foreground">{t.quotePage.form.fields.condition}</label>
                       <Select>
                         <SelectTrigger>
-                          <SelectValue placeholder="Neuf ou occasion ?" />
+                          <SelectValue placeholder={t.quotePage.form.placeholders.conditionSelect} />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="neuf">Neuf uniquement</SelectItem>
-                          <SelectItem value="occasion">Occasion acceptée</SelectItem>
-                          <SelectItem value="indifferent">Indifférent</SelectItem>
+                          <SelectItem value="neuf">{t.quotePage.form.options.condition.new}</SelectItem>
+                          <SelectItem value="occasion">{t.quotePage.form.options.condition.used}</SelectItem>
+                          <SelectItem value="indifferent">{t.quotePage.form.options.condition.indifferent}</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
                     
                     <div className="space-y-2">
-                      <label className="text-sm font-medium text-foreground">Budget approximatif</label>
+                      <label className="text-sm font-medium text-foreground">{t.quotePage.form.fields.budget}</label>
                       <Select>
                         <SelectTrigger>
-                          <SelectValue placeholder="Votre fourchette de prix" />
+                          <SelectValue placeholder={t.quotePage.form.placeholders.budgetSelect} />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="moins-30k">Moins de 30 000€</SelectItem>
-                          <SelectItem value="30k-50k">30 000€ - 50 000€</SelectItem>
-                          <SelectItem value="50k-80k">50 000€ - 80 000€</SelectItem>
-                          <SelectItem value="80k-120k">80 000€ - 120 000€</SelectItem>
-                          <SelectItem value="120k-plus">Plus de 120 000€</SelectItem>
-                          <SelectItem value="pas-de-budget">Pas de budget défini</SelectItem>
+                          <SelectItem value="moins-30k">{t.quotePage.form.options.budget.under30k}</SelectItem>
+                          <SelectItem value="30k-50k">{t.quotePage.form.options.budget.range30to50k}</SelectItem>
+                          <SelectItem value="50k-80k">{t.quotePage.form.options.budget.range50to80k}</SelectItem>
+                          <SelectItem value="80k-120k">{t.quotePage.form.options.budget.range80to120k}</SelectItem>
+                          <SelectItem value="120k-plus">{t.quotePage.form.options.budget.over120k}</SelectItem>
+                          <SelectItem value="pas-de-budget">{t.quotePage.form.options.budget.noBudget}</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
@@ -282,38 +282,28 @@ const DemandeDevis = () => {
                 {/* Usage & Features */}
                 <div className="space-y-6">
                   <h3 className="text-xl font-semibold text-foreground border-b border-border pb-2">
-                    🎯 Utilisation & Équipements
+                    {t.quotePage.form.usageFeatures}
                   </h3>
                   
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-foreground">Utilisation principale</label>
+                    <label className="text-sm font-medium text-foreground">{t.quotePage.form.fields.usage}</label>
                     <Select>
                       <SelectTrigger>
-                        <SelectValue placeholder="Comment allez-vous utiliser le véhicule ?" />
+                        <SelectValue placeholder={t.quotePage.form.placeholders.usageSelect} />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="loisir">Loisir / Balades</SelectItem>
-                        <SelectItem value="competition">Compétition</SelectItem>
-                        <SelectItem value="professionnel">Usage professionnel</SelectItem>
-                        <SelectItem value="mixte">Usage mixte</SelectItem>
+                        <SelectItem value="loisir">{t.quotePage.form.options.usage.leisure}</SelectItem>
+                        <SelectItem value="competition">{t.quotePage.form.options.usage.competition}</SelectItem>
+                        <SelectItem value="professionnel">{t.quotePage.form.options.usage.professional}</SelectItem>
+                        <SelectItem value="mixte">{t.quotePage.form.options.usage.mixed}</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-foreground">Équipements souhaités</label>
+                    <label className="text-sm font-medium text-foreground">{t.quotePage.form.fields.equipment}</label>
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                      {[
-                        "Suspension pneumatique",
-                        "Climatisation",
-                        "Caméra de recul", 
-                        "Boîte automatique",
-                        "Cabine couchette",
-                        "Éclairage LED",
-                        "Plancher caoutchouc",
-                        "Ventilation chevaux",
-                        "Kit mains libres"
-                      ].map((equipment, idx) => (
+                      {t.quotePage.form.equipment.map((equipment, idx) => (
                         <label key={idx} className="flex items-center space-x-2 text-sm">
                           <input type="checkbox" className="rounded" />
                           <span>{equipment}</span>
@@ -326,30 +316,30 @@ const DemandeDevis = () => {
                 {/* Timeline & Message */}
                 <div className="space-y-6">
                   <h3 className="text-xl font-semibold text-foreground border-b border-border pb-2">
-                    💬 Informations Complémentaires
+                    {t.quotePage.form.additionalInfo}
                   </h3>
                   
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-foreground">Délai souhaité pour l'achat</label>
+                    <label className="text-sm font-medium text-foreground">{t.quotePage.form.fields.timeline}</label>
                     <Select>
                       <SelectTrigger>
-                        <SelectValue placeholder="Quand souhaitez-vous acquérir votre véhicule ?" />
+                        <SelectValue placeholder={t.quotePage.form.placeholders.timelineSelect} />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="immediat">Immédiatement</SelectItem>
-                        <SelectItem value="1-3mois">Dans 1 à 3 mois</SelectItem>
-                        <SelectItem value="3-6mois">Dans 3 à 6 mois</SelectItem>
-                        <SelectItem value="6-12mois">Dans 6 mois à 1 an</SelectItem>
-                        <SelectItem value="plus-1an">Plus d'1 an</SelectItem>
-                        <SelectItem value="information">Simple demande d'information</SelectItem>
+                        <SelectItem value="immediat">{t.quotePage.form.options.timeline.immediate}</SelectItem>
+                        <SelectItem value="1-3mois">{t.quotePage.form.options.timeline.oneToThreeMonths}</SelectItem>
+                        <SelectItem value="3-6mois">{t.quotePage.form.options.timeline.threeToSixMonths}</SelectItem>
+                        <SelectItem value="6-12mois">{t.quotePage.form.options.timeline.sixToTwelveMonths}</SelectItem>
+                        <SelectItem value="plus-1an">{t.quotePage.form.options.timeline.overOneYear}</SelectItem>
+                        <SelectItem value="information">{t.quotePage.form.options.timeline.information}</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-foreground">Message complémentaire</label>
+                    <label className="text-sm font-medium text-foreground">{t.quotePage.form.fields.message}</label>
                     <Textarea 
-                      placeholder="Décrivez-nous vos besoins spécifiques, contraintes particulières, questions sur le financement, etc."
+                      placeholder={t.quotePage.form.placeholders.message}
                       rows={4}
                     />
                   </div>
@@ -358,23 +348,22 @@ const DemandeDevis = () => {
                 {/* Submit */}
                 <div className="bg-copper/5 rounded-lg p-6 space-y-4">
                   <div className="text-center space-y-2">
-                    <h4 className="text-lg font-bold text-foreground">🎉 C'est Parti !</h4>
+                    <h4 className="text-lg font-bold text-foreground">{t.quotePage.form.submitSection.title}</h4>
                     <p className="text-sm text-muted-foreground">
-                      En soumettant ce formulaire, vous recevrez votre devis personnalisé sous 24h maximum.
-                      Un expert HTG vous contactera également pour affiner votre demande.
+                      {t.quotePage.form.submitSection.description}
                     </p>
                   </div>
                   
                   <div className="flex justify-center">
                     <Button className="htg-button-primary text-lg px-12 py-4 group">
                       <Calculator className="w-5 h-5 mr-2" />
-                      Recevoir Mon Devis Gratuit
+                      {t.quotePage.form.submitSection.button}
                       <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                     </Button>
                   </div>
                   
                   <div className="text-center text-xs text-muted-foreground">
-                    * Aucun engagement • Réponse garantie sous 24h • Service 100% gratuit
+                    {t.quotePage.form.submitSection.disclaimer}
                   </div>
                 </div>
               </form>
