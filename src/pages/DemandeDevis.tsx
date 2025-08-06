@@ -86,7 +86,7 @@ const DemandeDevis = () => {
               </div>
               <div className="flex items-center gap-2 bg-copper/10 rounded-full px-4 py-2">
                 <Shield className="w-4 h-4 text-copper" />
-                <span className="text-copper font-medium text-sm">Sans engagement</span>
+                <span className="text-copper font-medium text-sm">{t.quotePage.form.noCommitment}</span>
               </div>
             </div>
           </div>

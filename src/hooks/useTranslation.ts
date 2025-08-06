@@ -1263,7 +1263,6 @@ const translations: Record<Language, Translations> = {
         free: { title: "100% Gratuit", description: "Aucun frais, aucun engagement de votre part" },
         expertise: { title: "Prix Transparent", description: "Tous les coûts inclus, aucune surprise" }
       },
-      commitment: "Sans engagement",
       hero: {
         badge: "Devis Gratuit",
         title1: "Obtenez Votre Devis",
@@ -1277,6 +1276,7 @@ const translations: Record<Language, Translations> = {
           firstName: "Prénom", lastName: "Nom", email: "Email", phone: "Téléphone",
           vehicleType: "Type de véhicule", budget: "Budget estimé", message: "Message"
         },
+        noCommitment: "Sans engagement",
         placeholders: {
           firstName: "Votre prénom", lastName: "Votre nom", email: "votre@email.com", phone: "06 12 34 56 78",
           vehicleTypeSelect: "Sélectionnez un type", budgetSelect: "Sélectionnez votre budget",
@@ -1929,6 +1929,7 @@ const translations: Record<Language, Translations> = {
           firstName: "First Name", lastName: "Last Name", email: "Email", phone: "Phone",
           vehicleType: "Vehicle type", budget: "Estimated budget", message: "Message"
         },
+        noCommitment: "No commitment",
         placeholders: {
           firstName: "Your first name", lastName: "Your last name", email: "your@email.com", phone: "06 12 34 56 78",
           vehicleTypeSelect: "Select a type", budgetSelect: "Select your budget",
@@ -2531,6 +2532,7 @@ const translations: Record<Language, Translations> = {
           firstName: "Nombre", lastName: "Apellido", email: "Email", phone: "Teléfono",
           vehicleType: "Tipo de vehículo", budget: "Presupuesto estimado", message: "Mensaje"
         },
+        noCommitment: "Sin compromiso",
         placeholders: {
           firstName: "Tu nombre", lastName: "Tu apellido", email: "tu@email.com", phone: "06 12 34 56 78",
           vehicleTypeSelect: "Selecciona un tipo", budgetSelect: "Selecciona tu presupuesto",
@@ -3065,6 +3067,7 @@ const translations: Record<Language, Translations> = {
           firstName: "Vorname", lastName: "Nachname", email: "E-Mail", phone: "Telefon",
           vehicleType: "Fahrzeugtyp", budget: "Geschätztes Budget", message: "Nachricht"
         },
+        noCommitment: "Unverbindlich",
         placeholders: {
           firstName: "Ihr Vorname", lastName: "Ihr Nachname", email: "ihre@email.com", phone: "06 12 34 56 78",
           vehicleTypeSelect: "Typ auswählen", budgetSelect: "Budget auswählen",
