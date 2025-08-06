@@ -7,46 +7,88 @@ import { getLocalizedPath } from "@/hooks/useLocalizedRouting";
 
 const OffresEtVehicules = () => {
   const { t, language } = useTranslation();
+  
+  // Fallback pour les traductions manquantes
+  const features = (t as any).features || {
+    pneumaticSuspension: "Suspension pneumatique",
+    airConditioning: "Climatisation", 
+    sleepingCabin: "Cabine couchette",
+    automaticTransmission: "Boîte automatique",
+    nonSlipFlooring: "Plancher antidérapant",
+    ledLighting: "Éclairage LED",
+    ventilation: "Ventilation",
+    handsFreeeKit: "Kit mains libres",
+    aluminum: "Aluminium",
+    alkoSuspension: "Suspension ALKO",
+    rubberFlooring: "Plancher caoutchouc"
+  };
+  
+  const common = (t as any).common || {
+    horsesCapacity: "chevaux",
+    bestseller: "Bestseller",
+    onlyXDaysLeft: "Seulement quelques jours",
+    favorite: "Favoris",
+    newArrival: "Nouveauté", 
+    promotion: "Promotion",
+    premiumSelection: "Sélection Premium",
+    ourBest: "Nos Meilleures",
+    offersVehicles: "Offres & Véhicules",
+    discoverSelection: "Découvrez notre sélection de véhicules exceptionnels",
+    limitedOffer: "Offre limitée",
+    expertiseGuaranteed: "Expertise garantie",
+    featuredVehicles: "Véhicules en vedette",
+    moreEquipment: "équipements de plus",
+    savings: "Économies",
+    promotionalPrice: "Prix promotionnel",
+    financingAvailable: "Financement disponible",
+    viewDetails: "Voir détails",
+    discoverCharacteristics: "Découvrir les caractéristiques",
+    addToMySelection: "Ajouter à ma sélection",
+    viewAll: "Voir tous",
+    vehicles: "véhicules",
+    km: "km"
+  };
+
   const featuredVehicles = [
     {
       id: 1,
       title: "Iveco Daily 70C21",
-      category: t.categories.horseTrucks.title,
+      category: t.categories?.horseTrucks?.title || "Camions Chevaux",
       price: "79 900",
       originalPrice: "89 500",
       promo: true,
       promoText: "-11%",
       year: 2019,
       km: "125 000",
-      capacity: "4 " + t.common.horsesCapacity,
-      features: [t.features.pneumaticSuspension, t.features.airConditioning, t.features.sleepingCabin, t.features.automaticTransmission],
-      badge: t.common.bestseller,
+      capacity: "4 " + common.horsesCapacity,
+      features: [features.pneumaticSuspension, features.airConditioning, features.sleepingCabin, features.automaticTransmission],
+      badge: common.bestseller,
       rating: 4.9,
-      urgency: t.common.onlyXDaysLeft,
+      urgency: common.onlyXDaysLeft,
       savings: "9 600"
     },
     {
       id: 2,
       title: "Renault Master L3H2",
-      category: t.categories.horseVans.title,
+      category: t.categories?.horseVans?.title || "Vans Chevaux",
       price: "67 900",
       year: 2020,
       km: "89 500",
-      capacity: "2 " + t.common.horsesCapacity,
-      features: [t.features.nonSlipFlooring, t.features.ledLighting, t.features.ventilation, t.features.handsFreeeKit],
-      badge: t.common.favorite,
+      capacity: "2 " + common.horsesCapacity,
+      features: [features.nonSlipFlooring, features.ledLighting, features.ventilation, features.handsFreeeKit],
+      badge: common.favorite,
       rating: 4.8
     },
     {
       id: 3,
       title: "Böckmann Comfort",
-      category: t.categories.horseTrailers.title,
+      category: t.categories?.horseTrailers?.title || "Remorques Chevaux",
       price: "32 900",
       year: 2021,
-      km: t.common.newArrival,
-      capacity: "2 " + t.common.horsesCapacity,
-      features: [t.features.aluminum, t.features.alkoSuspension, t.features.rubberFlooring, t.features.ledLighting],
-      badge: t.common.promotion,
+      km: common.newArrival,
+      capacity: "2 " + common.horsesCapacity,
+      features: [features.aluminum, features.alkoSuspension, features.rubberFlooring, features.ledLighting],
+      badge: common.promotion,
       rating: 5.0
     }
   ];
@@ -100,30 +142,30 @@ const OffresEtVehicules = () => {
         <div className="text-center mb-16 space-y-6">
           <div className="inline-flex items-center space-x-2 bg-copper/10 rounded-full px-4 py-2">
             <TrendingUp className="w-4 h-4 text-copper" />
-            <span className="text-copper font-semibold">{t.common.premiumSelection}</span>
+            <span className="text-copper font-semibold">{common.premiumSelection}</span>
           </div>
           <h2 className="text-4xl lg:text-5xl font-bold">
-            <span className="text-foreground">{t.common.ourBest}</span>
-            <span className="block htg-text-gradient">{t.common.offersVehicles}</span>
+            <span className="text-foreground">{common.ourBest}</span>
+            <span className="block htg-text-gradient">{common.offersVehicles}</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            {t.common.discoverSelection}
+            {common.discoverSelection}
           </p>
           <div className="flex justify-center items-center gap-4 mt-6">
             <div className="flex items-center gap-2 bg-red-600/10 rounded-full px-4 py-2">
               <div className="w-2 h-2 bg-red-600 rounded-full animate-pulse"></div>
-              <span className="text-red-600 font-medium text-sm">{t.common.limitedOffer}</span>
+              <span className="text-red-600 font-medium text-sm">{common.limitedOffer}</span>
             </div>
             <div className="flex items-center gap-2 bg-copper/10 rounded-full px-4 py-2">
               <div className="w-2 h-2 bg-copper rounded-full"></div>
-              <span className="text-copper font-medium text-sm">{t.common.expertiseGuaranteed}</span>
+              <span className="text-copper font-medium text-sm">{common.expertiseGuaranteed}</span>
             </div>
           </div>
         </div>
 
         {/* Featured Vehicles */}
         <div className="mb-20">
-          <h3 className="text-2xl font-bold text-foreground mb-8 text-center">{t.common.featuredVehicles}</h3>
+          <h3 className="text-2xl font-bold text-foreground mb-8 text-center">{common.featuredVehicles}</h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {featuredVehicles.map((vehicle, index) => (
               <div 
@@ -203,7 +245,7 @@ const OffresEtVehicules = () => {
                     </div>
                     <div className="text-center">
                       <Gauge className="w-4 h-4 text-copper mx-auto mb-1" />
-                      <span className="text-muted-foreground">{vehicle.km} {vehicle.km !== t.common.newArrival ? t.common.km : ''}</span>
+                      <span className="text-muted-foreground">{vehicle.km} {vehicle.km !== common.newArrival ? common.km : ''}</span>
                     </div>
                     <div className="text-center">
                       <Users className="w-4 h-4 text-copper mx-auto mb-1" />
@@ -221,7 +263,7 @@ const OffresEtVehicules = () => {
                     ))}
                     {vehicle.features.length > 3 && (
                       <div className="text-xs text-copper font-medium">
-                        +{vehicle.features.length - 3} {t.common.moreEquipment}
+                        +{vehicle.features.length - 3} {common.moreEquipment}
                       </div>
                     )}
                   </div>
@@ -242,23 +284,23 @@ const OffresEtVehicules = () => {
                       {vehicle.promo && vehicle.savings && (
                         <div className="text-right">
                           <div className="text-green-600 font-semibold text-sm">
-                            {t.common.savings} {vehicle.savings}€
+                            {common.savings} {vehicle.savings}€
                           </div>
                         </div>
                       )}
                     </div>
                     <div className="text-xs text-muted-foreground">
-                      {vehicle.promo ? t.common.promotionalPrice + ' • ' + t.common.limitedOffer : t.common.financingAvailable}
+                      {vehicle.promo ? common.promotionalPrice + ' • ' + common.limitedOffer : common.financingAvailable}
                     </div>
                   </div>
                   
                   <div className="flex gap-2 pt-2">
                     <Link to={getLocalizedPath(`/${vehicle.category.toLowerCase().includes('camion') ? 'camions' : vehicle.category.toLowerCase().includes('van') ? 'vans' : 'remorques'}`, language)} className="flex-1">
-                      <Button className="htg-button-primary w-full" title={t.common.discoverCharacteristics}>
-                        {t.common.viewDetails}
+                      <Button className="htg-button-primary w-full" title={common.discoverCharacteristics}>
+                        {common.viewDetails}
                       </Button>
                     </Link>
-                    <Button variant="outline" className="htg-button-secondary px-3" title={t.common.addToMySelection}>
+                    <Button variant="outline" className="htg-button-secondary px-3" title={common.addToMySelection}>
                       <Heart className="w-4 h-4" />
                     </Button>
                   </div>
@@ -274,7 +316,7 @@ const OffresEtVehicules = () => {
                 size="lg" 
                 className="htg-button-primary"
               >
-                {t.common.viewAll} {t.common.vehicles}
+                {common.viewAll} {common.vehicles}
               </Button>
             </Link>
           </div>

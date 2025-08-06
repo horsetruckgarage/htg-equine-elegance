@@ -10,17 +10,39 @@ import Autoplay from "embla-carousel-autoplay";
 const ConfianceEtContact = () => {
   const { t, language } = useTranslation();
   
+  // Fallback pour les traductions manquantes
+  const trust = (t as any).trust || {
+    reviews: [],
+    partners: [],
+    stats: {
+      experience: "Années d'expérience",
+      clients: "Clients satisfaits", 
+      satisfaction: "Satisfaction",
+      response: "Réponse rapide"
+    },
+    badge: "Confiance",
+    title: "Pourquoi nous choisir",
+    subtitle: "& nous contacter",
+    description: "Plus de 15 ans d'expertise dans le transport équin",
+    reviewsTitle: "Avis clients",
+    reviewsDescription: "Ce que disent nos clients",
+    leaveReview: "Laisser un avis",
+    partnersTitle: "Nos partenaires",
+    partnersDescription: "Ils nous font confiance",
+    getQuote: "Demander un devis"
+  };
+  
   // Utilise les avis traduits selon la langue sélectionnée
-  const reviews = t.trust.reviews;
+  const reviews = trust.reviews || [];
 
   // Utilise les partenaires traduits selon la langue sélectionnée  
-  const partners = t.trust.partners;
+  const partners = trust.partners || [];
 
   const stats = [
-    { number: "15+", label: t.trust.stats.experience, icon: Award },
-    { number: "2500+", label: t.trust.stats.clients, icon: Users },
-    { number: "98%", label: t.trust.stats.satisfaction, icon: Heart },
-    { number: "24h", label: t.trust.stats.response, icon: CheckCircle }
+    { number: "15+", label: trust.stats?.experience || "Années d'expérience", icon: Award },
+    { number: "2500+", label: trust.stats?.clients || "Clients satisfaits", icon: Users },
+    { number: "98%", label: trust.stats?.satisfaction || "Satisfaction", icon: Heart },
+    { number: "24h", label: trust.stats?.response || "Réponse rapide", icon: CheckCircle }
   ];
 
   return (
@@ -30,14 +52,14 @@ const ConfianceEtContact = () => {
         <div className="text-center mb-16 space-y-6">
           <div className="inline-flex items-center space-x-2 bg-copper/10 rounded-full px-4 py-2">
             <Shield className="w-4 h-4 text-copper" />
-            <span className="text-copper font-semibold">{t.trust.badge}</span>
+            <span className="text-copper font-semibold">{trust.badge || "Confiance"}</span>
           </div>
           <h2 className="text-4xl lg:text-5xl font-bold">
-            <span className="text-foreground">{t.trust.title}</span>
-            <span className="block htg-text-gradient">{t.trust.subtitle}</span>
+            <span className="text-foreground">{trust.title || "Pourquoi nous choisir"}</span>
+            <span className="block htg-text-gradient">{trust.subtitle || "& nous contacter"}</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            {t.trust.description}
+            {trust.description || "Plus de 15 ans d'expertise dans le transport équin"}
           </p>
         </div>
 
@@ -83,10 +105,10 @@ const ConfianceEtContact = () => {
               </div>
             </div>
             <h3 className="text-3xl lg:text-4xl font-bold text-foreground">
-              {t.trust.reviewsTitle}
+              {trust.reviewsTitle || "Avis clients"}
             </h3>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              {t.trust.reviewsDescription}
+              {trust.reviewsDescription || "Ce que disent nos clients"}
             </p>
           </div>
 
@@ -143,7 +165,7 @@ const ConfianceEtContact = () => {
           <div className="text-center">
             <Link to={getLocalizedPath("/contact", language)}>
               <Button variant="outline" className="htg-button-secondary">
-                {t.trust.leaveReview}
+                {trust.leaveReview || "Laisser un avis"}
                 <Star className="w-4 h-4 ml-2" />
               </Button>
             </Link>
@@ -154,10 +176,10 @@ const ConfianceEtContact = () => {
         <div className="mb-20">
           <div className="text-center mb-12 space-y-4">
             <h3 className="text-3xl lg:text-4xl font-bold text-foreground">
-              {t.trust.partnersTitle}
+              {trust.partnersTitle || "Nos partenaires"}
             </h3>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              {t.trust.partnersDescription}
+              {trust.partnersDescription || "Ils nous font confiance"}
             </p>
           </div>
 
@@ -199,7 +221,7 @@ const ConfianceEtContact = () => {
         <div className="text-center">
           <Link to={getLocalizedPath("/devis", language)}>
             <Button className="htg-button-primary">
-              {t.trust.getQuote}
+              {trust.getQuote || "Demander un devis"}
             </Button>
           </Link>
         </div>
