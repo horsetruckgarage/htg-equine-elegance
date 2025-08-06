@@ -1,4 +1,4 @@
-import { Award, Users, Calendar, MapPin, Shield, Wrench, Heart, Star } from "lucide-react";
+import { Award, Users, Calendar, Shield, Wrench, Heart, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -8,10 +8,10 @@ const About = () => {
   const { t } = useTranslation();
   
   const stats = [
-    { icon: Calendar, value: "15+", label: t.aboutPage.stats.experience },
-    { icon: Users, value: "2500+", label: t.aboutPage.stats.clients },
-    { icon: Shield, value: "100%", label: t.aboutPage.stats.certified },
-    { icon: Award, value: "98%", label: t.aboutPage.stats.recommendations }
+    { icon: Calendar, value: "30+", label: t.common.experience },
+    { icon: Users, value: "5000+", label: "véhicules vendus" },
+    { icon: Shield, value: "98%", label: "satisfaction client" },
+    { icon: Award, value: "5", label: "ans de garantie" }
   ];
 
   const values = [
@@ -22,39 +22,13 @@ const About = () => {
     },
     {
       icon: Shield,
-      title: t.aboutPage.values.expertise.title,
-      description: t.aboutPage.values.expertise.description
-    },
-    {
-      icon: Star,
       title: t.aboutPage.values.excellence.title,
       description: t.aboutPage.values.excellence.description
     },
     {
-      icon: Wrench,
+      icon: Star,
       title: t.aboutPage.values.support.title,
       description: t.aboutPage.values.support.description
-    }
-  ];
-
-  const team = [
-    {
-      name: "Jean-Pierre Dubois",
-      role: t.aboutPage.team.director.role,
-      experience: t.aboutPage.team.director.experience,
-      speciality: t.aboutPage.team.director.speciality
-    },
-    {
-      name: "Marie Leclerc",
-      role: t.aboutPage.team.sales.role,
-      experience: t.aboutPage.team.sales.experience,
-      speciality: t.aboutPage.team.sales.speciality
-    },
-    {
-      name: "Thomas Martin",
-      role: t.aboutPage.team.technical.role,
-      experience: t.aboutPage.team.technical.experience,
-      speciality: t.aboutPage.team.technical.speciality
     }
   ];
 
@@ -68,11 +42,10 @@ const About = () => {
           <div className="text-center max-w-4xl mx-auto space-y-6">
             <div className="inline-flex items-center space-x-2 bg-copper/10 rounded-full px-4 py-2">
               <Heart className="w-4 h-4 text-copper" />
-              <span className="text-copper font-semibold">{t.aboutPage.hero.badge}</span>
+              <span className="text-copper font-semibold">Notre Histoire</span>
             </div>
             <h1 className="text-4xl lg:text-6xl font-bold">
-              <span className="text-foreground">{t.aboutPage.hero.title1}</span>
-              <span className="block htg-text-gradient">{t.aboutPage.hero.title2}</span>
+              <span className="text-foreground">{t.aboutPage.hero.title}</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               {t.aboutPage.hero.description}
@@ -109,37 +82,33 @@ const About = () => {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-6">
               <h2 className="text-3xl lg:text-4xl font-bold">
-                <span className="text-foreground">{t.aboutPage.story.title1}</span>
-                <span className="block htg-text-gradient">{t.aboutPage.story.title2}</span>
+                <span className="text-foreground">{t.aboutPage.story.title}</span>
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                {t.aboutPage.story.paragraph1}
-              </p>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                {t.aboutPage.story.paragraph2}
+                {t.aboutPage.story.description}
               </p>
               <Button className="htg-button-primary">
-                {t.aboutPage.story.cta}
+                {t.common.learnMore}
               </Button>
             </div>
             <div className="relative">
               <div className="htg-card p-8 space-y-6">
-                <h3 className="text-2xl font-bold text-foreground">{t.aboutPage.mission.title}</h3>
+                <h3 className="text-2xl font-bold text-foreground">Notre Mission</h3>
                 <p className="text-muted-foreground">
-                  {t.aboutPage.mission.description}
+                  Offrir les meilleures solutions de transport équin avec expertise et passion depuis plus de 30 ans.
                 </p>
                 <div className="space-y-4">
                   <div className="flex items-center space-x-3">
                     <div className="w-2 h-2 bg-copper rounded-full"></div>
-                    <span className="text-sm">{t.aboutPage.mission.point1}</span>
+                    <span className="text-sm">Excellence dans le service client</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <div className="w-2 h-2 bg-copper rounded-full"></div>
-                    <span className="text-sm">{t.aboutPage.mission.point2}</span>
+                    <span className="text-sm">Qualité et sécurité garanties</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <div className="w-2 h-2 bg-copper rounded-full"></div>
-                    <span className="text-sm">{t.aboutPage.mission.point3}</span>
+                    <span className="text-sm">Innovation continue</span>
                   </div>
                 </div>
               </div>
@@ -153,14 +122,13 @@ const About = () => {
         <div className="container mx-auto px-6">
           <div className="text-center mb-16 space-y-4">
             <h2 className="text-3xl lg:text-4xl font-bold">
-              <span className="text-foreground">{t.aboutPage.valuesSection.title1}</span>
-              <span className="htg-text-gradient">{t.aboutPage.valuesSection.title2}</span>
+              <span className="text-foreground">{t.aboutPage.values.title}</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              {t.aboutPage.valuesSection.subtitle}
+              Les valeurs qui nous animent au quotidien
             </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-3 gap-8">
             {values.map((value, index) => {
               const IconComponent = value.icon;
               return (
@@ -182,27 +150,23 @@ const About = () => {
         <div className="container mx-auto px-6">
           <div className="text-center mb-16 space-y-4">
             <h2 className="text-3xl lg:text-4xl font-bold">
-              <span className="text-foreground">{t.aboutPage.teamSection.title1}</span>
-              <span className="htg-text-gradient">{t.aboutPage.teamSection.title2}</span>
+              <span className="text-foreground">{t.aboutPage.team.title}</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              {t.aboutPage.teamSection.subtitle}
+              {t.aboutPage.team.description}
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
-            {team.map((member, index) => (
-              <div key={index} className="htg-card p-6 text-center space-y-4">
-                <div className="w-24 h-24 bg-gradient-to-br from-copper/20 to-bronze/20 rounded-full flex items-center justify-center mx-auto">
-                  <Users className="w-12 h-12 text-copper" />
-                </div>
-                <div className="space-y-2">
-                  <h3 className="text-xl font-bold text-foreground">{member.name}</h3>
-                  <p className="text-copper font-medium">{member.role}</p>
-                  <p className="text-sm text-muted-foreground">{member.experience}</p>
-                  <p className="text-sm text-copper">{member.speciality}</p>
-                </div>
+            <div className="htg-card p-6 text-center space-y-4">
+              <div className="w-24 h-24 bg-gradient-to-br from-copper/20 to-bronze/20 rounded-full flex items-center justify-center mx-auto">
+                <Users className="w-12 h-12 text-copper" />
               </div>
-            ))}
+              <div className="space-y-2">
+                <h3 className="text-xl font-bold text-foreground">{t.aboutPage.team.director.name}</h3>
+                <p className="text-copper font-medium">{t.aboutPage.team.director.role}</p>
+                <p className="text-sm text-muted-foreground">{t.aboutPage.team.director.description}</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -212,17 +176,17 @@ const About = () => {
         <div className="container mx-auto px-6">
           <div className="htg-card max-w-4xl mx-auto p-8 lg:p-12 text-center space-y-6">
             <h3 className="text-3xl font-bold text-foreground">
-              {t.aboutPage.cta.title}
+              Prêt à découvrir nos véhicules ?
             </h3>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              {t.aboutPage.cta.description}
+              Contactez notre équipe d'experts pour trouver la solution parfaite pour vos besoins.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button className="htg-button-primary">
-                {t.aboutPage.cta.button1}
+                {t.common.getQuote}
               </Button>
               <Button variant="outline" className="htg-button-secondary">
-                {t.aboutPage.cta.button2}
+                {t.common.contact}
               </Button>
             </div>
           </div>
