@@ -5,38 +5,38 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const Contact = () => {
+  const { t } = useTranslation();
+  
   const contactMethods = [
     {
       icon: Phone,
-      title: "Appelez-nous",
-      subtitle: "Réponse immédiate",
-      description: "Nos experts vous répondent du lundi au samedi",
-      action: "01 23 45 67 89",
-      actionText: "Appeler maintenant",
+      title: t.contactPage.contactMethods.phone.title,
+      subtitle: t.contactPage.contactMethods.phone.subtitle,
+      description: t.contactPage.contactMethods.phone.description,
+      actionText: t.contactPage.contactMethods.phone.actionText,
       bgColor: "bg-green-600/10",
       iconColor: "text-green-600",
       buttonColor: "bg-green-600 hover:bg-green-700"
     },
     {
       icon: MessageSquare,
-      title: "Chat en Ligne",
-      subtitle: "Assistance instantanée",
-      description: "Posez vos questions en temps réel",
-      action: "Démarrer le chat",
-      actionText: "Chatter maintenant",
+      title: t.contactPage.contactMethods.chat.title,
+      subtitle: t.contactPage.contactMethods.chat.subtitle,
+      description: t.contactPage.contactMethods.chat.description,
+      actionText: t.contactPage.contactMethods.chat.actionText,
       bgColor: "bg-blue-600/10",
       iconColor: "text-blue-600",
       buttonColor: "bg-blue-600 hover:bg-blue-700"
     },
     {
       icon: Calendar,
-      title: "Rendez-vous",
-      subtitle: "Conseil personnalisé",
-      description: "Rencontrez nos experts en visio ou au showroom",
-      action: "Réserver un créneau",
-      actionText: "Planifier maintenant",
+      title: t.contactPage.contactMethods.appointment.title,
+      subtitle: t.contactPage.contactMethods.appointment.subtitle,
+      description: t.contactPage.contactMethods.appointment.description,
+      actionText: t.contactPage.contactMethods.appointment.actionText,
       bgColor: "bg-copper/10",
       iconColor: "text-copper",
       buttonColor: "bg-copper hover:bg-copper/90 text-black"
@@ -74,15 +74,14 @@ const Contact = () => {
           <div className="text-center max-w-4xl mx-auto space-y-6">
             <div className="inline-flex items-center space-x-2 bg-copper/10 rounded-full px-4 py-2">
               <Phone className="w-4 h-4 text-copper" />
-              <span className="text-copper font-semibold">Contactez-nous</span>
+              <span className="text-copper font-semibold">{t.contactPage.hero.badge}</span>
             </div>
             <h1 className="text-4xl lg:text-6xl font-bold">
-              <span className="text-foreground">Parlons de Votre</span>
-              <span className="block htg-text-gradient">Projet Transport</span>
+              <span className="text-foreground">{t.contactPage.hero.title}</span>
+              <span className="block htg-text-gradient">{t.contactPage.hero.subtitle}</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Nos experts vous accompagnent dans le choix de votre véhicule de transport équin. 
-              Contactez-nous par le moyen qui vous convient le mieux.
+              {t.contactPage.hero.description}
             </p>
           </div>
         </div>
