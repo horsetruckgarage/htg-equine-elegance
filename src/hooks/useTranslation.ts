@@ -103,100 +103,58 @@ export interface Translations {
         description: string;
       }>;
       reviews: Array<{
-        id: number;
         name: string;
-        location: string;
+        role: string;
+        content: string;
         rating: number;
-        text: string;
-        vehicleType: string;
-        date: string;
-        verified: boolean;
+        image: string;
       }>;
     };
   
-  // Footer
-  footer: {
-    newsletter: {
+  // Offres & Vehicules Section
+  offres: {
+    badge: string;
+    title: string;
+    subtitle: string;
+    description: string;
+    stats: {
+      vehicles: string;
+      brands: string;
+      clients: string;
+      years: string;
+    };
+    cta: {
       title: string;
       description: string;
-      placeholder: string;
-      subscribe: string;
+      primaryButton: string;
+      secondaryButton: string;
     };
-    company: {
-      title: string;
-      description: string;
+    features: {
+      quality: {
+        title: string;
+        description: string;
+      };
+      expertise: {
+        title: string;
+        description: string;
+      };
+      service: {
+        title: string;
+        description: string;
+      };
+      guarantee: {
+        title: string;
+        description: string;
+      };
+      financing: {
+        title: string;
+        description: string;
+      };
+      support: {
+        title: string;
+        description: string;
+      };
     };
-    contact: {
-      title: string;
-      phone: string;
-      email: string;
-      address: string;
-      hours: string;
-    };
-    vehicles: {
-      title: string;
-      horseTrucks: string;
-      horseVans: string;
-      horseTrailers: string;
-      occasions: string;
-    };
-    company2: {
-      title: string;
-      about: string;
-      contact: string;
-      blog: string;
-      career: string;
-    };
-    services: {
-      title: string;
-      financing: string;
-      insurance: string;
-      warranty: string;
-      maintenance: string;
-    };
-    followUs: string;
-    copyright: string;
-    terms: string;
-    privacy: string;
-    sitemap: string;
-  };
-  
-  // Floating CTA
-  floating: {
-    quote24h: string;
-  };
-  
-  // Vehicle Features
-  features: {
-    pneumaticSuspension: string;
-    airConditioning: string;
-    sleepingCabin: string;
-    automaticTransmission: string;
-    nonSlipFlooring: string;
-    ledLighting: string;
-    ventilation: string;
-    handsFreeeKit: string;
-    aluminum: string;
-    alkoSuspension: string;
-    rubberFlooring: string;
-    tackCompartment: string;
-    ventilationSystem: string;
-    compactSize: string;
-    bLicenseDriving: string;
-    modularLayout: string;
-    economical: string;
-    horsesCapacity: string;
-    absBreaking: string;
-  };
-  
-  // Common
-  common: {
-    readMore: string;
-    learnMore: string;
-    viewAll: string;
-    viewDetails: string;
-    inStock: string;
-    promotion: string;
     newArrival: string;
     bestSeller: string;
     limitedOffer: string;
@@ -248,60 +206,24 @@ export interface Translations {
       mileage: string;
       found: string;
     };
-    vehicle: {
-      horseTruck: string;
-      features: {
-        pneumaticSuspension: string;
-        airConditioning: string;
-        sleepingCabin: string;
-        automaticTransmission: string;
-        integratedGPS: string;
-        grandComfortCabin: string;
-        manualTransmission: string;
-        blueEfficiency: string;
-        automaticAirConditioning: string;
-        cruiseControl: string;
-        telematicSystem: string;
-        dtiEngine: string;
-        powerSteering: string;
-        electricWindows: string;
-        centralLocking: string;
-        euro6: string;
-        adBlueSystem: string;
-        spaciousCabin: string;
-        efficientEngine: string;
-        easilyMaintained: string;
-        ergonomicCabin: string;
+    features: {
+      comfort: {
+        title: string;
+        description: string;
       };
-      badges: {
-        bestseller: string;
-        premium: string;
-        promotion: string;
-        certifiedUsed: string;
-        recent: string;
-        reliable: string;
+      safety: {
+        title: string;
+        description: string;
       };
-      specs: {
-        horses: string;
-        year: string;
-        km: string;
-        capacity: string;
-      };
-      pricing: {
-        save: string;
-        financing: string;
-        perMonth: string;
-      };
-      actions: {
-        seeDetails: string;
-        addToFavorites: string;
+      equipment: {
+        title: string;
+        description: string;
       };
     };
     cta: {
       title: string;
       description: string;
-      getQuote: string;
-      contactExpert: string;
+      button: string;
     };
   };
 
@@ -318,110 +240,152 @@ export interface Translations {
       mileage: string;
       found: string;
     };
-    vehicle: {
-      horseVan: string;
-      specs: {
-        horses: string;
-        km: string;
+    features: {
+      versatility: {
+        title: string;
+        description: string;
       };
-      features: {
-        nonSlipFlooring: string;
-        ledLighting: string;
-        ventilation: string;
-        handsFreeMobile: string;
-        blueTecEngine: string;
-        automaticTransmission: string;
-        reverseCamera: string;
-        parkingSensors: string;
-        optimizedVolume: string;
-        cruiseControl: string;
-        airConditioning: string;
-        ecoBlue: string;
-        sync3: string;
-        parkingAssist: string;
-        tdiBlueMotion: string;
-        esp: string;
-        hillStartAssist: string;
-        blueHdi: string;
-        mirrorScreen: string;
-        fatigueSensor: string;
+      efficiency: {
+        title: string;
+        description: string;
       };
-      badges: {
-        favorite: string;
-        bestseller: string;
-        premium: string;
-        promotion: string;
-        certifiedUsed: string;
-        recent: string;
-        economical: string;
-      };
-      pricing: {
-        save: string;
-        financing: string;
-        perMonth: string;
-      };
-      actions: {
-        seeDetails: string;
+      comfort: {
+        title: string;
+        description: string;
       };
     };
     cta: {
       title: string;
       description: string;
-      getQuote: string;
-      contactExpert: string;
+      button: string;
     };
   };
-  
+
+  // Trailers Page
+  trailersPage: {
+    title: string;
+    subtitle: string;
+    description: string;
+    filters: {
+      allFilters: string;
+      capacity: string;
+      price: string;
+      year: string;
+      weight: string;
+      found: string;
+    };
+    features: {
+      lightweight: {
+        title: string;
+        description: string;
+      };
+      maneuverability: {
+        title: string;
+        description: string;
+      };
+      economy: {
+        title: string;
+        description: string;
+      };
+    };
+    cta: {
+      title: string;
+      description: string;
+      button: string;
+    };
+  };
+
+  // Occasions Page
+  occasionsPage: {
+    title: string;
+    subtitle: string;
+    description: string;
+    guarantees: {
+      title: string;
+      checked: string;
+      warranty: string;
+      maintenance: string;
+      financing: string;
+    };
+    filters: {
+      allFilters: string;
+      type: string;
+      brand: string;
+      year: string;
+      price: string;
+      mileage: string;
+      found: string;
+    };
+    advantages: {
+      price: {
+        title: string;
+        description: string;
+      };
+      quality: {
+        title: string;
+        description: string;
+      };
+      choice: {
+        title: string;
+        description: string;
+      };
+    };
+    cta: {
+      title: string;
+      description: string;
+      button: string;
+    };
+  };
+
   // About Page
   aboutPage: {
     hero: {
       badge: string;
-      title1: string;
-      title2: string;
+      title: string;
+      subtitle: string;
       description: string;
     };
-    stats: {
-      experience: string;
-      clients: string;
-      certified: string;
-      recommendations: string;
-    };
     story: {
-      title1: string;
-      title2: string;
-      paragraph1: string;
-      paragraph2: string;
-      cta: string;
+      title: string;
+      subtitle: string;
+      description: string;
+      founder: {
+        name: string;
+        role: string;
+        quote: string;
+      };
     };
     mission: {
       title: string;
-      description: string;
-      point1: string;
-      point2: string;
-      point3: string;
-    };
-    values: {
-      passion: {
-        title: string;
-        description: string;
-      };
-      expertise: {
-        title: string;
-        description: string;
-      };
-      excellence: {
-        title: string;
-        description: string;
-      };
-      support: {
-        title: string;
-        description: string;
-      };
-    };
-    valuesSection: {
-      title1: string;
-      title2: string;
       subtitle: string;
+      values: {
+        excellence: {
+          title: string;
+          description: string;
+        };
+        trust: {
+          title: string;
+          description: string;
+        };
+        innovation: {
+          title: string;
+          description: string;
+        };
+        service: {
+          title: string;
+          description: string;
+        };
+      };
+    };
+    achievements: {
+      title: string;
+      subtitle: string;
+      stats: {
+        experience: string;
+        vehicles: string;
+        clients: string;
+        satisfaction: string;
+      };
     };
     team: {
       director: {
@@ -557,9 +521,122 @@ export interface Translations {
       };
     };
   };
+
+  quoteRequestPage: {
+    hero: {
+      badge: string;
+      title: string;
+      subtitle: string;
+      description: string;
+    };
+    benefits: {
+      response24h: {
+        title: string;
+        description: string;
+      };
+      free: {
+        title: string;
+        description: string;
+      };
+      transparent: {
+        title: string;
+        description: string;
+      };
+      expert: {
+        title: string;
+        description: string;
+      };
+    };
+    vehicleTypes: {
+      title: string;
+      truck: {
+        type: string;
+        priceRange: string;
+        popular: string;
+        capacities: string[];
+      };
+      van: {
+        type: string;
+        priceRange: string;
+        capacities: string[];
+      };
+      trailer: {
+        type: string;
+        priceRange: string;
+        capacities: string[];
+      };
+    };
+    form: {
+      title: string;
+      description: string;
+      personalInfo: string;
+      firstName: string;
+      firstNamePlaceholder: string;
+      lastName: string;
+      lastNamePlaceholder: string;
+      email: string;
+      emailPlaceholder: string;
+      phone: string;
+      phonePlaceholder: string;
+      company: string;
+      companyPlaceholder: string;
+      vehicleRequirements: string;
+      vehicleType: string;
+      vehicleTypePlaceholder: string;
+      capacity: string;
+      capacityPlaceholder: string;
+      budget: string;
+      budgetPlaceholder: string;
+      usage: string;
+      usageType: string;
+      usageTypePlaceholder: string;
+      annualKm: string;
+      annualKmPlaceholder: string;
+      urgency: string;
+      urgencyPlaceholder: string;
+      additionalInfo: string;
+      message: string;
+      messagePlaceholder: string;
+      submitButton: string;
+      successMessage: string;
+      vehicleTypes: {
+        truck: string;
+        van: string;
+        trailer: string;
+        other: string;
+      };
+      capacities: {
+        oneHorse: string;
+        twoHorses: string;
+        threeHorses: string;
+        fourHorses: string;
+        fiveHorses: string;
+        sixPlusHorses: string;
+      };
+      budgetRanges: {
+        under30k: string;
+        range30k50k: string;
+        range50k80k: string;
+        range80k120k: string;
+        over120k: string;
+      };
+      usageTypes: {
+        personal: string;
+        professional: string;
+        mixed: string;
+      };
+      urgencyOptions: {
+        immediate: string;
+        month: string;
+        threeMonths: string;
+        sixMonths: string;
+        noUrgency: string;
+      };
+    };
+  };
 }
 
-const translations: Record<Language, Translations> = {
+export const translations: Record<Language, Translations> = {
   fr: {
     nav: {
       home: "Accueil",
@@ -568,256 +645,160 @@ const translations: Record<Language, Translations> = {
       horseTrailers: "Remorques Chevaux",
       about: "À Propos",
       contact: "Contact",
-      getQuote: "Demander un Devis",
+      getQuote: "Demande de Devis",
       occasions: "Occasions"
     },
     hero: {
       slide1: {
-        subtitle: "Transport Équestre Premium",
-        title: "Véhicules d'Exception pour Vos Chevaux",
-        description: "Découvrez notre gamme complète de camions, vans et remorques pour le transport de vos chevaux en toute sécurité et confort."
+        subtitle: "Transport équin premium",
+        title: "Camions Chevaux Professionnels",
+        description: "Découvrez notre sélection de camions haut de gamme pour le transport de vos chevaux. Confort, sécurité et fiabilité garantis."
       },
       slide2: {
-        subtitle: "Confort & Sécurité",
-        title: "Camions Chevaux Haut de Gamme",
-        description: "Des véhicules spacieux et équipés des dernières technologies pour le bien-être de vos chevaux lors de tous vos déplacements."
+        subtitle: "Solutions compactes",
+        title: "Vans Chevaux Dernière Génération",
+        description: "Parfaits pour 1 à 3 chevaux, nos vans allient maniabilité et équipements de pointe pour vos déplacements quotidiens."
       },
       slide3: {
-        subtitle: "Mobilité Optimale",
-        title: "Vans Chevaux Polyvalents",
-        description: "Solutions pratiques et élégantes pour le transport de 1 à 3 chevaux, idéales pour les sorties quotidiennes et les compétitions."
+        subtitle: "Économique et pratique",
+        title: "Remorques Chevaux Certifiées",
+        description: "L'alternative économique pour le transport équin. Large choix de remorques neuves et d'occasion, toutes contrôlées."
       },
       slide4: {
-        subtitle: "Flexibilité Maximale",
-        title: "Remorques Chevaux Professionnelles",
-        description: "Large gamme de remorques adaptées à tous vos besoins, de la promenade familiale aux compétitions internationales."
+        subtitle: "Véhicules contrôlés",
+        title: "Occasions Sélectionnées avec Soin",
+        description: "Véhicules d'occasion rigoureusement sélectionnés et contrôlés. Garantie, financement et livraison partout en France."
       },
       slide5: {
-        subtitle: "Occasions Certifiées",
-        title: "Véhicules d'Occasion Garantis",
-        description: "Découvrez notre sélection rigoureuse de véhicules d'occasion révisés et garantis par nos experts."
+        subtitle: "15 ans d'expertise",
+        title: "Votre Partenaire Transport Équin",
+        description: "HTG vous accompagne depuis 15 ans dans tous vos projets. Conseils personnalisés et service client d'exception."
       },
-      cta: "Demander un Devis Gratuit"
+      cta: "Découvrir nos véhicules"
     },
     categories: {
-      title: "Nos Véhicules",
-      subtitle: "Équestres",
+      title: "Choisissez Votre",
+      subtitle: "Véhicule Idéal",
       horseTrucks: {
         title: "Camions Chevaux",
-        description: "Véhicules spacieux et confortables pour le transport professionnel de vos chevaux",
-        features: ["Capacité 2-6 chevaux", "Compartiment sellerie", "Système ventilation", "Suspension pneumatique"],
-        from: "À partir de",
-        explore: "Explorer les Camions"
+        description: "Solutions professionnelles pour 2 à 8 chevaux. Confort maximum et équipements haut de gamme.",
+        features: ["Suspension pneumatique", "Climatisation cabine", "Plancher antidérapant"],
+        from: "À partir de 65 000€",
+        explore: "Découvrir les camions"
       },
       horseVans: {
         title: "Vans Chevaux",
-        description: "Solutions compactes et polyvalentes pour 1-3 chevaux, parfaites pour l'usage quotidien",
-        features: ["Format compact", "Conduite permis B", "Aménagement modulable", "Économique"],
-        from: "À partir de",
-        explore: "Explorer les Vans"
+        description: "Parfaits pour 1 à 3 chevaux. Maniables, économiques et très bien équipés.",
+        features: ["Conduite facile", "Consommation réduite", "Modularité"],
+        from: "À partir de 35 000€",
+        explore: "Découvrir les vans"
       },
       horseTrailers: {
         title: "Remorques Chevaux",
-        description: "Remorques robustes et fiables pour tous types de transport équestre",
-        features: ["1-4 places chevaux", "Plancher antidérapant", "Éclairage LED", "Freinage ABS"],
-        from: "À partir de",
-        explore: "Explorer les Remorques"
+        description: "Solution économique pour 1 à 3 chevaux. Qualité et sécurité garanties.",
+        features: ["Léger et robuste", "Facilité d'attelage", "Prix attractif"],
+        from: "À partir de 18 000€",
+        explore: "Découvrir les remorques"
       },
-      ctaTitle: "Besoin de Conseils Personnalisés ?",
-      ctaDescription: "Nos experts vous accompagnent dans le choix du véhicule idéal pour vos besoins",
-      getFreeQuote: "Demander un Devis Gratuit",
-      makeAppointment: "Prendre Rendez-vous",
+      ctaTitle: "Une Question ? Un Projet ?",
+      ctaDescription: "Nos experts vous conseillent gratuitement pour trouver le véhicule parfait selon vos besoins.",
+      getFreeQuote: "Devis Gratuit",
+      makeAppointment: "Prendre RDV",
       specialties: "Nos Spécialités",
-      findPerfectVehicle: "Trouvez le Véhicule Parfait pour Vos Besoins",
-      disciplineDescription: "Chaque discipline équestre a ses exigences. Découvrez notre sélection organisée par type de véhicule pour trouver la solution idéale."
+      findPerfectVehicle: "Trouvez le Véhicule Parfait",
+      disciplineDescription: "Pour Chaque Discipline Équestre"
     },
     trust: {
-      badge: "Confiance & Expertise",
-      title: "Votre Partenaire",
+      badge: "Pourquoi nous choisir",
+      title: "HTG, Votre Partenaire",
       subtitle: "de Confiance",
-      description: "Découvrez pourquoi plus de 2500 clients nous font confiance pour leurs véhicules équestres. Excellence, expertise et service personnalisé depuis plus de 15 ans.",
+      description: "15 ans d'expertise dans le transport équin. Plus de 2500 clients nous font confiance pour leur passion.",
       stats: {
-        experience: "Années d'expérience",
-        clients: "Clients satisfaits",
-        satisfaction: "Taux de satisfaction",
-        response: "Réponse garantie"
+        experience: "15 ans d'expérience",
+        clients: "2500+ clients satisfaits",
+        satisfaction: "98% de satisfaction",
+        response: "Réponse sous 24h"
       },
-      reviewsTitle: "Ce que Disent Nos Clients",
-      reviewsDescription: "Des témoignages authentiques de professionnels et passionnés qui nous font confiance",
-      leaveReview: "Laisser un Avis",
+      reviewsTitle: "Ce que disent nos clients",
+      reviewsDescription: "Découvrez les témoignages de passionnés qui nous font confiance",
+      leaveReview: "Laisser un avis",
       partnersTitle: "Nos Partenaires de Confiance",
-      partnersDescription: "Nous travaillons exclusivement avec les plus grandes marques du secteur équestre",
+      partnersDescription: "Nous travaillons avec les meilleures marques du secteur",
+      getQuote: "Demander un devis",
       partners: [
-        { name: "Iveco", logo: "/lovable-uploads/2b478b96-e19a-4288-ac04-f0410f56f0bc.png", description: "Partenaire officiel depuis 2015" },
-        { name: "Mercedes", logo: "/lovable-uploads/bee66bcd-4af5-4ce6-a9d1-a044053fa657.png", description: "Distributeur agréé" },
-        { name: "Renault", logo: "/lovable-uploads/2307287b-f2a8-4858-984f-44b3a646dd23.png", description: "Concessionnaire certifié" },
-        { name: "Böckmann", logo: "/lovable-uploads/35ff85cc-4513-4a11-9b8b-eda640027c91.png", description: "Revendeur exclusif région" },
-        { name: "Ifor Williams", logo: "/lovable-uploads/a3bc9f31-af5a-4053-a835-56933ae8d26b.png", description: "Distributeur autorisé" },
-        { name: "Humbaur", logo: "/lovable-uploads/243f1cf5-f2ce-48a8-a2dd-8c9d7334fa5a.png", description: "Partenaire premium" }
+        { name: "Peugeot", logo: "/placeholder.svg", description: "Partenaire officiel" },
+        { name: "Iveco", logo: "/placeholder.svg", description: "Distributeur agréé" },
+        { name: "Mercedes", logo: "/placeholder.svg", description: "Centre de service" }
       ],
-      getQuote: "Demander un Devis Gratuit",
       reviews: [
         {
-          id: 1,
-          name: "Marie Dubois",
-          location: "Normandie",
+          name: "Sarah Martin",
+          role: "Cavalière professionnelle",
+          content: "Service exceptionnel ! Mon van est parfait pour mes compétitions. L'équipe HTG a su comprendre mes besoins spécifiques.",
           rating: 5,
-          text: "Service exceptionnel ! J'ai acheté mon van chez HTG il y a 2 ans et je suis toujours aussi satisfaite. L'équipe est professionnelle et de bon conseil.",
-          vehicleType: "Van Chevaux Renault Master",
-          date: "Il y a 3 semaines",
-          verified: true
+          image: "/placeholder.svg"
         },
         {
-          id: 2,
-          name: "Pierre Martin",
-          location: "Île-de-France",
+          name: "Pierre Dubois",
+          role: "Centre équestre",
+          content: "Camion livré dans les délais avec tous les équipements demandés. Qualité au rendez-vous, je recommande vivement !",
           rating: 5,
-          text: "Excellent rapport qualité-prix pour mon camion 4 places. La livraison s'est parfaitement déroulée et le véhicule était impeccable.",
-          vehicleType: "Camion Iveco Daily",
-          date: "Il y a 1 mois",
-          verified: true
+          image: "/placeholder.svg"
         },
         {
-          id: 3,
-          name: "Sophie Lemoine",
-          location: "Bretagne",
+          name: "Marie Leroy",
+          role: "Propriétaire de chevaux",
+          content: "Excellent conseil pour l'achat de ma remorque. Prix transparent et service après-vente impeccable.",
           rating: 5,
-          text: "Je recommande vivement HTG ! Leur expertise m'a permis de trouver la remorque parfaite pour mes besoins. Suivi irréprochable.",
-          vehicleType: "Remorque Böckmann",
-          date: "Il y a 2 mois",
-          verified: true
-        },
-        {
-          id: 4,
-          name: "Jean-Claude Bertrand",
-          location: "Provence-Alpes-Côte d'Azur",
-          rating: 5,
-          text: "20 ans d'expérience dans l'équestre, et je n'ai jamais vu un service aussi professionnel. Mon nouveau van Mercedes est parfait pour mes compétitions.",
-          vehicleType: "Van Mercedes Sprinter",
-          date: "Il y a 1 semaine",
-          verified: true
-        },
-        {
-          id: 5,
-          name: "Camille Rousseau",
-          location: "Nouvelle-Aquitaine",
-          rating: 4,
-          text: "Très satisfaite de mon achat ! L'équipe a su me conseiller sur le bon modèle. Juste un petit délai de livraison mais le résultat en valait la peine.",
-          vehicleType: "Remorque Ifor Williams",
-          date: "Il y a 3 jours",
-          verified: true
-        },
-        {
-          id: 6,
-          name: "Thomas Moreau",
-          location: "Centre-Val de Loire",
-          rating: 5,
-          text: "Service après-vente au top ! Mon camion a eu un petit souci et ils ont tout réglé rapidement. Une équipe vraiment fiable, je recommande sans hésiter.",
-          vehicleType: "Camion Renault Master",
-          date: "Il y a 2 semaines",
-          verified: true
-        },
-        {
-          id: 7,
-          name: "Isabelle Durand",
-          location: "Occitanie",
-          rating: 5,
-          text: "Achat d'une remorque 2 places pour mes chevaux de dressage. Produit de qualité, conseil expert et prix compétitif. Parfait !",
-          vehicleType: "Remorque Humbaur",
-          date: "Il y a 5 jours",
-          verified: true
-        },
-        {
-          id: 8,
-          name: "Antoine Lefevre",
-          location: "Hauts-de-France",
-          rating: 4,
-          text: "Bonne expérience globale. Le personnel connaît vraiment bien les produits équestres. Mon van correspond exactement à mes attentes pour les concours.",
-          vehicleType: "Van Iveco Daily",
-          date: "Il y a 4 semaines",
-          verified: true
+          image: "/placeholder.svg"
         }
       ]
     },
-    footer: {
-      newsletter: {
-        title: "Restez Informé",
-        description: "Recevez nos dernières offres et actualités équestres",
-        placeholder: "Votre adresse email",
-        subscribe: "S'abonner"
+    offres: {
+      badge: "Nos Offres",
+      title: "Véhicules Premium",
+      subtitle: "Sélectionnés pour Vous",
+      description: "Découvrez notre sélection rigoureuse de véhicules neufs et d'occasion. Chaque véhicule est contrôlé par nos experts.",
+      stats: {
+        vehicles: "150+ véhicules",
+        brands: "12 marques",
+        clients: "2500+ clients",
+        years: "15 ans d'expertise"
       },
-      company: {
-        title: "HTG Horse Truck Garage",
-        description: "Spécialiste du transport équestre depuis plus de 15 ans. Nous vous accompagnons dans le choix, l'achat et l'entretien de vos véhicules."
+      cta: {
+        title: "Prêt à trouver votre véhicule idéal ?",
+        description: "Contactez nos experts pour un conseil personnalisé et un devis gratuit sous 24h.",
+        primaryButton: "Demander un devis",
+        secondaryButton: "Voir tous les véhicules"
       },
-      contact: {
-        title: "Contact",
-        phone: "Téléphone",
-        email: "Email",
-        address: "Adresse",
-        hours: "Horaires"
+      features: {
+        quality: {
+          title: "Qualité Garantie",
+          description: "Tous nos véhicules sont rigoureusement contrôlés et certifiés"
+        },
+        expertise: {
+          title: "Expertise Reconnue",
+          description: "15 ans d'expérience dans le transport équin de qualité"
+        },
+        service: {
+          title: "Service Premium",
+          description: "Accompagnement personnalisé de l'achat à la livraison"
+        },
+        guarantee: {
+          title: "Garantie Étendue",
+          description: "Garantie constructeur et services après-vente inclus"
+        },
+        financing: {
+          title: "Financement Facilité",
+          description: "Solutions de financement adaptées à votre budget"
+        },
+        support: {
+          title: "Support 24/7",
+          description: "Équipe disponible pour répondre à toutes vos questions"
+        }
       },
-      vehicles: {
-        title: "Véhicules",
-        horseTrucks: "Camions Chevaux",
-        horseVans: "Vans Chevaux",
-        horseTrailers: "Remorques Chevaux",
-        occasions: "Occasions"
-      },
-      company2: {
-        title: "Entreprise",
-        about: "À Propos",
-        contact: "Contact",
-        blog: "Blog",
-        career: "Carrières"
-      },
-      services: {
-        title: "Services",
-        financing: "Financement",
-        insurance: "Assurance",
-        warranty: "Garantie",
-        maintenance: "SAV"
-      },
-      followUs: "Suivez-nous",
-      copyright: "Tous droits réservés.",
-      terms: "Mentions Légales",
-      privacy: "Politique de Confidentialité",
-      sitemap: "Plan du Site"
-    },
-    floating: {
-      quote24h: "Devis Gratuit 24h"
-    },
-    features: {
-      pneumaticSuspension: "Suspension pneumatique",
-      airConditioning: "Climatisation",
-      sleepingCabin: "Cabine couchette",
-      automaticTransmission: "Boîte automatique",
-      nonSlipFlooring: "Plancher antidérapant",
-      ledLighting: "Éclairage LED",
-      ventilation: "Ventilation",
-      handsFreeeKit: "Kit mains libres",
-      aluminum: "Aluminium",
-      alkoSuspension: "Suspension AL-KO",
-      rubberFlooring: "Plancher caoutchouc",
-      tackCompartment: "Compartiment sellerie",
-      ventilationSystem: "Système ventilation",
-      compactSize: "Format compact",
-      bLicenseDriving: "Conduite permis B",
-      modularLayout: "Aménagement modulable",
-      economical: "Économique",
-      horsesCapacity: "chevaux",
-      absBreaking: "Freinage ABS"
-    },
-    common: {
-      readMore: "Lire la suite",
-      learnMore: "En savoir plus",
-      viewAll: "Voir tout",
-      viewDetails: "Voir les détails",
-      
-      inStock: "En stock",
-      promotion: "Promotion",
       newArrival: "Nouveauté",
-      bestSeller: "Best-seller",
+      bestSeller: "Bestseller",
       limitedOffer: "Offre limitée",
       urgent: "Urgent",
       years: "ans",
@@ -827,231 +808,232 @@ const translations: Record<Language, Translations> = {
       reviews: "avis",
       timeLeft: "Temps restant",
       vehicles: "véhicules",
-      savings: "d'économie",
+      savings: "d'économies",
       expertiseGuaranteed: "Expertise garantie",
-      featuredVehicles: "Véhicules Vedettes",
+      featuredVehicles: "Véhicules mis en avant",
       premiumSelection: "Sélection Premium",
       ourBest: "Nos Meilleures",
-      offersVehicles: "Offres & Véhicules",
-      discoverSelection: "Découvrez notre sélection de véhicules vedettes et profitez de nos promotions exceptionnelles. Chaque véhicule est rigoureusement contrôlé par nos experts.",
-      rigorouslyControlled: "rigoureusement contrôlé",
+      offersVehicles: "Offres Véhicules",
+      discoverSelection: "Découvrir la Sélection",
+      rigorouslyControlled: "Rigoureusement Contrôlés",
       models: "modèles",
-      specialOffers: "Offres spéciales",
+      specialOffers: "Offres Spéciales",
       newArrivals2024: "Nouveautés 2024",
       bestseller: "Bestseller",
-      mostRequested: "Plus demandé",
-      bestPrice: "Meilleur prix",
+      mostRequested: "Les Plus Demandés",
+      bestPrice: "Meilleur Prix",
       upTo15Off: "Jusqu'à -15%",
-      receiveOffer24h: "Recevez votre offre personnalisée en moins de 24h – Sans engagement",
-      personalizedExchange: "Besoin d'un échange personnalisé ? Réservez un rendez-vous téléphonique ou en visio avec l'un de nos experts.",
-      discoverCollection: "Découvrez notre collection exclusive de véhicules sélectionnés pour répondre aux standards les plus exigeants du transport équin.",
-      moreEquipment: "autres équipements",
+      receiveOffer24h: "Recevoir une offre sous 24h",
+      personalizedExchange: "Échange personnalisé",
+      discoverCollection: "Découvrir la Collection",
+      moreEquipment: "Plus d'équipements",
       promotionalPrice: "Prix promotionnel",
-      financingAvailable: "Financement disponible dès 299€/mois",
-      discoverCharacteristics: "Découvrir toutes les caractéristiques de ce véhicule",
+      financingAvailable: "Financement disponible",
+      discoverCharacteristics: "Découvrir les caractéristiques",
       addToMySelection: "Ajouter à ma sélection",
-      onlyXDaysLeft: "Plus que 3 jours",
-      favorite: "Coup de Cœur"
+      onlyXDaysLeft: "Plus que X jours",
+      favorite: "Favori"
     },
     trucksPage: {
       title: "Camions Chevaux",
-      subtitle: "Professionnels",
-      description: "Découvrez notre sélection de camions chevaux haute capacité pour le transport professionnel. 4 à 6 chevaux, suspension pneumatique et tout le confort nécessaire.",
+      subtitle: "Transport Professionnel",
+      description: "Découvrez notre gamme complète de camions pour le transport équin professionnel. De 2 à 8 chevaux, tous équipements inclus.",
       filters: {
         allFilters: "Tous les filtres",
         capacity: "Capacité",
         price: "Prix",
         year: "Année",
         mileage: "Kilométrage",
-        found: "camions trouvés"
+        found: "véhicules trouvés"
       },
-      vehicle: {
-        horseTruck: "Camion Chevaux",
-        features: {
-          pneumaticSuspension: "Suspension pneumatique",
-          airConditioning: "Climatisation",
-          sleepingCabin: "Cabine couchette",
-          automaticTransmission: "Boîte automatique",
-          integratedGPS: "GPS intégré",
-          grandComfortCabin: "Cabine grand confort",
-          manualTransmission: "Boîte manuelle",
-          blueEfficiency: "BlueEFFICIENCY",
-          automaticAirConditioning: "Climatisation automatique",
-          cruiseControl: "Régulateur de vitesse",
-          telematicSystem: "Système télématique",
-          dtiEngine: "Moteur DTI",
-          powerSteering: "Direction assistée",
-          electricWindows: "Vitres électriques",
-          centralLocking: "Verrouillage centralisé",
-          euro6: "Euro 6",
-          adBlueSystem: "Système AdBlue",
-          spaciousCabin: "Cabine spacieuse",
-          efficientEngine: "Moteur efficient",
-          easilyMaintained: "Maintenance facilité",
-          ergonomicCabin: "Cabine ergonomique"
+      features: {
+        comfort: {
+          title: "Confort Maximum",
+          description: "Cabines spacieuses avec couchette, climatisation et équipements modernes"
         },
-        badges: {
-          bestseller: "Bestseller",
-          premium: "Premium",
-          promotion: "Promotion",
-          certifiedUsed: "Occasion Certifiée",
-          recent: "Récent",
-          reliable: "Fiable"
+        safety: {
+          title: "Sécurité Avancée",
+          description: "Systèmes de freinage ABS, ESP et suspension pneumatique pour vos chevaux"
         },
-        specs: {
-          horses: "chevaux",
-          year: "Année",
-          km: "km",
-          capacity: "Capacité"
-        },
-        pricing: {
-          save: "Économisez",
-          financing: "Financement disponible dès",
-          perMonth: "/mois"
-        },
-        actions: {
-          seeDetails: "Voir Détails",
-          addToFavorites: "Ajouter aux favoris"
+        equipment: {
+          title: "Équipements Premium",
+          description: "Éclairage LED, ventilation, caméras de surveillance et bien plus"
         }
       },
       cta: {
-        title: "Besoin d'un Conseil sur nos Camions ?",
-        description: "Nos experts vous accompagnent dans le choix du camion parfait pour vos besoins professionnels.",
-        getQuote: "Demander un Devis Gratuit",
-        contactExpert: "Contacter un Expert"
+        title: "Besoin d'un conseil ?",
+        description: "Nos experts vous accompagnent dans le choix de votre camion",
+        button: "Nous contacter"
       }
     },
-
     vansPage: {
       title: "Vans Chevaux",
-      subtitle: "Polyvalents",
-      description: "Découvrez notre gamme de vans chevaux alliant polyvalence et maniabilité. Parfaits pour vos déplacements urbains et ruraux avec 2 à 4 chevaux.",
+      subtitle: "Polyvalence et Praticité",
+      description: "Parfaits pour 1 à 3 chevaux, nos vans allient facilité de conduite et équipements professionnels.",
       filters: {
         allFilters: "Tous les filtres",
         capacity: "Capacité",
         price: "Prix",
         year: "Année",
         mileage: "Kilométrage",
-        found: "vans trouvés"
+        found: "véhicules trouvés"
       },
-      vehicle: {
-        horseVan: "Van Chevaux",
-        specs: {
-          horses: "chevaux",
-          km: "km"
+      features: {
+        versatility: {
+          title: "Polyvalence",
+          description: "Parfaits pour usage quotidien et transport occasionnel"
         },
-        features: {
-          nonSlipFlooring: "Plancher antidérapant",
-          ledLighting: "Éclairage LED",
-          ventilation: "Ventilation",
-          handsFreeMobile: "Kit mains libres",
-          blueTecEngine: "Moteur BlueTEC",
-          automaticTransmission: "Boîte automatique",
-          reverseCamera: "Caméra de recul",
-          parkingSensors: "Radar de recul",
-          optimizedVolume: "Volume optimisé",
-          cruiseControl: "Régulateur de vitesse",
-          airConditioning: "Climatisation",
-          ecoBlue: "EcoBlue",
-          sync3: "SYNC 3",
-          parkingAssist: "Aide au stationnement",
-          tdiBlueMotion: "TDI BlueMotion",
-          esp: "ESP",
-          hillStartAssist: "Assistant de démarrage en côte",
-          blueHdi: "BlueHDi",
-          mirrorScreen: "Mirror Screen",
-          fatigueSensor: "Détecteur de fatigue"
+        efficiency: {
+          title: "Efficacité",
+          description: "Consommation réduite et facilité de stationnement"
         },
-        badges: {
-          favorite: "Coup de Cœur",
-          bestseller: "Bestseller",
-          premium: "Premium",
-          promotion: "Promotion",
-          certifiedUsed: "Occasion Certifiée",
-          recent: "Récent",
-          economical: "Économique"
-        },
-        pricing: {
-          save: "Économisez",
-          financing: "Financement disponible dès",
-          perMonth: "/mois"
-        },
-        actions: {
-          seeDetails: "Voir Détails"
+        comfort: {
+          title: "Confort",
+          description: "Suspension adaptée et ventilation optimisée pour vos chevaux"
         }
       },
       cta: {
-        title: "Trouvez le Van Parfait pour Vous",
-        description: "Nos experts vous conseillent pour choisir le van chevaux adapté à vos besoins et votre budget.",
-        getQuote: "Demander un Devis Gratuit",
-        contactExpert: "Prendre Rendez-vous"
+        title: "Questions sur nos vans ?",
+        description: "Découvrez le modèle qui correspond à vos besoins",
+        button: "Demander un devis"
+      }
+    },
+    trailersPage: {
+      title: "Remorques Chevaux",
+      subtitle: "Solution Économique",
+      description: "Remorques de qualité pour 1 à 3 chevaux. Solution économique sans compromis sur la sécurité.",
+      filters: {
+        allFilters: "Tous les filtres",
+        capacity: "Capacité",
+        price: "Prix",
+        year: "Année",
+        weight: "Poids",
+        found: "véhicules trouvés"
+      },
+      features: {
+        lightweight: {
+          title: "Légèreté",
+          description: "Construction allégée pour une consommation réduite"
+        },
+        maneuverability: {
+          title: "Maniabilité",
+          description: "Facilité d'attelage et de manœuvre en toutes circonstances"
+        },
+        economy: {
+          title: "Économie",
+          description: "Investissement maîtrisé avec un excellent rapport qualité-prix"
+        }
+      },
+      cta: {
+        title: "Quelle remorque choisir ?",
+        description: "Nos spécialistes vous conseillent selon votre usage",
+        button: "Être rappelé"
+      }
+    },
+    occasionsPage: {
+      title: "Véhicules d'Occasion",
+      subtitle: "Sélection Rigoureuse",
+      description: "Découvrez nos véhicules d'occasion contrôlés et garantis. Qualité professionnelle à prix maîtrisé.",
+      guarantees: {
+        title: "Nos Garanties",
+        checked: "Véhicules contrôlés",
+        warranty: "Garantie incluse",
+        maintenance: "Historique d'entretien",
+        financing: "Financement disponible"
+      },
+      filters: {
+        allFilters: "Tous les filtres",
+        type: "Type",
+        brand: "Marque",
+        year: "Année",
+        price: "Prix",
+        mileage: "Kilométrage",
+        found: "véhicules trouvés"
+      },
+      advantages: {
+        price: {
+          title: "Prix Attractifs",
+          description: "Économisez jusqu'à 40% par rapport au neuf"
+        },
+        quality: {
+          title: "Qualité Contrôlée",
+          description: "Inspection complète de nos experts avant mise en vente"
+        },
+        choice: {
+          title: "Large Choix",
+          description: "Plus de 50 véhicules d'occasion en stock permanent"
+        }
+      },
+      cta: {
+        title: "Trouvez votre occasion",
+        description: "Consultez notre stock complet et réservez votre véhicule",
+        button: "Voir toutes les occasions"
       }
     },
     aboutPage: {
       hero: {
         badge: "Notre Histoire",
-        title1: "L'Excellence",
-        title2: "au Service des Chevaux",
-        description: "Depuis 2008, Horse Truck Garage accompagne les passionnés d'équitation dans le choix de leurs véhicules de transport. Notre expertise française au service de vos champions."
-      },
-      stats: {
-        experience: "Années d'Expertise",
-        clients: "Clients Satisfaits",
-        certified: "Véhicules Certifiés",
-        recommendations: "Recommandations"
+        title: "15 ans de Passion",
+        subtitle: "au Service du Transport Équin",
+        description: "Depuis 2009, HTG accompagne les passionnés d'équitation dans leurs projets de transport avec expertise et dévouement."
       },
       story: {
-        title1: "Une Passion",
-        title2: "Devenue Expertise",
-        paragraph1: "Tout a commencé en 2008 avec une simple conviction : les chevaux méritent le meilleur transport possible. Jean-Pierre Dubois, cavalier passionné et entrepreneur, a fondé HTG avec l'ambition de révolutionner le marché du transport équin en France.",
-        paragraph2: "Aujourd'hui, nous sommes fiers d'être devenus la référence française en matière de véhicules de transport équin, avec plus de 2500 clients qui nous font confiance pour leurs champions.",
-        cta: "Demander un Devis Personnalisé"
-      },
-      mission: {
-        title: "Notre Mission",
-        description: "Offrir aux passionnés d'équitation des solutions de transport qui allient sécurité, confort et performance, tout en garantissant le bien-être de leurs chevaux.",
-        point1: "Sélection rigoureuse des véhicules",
-        point2: "Expertise technique reconnue",
-        point3: "Service client personnalisé"
-      },
-      values: {
-        passion: {
-          title: "Passion Équestre",
-          description: "Notre équipe partage votre passion pour le monde équin et comprend l'importance du bien-être animal."
-        },
-        expertise: {
-          title: "Expertise Reconnue",
-          description: "15 ans d'expérience dans le transport équin nous permettent de sélectionner les meilleurs véhicules."
-        },
-        excellence: {
-          title: "Excellence du Service",
-          description: "De la première visite à l'après-vente, nous nous engageons à vous offrir un service exceptionnel."
-        },
-        support: {
-          title: "Accompagnement Complet",
-          description: "Financement, assurance, entretien : nous vous accompagnons dans tous les aspects de votre achat."
+        title: "Notre",
+        subtitle: "Histoire",
+        description: "HTG naît de la passion de son fondateur pour l'univers équin et de sa volonté d'offrir des solutions de transport d'exception. Depuis 15 ans, nous avons accompagné plus de 2500 clients dans leurs projets.",
+        founder: {
+          name: "Jean-Michel Perrin",
+          role: "Fondateur & Directeur",
+          quote: "Ma vision a toujours été simple : offrir aux passionnés d'équitation les meilleurs véhicules de transport, avec un service irréprochable."
         }
       },
-      valuesSection: {
-        title1: "Nos",
-        title2: " Valeurs",
-        subtitle: "Les principes qui guident notre action depuis plus de 15 ans"
+      mission: {
+        title: "Nos",
+        subtitle: "Valeurs",
+        values: {
+          excellence: {
+            title: "Excellence",
+            description: "Nous sélectionnons rigoureusement chaque véhicule pour garantir la plus haute qualité."
+          },
+          trust: {
+            title: "Confiance",
+            description: "Transparence totale dans nos échanges et nos tarifs. Votre satisfaction est notre priorité."
+          },
+          innovation: {
+            title: "Innovation",
+            description: "Nous restons à la pointe des technologies pour vous offrir les solutions les plus modernes."
+          },
+          service: {
+            title: "Service",
+            description: "Un accompagnement personnalisé de votre projet à la livraison de votre véhicule."
+          }
+        }
+      },
+      achievements: {
+        title: "Nos",
+        subtitle: "Réalisations",
+        stats: {
+          experience: "15 années d'expertise",
+          vehicles: "150+ véhicules en stock",
+          clients: "2500+ clients satisfaits",
+          satisfaction: "98% de satisfaction client"
+        }
       },
       team: {
         director: {
           role: "Directeur & Fondateur",
           experience: "20 ans dans le transport équin",
-          speciality: "Expert en camions chevaux premium"
+          speciality: "Expert en camions premium"
         },
         sales: {
-          role: "Responsable Commerciale",
+          role: "Responsable Commercial",
           experience: "12 ans chez HTG",
           speciality: "Spécialiste vans et remorques"
         },
         technical: {
           role: "Expert Technique",
           experience: "15 ans mécanicien spécialisé",
-          speciality: "Contrôle qualité et expertise"
+          speciality: "Contrôle qualité"
         }
       },
       teamSection: {
@@ -1060,8 +1042,8 @@ const translations: Record<Language, Translations> = {
         subtitle: "Des experts passionnés à votre service"
       },
       cta: {
-        title: "Prêt à Faire Confiance à Notre Expertise ?",
-        description: "Découvrez pourquoi plus de 2500 passionnés d'équitation nous font confiance pour leurs véhicules de transport.",
+        title: "Prêt à nous faire confiance ?",
+        description: "Découvrez pourquoi plus de 2500 passionnés d'équitation nous font confiance.",
         button1: "Voir Nos Véhicules",
         button2: "Prendre Rendez-vous"
       }
@@ -1071,7 +1053,7 @@ const translations: Record<Language, Translations> = {
         badge: "Contactez-nous",
         title: "Parlons de Votre",
         subtitle: "Projet Transport",
-        description: "Nos experts vous accompagnent dans le choix de votre véhicule de transport équin. Contactez-nous par le moyen qui vous convient le mieux."
+        description: "Nos experts vous accompagnent dans le choix de votre véhicule de transport équin."
       },
       contactMethods: {
         title: "Comment Nous",
@@ -1169,8 +1151,121 @@ const translations: Record<Language, Translations> = {
           over80k: "Plus de 80 000€"
         }
       }
+    },
+    quoteRequestPage: {
+      hero: {
+        badge: "Demande de Devis",
+        title: "Obtenez Votre Devis",
+        subtitle: "Personnalisé Gratuit",
+        description: "Nos experts vous accompagnent dans le choix de votre véhicule de transport équin. Réponse garantie sous 24h."
+      },
+      benefits: {
+        response24h: {
+          title: "Réponse Sous 24h",
+          description: "Votre devis personnalisé dans votre boîte mail"
+        },
+        free: {
+          title: "100% Gratuit",
+          description: "Aucun frais, aucun engagement de votre part"
+        },
+        transparent: {
+          title: "Prix Transparent",
+          description: "Tous les coûts inclus, aucune surprise"
+        },
+        expert: {
+          title: "Expert Dédié",
+          description: "Un conseiller personnel suit votre dossier"
+        }
+      },
+      vehicleTypes: {
+        title: "Types de Véhicules Disponibles",
+        truck: {
+          type: "Camion Chevaux",
+          priceRange: "45 000€ - 120 000€",
+          popular: "Le plus demandé",
+          capacities: ["2 chevaux", "3 chevaux", "4 chevaux", "5 chevaux", "6 chevaux et +"]
+        },
+        van: {
+          type: "Van Chevaux",
+          priceRange: "25 000€ - 85 000€",
+          capacities: ["1 cheval", "2 chevaux", "3 chevaux"]
+        },
+        trailer: {
+          type: "Remorque Chevaux",
+          priceRange: "15 000€ - 55 000€",
+          capacities: ["1 cheval", "2 chevaux", "3 chevaux"]
+        }
+      },
+      form: {
+        title: "Formulaire de Demande de Devis",
+        description: "Remplissez ce formulaire détaillé pour recevoir votre devis personnalisé sous 24h",
+        personalInfo: "Informations Personnelles",
+        firstName: "Prénom",
+        firstNamePlaceholder: "Votre prénom",
+        lastName: "Nom",
+        lastNamePlaceholder: "Votre nom",
+        email: "Email",
+        emailPlaceholder: "votre@email.com",
+        phone: "Téléphone",
+        phonePlaceholder: "06 12 34 56 78",
+        company: "Entreprise (optionnel)",
+        companyPlaceholder: "Nom de votre entreprise",
+        vehicleRequirements: "Exigences du Véhicule",
+        vehicleType: "Type de véhicule souhaité",
+        vehicleTypePlaceholder: "Sélectionnez un type",
+        capacity: "Capacité souhaitée",
+        capacityPlaceholder: "Nombre de chevaux",
+        budget: "Budget estimé",
+        budgetPlaceholder: "Sélectionnez votre budget",
+        usage: "Utilisation Prévue",
+        usageType: "Type d'utilisation",
+        usageTypePlaceholder: "Personnel, professionnel...",
+        annualKm: "Kilométrage annuel estimé",
+        annualKmPlaceholder: "Ex: 15 000 km/an",
+        urgency: "Délai souhaité",
+        urgencyPlaceholder: "Quand souhaitez-vous acheter ?",
+        additionalInfo: "Informations Complémentaires",
+        message: "Message (besoins spécifiques, questions...)",
+        messagePlaceholder: "Décrivez vos besoins spécifiques, contraintes particulières, équipements souhaités...",
+        submitButton: "Envoyer ma Demande de Devis",
+        successMessage: "Votre demande a été envoyée avec succès ! Nous vous recontactons sous 24h.",
+        vehicleTypes: {
+          truck: "Camion Chevaux",
+          van: "Van Chevaux",
+          trailer: "Remorque Chevaux",
+          other: "Autre / Conseil"
+        },
+        capacities: {
+          oneHorse: "1 cheval",
+          twoHorses: "2 chevaux",
+          threeHorses: "3 chevaux",
+          fourHorses: "4 chevaux",
+          fiveHorses: "5 chevaux",
+          sixPlusHorses: "6 chevaux et +"
+        },
+        budgetRanges: {
+          under30k: "Moins de 30 000€",
+          range30k50k: "30 000€ - 50 000€",
+          range50k80k: "50 000€ - 80 000€",
+          range80k120k: "80 000€ - 120 000€",
+          over120k: "Plus de 120 000€"
+        },
+        usageTypes: {
+          personal: "Usage personnel",
+          professional: "Usage professionnel",
+          mixed: "Usage mixte"
+        },
+        urgencyOptions: {
+          immediate: "Immédiat (dans le mois)",
+          month: "Dans 1 à 3 mois",
+          threeMonths: "Dans 3 à 6 mois",
+          sixMonths: "Dans 6 mois à 1 an",
+          noUrgency: "Pas d'urgence particulière"
+        }
+      }
     }
   },
+  en: {
     nav: {
       home: "Home",
       horseTrucks: "Horse Trucks",
@@ -1178,258 +1273,160 @@ const translations: Record<Language, Translations> = {
       horseTrailers: "Horse Trailers",
       about: "About",
       contact: "Contact",
-      about: "About",
-      contact: "Contact",
       getQuote: "Get Quote",
       occasions: "Used Vehicles"
     },
     hero: {
       slide1: {
-        subtitle: "Premium Equestrian Transport",
-        title: "Exceptional Vehicles for Your Horses",
-        description: "Discover our complete range of trucks, vans and trailers for transporting your horses safely and comfortably."
+        subtitle: "Premium equine transport",
+        title: "Professional Horse Trucks",
+        description: "Discover our selection of high-end trucks for transporting your horses. Comfort, safety and reliability guaranteed."
       },
       slide2: {
-        subtitle: "Comfort & Safety",
-        title: "High-End Horse Trucks",
-        description: "Spacious vehicles equipped with the latest technology for your horses' well-being during all your travels."
+        subtitle: "Compact solutions",
+        title: "Latest Generation Horse Vans",
+        description: "Perfect for 1 to 3 horses, our vans combine maneuverability and cutting-edge equipment for your daily trips."
       },
       slide3: {
-        subtitle: "Optimal Mobility",
-        title: "Versatile Horse Vans",
-        description: "Practical and elegant solutions for transporting 1 to 3 horses, ideal for daily outings and competitions."
+        subtitle: "Economical and practical",
+        title: "Certified Horse Trailers",
+        description: "The economical alternative for equine transport. Wide choice of new and used trailers, all inspected."
       },
       slide4: {
-        subtitle: "Maximum Flexibility",
-        title: "Professional Horse Trailers",
-        description: "Wide range of trailers adapted to all your needs, from family rides to international competitions."
+        subtitle: "Inspected vehicles",
+        title: "Carefully Selected Used Vehicles",
+        description: "Used vehicles rigorously selected and inspected. Warranty, financing and delivery throughout France."
       },
       slide5: {
-        subtitle: "Certified Used Vehicles",
-        title: "Guaranteed Used Vehicles",
-        description: "Discover our rigorous selection of used vehicles inspected and guaranteed by our experts."
+        subtitle: "15 years of expertise",
+        title: "Your Equine Transport Partner",
+        description: "HTG has been supporting you for 15 years in all your projects. Personalized advice and exceptional customer service."
       },
-      cta: "Get Free Quote"
+      cta: "Discover our vehicles"
     },
     categories: {
-      title: "Our Vehicles",
-      subtitle: "Equestrian",
+      title: "Choose Your",
+      subtitle: "Ideal Vehicle",
       horseTrucks: {
         title: "Horse Trucks",
-        description: "Spacious and comfortable vehicles for professional transport of your horses",
-        features: ["2-6 horse capacity", "Tack compartment", "Ventilation system", "Air suspension"],
-        from: "From",
-        explore: "Explore Trucks"
+        description: "Professional solutions for 2 to 8 horses. Maximum comfort and premium equipment.",
+        features: ["Air suspension", "Cabin air conditioning", "Non-slip flooring"],
+        from: "From €65,000",
+        explore: "Discover trucks"
       },
       horseVans: {
         title: "Horse Vans",
-        description: "Compact and versatile solutions for 1-3 horses, perfect for daily use",
-        features: ["Compact size", "B license driving", "Modular layout", "Economical"],
-        from: "From",
-        explore: "Explore Vans"
+        description: "Perfect for 1 to 3 horses. Maneuverable, economical and very well equipped.",
+        features: ["Easy driving", "Reduced consumption", "Modularity"],
+        from: "From €35,000",
+        explore: "Discover vans"
       },
       horseTrailers: {
         title: "Horse Trailers",
-        description: "Robust and reliable trailers for all types of equestrian transport",
-        features: ["1-4 horse capacity", "Non-slip flooring", "LED lighting", "ABS braking"],
-        from: "From",
-        explore: "Explore Trailers"
+        description: "Economical solution for 1 to 3 horses. Quality and safety guaranteed.",
+        features: ["Light and robust", "Easy hitching", "Attractive price"],
+        from: "From €18,000",
+        explore: "Discover trailers"
       },
-      ctaTitle: "Need Personalized Advice?",
-      ctaDescription: "Our experts help you choose the ideal vehicle for your needs",
-      getFreeQuote: "Get Free Quote",
-      makeAppointment: "Make Appointment",
+      ctaTitle: "A Question? A Project?",
+      ctaDescription: "Our experts advise you for free to find the perfect vehicle according to your needs.",
+      getFreeQuote: "Free Quote",
+      makeAppointment: "Make an Appointment",
       specialties: "Our Specialties",
-      findPerfectVehicle: "Find the Perfect Vehicle for Your Needs",
-      disciplineDescription: "Each equestrian discipline has its requirements. Discover our selection organized by vehicle type to find the ideal solution."
+      findPerfectVehicle: "Find the Perfect Vehicle",
+      disciplineDescription: "For Every Equestrian Discipline"
     },
     trust: {
-      badge: "Trust & Expertise",
-      title: "Your Trusted",
+      badge: "Why choose us",
+      title: "HTG, Your Trusted",
       subtitle: "Partner",
-      description: "Discover why over 2500 customers trust us for their equestrian vehicles. Excellence, expertise and personalized service for over 15 years.",
+      description: "15 years of expertise in equine transport. More than 2500 customers trust us for their passion.",
       stats: {
-        experience: "Years of experience",
-        clients: "Satisfied customers",
-        satisfaction: "Satisfaction rate",
-        response: "Guaranteed response"
+        experience: "15 years of experience",
+        clients: "2500+ satisfied customers",
+        satisfaction: "98% satisfaction",
+        response: "Response within 24h"
       },
-      reviewsTitle: "What Our Customers Say",
-      reviewsDescription: "Authentic testimonials from professionals and enthusiasts who trust us",
-      leaveReview: "Leave a Review",
+      reviewsTitle: "What our customers say",
+      reviewsDescription: "Discover testimonials from enthusiasts who trust us",
+      leaveReview: "Leave a review",
       partnersTitle: "Our Trusted Partners",
-      partnersDescription: "We work exclusively with the biggest brands in the equestrian sector",
+      partnersDescription: "We work with the best brands in the sector",
+      getQuote: "Request a quote",
       partners: [
-        { name: "Iveco", logo: "/lovable-uploads/2b478b96-e19a-4288-ac04-f0410f56f0bc.png", description: "Official partner since 2015" },
-        { name: "Mercedes", logo: "/lovable-uploads/bee66bcd-4af5-4ce6-a9d1-a044053fa657.png", description: "Authorized distributor" },
-        { name: "Renault", logo: "/lovable-uploads/2307287b-f2a8-4858-984f-44b3a646dd23.png", description: "Certified dealer" },
-        { name: "Böckmann", logo: "/lovable-uploads/35ff85cc-4513-4a11-9b8b-eda640027c91.png", description: "Exclusive regional dealer" },
-        { name: "Ifor Williams", logo: "/lovable-uploads/a3bc9f31-af5a-4053-a835-56933ae8d26b.png", description: "Authorized distributor" },
-        { name: "Humbaur", logo: "/lovable-uploads/243f1cf5-f2ce-48a8-a2dd-8c9d7334fa5a.png", description: "Premium partner" }
+        { name: "Peugeot", logo: "/placeholder.svg", description: "Official partner" },
+        { name: "Iveco", logo: "/placeholder.svg", description: "Authorized distributor" },
+        { name: "Mercedes", logo: "/placeholder.svg", description: "Service center" }
       ],
-      getQuote: "Get Free Quote",
       reviews: [
         {
-          id: 1,
-          name: "Emily Johnson",
-          location: "Gloucestershire",
+          name: "Sarah Martin",
+          role: "Professional rider",
+          content: "Exceptional service! My van is perfect for my competitions. The HTG team understood my specific needs.",
           rating: 5,
-          text: "Outstanding service! I bought my horse van from HTG 2 years ago and I'm still extremely satisfied. The team is professional and provides excellent advice.",
-          vehicleType: "Horse Van Renault Master",
-          date: "3 weeks ago",
-          verified: true
+          image: "/placeholder.svg"
         },
         {
-          id: 2,
-          name: "James Thompson",
-          location: "Yorkshire",
+          name: "Pierre Dubois",
+          role: "Equestrian center",
+          content: "Truck delivered on time with all requested equipment. Quality as expected, I highly recommend!",
           rating: 5,
-          text: "Excellent value for money for my 4-horse truck. The delivery went perfectly and the vehicle was immaculate.",
-          vehicleType: "Iveco Daily Truck",
-          date: "1 month ago",
-          verified: true
+          image: "/placeholder.svg"
         },
         {
-          id: 3,
-          name: "Sarah Williams",
-          location: "Devon",
+          name: "Marie Leroy",
+          role: "Horse owner",
+          content: "Excellent advice for buying my trailer. Transparent price and impeccable after-sales service.",
           rating: 5,
-          text: "I highly recommend HTG! Their expertise helped me find the perfect trailer for my needs. Impeccable follow-up service.",
-          vehicleType: "Böckmann Trailer",
-          date: "2 months ago",
-          verified: true
-        },
-        {
-          id: 4,
-          name: "Michael Brown",
-          location: "Kent",
-          rating: 5,
-          text: "20 years of experience in equestrian sports, and I've never seen such professional service. My new Mercedes van is perfect for competitions.",
-          vehicleType: "Mercedes Sprinter Van",
-          date: "1 week ago",
-          verified: true
-        },
-        {
-          id: 5,
-          name: "Jessica Davis",
-          location: "Sussex",
-          rating: 4,
-          text: "Very satisfied with my purchase! The team advised me on the right model. Just a small delivery delay but the result was worth it.",
-          vehicleType: "Ifor Williams Trailer",
-          date: "3 days ago",
-          verified: true
-        },
-        {
-          id: 6,
-          name: "David Wilson",
-          location: "Norfolk",
-          rating: 5,
-          text: "Top-notch after-sales service! My truck had a small issue and they sorted it out quickly. A truly reliable team, I recommend without hesitation.",
-          vehicleType: "Renault Master Truck",
-          date: "2 weeks ago",
-          verified: true
-        },
-        {
-          id: 7,
-          name: "Rebecca Miller",
-          location: "Dorset",
-          rating: 5,
-          text: "Purchased a 2-horse trailer for my dressage horses. Quality product, expert advice and competitive price. Perfect!",
-          vehicleType: "Humbaur Trailer",
-          date: "5 days ago",
-          verified: true
-        },
-        {
-          id: 8,
-          name: "Andrew Taylor",
-          location: "Somerset",
-          rating: 4,
-          text: "Good overall experience. The staff really knows equestrian products well. My van matches exactly my expectations for competitions.",
-          vehicleType: "Iveco Daily Van",
-          date: "4 weeks ago",
-          verified: true
+          image: "/placeholder.svg"
         }
       ]
     },
-    footer: {
-      newsletter: {
-        title: "Stay Informed",
-        description: "Receive our latest offers and equestrian news",
-        placeholder: "Your email address",
-        subscribe: "Subscribe"
+    offres: {
+      badge: "Our Offers",
+      title: "Premium Vehicles",
+      subtitle: "Selected for You",
+      description: "Discover our rigorous selection of new and used vehicles. Each vehicle is inspected by our experts.",
+      stats: {
+        vehicles: "150+ vehicles",
+        brands: "12 brands",
+        clients: "2500+ customers",
+        years: "15 years of expertise"
       },
-      company: {
-        title: "HTG Horse Truck Garage",
-        description: "Equestrian transport specialist for over 15 years. We support you in choosing, purchasing and maintaining your vehicles."
+      cta: {
+        title: "Ready to find your ideal vehicle?",
+        description: "Contact our experts for personalized advice and a free quote within 24h.",
+        primaryButton: "Request a quote",
+        secondaryButton: "See all vehicles"
       },
-      contact: {
-        title: "Contact",
-        phone: "Phone",
-        email: "Email",
-        address: "Address",
-        hours: "Hours"
+      features: {
+        quality: {
+          title: "Quality Guaranteed",
+          description: "All our vehicles are rigorously inspected and certified"
+        },
+        expertise: {
+          title: "Recognized Expertise",
+          description: "15 years of experience in quality equine transport"
+        },
+        service: {
+          title: "Premium Service",
+          description: "Personalized support from purchase to delivery"
+        },
+        guarantee: {
+          title: "Extended Warranty",
+          description: "Manufacturer warranty and after-sales services included"
+        },
+        financing: {
+          title: "Easy Financing",
+          description: "Financing solutions adapted to your budget"
+        },
+        support: {
+          title: "24/7 Support",
+          description: "Team available to answer all your questions"
+        }
       },
-      vehicles: {
-        title: "Vehicles",
-        horseTrucks: "Horse Trucks",
-        horseVans: "Horse Vans",
-        horseTrailers: "Horse Trailers",
-        occasions: "Used Vehicles"
-      },
-      company2: {
-        title: "Company",
-        about: "About",
-        contact: "Contact",
-        blog: "Blog",
-        career: "Careers"
-      },
-      services: {
-        title: "Services",
-        financing: "Financing",
-        insurance: "Insurance",
-        warranty: "Warranty",
-        maintenance: "After Sales"
-      },
-      followUs: "Follow us",
-      copyright: "All rights reserved.",
-      terms: "Legal Notice",
-      privacy: "Privacy Policy",
-      sitemap: "Sitemap"
-    },
-    floating: {
-      quote24h: "Free Quote 24h"
-    },
-    features: {
-      pneumaticSuspension: "Air suspension",
-      airConditioning: "Air conditioning",
-      sleepingCabin: "Sleeping cabin",
-      automaticTransmission: "Automatic transmission",
-      nonSlipFlooring: "Non-slip flooring",
-      ledLighting: "LED lighting",
-      ventilation: "Ventilation",
-      handsFreeeKit: "Hands-free kit",
-      aluminum: "Aluminum",
-      alkoSuspension: "AL-KO suspension",
-      rubberFlooring: "Rubber flooring",
-      tackCompartment: "Tack compartment",
-      ventilationSystem: "Ventilation system",
-      compactSize: "Compact size",
-      bLicenseDriving: "B license driving",
-      modularLayout: "Modular layout",
-      economical: "Economical",
-      horsesCapacity: "horses",
-      absBreaking: "ABS braking"
-    },
-    common: {
-      readMore: "Read more",
-      learnMore: "Learn more",
-      viewAll: "View all",
-      viewDetails: "View details",
-      
-      inStock: "In stock",
-      promotion: "Promotion",
-      newArrival: "New arrival",
-      bestSeller: "Best seller",
+      newArrival: "New",
+      bestSeller: "Bestseller",
       limitedOffer: "Limited offer",
       urgent: "Urgent",
       years: "years",
@@ -1441,229 +1438,230 @@ const translations: Record<Language, Translations> = {
       vehicles: "vehicles",
       savings: "savings",
       expertiseGuaranteed: "Expertise guaranteed",
-      featuredVehicles: "Featured Vehicles",
+      featuredVehicles: "Featured vehicles",
       premiumSelection: "Premium Selection",
       ourBest: "Our Best",
-      offersVehicles: "Offers & Vehicles",
-      discoverSelection: "Discover our selection of featured vehicles and enjoy our exceptional promotions. Each vehicle is rigorously controlled by our experts.",
-      rigorouslyControlled: "rigorously controlled",
+      offersVehicles: "Vehicle Offers",
+      discoverSelection: "Discover the Selection",
+      rigorouslyControlled: "Rigorously Controlled",
       models: "models",
       specialOffers: "Special Offers",
-      newArrivals2024: "New Arrivals 2024",
+      newArrivals2024: "New 2024",
       bestseller: "Bestseller",
       mostRequested: "Most Requested",
       bestPrice: "Best Price",
       upTo15Off: "Up to -15%",
-      receiveOffer24h: "Receive your personalized offer in less than 24h – No commitment",
-      personalizedExchange: "Need a personalized exchange? Book a phone or video appointment with one of our experts.",
-      discoverCollection: "Discover our exclusive collection of vehicles selected to meet the most demanding standards of equestrian transport.",
-      moreEquipment: "more equipment",
+      receiveOffer24h: "Receive an offer within 24h",
+      personalizedExchange: "Personalized exchange",
+      discoverCollection: "Discover the Collection",
+      moreEquipment: "More equipment",
       promotionalPrice: "Promotional price",
-      financingAvailable: "Financing available from €299/month",
-      discoverCharacteristics: "Discover all characteristics of this vehicle",
-      addToMySelection: "Add to selection",
-      onlyXDaysLeft: "Only 3 days left",
+      financingAvailable: "Financing available",
+      discoverCharacteristics: "Discover characteristics",
+      addToMySelection: "Add to my selection",
+      onlyXDaysLeft: "Only X days left",
       favorite: "Favorite"
     },
     trucksPage: {
       title: "Horse Trucks",
-      subtitle: "Professional",
-      description: "Discover our selection of high-capacity horse trucks for professional transport. 4 to 6 horses, pneumatic suspension and all necessary comfort.",
+      subtitle: "Professional Transport",
+      description: "Discover our complete range of trucks for professional equine transport. From 2 to 8 horses, all equipment included.",
       filters: {
         allFilters: "All filters",
         capacity: "Capacity",
         price: "Price",
         year: "Year",
         mileage: "Mileage",
-        found: "trucks found"
+        found: "vehicles found"
       },
-      vehicle: {
-        horseTruck: "Horse Truck",
-        features: {
-          pneumaticSuspension: "Pneumatic suspension",
-          airConditioning: "Air conditioning",
-          sleepingCabin: "Sleeping cabin",
-          automaticTransmission: "Automatic transmission",
-          integratedGPS: "Integrated GPS",
-          grandComfortCabin: "Grand comfort cabin",
-          manualTransmission: "Manual transmission",
-          blueEfficiency: "BlueEFFICIENCY",
-          automaticAirConditioning: "Automatic air conditioning",
-          cruiseControl: "Cruise control",
-          telematicSystem: "Telematic system",
-          dtiEngine: "DTI engine",
-          powerSteering: "Power steering",
-          electricWindows: "Electric windows",
-          centralLocking: "Central locking",
-          euro6: "Euro 6",
-          adBlueSystem: "AdBlue system",
-          spaciousCabin: "Spacious cabin",
-          efficientEngine: "Efficient engine",
-          easilyMaintained: "Easily maintained",
-          ergonomicCabin: "Ergonomic cabin"
+      features: {
+        comfort: {
+          title: "Maximum Comfort",
+          description: "Spacious cabins with sleeper, air conditioning and modern equipment"
         },
-        badges: {
-          bestseller: "Bestseller",
-          premium: "Premium",
-          promotion: "Promotion",
-          certifiedUsed: "Certified Used",
-          recent: "Recent",
-          reliable: "Reliable"
+        safety: {
+          title: "Advanced Safety",
+          description: "ABS braking systems, ESP and air suspension for your horses"
         },
-        specs: {
-          horses: "horses",
-          year: "Year",
-          km: "km",
-          capacity: "Capacity"
-        },
-        pricing: {
-          save: "Save",
-          financing: "Financing available from",
-          perMonth: "/month"
-        },
-        actions: {
-          seeDetails: "View Details",
-          addToFavorites: "Add to Favorites"
+        equipment: {
+          title: "Premium Equipment",
+          description: "LED lighting, ventilation, surveillance cameras and much more"
         }
       },
       cta: {
-        title: "Need Advice on our Trucks?",
-        description: "Our experts accompany you in choosing the perfect truck for your professional needs.",
-        getQuote: "Request a Free Quote",
-        contactExpert: "Contact an Expert"
+        title: "Need advice?",
+        description: "Our experts support you in choosing your truck",
+        button: "Contact us"
       }
     },
-
     vansPage: {
       title: "Horse Vans",
-      subtitle: "Versatile",
-      description: "Discover our range of horse vans combining versatility and maneuverability. Perfect for your urban and rural travels with 2 to 4 horses.",
+      subtitle: "Versatility and Practicality",
+      description: "Perfect for 1 to 3 horses, our vans combine ease of driving and professional equipment.",
       filters: {
         allFilters: "All filters",
         capacity: "Capacity",
         price: "Price",
         year: "Year",
         mileage: "Mileage",
-        found: "vans found"
+        found: "vehicles found"
       },
-      vehicle: {
-        horseVan: "Horse Van",
-        specs: {
-          horses: "horses",
-          km: "km"
+      features: {
+        versatility: {
+          title: "Versatility",
+          description: "Perfect for daily use and occasional transport"
         },
-        features: {
-          nonSlipFlooring: "Non-slip flooring",
-          ledLighting: "LED lighting",
-          ventilation: "Ventilation",
-          handsFreeMobile: "Hands-free kit",
-          blueTecEngine: "BlueTEC engine",
-          automaticTransmission: "Automatic transmission",
-          reverseCamera: "Reverse camera",
-          parkingSensors: "Parking sensors",
-          optimizedVolume: "Optimized volume",
-          cruiseControl: "Cruise control",
-          airConditioning: "Air conditioning",
-          ecoBlue: "EcoBlue",
-          sync3: "SYNC 3",
-          parkingAssist: "Parking assist",
-          tdiBlueMotion: "TDI BlueMotion",
-          esp: "ESP",
-          hillStartAssist: "Hill start assist",
-          blueHdi: "BlueHDi",
-          mirrorScreen: "Mirror Screen",
-          fatigueSensor: "Fatigue detector"
+        efficiency: {
+          title: "Efficiency",
+          description: "Reduced consumption and easy parking"
         },
-        badges: {
-          favorite: "Favorite",
-          bestseller: "Bestseller",
-          premium: "Premium",
-          promotion: "Promotion",
-          certifiedUsed: "Certified Used",
-          recent: "Recent",
-          economical: "Economical"
-        },
-        pricing: {
-          save: "Save",
-          financing: "Financing available from",
-          perMonth: "/month"
-        },
-        actions: {
-          seeDetails: "See Details"
+        comfort: {
+          title: "Comfort",
+          description: "Adapted suspension and optimized ventilation for your horses"
         }
       },
       cta: {
-        title: "Find the Perfect Van for You",
-        description: "Our experts advise you to choose the horse van suited to your needs and budget.",
-        getQuote: "Get a Free Quote",
-        contactExpert: "Make an Appointment"
+        title: "Questions about our vans?",
+        description: "Discover the model that matches your needs",
+        button: "Request a quote"
+      }
+    },
+    trailersPage: {
+      title: "Horse Trailers",
+      subtitle: "Economical Solution",
+      description: "Quality trailers for 1 to 3 horses. Economical solution without compromising on safety.",
+      filters: {
+        allFilters: "All filters",
+        capacity: "Capacity",
+        price: "Price",
+        year: "Year",
+        weight: "Weight",
+        found: "vehicles found"
+      },
+      features: {
+        lightweight: {
+          title: "Lightness",
+          description: "Lightweight construction for reduced consumption"
+        },
+        maneuverability: {
+          title: "Maneuverability",
+          description: "Easy hitching and maneuvering in all circumstances"
+        },
+        economy: {
+          title: "Economy",
+          description: "Controlled investment with excellent value for money"
+        }
+      },
+      cta: {
+        title: "Which trailer to choose?",
+        description: "Our specialists advise you according to your use",
+        button: "Be called back"
+      }
+    },
+    occasionsPage: {
+      title: "Used Vehicles",
+      subtitle: "Rigorous Selection",
+      description: "Discover our controlled and guaranteed used vehicles. Professional quality at controlled prices.",
+      guarantees: {
+        title: "Our Guarantees",
+        checked: "Vehicles inspected",
+        warranty: "Warranty included",
+        maintenance: "Maintenance history",
+        financing: "Financing available"
+      },
+      filters: {
+        allFilters: "All filters",
+        type: "Type",
+        brand: "Brand",
+        year: "Year",
+        price: "Price",
+        mileage: "Mileage",
+        found: "vehicles found"
+      },
+      advantages: {
+        price: {
+          title: "Attractive Prices",
+          description: "Save up to 40% compared to new"
+        },
+        quality: {
+          title: "Controlled Quality",
+          description: "Complete inspection by our experts before sale"
+        },
+        choice: {
+          title: "Wide Choice",
+          description: "More than 50 used vehicles in permanent stock"
+        }
+      },
+      cta: {
+        title: "Find your used vehicle",
+        description: "Browse our complete stock and reserve your vehicle",
+        button: "See all used vehicles"
       }
     },
     aboutPage: {
       hero: {
         badge: "Our Story",
-        title1: "Excellence",
-        title2: "at the Service of Horses",
-        description: "Since 2008, Horse Truck Garage has been supporting equestrian enthusiasts in choosing their transport vehicles. Our French expertise at the service of your champions."
-      },
-      stats: {
-        experience: "Years of Expertise",
-        clients: "Satisfied Clients",
-        certified: "Certified Vehicles",
-        recommendations: "Recommendations"
+        title: "15 years of Passion",
+        subtitle: "in Service of Equine Transport",
+        description: "Since 2009, HTG has been supporting equestrian enthusiasts in their transport projects with expertise and dedication."
       },
       story: {
-        title1: "A Passion",
-        title2: "Became Expertise",
-        paragraph1: "It all started in 2008 with a simple conviction: horses deserve the best possible transport. Jean-Pierre Dubois, passionate rider and entrepreneur, founded HTG with the ambition to revolutionize the equine transport market in France.",
-        paragraph2: "Today, we are proud to have become the French reference in terms of equine transport vehicles, with more than 2500 clients who trust us for their champions.",
-        cta: "Request a Personalized Quote"
-      },
-      mission: {
-        title: "Our Mission",
-        description: "To offer equestrian enthusiasts transport solutions that combine safety, comfort and performance, while guaranteeing the welfare of their horses.",
-        point1: "Rigorous vehicle selection",
-        point2: "Recognized technical expertise",
-        point3: "Personalized customer service"
-      },
-      values: {
-        passion: {
-          title: "Equestrian Passion",
-          description: "Our team shares your passion for the equine world and understands the importance of animal welfare."
-        },
-        expertise: {
-          title: "Recognized Expertise",
-          description: "15 years of experience in equine transport allow us to select the best vehicles."
-        },
-        excellence: {
-          title: "Service Excellence",
-          description: "From the first visit to after-sales service, we are committed to offering you exceptional service."
-        },
-        support: {
-          title: "Complete Support",
-          description: "Financing, insurance, maintenance: we support you in all aspects of your purchase."
+        title: "Our",
+        subtitle: "Story",
+        description: "HTG was born from its founder's passion for the equestrian world and his desire to offer exceptional transport solutions. For 15 years, we have supported more than 2500 clients in their projects.",
+        founder: {
+          name: "Jean-Michel Perrin",
+          role: "Founder & Director",
+          quote: "My vision has always been simple: offer equestrian enthusiasts the best transport vehicles, with impeccable service."
         }
       },
-      valuesSection: {
-        title1: "Our",
-        title2: " Values",
-        subtitle: "The principles that have guided our action for more than 15 years"
+      mission: {
+        title: "Our",
+        subtitle: "Values",
+        values: {
+          excellence: {
+            title: "Excellence",
+            description: "We rigorously select each vehicle to guarantee the highest quality."
+          },
+          trust: {
+            title: "Trust",
+            description: "Total transparency in our exchanges and our prices. Your satisfaction is our priority."
+          },
+          innovation: {
+            title: "Innovation",
+            description: "We stay at the forefront of technologies to offer you the most modern solutions."
+          },
+          service: {
+            title: "Service",
+            description: "Personalized support from your project to the delivery of your vehicle."
+          }
+        }
+      },
+      achievements: {
+        title: "Our",
+        subtitle: "Achievements",
+        stats: {
+          experience: "15 years of expertise",
+          vehicles: "150+ vehicles in stock",
+          clients: "2500+ satisfied customers",
+          satisfaction: "98% customer satisfaction"
+        }
       },
       team: {
         director: {
           role: "Director & Founder",
           experience: "20 years in equine transport",
-          speciality: "Expert in premium horse trucks"
+          speciality: "Expert in premium trucks"
         },
         sales: {
           role: "Sales Manager",
           experience: "12 years at HTG",
-          speciality: "Specialist in vans and trailers"
+          speciality: "Vans and trailers specialist"
         },
         technical: {
           role: "Technical Expert",
           experience: "15 years specialized mechanic",
-          speciality: "Quality control and expertise"
+          speciality: "Quality control"
         }
       },
       teamSection: {
@@ -1672,8 +1670,8 @@ const translations: Record<Language, Translations> = {
         subtitle: "Passionate experts at your service"
       },
       cta: {
-        title: "Ready to Trust Our Expertise?",
-        description: "Discover why more than 2500 equestrian enthusiasts trust us for their transport vehicles.",
+        title: "Ready to trust us?",
+        description: "Discover why more than 2500 equestrian enthusiasts trust us.",
         button1: "See Our Vehicles",
         button2: "Make an Appointment"
       }
@@ -1683,28 +1681,28 @@ const translations: Record<Language, Translations> = {
         badge: "Contact Us",
         title: "Let's Talk About Your",
         subtitle: "Transport Project",
-        description: "Our experts guide you in choosing your equine transport vehicle. Contact us using the method that suits you best."
+        description: "Our experts guide you in choosing your equine transport vehicle."
       },
       contactMethods: {
         title: "How to",
         subtitle: "Reach Us?",
         phone: {
-          title: "Call Us",
-          subtitle: "Immediate Response",
+          title: "Call us",
+          subtitle: "Immediate response",
           description: "Our experts respond Monday to Saturday",
-          actionText: "Call Now"
+          actionText: "Call now"
         },
         chat: {
           title: "Online Chat",
-          subtitle: "Instant Assistance",
+          subtitle: "Instant assistance",
           description: "Ask your questions in real time",
-          actionText: "Chat Now"
+          actionText: "Chat now"
         },
         appointment: {
           title: "Appointment",
-          subtitle: "Personalized Advice",
-          description: "Meet our experts via video or at the showroom",
-          actionText: "Schedule Now"
+          subtitle: "Personalized advice",
+          description: "Meet our experts by video or at the showroom",
+          actionText: "Schedule now"
         }
       },
       contactInfo: {
@@ -1713,7 +1711,7 @@ const translations: Record<Language, Translations> = {
         description: "Find us in our showroom or contact us directly.",
         address: {
           title: "Address",
-          value: "Industrial Zone de la Forêt\n123 Rue des Chevaux\n45000 Orléans, France"
+          value: "Zone Industrielle de la Forêt\n123 Rue des Chevaux\n45000 Orléans, France"
         },
         hours: {
           title: "Hours",
@@ -1759,7 +1757,7 @@ const translations: Record<Language, Translations> = {
         emailPlaceholder: "your@email.com",
         phone: "Phone",
         phonePlaceholder: "06 12 34 56 78",
-        vehicleType: "Vehicle type sought",
+        vehicleType: "Type of vehicle sought",
         vehicleTypePlaceholder: "Select a type",
         budget: "Estimated budget",
         budgetPlaceholder: "Select your budget",
@@ -1767,7 +1765,7 @@ const translations: Record<Language, Translations> = {
         messagePlaceholder: "Describe your project, your specific needs, the number of horses to transport...",
         responseTime: "Receive your personalized response in less than 24h",
         noCommitment: "No commitment • Free advice",
-        submitButton: "Send My Request",
+        submitButton: "Send my Request",
         vehicleTypes: {
           truck: "Horse Truck",
           van: "Horse Van",
@@ -1775,10 +1773,122 @@ const translations: Record<Language, Translations> = {
           other: "Other / Advice"
         },
         budgetRanges: {
-          under30k: "Less than €30,000",
+          under30k: "Under €30,000",
           range30k50k: "€30,000 - €50,000",
           range50k80k: "€50,000 - €80,000",
-          over80k: "More than €80,000"
+          over80k: "Over €80,000"
+        }
+      }
+    },
+    quoteRequestPage: {
+      hero: {
+        badge: "Quote Request",
+        title: "Get Your",
+        subtitle: "Free Personalized Quote",
+        description: "Our experts guide you in choosing your equine transport vehicle. Response guaranteed within 24h."
+      },
+      benefits: {
+        response24h: {
+          title: "Response Within 24h",
+          description: "Your personalized quote in your inbox"
+        },
+        free: {
+          title: "100% Free",
+          description: "No fees, no commitment on your part"
+        },
+        transparent: {
+          title: "Transparent Pricing",
+          description: "All costs included, no surprises"
+        },
+        expert: {
+          title: "Dedicated Expert",
+          description: "A personal advisor follows your case"
+        }
+      },
+      vehicleTypes: {
+        title: "Available Vehicle Types",
+        truck: {
+          type: "Horse Truck",
+          priceRange: "€45,000 - €120,000",
+          popular: "Most requested",
+          capacities: ["2 horses", "3 horses", "4 horses", "5 horses", "6+ horses"]
+        },
+        van: {
+          type: "Horse Van",
+          priceRange: "€25,000 - €85,000",
+          capacities: ["1 horse", "2 horses", "3 horses"]
+        },
+        trailer: {
+          type: "Horse Trailer",
+          priceRange: "€15,000 - €55,000",
+          capacities: ["1 horse", "2 horses", "3 horses"]
+        }
+      },
+      form: {
+        title: "Quote Request Form",
+        description: "Fill out this detailed form to receive your personalized quote within 24h",
+        personalInfo: "Personal Information",
+        firstName: "First Name",
+        firstNamePlaceholder: "Your first name",
+        lastName: "Last Name",
+        lastNamePlaceholder: "Your last name",
+        email: "Email",
+        emailPlaceholder: "your@email.com",
+        phone: "Phone",
+        phonePlaceholder: "06 12 34 56 78",
+        company: "Company (optional)",
+        companyPlaceholder: "Your company name",
+        vehicleRequirements: "Vehicle Requirements",
+        vehicleType: "Desired vehicle type",
+        vehicleTypePlaceholder: "Select a type",
+        capacity: "Desired capacity",
+        capacityPlaceholder: "Number of horses",
+        budget: "Estimated budget",
+        budgetPlaceholder: "Select your budget",
+        usage: "Planned Use",
+        usageType: "Type of use",
+        usageTypePlaceholder: "Personal, professional...",
+        annualKm: "Estimated annual mileage",
+        annualKmPlaceholder: "Ex: 15,000 km/year",
+        urgency: "Desired timeframe",
+        urgencyPlaceholder: "When do you want to buy?",
+        additionalInfo: "Additional Information",
+        message: "Message (specific needs, questions...)",
+        messagePlaceholder: "Describe your specific needs, particular constraints, desired equipment...",
+        submitButton: "Send My Quote Request",
+        successMessage: "Your request has been sent successfully! We will contact you within 24h.",
+        vehicleTypes: {
+          truck: "Horse Truck",
+          van: "Horse Van",
+          trailer: "Horse Trailer",
+          other: "Other / Advice"
+        },
+        capacities: {
+          oneHorse: "1 horse",
+          twoHorses: "2 horses",
+          threeHorses: "3 horses",
+          fourHorses: "4 horses",
+          fiveHorses: "5 horses",
+          sixPlusHorses: "6+ horses"
+        },
+        budgetRanges: {
+          under30k: "Under €30,000",
+          range30k50k: "€30,000 - €50,000",
+          range50k80k: "€50,000 - €80,000",
+          range80k120k: "€80,000 - €120,000",
+          over120k: "Over €120,000"
+        },
+        usageTypes: {
+          personal: "Personal use",
+          professional: "Professional use",
+          mixed: "Mixed use"
+        },
+        urgencyOptions: {
+          immediate: "Immediate (within a month)",
+          month: "Within 1 to 3 months",
+          threeMonths: "Within 3 to 6 months",
+          sixMonths: "Within 6 months to 1 year",
+          noUrgency: "No particular urgency"
         }
       }
     }
@@ -1792,255 +1902,159 @@ const translations: Record<Language, Translations> = {
       about: "Acerca de",
       contact: "Contacto",
       getQuote: "Solicitar Presupuesto",
-      occasions: "Ocasiones"
+      occasions: "Vehículos Usados"
     },
     hero: {
       slide1: {
-        subtitle: "Transporte Ecuestre Premium",
-        title: "Vehículos Excepcionales para Sus Caballos",
-        description: "Descubra nuestra gama completa de camiones, furgonetas y remolques para transportar sus caballos con seguridad y comodidad."
+        subtitle: "Transporte equino premium",
+        title: "Camiones Profesionales para Caballos",
+        description: "Descubra nuestra selección de camiones de alta gama para el transporte de sus caballos. Comodidad, seguridad y fiabilidad garantizadas."
       },
       slide2: {
-        subtitle: "Confort y Seguridad",
-        title: "Camiones para Caballos de Alta Gama",
-        description: "Vehículos espaciosos equipados con la última tecnología para el bienestar de sus caballos durante todos sus desplazamientos."
+        subtitle: "Soluciones compactas",
+        title: "Furgonetas para Caballos de Última Generación",
+        description: "Perfectas para 1 a 3 caballos, nuestras furgonetas combinan maniobrabilidad y equipos de vanguardia para sus desplazamientos diarios."
       },
       slide3: {
-        subtitle: "Movilidad Óptima",
-        title: "Furgonetas para Caballos Versátiles",
-        description: "Soluciones prácticas y elegantes para transportar de 1 a 3 caballos, ideales para salidas diarias y competiciones."
+        subtitle: "Económico y práctico",
+        title: "Remolques para Caballos Certificados",
+        description: "La alternativa económica para el transporte equino. Amplia selección de remolques nuevos y usados, todos inspeccionados."
       },
       slide4: {
-        subtitle: "Flexibilidad Máxima",
-        title: "Remolques para Caballos Profesionales",
-        description: "Amplia gama de remolques adaptados a todas sus necesidades, desde paseos familiares hasta competiciones internacionales."
+        subtitle: "Vehículos inspeccionados",
+        title: "Vehículos Usados Cuidadosamente Seleccionados",
+        description: "Vehículos usados rigurosamente seleccionados e inspeccionados. Garantía, financiación y entrega en toda Francia."
       },
       slide5: {
-        subtitle: "Vehículos Usados Certificados",
-        title: "Vehículos Usados Garantizados",
-        description: "Descubra nuestra selección rigurosa de vehículos usados revisados y garantizados por nuestros expertos."
+        subtitle: "15 años de experiencia",
+        title: "Su Socio en Transporte Equino",
+        description: "HTG le ha apoyado durante 15 años en todos sus proyectos. Asesoramiento personalizado y servicio al cliente excepcional."
       },
-      cta: "Solicitar Presupuesto Gratuito"
+      cta: "Descubrir nuestros vehículos"
     },
     categories: {
-      title: "Nuestros Vehículos",
-      subtitle: "Ecuestres",
+      title: "Elija Su",
+      subtitle: "Vehículo Ideal",
       horseTrucks: {
         title: "Camiones para Caballos",
-        description: "Vehículos espaciosos y cómodos para el transporte profesional de sus caballos",
-        features: ["Capacidad 2-6 caballos", "Compartimento guarnicionería", "Sistema ventilación", "Suspensión neumática"],
-        from: "Desde",
-        explore: "Explorar Camiones"
+        description: "Soluciones profesionales para 2 a 8 caballos. Máximo confort y equipos de alta gama.",
+        features: ["Suspensión neumática", "Aire acondicionado en cabina", "Suelo antideslizante"],
+        from: "Desde 65.000€",
+        explore: "Descubrir camiones"
       },
       horseVans: {
         title: "Furgonetas para Caballos",
-        description: "Soluciones compactas y versátiles para 1-3 caballos, perfectas para uso diario",
-        features: ["Formato compacto", "Conducción permiso B", "Diseño modular", "Económico"],
-        from: "Desde",
-        explore: "Explorar Furgonetas"
+        description: "Perfectas para 1 a 3 caballos. Maniobrables, económicas y muy bien equipadas.",
+        features: ["Conducción fácil", "Consumo reducido", "Modularidad"],
+        from: "Desde 35.000€",
+        explore: "Descubrir furgonetas"
       },
       horseTrailers: {
         title: "Remolques para Caballos",
-        description: "Remolques robustos y fiables para todo tipo de transporte ecuestre",
-        features: ["1-4 plazas caballos", "Suelo antideslizante", "Iluminación LED", "Frenado ABS"],
-        from: "Desde",
-        explore: "Explorar Remolques"
+        description: "Solución económica para 1 a 3 caballos. Calidad y seguridad garantizadas.",
+        features: ["Ligero y robusto", "Facilidad de enganche", "Precio atractivo"],
+        from: "Desde 18.000€",
+        explore: "Descubrir remolques"
       },
-      ctaTitle: "¿Necesita Consejo Personalizado?",
-      ctaDescription: "Nuestros expertos le ayudan a elegir el vehículo ideal para sus necesidades",
-      getFreeQuote: "Solicitar Presupuesto Gratuito",
+      ctaTitle: "¿Una Pregunta? ¿Un Proyecto?",
+      ctaDescription: "Nuestros expertos le asesoran gratuitamente para encontrar el vehículo perfecto según sus necesidades.",
+      getFreeQuote: "Presupuesto Gratuito",
       makeAppointment: "Concertar Cita",
       specialties: "Nuestras Especialidades",
-      findPerfectVehicle: "Encuentre el Vehículo Perfecto para Sus Necesidades",
-      disciplineDescription: "Cada disciplina ecuestre tiene sus exigencias. Descubra nuestra selección organizada por tipo de vehículo para encontrar la solución ideal."
+      findPerfectVehicle: "Encuentre el Vehículo Perfecto",
+      disciplineDescription: "Para Cada Disciplina Ecuestre"
     },
     trust: {
-      badge: "Confianza y Experiencia",
-      title: "Su Socio",
+      badge: "Por qué elegirnos",
+      title: "HTG, Su Socio",
       subtitle: "de Confianza",
-      description: "Descubra por qué más de 2500 clientes confían en nosotros para sus vehículos ecuestres. Excelencia, experiencia y servicio personalizado desde hace más de 15 años.",
+      description: "15 años de experiencia en transporte equino. Más de 2500 clientes confían en nosotros para su pasión.",
       stats: {
-        experience: "Años de experiencia",
-        clients: "Clientes satisfechos",
-        satisfaction: "Tasa de satisfacción",
-        response: "Respuesta garantizada"
+        experience: "15 años de experiencia",
+        clients: "2500+ clientes satisfechos",
+        satisfaction: "98% de satisfacción",
+        response: "Respuesta en 24h"
       },
-      reviewsTitle: "Lo Que Dicen Nuestros Clientes",
-      reviewsDescription: "Testimonios auténticos de profesionales y entusiastas que confían en nosotros",
-      leaveReview: "Dejar una Reseña",
+      reviewsTitle: "Lo que dicen nuestros clientes",
+      reviewsDescription: "Descubra testimonios de entusiastas que confían en nosotros",
+      leaveReview: "Dejar una reseña",
       partnersTitle: "Nuestros Socios de Confianza",
-      partnersDescription: "Trabajamos exclusivamente con las marcas más grandes del sector ecuestre",
+      partnersDescription: "Trabajamos con las mejores marcas del sector",
+      getQuote: "Solicitar un presupuesto",
       partners: [
-        { name: "Iveco", logo: "/lovable-uploads/2b478b96-e19a-4288-ac04-f0410f56f0bc.png", description: "Socio oficial desde 2015" },
-        { name: "Mercedes", logo: "/lovable-uploads/bee66bcd-4af5-4ce6-a9d1-a044053fa657.png", description: "Distribuidor autorizado" },
-        { name: "Renault", logo: "/lovable-uploads/2307287b-f2a8-4858-984f-44b3a646dd23.png", description: "Concesionario certificado" },
-        { name: "Böckmann", logo: "/lovable-uploads/35ff85cc-4513-4a11-9b8b-eda640027c91.png", description: "Distribuidor exclusivo regional" },
-        { name: "Ifor Williams", logo: "/lovable-uploads/a3bc9f31-af5a-4053-a835-56933ae8d26b.png", description: "Distribuidor autorizado" },
-        { name: "Humbaur", logo: "/lovable-uploads/243f1cf5-f2ce-48a8-a2dd-8c9d7334fa5a.png", description: "Socio premium" }
+        { name: "Peugeot", logo: "/placeholder.svg", description: "Socio oficial" },
+        { name: "Iveco", logo: "/placeholder.svg", description: "Distribuidor autorizado" },
+        { name: "Mercedes", logo: "/placeholder.svg", description: "Centro de servicio" }
       ],
-      getQuote: "Solicitar Presupuesto Gratuito",
       reviews: [
         {
-          id: 1,
-          name: "Carmen García",
-          location: "Andalucía",
+          name: "Sarah Martin",
+          role: "Jinete profesional",
+          content: "¡Servicio excepcional! Mi furgoneta es perfecta para mis competiciones. El equipo HTG entendió mis necesidades específicas.",
           rating: 5,
-          text: "¡Servicio excepcional! Compré mi furgoneta para caballos en HTG hace 2 años y sigo muy satisfecha. El equipo es profesional y da buenos consejos.",
-          vehicleType: "Furgoneta para Caballos Renault Master",
-          date: "Hace 3 semanas",
-          verified: true
+          image: "/placeholder.svg"
         },
         {
-          id: 2,
-          name: "José Luis Martín",
-          location: "Madrid",
+          name: "Pierre Dubois",
+          role: "Centro ecuestre",
+          content: "Camión entregado a tiempo con todo el equipo solicitado. Calidad como se esperaba, ¡lo recomiendo encarecidamente!",
           rating: 5,
-          text: "Excelente relación calidad-precio para mi camión de 4 plazas. La entrega se desarrolló perfectamente y el vehículo estaba impecable.",
-          vehicleType: "Camión Iveco Daily",
-          date: "Hace 1 mes",
-          verified: true
+          image: "/placeholder.svg"
         },
         {
-          id: 3,
-          name: "Ana Rodríguez",
-          location: "Cataluña",
+          name: "Marie Leroy",
+          role: "Propietaria de caballos",
+          content: "Excelente consejo para comprar mi remolque. Precio transparente y servicio posventa impecable.",
           rating: 5,
-          text: "¡Recomiendo encarecidamente HTG! Su experiencia me permitió encontrar el remolque perfecto para mis necesidades. Seguimiento irreprochable.",
-          vehicleType: "Remolque Böckmann",
-          date: "Hace 2 meses",
-          verified: true
-        },
-        {
-          id: 4,
-          name: "Miguel Fernández",
-          location: "Valencia",
-          rating: 5,
-          text: "20 años de experiencia en ecuestre, y nunca he visto un servicio tan profesional. Mi nueva furgoneta Mercedes es perfecta para mis competiciones.",
-          vehicleType: "Furgoneta Mercedes Sprinter",
-          date: "Hace 1 semana",
-          verified: true
-        },
-        {
-          id: 5,
-          name: "Laura Sánchez",
-          location: "Galicia",
-          rating: 4,
-          text: "¡Muy satisfecha con mi compra! El equipo supo aconsejarme sobre el modelo correcto. Solo un pequeño retraso en la entrega pero el resultado valió la pena.",
-          vehicleType: "Remolque Ifor Williams",
-          date: "Hace 3 días",
-          verified: true
-        },
-        {
-          id: 6,
-          name: "Carlos López",
-          location: "Castilla y León",
-          rating: 5,
-          text: "¡Servicio postventa de primera! Mi camión tuvo un pequeño problema y lo solucionaron rápidamente. Un equipo realmente confiable, lo recomiendo sin dudar.",
-          vehicleType: "Camión Renault Master",
-          date: "Hace 2 semanas",
-          verified: true
-        },
-        {
-          id: 7,
-          name: "Patricia Ruiz",
-          location: "País Vasco",
-          rating: 5,
-          text: "Compra de un remolque de 2 plazas para mis caballos de doma. Producto de calidad, consejo experto y precio competitivo. ¡Perfecto!",
-          vehicleType: "Remolque Humbaur",
-          date: "Hace 5 días",
-          verified: true
-        },
-        {
-          id: 8,
-          name: "Roberto Jiménez",
-          location: "Aragón",
-          rating: 4,
-          text: "Buena experiencia global. El personal conoce realmente bien los productos ecuestres. Mi furgoneta corresponde exactamente a mis expectativas para las competiciones.",
-          vehicleType: "Furgoneta Iveco Daily",
-          date: "Hace 4 semanas",
-          verified: true
+          image: "/placeholder.svg"
         }
       ]
     },
-    footer: {
-      newsletter: {
-        title: "Manténgase Informado",
-        description: "Reciba nuestras últimas ofertas y noticias ecuestres",
-        placeholder: "Su dirección de correo",
-        subscribe: "Suscribirse"
+    offres: {
+      badge: "Nuestras Ofertas",
+      title: "Vehículos Premium",
+      subtitle: "Seleccionados para Usted",
+      description: "Descubra nuestra rigurosa selección de vehículos nuevos y usados. Cada vehículo es inspeccionado por nuestros expertos.",
+      stats: {
+        vehicles: "150+ vehículos",
+        brands: "12 marcas",
+        clients: "2500+ clientes",
+        years: "15 años de experiencia"
       },
-      company: {
-        title: "HTG Horse Truck Garage",
-        description: "Especialista en transporte ecuestre desde hace más de 15 años. Le acompañamos en la elección, compra y mantenimiento de sus vehículos."
+      cta: {
+        title: "¿Listo para encontrar su vehículo ideal?",
+        description: "Contacte a nuestros expertos para asesoramiento personalizado y un presupuesto gratuito en 24h.",
+        primaryButton: "Solicitar un presupuesto",
+        secondaryButton: "Ver todos los vehículos"
       },
-      contact: {
-        title: "Contacto",
-        phone: "Teléfono",
-        email: "Correo",
-        address: "Dirección",
-        hours: "Horarios"
+      features: {
+        quality: {
+          title: "Calidad Garantizada",
+          description: "Todos nuestros vehículos son rigurosamente inspeccionados y certificados"
+        },
+        expertise: {
+          title: "Experiencia Reconocida",
+          description: "15 años de experiencia en transporte equino de calidad"
+        },
+        service: {
+          title: "Servicio Premium",
+          description: "Acompañamiento personalizado desde la compra hasta la entrega"
+        },
+        guarantee: {
+          title: "Garantía Extendida",
+          description: "Garantía del fabricante y servicios posventa incluidos"
+        },
+        financing: {
+          title: "Financiación Facilitada",
+          description: "Soluciones de financiación adaptadas a su presupuesto"
+        },
+        support: {
+          title: "Soporte 24/7",
+          description: "Equipo disponible para responder a todas sus preguntas"
+        }
       },
-      vehicles: {
-        title: "Vehículos",
-        horseTrucks: "Camiones para Caballos",
-        horseVans: "Furgonetas para Caballos",
-        horseTrailers: "Remolques para Caballos",
-        occasions: "Ocasiones"
-      },
-      company2: {
-        title: "Empresa",
-        about: "Acerca de",
-        contact: "Contacto",
-        blog: "Blog",
-        career: "Carreras"
-      },
-      services: {
-        title: "Servicios",
-        financing: "Financiación",
-        insurance: "Seguro",
-        warranty: "Garantía",
-        maintenance: "Posventa"
-      },
-      followUs: "Síguenos",
-      copyright: "Todos los derechos reservados.",
-      terms: "Aviso Legal",
-      privacy: "Política de Privacidad",
-      sitemap: "Mapa del Sitio"
-    },
-    floating: {
-      quote24h: "Presupuesto Gratuito 24h"
-    },
-    features: {
-      pneumaticSuspension: "Suspensión neumática",
-      airConditioning: "Aire acondicionado",
-      sleepingCabin: "Cabina con cama",
-      automaticTransmission: "Transmisión automática",
-      nonSlipFlooring: "Suelo antideslizante",
-      ledLighting: "Iluminación LED",
-      ventilation: "Ventilación",
-      handsFreeeKit: "Kit manos libres",
-      aluminum: "Aluminio",
-      alkoSuspension: "Suspensión AL-KO",
-      rubberFlooring: "Suelo de goma",
-      tackCompartment: "Compartimento guarnicionería",
-      ventilationSystem: "Sistema ventilación",
-      compactSize: "Tamaño compacto",
-      bLicenseDriving: "Conducción permiso B",
-      modularLayout: "Diseño modular",
-      economical: "Económico",
-      horsesCapacity: "caballos",
-      absBreaking: "Frenado ABS"
-    },
-    common: {
-      readMore: "Leer más",
-      learnMore: "Saber más",
-      viewAll: "Ver todo",
-      viewDetails: "Ver detalles",
-      
-      inStock: "En stock",
-      promotion: "Promoción",
       newArrival: "Novedad",
-      bestSeller: "Más vendido",
+      bestSeller: "Bestseller",
       limitedOffer: "Oferta limitada",
       urgent: "Urgente",
       years: "años",
@@ -2052,169 +2066,220 @@ const translations: Record<Language, Translations> = {
       vehicles: "vehículos",
       savings: "de ahorro",
       expertiseGuaranteed: "Experiencia garantizada",
-      featuredVehicles: "Vehículos Destacados",
+      featuredVehicles: "Vehículos destacados",
       premiumSelection: "Selección Premium",
-      ourBest: "Nuestros Mejores",
-      offersVehicles: "Ofertas y Vehículos",
-      discoverSelection: "Descubra nuestra selección de vehículos destacados y aproveche nuestras promociones excepcionales. Cada vehículo es rigurosamente controlado por nuestros expertos.",
-      rigorouslyControlled: "rigurosamente controlado",
+      ourBest: "Nuestras Mejores",
+      offersVehicles: "Ofertas de Vehículos",
+      discoverSelection: "Descubrir la Selección",
+      rigorouslyControlled: "Rigurosamente Controlados",
       models: "modelos",
       specialOffers: "Ofertas Especiales",
       newArrivals2024: "Novedades 2024",
       bestseller: "Bestseller",
-      mostRequested: "Más Solicitado",
+      mostRequested: "Los Más Solicitados",
       bestPrice: "Mejor Precio",
       upTo15Off: "Hasta -15%",
-      receiveOffer24h: "Reciba su oferta personalizada en menos de 24h – Sin compromiso",
-      personalizedExchange: "¿Necesita un intercambio personalizado? Reserve una cita telefónica o por video con uno de nuestros expertos.",
-      discoverCollection: "Descubra nuestra colección exclusiva de vehículos seleccionados para satisfacer los estándares más exigentes del transporte ecuestre.",
-      moreEquipment: "más equipamiento",
+      receiveOffer24h: "Recibir una oferta en 24h",
+      personalizedExchange: "Intercambio personalizado",
+      discoverCollection: "Descubrir la Colección",
+      moreEquipment: "Más equipamiento",
       promotionalPrice: "Precio promocional",
-      financingAvailable: "Financiación disponible desde 299€/mes",
-      discoverCharacteristics: "Descubrir todas las características de este vehículo",
-      addToMySelection: "Añadir a la selección",
-      onlyXDaysLeft: "Solo quedan 3 días",
+      financingAvailable: "Financiación disponible",
+      discoverCharacteristics: "Descubrir características",
+      addToMySelection: "Añadir a mi selección",
+      onlyXDaysLeft: "Solo quedan X días",
       favorite: "Favorito"
     },
     trucksPage: {
       title: "Camiones para Caballos",
-      subtitle: "Profesionales",
-      description: "Descubra nuestra selección de camiones para caballos de alta capacidad para transporte profesional. 4 a 6 caballos, suspensión neumática y toda la comodidad necesaria.",
+      subtitle: "Transporte Profesional",
+      description: "Descubra nuestra gama completa de camiones para transporte ecuestre profesional. De 2 a 8 caballos, todo equipamiento incluido.",
       filters: {
         allFilters: "Todos los filtros",
         capacity: "Capacidad",
         price: "Precio",
         year: "Año",
         mileage: "Kilometraje",
-        found: "camiones encontrados"
+        found: "vehículos encontrados"
       },
-      vehicle: {
-        horseTruck: "Camión para Caballos",
-        features: {
-          pneumaticSuspension: "Suspensión neumática",
-          airConditioning: "Aire acondicionado",
-          sleepingCabin: "Cabina con cama",
-          automaticTransmission: "Transmisión automática",
-          integratedGPS: "GPS integrado",
-          grandComfortCabin: "Cabina gran confort",
-          manualTransmission: "Transmisión manual",
-          blueEfficiency: "BlueEFFICIENCY",
-          automaticAirConditioning: "Aire acondicionado automático",
-          cruiseControl: "Control de crucero",
-          telematicSystem: "Sistema telemático",
-          dtiEngine: "Motor DTI",
-          powerSteering: "Dirección asistida",
-          electricWindows: "Ventanas eléctricas",
-          centralLocking: "Cierre centralizado",
-          euro6: "Euro 6",
-          adBlueSystem: "Sistema AdBlue",
-          spaciousCabin: "Cabina espaciosa",
-          efficientEngine: "Motor eficiente",
-          easilyMaintained: "Mantenimiento fácil",
-          ergonomicCabin: "Cabina ergonómica"
+      features: {
+        comfort: {
+          title: "Máximo Confort",
+          description: "Cabinas espaciosas con litera, aire acondicionado y equipos modernos"
         },
-        badges: {
-          bestseller: "Más vendido",
-          premium: "Premium",
-          promotion: "Promoción",
-          certifiedUsed: "Ocasión Certificada",
-          recent: "Reciente",
-          reliable: "Confiable"
+        safety: {
+          title: "Seguridad Avanzada",
+          description: "Sistemas de frenado ABS, ESP y suspensión neumática para sus caballos"
         },
-        specs: {
-          horses: "caballos",
-          year: "Año",
-          km: "km",
-          capacity: "Capacidad"
-        },
-        pricing: {
-          save: "Ahorre",
-          financing: "Financiación disponible desde",
-          perMonth: "/mes"
-        },
-        actions: {
-          seeDetails: "Ver Detalles",
-          addToFavorites: "Añadir a Favoritos"
+        equipment: {
+          title: "Equipamiento Premium",
+          description: "Iluminación LED, ventilación, cámaras de vigilancia y mucho más"
         }
       },
       cta: {
-        title: "¿Necesita Consejo sobre nuestros Camiones?",
-        description: "Nuestros expertos le acompañan en la elección del camión perfecto para sus necesidades profesionales.",
-        getQuote: "Solicitar Presupuesto Gratuito",
-        contactExpert: "Contactar a un Experto"
+        title: "¿Necesita asesoramiento?",
+        description: "Nuestros expertos le apoyan en la elección de su camión",
+        button: "Contáctenos"
       }
     },
-
     vansPage: {
       title: "Furgonetas para Caballos",
-      subtitle: "Versátiles",
-      description: "Descubre nuestra gama de furgonetas para caballos que combinan versatilidad y maniobrabilidad. Perfectas para tus viajes urbanos y rurales con 2 a 4 caballos.",
-      filters: { allFilters: "Todos los filtros", capacity: "Capacidad", price: "Precio", year: "Año", mileage: "Kilometraje", found: "furgonetas encontradas" },
-      vehicle: {
-        horseVan: "Furgoneta para Caballos",
-        specs: { horses: "caballos", km: "km" },
-        features: { nonSlipFlooring: "Suelo antideslizante", ledLighting: "Iluminación LED", ventilation: "Ventilación", handsFreeMobile: "Kit manos libres", blueTecEngine: "Motor BlueTEC", automaticTransmission: "Transmisión automática", reverseCamera: "Cámara trasera", parkingSensors: "Sensores de aparcamiento", optimizedVolume: "Volumen optimizado", cruiseControl: "Control de crucero", airConditioning: "Aire acondicionado", ecoBlue: "EcoBlue", sync3: "SYNC 3", parkingAssist: "Asistente de aparcamiento", tdiBlueMotion: "TDI BlueMotion", esp: "ESP", hillStartAssist: "Asistente de arranque en pendiente", blueHdi: "BlueHDi", mirrorScreen: "Mirror Screen", fatigueSensor: "Detector de fatiga" },
-        badges: { favorite: "Favorito", bestseller: "Más Vendido", premium: "Premium", promotion: "Promoción", certifiedUsed: "Seminuevo Certificado", recent: "Reciente", economical: "Económico" },
-        pricing: { save: "Ahorra", financing: "Financiación disponible desde", perMonth: "/mes" },
-        actions: { seeDetails: "Ver Detalles" }
+      subtitle: "Versatilidad y Practicidad",
+      description: "Perfectas para 1 a 3 caballos, nuestras furgonetas combinan facilidad de conducción y equipos profesionales.",
+      filters: {
+        allFilters: "Todos los filtros",
+        capacity: "Capacidad",
+        price: "Precio",
+        year: "Año",
+        mileage: "Kilometraje",
+        found: "vehículos encontrados"
       },
-      cta: { title: "Encuentra la Furgoneta Perfecta para Ti", description: "Nuestros expertos te aconsejan para elegir la furgoneta para caballos adecuada a tus necesidades y presupuesto.", getQuote: "Solicitar Presupuesto Gratuito", contactExpert: "Concertar Cita" }
+      features: {
+        versatility: {
+          title: "Versatilidad",
+          description: "Perfectas para uso diario y transporte ocasional"
+        },
+        efficiency: {
+          title: "Eficiencia",
+          description: "Consumo reducido y facilidad de estacionamiento"
+        },
+        comfort: {
+          title: "Confort",
+          description: "Suspensión adaptada y ventilación optimizada para sus caballos"
+        }
+      },
+      cta: {
+        title: "¿Preguntas sobre nuestras furgonetas?",
+        description: "Descubra el modelo que se adapta a sus necesidades",
+        button: "Solicitar un presupuesto"
+      }
+    },
+    trailersPage: {
+      title: "Remolques para Caballos",
+      subtitle: "Solución Económica",
+      description: "Remolques de calidad para 1 a 3 caballos. Solución económica sin comprometer la seguridad.",
+      filters: {
+        allFilters: "Todos los filtros",
+        capacity: "Capacidad",
+        price: "Precio",
+        year: "Año",
+        weight: "Peso",
+        found: "vehículos encontrados"
+      },
+      features: {
+        lightweight: {
+          title: "Ligereza",
+          description: "Construcción ligera para un consumo reducido"
+        },
+        maneuverability: {
+          title: "Maniobrabilidad",
+          description: "Facilidad de enganche y maniobra en todas las circunstancias"
+        },
+        economy: {
+          title: "Economía",
+          description: "Inversión controlada con excelente relación calidad-precio"
+        }
+      },
+      cta: {
+        title: "¿Qué remolque elegir?",
+        description: "Nuestros especialistas le asesoran según su uso",
+        button: "Ser contactado"
+      }
+    },
+    occasionsPage: {
+      title: "Vehículos Usados",
+      subtitle: "Selección Rigurosa",
+      description: "Descubra nuestros vehículos usados controlados y garantizados. Calidad profesional a precios controlados.",
+      guarantees: {
+        title: "Nuestras Garantías",
+        checked: "Vehículos inspeccionados",
+        warranty: "Garantía incluida",
+        maintenance: "Historial de mantenimiento",
+        financing: "Financiación disponible"
+      },
+      filters: {
+        allFilters: "Todos los filtros",
+        type: "Tipo",
+        brand: "Marca",
+        year: "Año",
+        price: "Precio",
+        mileage: "Kilometraje",
+        found: "vehículos encontrados"
+      },
+      advantages: {
+        price: {
+          title: "Precios Atractivos",
+          description: "Ahorre hasta un 40% comparado con nuevos"
+        },
+        quality: {
+          title: "Calidad Controlada",
+          description: "Inspección completa por nuestros expertos antes de la venta"
+        },
+        choice: {
+          title: "Amplia Selección",
+          description: "Más de 50 vehículos usados en stock permanente"
+        }
+      },
+      cta: {
+        title: "Encuentre su vehículo usado",
+        description: "Consulte nuestro stock completo y reserve su vehículo",
+        button: "Ver todos los usados"
+      }
     },
     aboutPage: {
       hero: {
         badge: "Nuestra Historia",
-        title1: "La Excelencia",
-        title2: "al Servicio de los Caballos",
-        description: "Desde 2008, Horse Truck Garage acompaña a los entusiastas de la equitación en la elección de sus vehículos de transporte. Nuestra experiencia francesa al servicio de tus campeones."
-      },
-      stats: {
-        experience: "Años de Experiencia",
-        clients: "Clientes Satisfechos",
-        certified: "Vehículos Certificados",
-        recommendations: "Recomendaciones"
+        title: "15 años de Pasión",
+        subtitle: "al Servicio del Transporte Equino",
+        description: "Desde 2009, HTG acompaña a los entusiastas de la equitación en sus proyectos de transporte con experiencia y dedicación."
       },
       story: {
-        title1: "Una Pasión",
-        title2: "Convertida en Experiencia",
-        paragraph1: "Todo comenzó en 2008 con una simple convicción: los caballos merecen el mejor transporte posible. Jean-Pierre Dubois, jinete apasionado y empresario, fundó HTG con la ambición de revolucionar el mercado del transporte equino en Francia.",
-        paragraph2: "Hoy, estamos orgullosos de habernos convertido en la referencia francesa en términos de vehículos de transporte equino, con más de 2500 clientes que confían en nosotros para sus campeones.",
-        cta: "Solicitar un Presupuesto Personalizado"
-      },
-      mission: {
-        title: "Nuestra Misión",
-        description: "Ofrecer a los entusiastas de la equitación soluciones de transporte que combinen seguridad, comodidad y rendimiento, garantizando el bienestar de sus caballos.",
-        point1: "Selección rigurosa de vehículos",
-        point2: "Experiencia técnica reconocida",
-        point3: "Servicio al cliente personalizado"
-      },
-      values: {
-        passion: {
-          title: "Pasión Ecuestre",
-          description: "Nuestro equipo comparte tu pasión por el mundo equino y comprende la importancia del bienestar animal."
-        },
-        expertise: {
-          title: "Experiencia Reconocida",
-          description: "15 años de experiencia en transporte equino nos permiten seleccionar los mejores vehículos."
-        },
-        excellence: {
-          title: "Excelencia del Servicio",
-          description: "Desde la primera visita hasta el servicio postventa, nos comprometemos a ofrecerte un servicio excepcional."
-        },
-        support: {
-          title: "Apoyo Completo",
-          description: "Financiación, seguro, mantenimiento: te apoyamos en todos los aspectos de tu compra."
+        title: "Nuestra",
+        subtitle: "Historia",
+        description: "HTG nace de la pasión de su fundador por el mundo ecuestre y su voluntad de ofrecer soluciones de transporte excepcionales. Durante 15 años, hemos acompañado a más de 2500 clientes en sus proyectos.",
+        founder: {
+          name: "Jean-Michel Perrin",
+          role: "Fundador y Director",
+          quote: "Mi visión siempre ha sido simple: ofrecer a los entusiastas de la equitación los mejores vehículos de transporte, con un servicio impecable."
         }
       },
-      valuesSection: {
-        title1: "Nuestros",
-        title2: " Valores",
-        subtitle: "Los principios que han guiado nuestra acción durante más de 15 años"
+      mission: {
+        title: "Nuestros",
+        subtitle: "Valores",
+        values: {
+          excellence: {
+            title: "Excelencia",
+            description: "Seleccionamos rigurosamente cada vehículo para garantizar la más alta calidad."
+          },
+          trust: {
+            title: "Confianza",
+            description: "Transparencia total en nuestros intercambios y nuestras tarifas. Su satisfacción es nuestra prioridad."
+          },
+          innovation: {
+            title: "Innovación",
+            description: "Nos mantenemos a la vanguardia de las tecnologías para ofrecerle las soluciones más modernas."
+          },
+          service: {
+            title: "Servicio",
+            description: "Acompañamiento personalizado desde su proyecto hasta la entrega de su vehículo."
+          }
+        }
+      },
+      achievements: {
+        title: "Nuestros",
+        subtitle: "Logros",
+        stats: {
+          experience: "15 años de experiencia",
+          vehicles: "150+ vehículos en stock",
+          clients: "2500+ clientes satisfechos",
+          satisfaction: "98% de satisfacción del cliente"
+        }
       },
       team: {
         director: {
           role: "Director y Fundador",
           experience: "20 años en transporte equino",
-          speciality: "Experto en camiones para caballos premium"
+          speciality: "Experto en camiones premium"
         },
         sales: {
           role: "Gerente de Ventas",
@@ -2224,17 +2289,17 @@ const translations: Record<Language, Translations> = {
         technical: {
           role: "Experto Técnico",
           experience: "15 años mecánico especializado",
-          speciality: "Control de calidad y experiencia"
+          speciality: "Control de calidad"
         }
       },
       teamSection: {
         title1: "Nuestro",
         title2: " Equipo",
-        subtitle: "Expertos apasionados a tu servicio"
+        subtitle: "Expertos apasionados a su servicio"
       },
       cta: {
-        title: "¿Listo para Confiar en Nuestra Experiencia?",
-        description: "Descubre por qué más de 2500 entusiastas de la equitación confían en nosotros para sus vehículos de transporte.",
+        title: "¿Listo para confiar en nosotros?",
+        description: "Descubra por qué más de 2500 entusiastas de la equitación confían en nosotros.",
         button1: "Ver Nuestros Vehículos",
         button2: "Concertar una Cita"
       }
@@ -2244,10 +2309,10 @@ const translations: Record<Language, Translations> = {
         badge: "Contáctanos",
         title: "Hablemos de Tu",
         subtitle: "Proyecto de Transporte",
-        description: "Nuestros expertos te acompañan en la elección de tu vehículo de transporte equino. Contáctanos por el medio que más te convenga."
+        description: "Nuestros expertos te guían en la elección de tu vehículo de transporte equino."
       },
       contactMethods: {
-        title: "¿Cómo",
+        title: "Cómo",
         subtitle: "Contactarnos?",
         phone: {
           title: "Llámanos",
@@ -2263,7 +2328,7 @@ const translations: Record<Language, Translations> = {
         },
         appointment: {
           title: "Cita",
-          subtitle: "Consejo personalizado",
+          subtitle: "Asesoramiento personalizado",
           description: "Conoce a nuestros expertos por video o en el showroom",
           actionText: "Programar ahora"
         }
@@ -2294,17 +2359,17 @@ const translations: Record<Language, Translations> = {
       services: {
         title: "Servicios Express",
         expertise: {
-          title: "Expertise del Vehículo",
-          description: "Control técnico completo antes de la compra",
+          title: "Peritaje del Vehículo",
+          description: "Inspección técnica completa antes de la compra",
           duration: "En 48h"
         },
         financing: {
           title: "Simulación de Financiación",
-          description: "Calcula tus mensualidades en tiempo real",
+          description: "Calcula tus cuotas mensuales en tiempo real",
           duration: "Inmediato"
         },
         advice: {
-          title: "Consejo Personalizado",
+          title: "Asesoramiento Personalizado",
           description: "Ayuda para elegir según tus necesidades",
           duration: "30 min"
         }
@@ -2327,8 +2392,8 @@ const translations: Record<Language, Translations> = {
         message: "Mensaje *",
         messagePlaceholder: "Describe tu proyecto, tus necesidades específicas, el número de caballos a transportar...",
         responseTime: "Recibe tu respuesta personalizada en menos de 24h",
-        noCommitment: "Sin compromiso • Consejo gratuito",
-        submitButton: "Enviar Mi Solicitud",
+        noCommitment: "Sin compromiso • Asesoramiento gratuito",
+        submitButton: "Enviar mi Solicitud",
         vehicleTypes: {
           truck: "Camión para Caballos",
           van: "Furgoneta para Caballos",
@@ -2342,6 +2407,118 @@ const translations: Record<Language, Translations> = {
           over80k: "Más de 80.000€"
         }
       }
+    },
+    quoteRequestPage: {
+      hero: {
+        badge: "Solicitud de Presupuesto",
+        title: "Obtén Tu Presupuesto",
+        subtitle: "Personalizado Gratuito",
+        description: "Nuestros expertos te acompañan en la elección de tu vehículo de transporte equino. Respuesta garantizada en 24h."
+      },
+      benefits: {
+        response24h: {
+          title: "Respuesta en 24h",
+          description: "Tu presupuesto personalizado en tu bandeja de entrada"
+        },
+        free: {
+          title: "100% Gratuito",
+          description: "Sin tarifas, sin compromiso de tu parte"
+        },
+        transparent: {
+          title: "Precios Transparentes",
+          description: "Todos los costos incluidos, sin sorpresas"
+        },
+        expert: {
+          title: "Experto Dedicado",
+          description: "Un asesor personal sigue tu caso"
+        }
+      },
+      vehicleTypes: {
+        title: "Tipos de Vehículos Disponibles",
+        truck: {
+          type: "Camión para Caballos",
+          priceRange: "45.000€ - 120.000€",
+          popular: "El más solicitado",
+          capacities: ["2 caballos", "3 caballos", "4 caballos", "5 caballos", "6+ caballos"]
+        },
+        van: {
+          type: "Furgoneta para Caballos",
+          priceRange: "25.000€ - 85.000€",
+          capacities: ["1 caballo", "2 caballos", "3 caballos"]
+        },
+        trailer: {
+          type: "Remolque para Caballos",
+          priceRange: "15.000€ - 55.000€",
+          capacities: ["1 caballo", "2 caballos", "3 caballos"]
+        }
+      },
+      form: {
+        title: "Formulario de Solicitud de Presupuesto",
+        description: "Completa este formulario detallado para recibir tu presupuesto personalizado en 24h",
+        personalInfo: "Información Personal",
+        firstName: "Nombre",
+        firstNamePlaceholder: "Tu nombre",
+        lastName: "Apellido",
+        lastNamePlaceholder: "Tu apellido",
+        email: "Email",
+        emailPlaceholder: "tu@email.com",
+        phone: "Teléfono",
+        phonePlaceholder: "06 12 34 56 78",
+        company: "Empresa (opcional)",
+        companyPlaceholder: "Nombre de tu empresa",
+        vehicleRequirements: "Requisitos del Vehículo",
+        vehicleType: "Tipo de vehículo deseado",
+        vehicleTypePlaceholder: "Selecciona un tipo",
+        capacity: "Capacidad deseada",
+        capacityPlaceholder: "Número de caballos",
+        budget: "Presupuesto estimado",
+        budgetPlaceholder: "Selecciona tu presupuesto",
+        usage: "Uso Previsto",
+        usageType: "Tipo de uso",
+        usageTypePlaceholder: "Personal, profesional...",
+        annualKm: "Kilometraje anual estimado",
+        annualKmPlaceholder: "Ej: 15.000 km/año",
+        urgency: "Plazo deseado",
+        urgencyPlaceholder: "¿Cuándo quieres comprar?",
+        additionalInfo: "Información Adicional",
+        message: "Mensaje (necesidades específicas, preguntas...)",
+        messagePlaceholder: "Describe tus necesidades específicas, limitaciones particulares, equipos deseados...",
+        submitButton: "Enviar mi Solicitud de Presupuesto",
+        successMessage: "¡Tu solicitud ha sido enviada con éxito! Te contactaremos en 24h.",
+        vehicleTypes: {
+          truck: "Camión para Caballos",
+          van: "Furgoneta para Caballos",
+          trailer: "Remolque para Caballos",
+          other: "Otro / Asesoramiento"
+        },
+        capacities: {
+          oneHorse: "1 caballo",
+          twoHorses: "2 caballos",
+          threeHorses: "3 caballos",
+          fourHorses: "4 caballos",
+          fiveHorses: "5 caballos",
+          sixPlusHorses: "6+ caballos"
+        },
+        budgetRanges: {
+          under30k: "Menos de 30.000€",
+          range30k50k: "30.000€ - 50.000€",
+          range50k80k: "50.000€ - 80.000€",
+          range80k120k: "80.000€ - 120.000€",
+          over120k: "Más de 120.000€"
+        },
+        usageTypes: {
+          personal: "Uso personal",
+          professional: "Uso profesional",
+          mixed: "Uso mixto"
+        },
+        urgencyOptions: {
+          immediate: "Inmediato (en el mes)",
+          month: "En 1 a 3 meses",
+          threeMonths: "En 3 a 6 meses",
+          sixMonths: "En 6 meses a 1 año",
+          noUrgency: "Sin urgencia particular"
+        }
+      }
     }
   },
   de: {
@@ -2353,253 +2530,157 @@ const translations: Record<Language, Translations> = {
       about: "Über uns",
       contact: "Kontakt",
       getQuote: "Angebot anfordern",
-      occasions: "Gebrauchtwagen"
+      occasions: "Gebrauchtfahrzeuge"
     },
     hero: {
       slide1: {
         subtitle: "Premium Pferdetransport",
-        title: "Außergewöhnliche Fahrzeuge für Ihre Pferde",
-        description: "Entdecken Sie unser komplettes Sortiment an LKWs, Transportern und Anhängern für den sicheren und komfortablen Transport Ihrer Pferde."
+        title: "Professionelle Pferdetransporter",
+        description: "Entdecken Sie unsere Auswahl an hochwertigen Lastwagen für den Transport Ihrer Pferde. Komfort, Sicherheit und Zuverlässigkeit garantiert."
       },
       slide2: {
-        subtitle: "Komfort & Sicherheit",
-        title: "Hochwertige Pferdetransporter",
-        description: "Geräumige Fahrzeuge mit modernster Technologie für das Wohlbefinden Ihrer Pferde bei allen Ihren Fahrten."
+        subtitle: "Kompakte Lösungen",
+        title: "Pferde-Vans der neuesten Generation",
+        description: "Perfekt für 1 bis 3 Pferde, unsere Vans kombinieren Wendigkeit und modernste Ausstattung für Ihre täglichen Fahrten."
       },
       slide3: {
-        subtitle: "Optimale Mobilität",
-        title: "Vielseitige Pferdetransporter",
-        description: "Praktische und elegante Lösungen für den Transport von 1 bis 3 Pferden, ideal für tägliche Ausflüge und Wettkämpfe."
+        subtitle: "Wirtschaftlich und praktisch",
+        title: "Zertifizierte Pferdeanhänger",
+        description: "Die wirtschaftliche Alternative für den Pferdetransport. Große Auswahl an neuen und gebrauchten Anhängern, alle geprüft."
       },
       slide4: {
-        subtitle: "Maximale Flexibilität",
-        title: "Professionelle Pferdeanhänger",
-        description: "Breite Palette von Anhängern, die an alle Ihre Bedürfnisse angepasst sind, von Familienausritten bis zu internationalen Wettkämpfen."
+        subtitle: "Geprüfte Fahrzeuge",
+        title: "Sorgfältig Ausgewählte Gebrauchtfahrzeuge",
+        description: "Gebrauchtfahrzeuge rigoros ausgewählt und geprüft. Garantie, Finanzierung und Lieferung in ganz Frankreich."
       },
       slide5: {
-        subtitle: "Zertifizierte Gebrauchtwagen",
-        title: "Garantierte Gebrauchtwagen",
-        description: "Entdecken Sie unsere strenge Auswahl an Gebrauchtwagen, die von unseren Experten geprüft und garantiert werden."
+        subtitle: "15 Jahre Erfahrung",
+        title: "Ihr Partner für Pferdetransport",
+        description: "HTG unterstützt Sie seit 15 Jahren bei all Ihren Projekten. Persönliche Beratung und außergewöhnlicher Kundenservice."
       },
-      cta: "Kostenloses Angebot anfordern"
+      cta: "Unsere Fahrzeuge entdecken"
     },
     categories: {
-      title: "Unsere Fahrzeuge",
-      subtitle: "Reitsport",
+      title: "Wählen Sie Ihr",
+      subtitle: "Ideales Fahrzeug",
       horseTrucks: {
         title: "Pferdetransporter",
-        description: "Geräumige und komfortable Fahrzeuge für den professionellen Transport Ihrer Pferde",
-        features: ["2-6 Pferde Kapazität", "Sattelkammer", "Belüftungssystem", "Luftfederung"],
-        from: "Ab",
-        explore: "LKWs erkunden"
+        description: "Professionelle Lösungen für 2 bis 8 Pferde. Maximaler Komfort und hochwertige Ausstattung.",
+        features: ["Luftfederung", "Kabinen-Klimaanlage", "Rutschfester Boden"],
+        from: "Ab 65.000€",
+        explore: "LKWs entdecken"
       },
       horseVans: {
         title: "Pferde-Vans",
-        description: "Kompakte und vielseitige Lösungen für 1-3 Pferde, perfekt für den täglichen Gebrauch",
-        features: ["Kompakte Größe", "B-Führerschein", "Modularer Aufbau", "Wirtschaftlich"],
-        from: "Ab",
-        explore: "Transporter erkunden"
+        description: "Perfekt für 1 bis 3 Pferde. Wendig, wirtschaftlich und sehr gut ausgestattet.",
+        features: ["Einfaches Fahren", "Reduzierter Verbrauch", "Modularität"],
+        from: "Ab 35.000€",
+        explore: "Vans entdecken"
       },
       horseTrailers: {
         title: "Pferdeanhänger",
-        description: "Robuste und zuverlässige Anhänger für alle Arten von Pferdetransport",
-        features: ["1-4 Pferdeplätze", "Rutschfester Boden", "LED-Beleuchtung", "ABS-Bremsen"],
-        from: "Ab",
-        explore: "Anhänger erkunden"
+        description: "Wirtschaftliche Lösung für 1 bis 3 Pferde. Qualität und Sicherheit garantiert.",
+        features: ["Leicht und robust", "Einfache Kupplung", "Attraktiver Preis"],
+        from: "Ab 18.000€",
+        explore: "Anhänger entdecken"
       },
-      ctaTitle: "Brauchen Sie persönliche Beratung?",
-      ctaDescription: "Unsere Experten helfen Ihnen bei der Wahl des idealen Fahrzeugs für Ihre Bedürfnisse",
-      getFreeQuote: "Kostenloses Angebot anfordern",
+      ctaTitle: "Eine Frage? Ein Projekt?",
+      ctaDescription: "Unsere Experten beraten Sie kostenlos, um das perfekte Fahrzeug für Ihre Bedürfnisse zu finden.",
+      getFreeQuote: "Kostenloses Angebot",
       makeAppointment: "Termin vereinbaren",
       specialties: "Unsere Spezialitäten",
-      findPerfectVehicle: "Finden Sie das perfekte Fahrzeug für Ihre Bedürfnisse",
-      disciplineDescription: "Jede Reitsportdisziplin hat ihre Anforderungen. Entdecken Sie unsere nach Fahrzeugtyp organisierte Auswahl, um die ideale Lösung zu finden."
+      findPerfectVehicle: "Das Perfekte Fahrzeug Finden",
+      disciplineDescription: "Für Jede Reitsportdisziplin"
     },
     trust: {
-      badge: "Vertrauen & Expertise",
-      title: "Ihr vertrauensvoller",
+      badge: "Warum uns wählen",
+      title: "HTG, Ihr vertrauensvoller",
       subtitle: "Partner",
-      description: "Entdecken Sie, warum über 2500 Kunden uns für ihre Reitfahrzeuge vertrauen. Exzellenz, Expertise und persönlicher Service seit über 15 Jahren.",
+      description: "15 Jahre Erfahrung im Pferdetransport. Mehr als 2500 Kunden vertrauen uns für ihre Leidenschaft.",
       stats: {
-        experience: "Jahre Erfahrung",
-        clients: "Zufriedene Kunden",
-        satisfaction: "Zufriedenheitsrate",
-        response: "Garantierte Antwort"
+        experience: "15 Jahre Erfahrung",
+        clients: "2500+ zufriedene Kunden",
+        satisfaction: "98% Zufriedenheit",
+        response: "Antwort innerhalb 24h"
       },
-      reviewsTitle: "Was Unsere Kunden Sagen",
-      reviewsDescription: "Authentische Testimonials von Profis und Enthusiasten, die uns vertrauen",
-      leaveReview: "Bewertung hinterlassen",
-      partnersTitle: "Unsere Vertrauenspartner",
-      partnersDescription: "Wir arbeiten ausschließlich mit den größten Marken der Reitsportbranche zusammen",
+      reviewsTitle: "Was unsere Kunden sagen",
+      reviewsDescription: "Entdecken Sie Erfahrungsberichte von Enthusiasten, die uns vertrauen",
+      leaveReview: "Eine Bewertung hinterlassen",
+      partnersTitle: "Unsere vertrauenswürdigen Partner",
+      partnersDescription: "Wir arbeiten mit den besten Marken der Branche",
+      getQuote: "Ein Angebot anfordern",
       partners: [
-        { name: "Iveco", logo: "/lovable-uploads/2b478b96-e19a-4288-ac04-f0410f56f0bc.png", description: "Offizieller Partner seit 2015" },
-        { name: "Mercedes", logo: "/lovable-uploads/bee66bcd-4af5-4ce6-a9d1-a044053fa657.png", description: "Autorisierter Händler" },
-        { name: "Renault", logo: "/lovable-uploads/2307287b-f2a8-4858-984f-44b3a646dd23.png", description: "Zertifizierter Händler" },
-        { name: "Böckmann", logo: "/lovable-uploads/35ff85cc-4513-4a11-9b8b-eda640027c91.png", description: "Exklusiver regionaler Händler" },
-        { name: "Ifor Williams", logo: "/lovable-uploads/a3bc9f31-af5a-4053-a835-56933ae8d26b.png", description: "Autorisierter Händler" },
-        { name: "Humbaur", logo: "/lovable-uploads/243f1cf5-f2ce-48a8-a2dd-8c9d7334fa5a.png", description: "Premium Partner" }
+        { name: "Peugeot", logo: "/placeholder.svg", description: "Offizieller Partner" },
+        { name: "Iveco", logo: "/placeholder.svg", description: "Autorisierter Händler" },
+        { name: "Mercedes", logo: "/placeholder.svg", description: "Servicezentrum" }
       ],
-      getQuote: "Kostenloses Angebot anfordern",
       reviews: [
         {
-          id: 1,
-          name: "Anna Weber",
-          location: "Bayern",
+          name: "Sarah Martin",
+          role: "Professionelle Reiterin",
+          content: "Außergewöhnlicher Service! Mein Van ist perfekt für meine Wettkämpfe. Das HTG-Team verstand meine spezifischen Bedürfnisse.",
           rating: 5,
-          text: "Außergewöhnlicher Service! Ich habe meinen Pferdetransporter vor 2 Jahren bei HTG gekauft und bin immer noch sehr zufrieden. Das Team ist professionell und berät gut.",
-          vehicleType: "Pferdetransporter Renault Master",
-          date: "Vor 3 Wochen",
-          verified: true
+          image: "/placeholder.svg"
         },
         {
-          id: 2,
-          name: "Klaus Müller",
-          location: "Nordrhein-Westfalen",
+          name: "Pierre Dubois",
+          role: "Reitzentrum",
+          content: "LKW pünktlich mit aller angeforderten Ausrüstung geliefert. Qualität wie erwartet, ich empfehle sehr!",
           rating: 5,
-          text: "Ausgezeichnetes Preis-Leistungs-Verhältnis für meinen 4-Pferde-LKW. Die Lieferung verlief perfekt und das Fahrzeug war tadellos.",
-          vehicleType: "Iveco Daily LKW",
-          date: "Vor 1 Monat",
-          verified: true
+          image: "/placeholder.svg"
         },
         {
-          id: 3,
-          name: "Petra Schmidt",
-          location: "Baden-Württemberg",
+          name: "Marie Leroy",
+          role: "Pferdebesitzerin",
+          content: "Ausgezeichnete Beratung für den Kauf meines Anhängers. Transparenter Preis und tadellose Nachbetreuung.",
           rating: 5,
-          text: "Ich empfehle HTG wärmstens! Ihre Expertise half mir, den perfekten Anhänger für meine Bedürfnisse zu finden. Tadellose Nachbetreuung.",
-          vehicleType: "Böckmann Anhänger",
-          date: "Vor 2 Monaten",
-          verified: true
-        },
-        {
-          id: 4,
-          name: "Hans Wagner",
-          location: "Hessen",
-          rating: 5,
-          text: "20 Jahre Erfahrung im Reitsport, und ich habe noch nie einen so professionellen Service gesehen. Mein neuer Mercedes-Transporter ist perfekt für Wettkämpfe.",
-          vehicleType: "Mercedes Sprinter Transporter",
-          date: "Vor 1 Woche",
-          verified: true
-        },
-        {
-          id: 5,
-          name: "Sabine Fischer",
-          location: "Niedersachsen",
-          rating: 4,
-          text: "Sehr zufrieden mit meinem Kauf! Das Team wusste mich über das richtige Modell zu beraten. Nur eine kleine Lieferverzögerung, aber das Ergebnis war es wert.",
-          vehicleType: "Ifor Williams Anhänger",
-          date: "Vor 3 Tagen",
-          verified: true
-        },
-        {
-          id: 6,
-          name: "Thomas Becker",
-          location: "Schleswig-Holstein",
-          rating: 5,
-          text: "Erstklassiger Kundendienst! Mein LKW hatte ein kleines Problem und sie haben es schnell gelöst. Ein wirklich zuverlässiges Team, ich empfehle ohne zu zögern.",
-          vehicleType: "Renault Master LKW",
-          date: "Vor 2 Wochen",
-          verified: true
-        },
-        {
-          id: 7,
-          name: "Monika Hoffmann",
-          location: "Rheinland-Pfalz",
-          rating: 5,
-          text: "Kauf eines 2-Pferde-Anhängers für meine Dressurpferde. Qualitätsprodukt, Expertenberatung und wettbewerbsfähiger Preis. Perfekt!",
-          vehicleType: "Humbaur Anhänger",
-          date: "Vor 5 Tagen",
-          verified: true
-        },
-        {
-          id: 8,
-          name: "Jürgen Krause",
-          location: "Brandenburg",
-          rating: 4,
-          text: "Gute Gesamterfahrung. Das Personal kennt sich wirklich gut mit Reitprodukten aus. Mein Transporter entspricht genau meinen Erwartungen für Wettkämpfe.",
-          vehicleType: "Iveco Daily Transporter",
-          date: "Vor 4 Wochen",
-          verified: true
+          image: "/placeholder.svg"
         }
       ]
     },
-    footer: {
-      newsletter: {
-        title: "Bleiben Sie informiert",
-        description: "Erhalten Sie unsere neuesten Angebote und Reitnachrichten",
-        placeholder: "Ihre E-Mail-Adresse",
-        subscribe: "Abonnieren"
+    offres: {
+      badge: "Unsere Angebote",
+      title: "Premium Fahrzeuge",
+      subtitle: "Für Sie Ausgewählt",
+      description: "Entdecken Sie unsere strenge Auswahl an neuen und gebrauchten Fahrzeugen. Jedes Fahrzeug wird von unseren Experten geprüft.",
+      stats: {
+        vehicles: "150+ Fahrzeuge",
+        brands: "12 Marken",
+        clients: "2500+ Kunden",
+        years: "15 Jahre Erfahrung"
       },
-      company: {
-        title: "HTG Horse Truck Garage",
-        description: "Pferdetransport-Spezialist seit über 15 Jahren. Wir unterstützen Sie bei der Auswahl, dem Kauf und der Wartung Ihrer Fahrzeuge."
+      cta: {
+        title: "Bereit, Ihr ideales Fahrzeug zu finden?",
+        description: "Kontaktieren Sie unsere Experten für persönliche Beratung und ein kostenloses Angebot innerhalb von 24h.",
+        primaryButton: "Ein Angebot anfordern",
+        secondaryButton: "Alle Fahrzeuge ansehen"
       },
-      contact: {
-        title: "Kontakt",
-        phone: "Telefon",
-        email: "E-Mail",
-        address: "Adresse",
-        hours: "Öffnungszeiten"
+      features: {
+        quality: {
+          title: "Garantierte Qualität",
+          description: "Alle unsere Fahrzeuge werden rigoros geprüft und zertifiziert"
+        },
+        expertise: {
+          title: "Anerkannte Expertise",
+          description: "15 Jahre Erfahrung im hochwertigen Pferdetransport"
+        },
+        service: {
+          title: "Premium Service",
+          description: "Persönliche Betreuung vom Kauf bis zur Lieferung"
+        },
+        guarantee: {
+          title: "Erweiterte Garantie",
+          description: "Herstellergarantie und Kundendienst inklusive"
+        },
+        financing: {
+          title: "Einfache Finanzierung",
+          description: "Finanzierungslösungen angepasst an Ihr Budget"
+        },
+        support: {
+          title: "24/7 Support",
+          description: "Team verfügbar, um alle Ihre Fragen zu beantworten"
+        }
       },
-      vehicles: {
-        title: "Fahrzeuge",
-        horseTrucks: "Pferdetransporter",
-        horseVans: "Pferde-Vans",
-        horseTrailers: "Pferdeanhänger",
-        occasions: "Gebrauchtwagen"
-      },
-      company2: {
-        title: "Unternehmen",
-        about: "Über uns",
-        contact: "Kontakt",
-        blog: "Blog",
-        career: "Karriere"
-      },
-      services: {
-        title: "Services",
-        financing: "Finanzierung",
-        insurance: "Versicherung",
-        warranty: "Garantie",
-        maintenance: "Kundendienst"
-      },
-      followUs: "Folgen Sie uns",
-      copyright: "Alle Rechte vorbehalten.",
-      terms: "Rechtliche Hinweise",
-      privacy: "Datenschutzrichtlinie",
-      sitemap: "Sitemap"
-    },
-    floating: {
-      quote24h: "Kostenloses Angebot 24h"
-    },
-    features: {
-      pneumaticSuspension: "Luftfederung",
-      airConditioning: "Klimaanlage",
-      sleepingCabin: "Schlafkabine",
-      automaticTransmission: "Automatikgetriebe",
-      nonSlipFlooring: "Rutschfester Boden",
-      ledLighting: "LED-Beleuchtung",
-      ventilation: "Belüftung",
-      handsFreeeKit: "Freisprecheinrichtung",
-      aluminum: "Aluminium",
-      alkoSuspension: "AL-KO Federung",
-      rubberFlooring: "Gummiboden",
-      tackCompartment: "Sattelkammer",
-      ventilationSystem: "Belüftungssystem",
-      compactSize: "Kompakte Größe",
-      bLicenseDriving: "B-Führerschein",
-      modularLayout: "Modularer Aufbau",
-      economical: "Wirtschaftlich",
-      horsesCapacity: "Pferde",
-      absBreaking: "ABS-Bremsen"
-    },
-    common: {
-      readMore: "Mehr lesen",
-      learnMore: "Mehr erfahren",
-      viewAll: "Alle anzeigen",
-      viewDetails: "Details anzeigen",
-      
-      inStock: "Auf Lager",
-      promotion: "Aktion",
       newArrival: "Neuheit",
       bestSeller: "Bestseller",
       limitedOffer: "Begrenztes Angebot",
@@ -2613,131 +2694,459 @@ const translations: Record<Language, Translations> = {
       vehicles: "Fahrzeuge",
       savings: "Ersparnis",
       expertiseGuaranteed: "Expertise garantiert",
-      featuredVehicles: "Ausgewählte Fahrzeuge",
-      premiumSelection: "Premium-Auswahl",
+      featuredVehicles: "Empfohlene Fahrzeuge",
+      premiumSelection: "Premium Auswahl",
       ourBest: "Unsere Besten",
-      offersVehicles: "Angebote & Fahrzeuge",
-      discoverSelection: "Entdecken Sie unsere Auswahl an Topfahrzeugen und profitieren Sie von unseren außergewöhnlichen Aktionen. Jedes Fahrzeug wird von unseren Experten streng kontrolliert.",
-      rigorouslyControlled: "streng kontrolliert",
+      offersVehicles: "Fahrzeugangebote",
+      discoverSelection: "Die Auswahl Entdecken",
+      rigorouslyControlled: "Streng Kontrolliert",
       models: "Modelle",
       specialOffers: "Sonderangebote",
       newArrivals2024: "Neuheiten 2024",
       bestseller: "Bestseller",
-      mostRequested: "Am meisten gefragt",
+      mostRequested: "Am Meisten Angefragt",
       bestPrice: "Bester Preis",
       upTo15Off: "Bis zu -15%",
-      receiveOffer24h: "Erhalten Sie Ihr personalisiertes Angebot in weniger als 24h – Unverbindlich",
-      personalizedExchange: "Brauchen Sie einen persönlichen Austausch? Buchen Sie einen Telefon- oder Videotermin mit einem unserer Experten.",
-      discoverCollection: "Entdecken Sie unsere exklusive Kollektion von Fahrzeugen, die ausgewählt wurden, um den anspruchsvollsten Standards des Pferdetransports zu entsprechen.",
-      moreEquipment: "weitere Ausstattung",
+      receiveOffer24h: "Angebot innerhalb 24h erhalten",
+      personalizedExchange: "Persönlicher Austausch",
+      discoverCollection: "Die Kollektion Entdecken",
+      moreEquipment: "Mehr Ausstattung",
       promotionalPrice: "Aktionspreis",
-      financingAvailable: "Finanzierung ab 299€/Monat verfügbar",
-      discoverCharacteristics: "Alle Eigenschaften dieses Fahrzeugs entdecken",
-      addToMySelection: "Zur Auswahl hinzufügen",
-      onlyXDaysLeft: "Nur noch 3 Tage",
+      financingAvailable: "Finanzierung verfügbar",
+      discoverCharacteristics: "Eigenschaften entdecken",
+      addToMySelection: "Zu meiner Auswahl hinzufügen",
+      onlyXDaysLeft: "Nur noch X Tage",
       favorite: "Favorit"
     },
     trucksPage: {
       title: "Pferdetransporter",
-      subtitle: "Professionell",
-      description: "Entdecken Sie unsere Auswahl an hochwertigen Pferdetransportern für den professionellen Transport. 4 bis 6 Pferde, Luftfederung und allen notwendigen Komfort.",
+      subtitle: "Professioneller Transport",
+      description: "Entdecken Sie unser komplettes Sortiment an LKWs für den professionellen Pferdetransport. Von 2 bis 8 Pferden, alle Ausrüstungen inklusive.",
       filters: {
         allFilters: "Alle Filter",
         capacity: "Kapazität",
         price: "Preis",
         year: "Jahr",
-        mileage: "Laufleistung",
-        found: "LKWs gefunden"
+        mileage: "Kilometerstand",
+        found: "gefundene Fahrzeuge"
       },
-      vehicle: {
-        horseTruck: "Pferdetransporter",
-        features: {
-          pneumaticSuspension: "Luftfederung",
-          airConditioning: "Klimaanlage",
-          sleepingCabin: "Schlafkabine",
-          automaticTransmission: "Automatikgetriebe",
-          integratedGPS: "Integriertes GPS",
-          grandComfortCabin: "Komfort-Kabine",
-          manualTransmission: "Schaltgetriebe",
-          blueEfficiency: "BlueEFFICIENCY",
-          automaticAirConditioning: "Automatische Klimaanlage",
-          cruiseControl: "Tempomat",
-          telematicSystem: "Telematik-System",
-          dtiEngine: "DTI-Motor",
-          powerSteering: "Servolenkung",
-          electricWindows: "Elektrische Fensterheber",
-          centralLocking: "Zentralverriegelung",
-          euro6: "Euro 6",
-          adBlueSystem: "AdBlue-System",
-          spaciousCabin: "Geräumige Kabine",
-          efficientEngine: "Effizienter Motor",
-          easilyMaintained: "Wartungsfreundlich",
-          ergonomicCabin: "Ergonomische Kabine"
+      features: {
+        comfort: {
+          title: "Maximaler Komfort",
+          description: "Geräumige Kabinen mit Schlafplatz, Klimaanlage und moderner Ausstattung"
         },
-        badges: {
-          bestseller: "Bestseller",
-          premium: "Premium",
-          promotion: "Aktion",
-          certifiedUsed: "Zertifizierter Gebrauchtwagen",
-          recent: "Aktuell",
-          reliable: "Zuverlässig"
+        safety: {
+          title: "Erweiterte Sicherheit",
+          description: "ABS-Bremssysteme, ESP und Luftfederung für Ihre Pferde"
         },
-        specs: {
-          horses: "Pferde",
-          year: "Jahr",
-          km: "km",
-          capacity: "Kapazität"
-        },
-        pricing: {
-          save: "Sparen Sie",
-          financing: "Finanzierung verfügbar ab",
-          perMonth: "/Monat"
-        },
-        actions: {
-          seeDetails: "Details ansehen",
-          addToFavorites: "Zu Favoriten hinzufügen"
+        equipment: {
+          title: "Premium Ausstattung",
+          description: "LED-Beleuchtung, Belüftung, Überwachungskameras und vieles mehr"
         }
       },
       cta: {
-        title: "Brauchen Sie Beratung zu unseren LKWs?",
-        description: "Unsere Experten begleiten Sie bei der Auswahl des perfekten LKWs für Ihre beruflichen Bedürfnisse.",
-        getQuote: "Kostenloses Angebot anfordern",
-        contactExpert: "Experten kontaktieren"
+        title: "Brauchen Sie Beratung?",
+        description: "Unsere Experten unterstützen Sie bei der Auswahl Ihres LKWs",
+        button: "Uns kontaktieren"
       }
     },
-
     vansPage: {
-      title: "Pferde-Transporter",
-      subtitle: "Vielseitig", 
-      description: "Entdecken Sie unsere Palette von Pferdetransportern, die Vielseitigkeit und Wendigkeit vereinen. Perfekt für Ihre Stadt- und Landfahrten mit 2 bis 4 Pferden.",
-      filters: { allFilters: "Alle Filter", capacity: "Kapazität", price: "Preis", year: "Jahr", mileage: "Laufleistung", found: "Transporter gefunden" },
-      vehicle: {
-        horseVan: "Pferde-Transporter",
-        specs: { horses: "Pferde", km: "km" },
-        features: { nonSlipFlooring: "Rutschfester Boden", ledLighting: "LED-Beleuchtung", ventilation: "Belüftung", handsFreeMobile: "Freisprecheinrichtung", blueTecEngine: "BlueTEC Motor", automaticTransmission: "Automatikgetriebe", reverseCamera: "Rückfahrkamera", parkingSensors: "Einparkhilfe", optimizedVolume: "Optimiertes Volumen", cruiseControl: "Tempomat", airConditioning: "Klimaanlage", ecoBlue: "EcoBlue", sync3: "SYNC 3", parkingAssist: "Einparkhilfe", tdiBlueMotion: "TDI BlueMotion", esp: "ESP", hillStartAssist: "Berganfahrhilfe", blueHdi: "BlueHDi", mirrorScreen: "Mirror Screen", fatigueSensor: "Müdigkeitserkennung" },
-        badges: { favorite: "Favorit", bestseller: "Bestseller", premium: "Premium", promotion: "Aktion", certifiedUsed: "Zertifiziert Gebraucht", recent: "Neu", economical: "Sparsam" },
-        pricing: { save: "Sparen", financing: "Finanzierung verfügbar ab", perMonth: "/Monat" },
-        actions: { seeDetails: "Details Anzeigen" }
+      title: "Pferde-Vans",
+      subtitle: "Vielseitigkeit und Praktikabilität",
+      description: "Perfekt für 1 bis 3 Pferde, unsere Vans kombinieren Fahrkomfort und professionelle Ausstattung.",
+      filters: {
+        allFilters: "Alle Filter",
+        capacity: "Kapazität",
+        price: "Preis",
+        year: "Jahr",
+        mileage: "Kilometerstand",
+        found: "gefundene Fahrzeuge"
       },
-      cta: { title: "Finden Sie den Perfekten Transporter für Sie", description: "Unsere Experten beraten Sie bei der Auswahl des für Ihre Bedürfnisse und Ihr Budget geeigneten Pferdetransporters.", getQuote: "Kostenloses Angebot Anfordern", contactExpert: "Termin Vereinbaren" }
+      features: {
+        versatility: {
+          title: "Vielseitigkeit",
+          description: "Perfekt für den täglichen Gebrauch und gelegentlichen Transport"
+        },
+        efficiency: {
+          title: "Effizienz",
+          description: "Reduzierter Verbrauch und einfaches Parken"
+        },
+        comfort: {
+          title: "Komfort",
+          description: "Angepasste Federung und optimierte Belüftung für Ihre Pferde"
+        }
+      },
+      cta: {
+        title: "Fragen zu unseren Vans?",
+        description: "Entdecken Sie das Modell, das Ihren Bedürfnissen entspricht",
+        button: "Ein Angebot anfordern"
+      }
+    },
+    trailersPage: {
+      title: "Pferdeanhänger",
+      subtitle: "Wirtschaftliche Lösung",
+      description: "Qualitätsanhänger für 1 bis 3 Pferde. Wirtschaftliche Lösung ohne Kompromisse bei der Sicherheit.",
+      filters: {
+        allFilters: "Alle Filter",
+        capacity: "Kapazität",
+        price: "Preis",
+        year: "Jahr",
+        weight: "Gewicht",
+        found: "gefundene Fahrzeuge"
+      },
+      features: {
+        lightweight: {
+          title: "Leichtgewicht",
+          description: "Leichte Konstruktion für reduzierten Verbrauch"
+        },
+        maneuverability: {
+          title: "Wendigkeit",
+          description: "Einfache Kupplung und Manövrierung unter allen Umständen"
+        },
+        economy: {
+          title: "Wirtschaftlichkeit",
+          description: "Kontrollierte Investition mit ausgezeichnetem Preis-Leistungs-Verhältnis"
+        }
+      },
+      cta: {
+        title: "Welchen Anhänger wählen?",
+        description: "Unsere Spezialisten beraten Sie entsprechend Ihrem Gebrauch",
+        button: "Rückruf anfordern"
+      }
+    },
+    occasionsPage: {
+      title: "Gebrauchtfahrzeuge",
+      subtitle: "Strenge Auswahl",
+      description: "Entdecken Sie unsere kontrollierten und garantierten Gebrauchtfahrzeuge. Professionelle Qualität zu kontrollierten Preisen.",
+      guarantees: {
+        title: "Unsere Garantien",
+        checked: "Geprüfte Fahrzeuge",
+        warranty: "Garantie inklusive",
+        maintenance: "Wartungshistorie",
+        financing: "Finanzierung verfügbar"
+      },
+      filters: {
+        allFilters: "Alle Filter",
+        type: "Typ",
+        brand: "Marke",
+        year: "Jahr",
+        price: "Preis",
+        mileage: "Kilometerstand",
+        found: "gefundene Fahrzeuge"
+      },
+      advantages: {
+        price: {
+          title: "Attraktive Preise",
+          description: "Sparen Sie bis zu 40% gegenüber Neufahrzeugen"
+        },
+        quality: {
+          title: "Kontrollierte Qualität",
+          description: "Vollständige Inspektion durch unsere Experten vor dem Verkauf"
+        },
+        choice: {
+          title: "Große Auswahl",
+          description: "Mehr als 50 Gebrauchtfahrzeuge im permanenten Lager"
+        }
+      },
+      cta: {
+        title: "Ihr Gebrauchtfahrzeug finden",
+        description: "Durchsuchen Sie unser komplettes Lager und reservieren Sie Ihr Fahrzeug",
+        button: "Alle Gebrauchten ansehen"
+      }
     },
     aboutPage: {
-      hero: { badge: "Unsere Geschichte", title1: "Exzellenz", title2: "im Dienste der Pferde", description: "Seit 2008 begleitet Horse Truck Garage Reitsport-Enthusiasten bei der Auswahl ihrer Transportfahrzeuge." },
-      stats: { experience: "Jahre Erfahrung", clients: "Zufriedene Kunden", certified: "Zertifizierte Fahrzeuge", recommendations: "Empfehlungen" },
-      story: { title1: "Eine Leidenschaft", title2: "Wurde zur Expertise", paragraph1: "Alles begann 2008 mit einer einfachen Überzeugung: Pferde verdienen den bestmöglichen Transport.", paragraph2: "Heute sind wir stolz darauf, die französische Referenz für Pferdetransportfahrzeuge geworden zu sein.", cta: "Persönliches Angebot anfordern" },
-      mission: { title: "Unsere Mission", description: "Reitsport-Enthusiasten Transportlösungen anzubieten, die Sicherheit, Komfort und Leistung vereinen.", point1: "Strenge Fahrzeugauswahl", point2: "Anerkannte technische Expertise", point3: "Persönlicher Kundenservice" },
-      values: { passion: { title: "Reitsport-Leidenschaft", description: "Unser Team teilt Ihre Leidenschaft für die Pferdewelt." }, expertise: { title: "Anerkannte Expertise", description: "15 Jahre Erfahrung im Pferdetransport." }, excellence: { title: "Service-Exzellenz", description: "Wir bieten Ihnen einen außergewöhnlichen Service." }, support: { title: "Komplette Unterstützung", description: "Finanzierung, Versicherung, Wartung." } },
-      valuesSection: { title1: "Unsere", title2: " Werte", subtitle: "Die Prinzipien, die unser Handeln leiten" },
-      team: { director: { role: "Direktor & Gründer", experience: "20 Jahre im Pferdetransport", speciality: "Experte für Premium-Pferdetransporter" }, sales: { role: "Verkaufsleiter", experience: "12 Jahre bei HTG", speciality: "Spezialist für Transporter" }, technical: { role: "Technischer Experte", experience: "15 Jahre spezialisierter Mechaniker", speciality: "Qualitätskontrolle" } },
-      teamSection: { title1: "Unser", title2: " Team", subtitle: "Leidenschaftliche Experten zu Ihren Diensten" },
-      cta: { title: "Bereit, unserer Expertise zu vertrauen?", description: "Entdecken Sie, warum mehr als 2500 Reitsport-Enthusiasten uns vertrauen.", button1: "Unsere Fahrzeuge ansehen", button2: "Termin vereinbaren" }
+      hero: {
+        badge: "Unsere Geschichte",
+        title: "15 Jahre Leidenschaft",
+        subtitle: "im Dienst des Pferdetransports",
+        description: "Seit 2009 begleitet HTG Reitsportbegeisterte bei ihren Transportprojekten mit Expertise und Hingabe."
+      },
+      story: {
+        title: "Unsere",
+        subtitle: "Geschichte",
+        description: "HTG entsteht aus der Leidenschaft seines Gründers für die Reitwelt und seinem Willen, außergewöhnliche Transportlösungen anzubieten. Seit 15 Jahren haben wir mehr als 2500 Kunden bei ihren Projekten begleitet.",
+        founder: {
+          name: "Jean-Michel Perrin",
+          role: "Gründer & Direktor",
+          quote: "Meine Vision war immer einfach: Reitsportbegeisterten die besten Transportfahrzeuge mit tadelloserem Service zu bieten."
+        }
+      },
+      mission: {
+        title: "Unsere",
+        subtitle: "Werte",
+        values: {
+          excellence: {
+            title: "Exzellenz",
+            description: "Wir wählen rigoros jedes Fahrzeug aus, um höchste Qualität zu garantieren."
+          },
+          trust: {
+            title: "Vertrauen",
+            description: "Totale Transparenz in unseren Austauschen und unseren Tarifen. Ihre Zufriedenheit ist unsere Priorität."
+          },
+          innovation: {
+            title: "Innovation",
+            description: "Wir bleiben an der Spitze der Technologien, um Ihnen die modernsten Lösungen zu bieten."
+          },
+          service: {
+            title: "Service",
+            description: "Persönliche Betreuung von Ihrem Projekt bis zur Lieferung Ihres Fahrzeugs."
+          }
+        }
+      },
+      achievements: {
+        title: "Unsere",
+        subtitle: "Erfolge",
+        stats: {
+          experience: "15 Jahre Expertise",
+          vehicles: "150+ Fahrzeuge im Lager",
+          clients: "2500+ zufriedene Kunden",
+          satisfaction: "98% Kundenzufriedenheit"
+        }
+      },
+      team: {
+        director: {
+          role: "Direktor & Gründer",
+          experience: "20 Jahre im Pferdetransport",
+          speciality: "Experte für Premium-Pferdetransporter"
+        },
+        sales: {
+          role: "Verkaufsleiter",
+          experience: "12 Jahre bei HTG",
+          speciality: "Spezialist für Transporter"
+        },
+        technical: {
+          role: "Technischer Experte",
+          experience: "15 Jahre spezialisierter Mechaniker",
+          speciality: "Qualitätskontrolle"
+        }
+      },
+      teamSection: {
+        title1: "Unser",
+        title2: " Team",
+        subtitle: "Leidenschaftliche Experten zu Ihren Diensten"
+      },
+      cta: {
+        title: "Bereit, unserer Expertise zu vertrauen?",
+        description: "Entdecken Sie, warum mehr als 2500 Reitsport-Enthusiasten uns vertrauen.",
+        button1: "Unsere Fahrzeuge ansehen",
+        button2: "Termin vereinbaren"
+      }
     },
     contactPage: {
-      hero: { badge: "Kontakt", title: "Sprechen wir über Ihr", subtitle: "Transport-Projekt", description: "Unsere Experten begleiten Sie bei der Auswahl Ihres Pferdetransport-Fahrzeugs." },
-      contactMethods: { title: "Wie Sie uns", subtitle: "Erreichen?", phone: { title: "Anrufen", subtitle: "Sofortige Antwort", description: "Unsere Experten antworten Montag bis Samstag", actionText: "Jetzt anrufen" }, chat: { title: "Online-Chat", subtitle: "Sofortige Hilfe", description: "Stellen Sie Ihre Fragen in Echtzeit", actionText: "Jetzt chatten" }, appointment: { title: "Termin", subtitle: "Persönliche Beratung", description: "Treffen Sie unsere Experten per Video oder im Showroom", actionText: "Jetzt planen" } },
-      contactInfo: { title: "Praktische", subtitle: "Informationen", description: "Besuchen Sie uns in unserem Showroom oder kontaktieren Sie uns direkt.", address: { title: "Adresse", value: "Industriezone de la Forêt\n123 Rue des Chevaux\n45000 Orléans, Frankreich" }, hours: { title: "Öffnungszeiten", weekdays: "Montag - Freitag: 8-18 Uhr", saturday: "Samstag: 9-17 Uhr", sunday: "Sonntag: Nach Termin" }, phone: { title: "Telefon", value: "01 23 45 67 89" }, email: { title: "E-Mail", value: "contact@htg-france.com" } },
-      services: { title: "Express-Services", expertise: { title: "Fahrzeug-Expertise", description: "Vollständige technische Prüfung vor dem Kauf", duration: "Innerhalb 48h" }, financing: { title: "Finanzierungssimulation", description: "Berechnen Sie Ihre monatlichen Raten in Echtzeit", duration: "Sofort" }, advice: { title: "Persönliche Beratung", description: "Hilfe bei der Auswahl nach Ihren Bedürfnissen", duration: "30 Min" } },
-      form: { title: "Kontaktanfrage", description: "Füllen Sie dieses Formular aus und erhalten Sie innerhalb von 24h eine persönliche Antwort.", firstName: "Vorname *", firstNamePlaceholder: "Ihr Vorname", lastName: "Nachname *", lastNamePlaceholder: "Ihr Nachname", email: "E-Mail *", emailPlaceholder: "ihre@email.com", phone: "Telefon", phonePlaceholder: "06 12 34 56 78", vehicleType: "Gesuchter Fahrzeugtyp", vehicleTypePlaceholder: "Typ auswählen", budget: "Geschätztes Budget", budgetPlaceholder: "Budget auswählen", message: "Nachricht *", messagePlaceholder: "Beschreiben Sie Ihr Projekt, Ihre spezifischen Bedürfnisse, die Anzahl der zu transportierenden Pferde...", responseTime: "Erhalten Sie Ihre persönliche Antwort in weniger als 24h", noCommitment: "Unverbindlich • Kostenlose Beratung", submitButton: "Meine Anfrage senden", vehicleTypes: { truck: "Pferdetransporter", van: "Pferde-Van", trailer: "Pferdeanhänger", other: "Andere / Beratung" }, budgetRanges: { under30k: "Unter 30.000€", range30k50k: "30.000€ - 50.000€", range50k80k: "50.000€ - 80.000€", over80k: "Über 80.000€" } }
+      hero: {
+        badge: "Kontakt",
+        title: "Sprechen wir über Ihr",
+        subtitle: "Transport-Projekt",
+        description: "Unsere Experten begleiten Sie bei der Auswahl Ihres Pferdetransport-Fahrzeugs."
+      },
+      contactMethods: {
+        title: "Wie Sie uns",
+        subtitle: "Erreichen?",
+        phone: {
+          title: "Anrufen",
+          subtitle: "Sofortige Antwort",
+          description: "Unsere Experten antworten Montag bis Samstag",
+          actionText: "Jetzt anrufen"
+        },
+        chat: {
+          title: "Online-Chat",
+          subtitle: "Sofortige Hilfe",
+          description: "Stellen Sie Ihre Fragen in Echtzeit",
+          actionText: "Jetzt chatten"
+        },
+        appointment: {
+          title: "Termin",
+          subtitle: "Persönliche Beratung",
+          description: "Treffen Sie unsere Experten per Video oder im Showroom",
+          actionText: "Jetzt planen"
+        }
+      },
+      contactInfo: {
+        title: "Praktische",
+        subtitle: "Informationen",
+        description: "Besuchen Sie uns in unserem Showroom oder kontaktieren Sie uns direkt.",
+        address: {
+          title: "Adresse",
+          value: "Industriezone de la Forêt\n123 Rue des Chevaux\n45000 Orléans, Frankreich"
+        },
+        hours: {
+          title: "Öffnungszeiten",
+          weekdays: "Montag - Freitag: 8-18 Uhr",
+          saturday: "Samstag: 9-17 Uhr",
+          sunday: "Sonntag: Nach Termin"
+        },
+        phone: {
+          title: "Telefon",
+          value: "01 23 45 67 89"
+        },
+        email: {
+          title: "E-Mail",
+          value: "contact@htg-france.com"
+        }
+      },
+      services: {
+        title: "Express-Services",
+        expertise: {
+          title: "Fahrzeug-Expertise",
+          description: "Vollständige technische Prüfung vor dem Kauf",
+          duration: "Innerhalb 48h"
+        },
+        financing: {
+          title: "Finanzierungssimulation",
+          description: "Berechnen Sie Ihre monatlichen Raten in Echtzeit",
+          duration: "Sofort"
+        },
+        advice: {
+          title: "Persönliche Beratung",
+          description: "Hilfe bei der Auswahl nach Ihren Bedürfnissen",
+          duration: "30 Min"
+        }
+      },
+      form: {
+        title: "Kontaktanfrage",
+        description: "Füllen Sie dieses Formular aus und erhalten Sie innerhalb von 24h eine persönliche Antwort.",
+        firstName: "Vorname *",
+        firstNamePlaceholder: "Ihr Vorname",
+        lastName: "Nachname *",
+        lastNamePlaceholder: "Ihr Nachname",
+        email: "E-Mail *",
+        emailPlaceholder: "ihre@email.com",
+        phone: "Telefon",
+        phonePlaceholder: "06 12 34 56 78",
+        vehicleType: "Gesuchter Fahrzeugtyp",
+        vehicleTypePlaceholder: "Typ auswählen",
+        budget: "Geschätztes Budget",
+        budgetPlaceholder: "Budget auswählen",
+        message: "Nachricht *",
+        messagePlaceholder: "Beschreiben Sie Ihr Projekt, Ihre spezifischen Bedürfnisse, die Anzahl der zu transportierenden Pferde...",
+        responseTime: "Erhalten Sie Ihre persönliche Antwort in weniger als 24h",
+        noCommitment: "Unverbindlich • Kostenlose Beratung",
+        submitButton: "Meine Anfrage senden",
+        vehicleTypes: {
+          truck: "Pferdetransporter",
+          van: "Pferde-Van",
+          trailer: "Pferdeanhänger",
+          other: "Andere / Beratung"
+        },
+        budgetRanges: {
+          under30k: "Unter 30.000€",
+          range30k50k: "30.000€ - 50.000€",
+          range50k80k: "50.000€ - 80.000€",
+          over80k: "Über 80.000€"
+        }
+      }
+    },
+    quoteRequestPage: {
+      hero: {
+        badge: "Angebotsanfrage",
+        title: "Erhalten Sie Ihr",
+        subtitle: "Kostenloses Persönliches Angebot",
+        description: "Unsere Experten begleiten Sie bei der Auswahl Ihres Pferdetransport-Fahrzeugs. Antwort garantiert innerhalb 24h."
+      },
+      benefits: {
+        response24h: {
+          title: "Antwort Innerhalb 24h",
+          description: "Ihr persönliches Angebot in Ihrem Postfach"
+        },
+        free: {
+          title: "100% Kostenlos",
+          description: "Keine Gebühren, keine Verpflichtung Ihrerseits"
+        },
+        transparent: {
+          title: "Transparente Preise",
+          description: "Alle Kosten inklusive, keine Überraschungen"
+        },
+        expert: {
+          title: "Spezieller Experte",
+          description: "Ein persönlicher Berater betreut Ihren Fall"
+        }
+      },
+      vehicleTypes: {
+        title: "Verfügbare Fahrzeugtypen",
+        truck: {
+          type: "Pferdetransporter",
+          priceRange: "45.000€ - 120.000€",
+          popular: "Am meisten angefragt",
+          capacities: ["2 Pferde", "3 Pferde", "4 Pferde", "5 Pferde", "6+ Pferde"]
+        },
+        van: {
+          type: "Pferde-Van",
+          priceRange: "25.000€ - 85.000€",
+          capacities: ["1 Pferd", "2 Pferde", "3 Pferde"]
+        },
+        trailer: {
+          type: "Pferdeanhänger",
+          priceRange: "15.000€ - 55.000€",
+          capacities: ["1 Pferd", "2 Pferde", "3 Pferde"]
+        }
+      },
+      form: {
+        title: "Angebotsanfrage-Formular",
+        description: "Füllen Sie dieses detaillierte Formular aus, um Ihr persönliches Angebot innerhalb von 24h zu erhalten",
+        personalInfo: "Persönliche Informationen",
+        firstName: "Vorname",
+        firstNamePlaceholder: "Ihr Vorname",
+        lastName: "Nachname",
+        lastNamePlaceholder: "Ihr Nachname",
+        email: "E-Mail",
+        emailPlaceholder: "ihre@email.com",
+        phone: "Telefon",
+        phonePlaceholder: "06 12 34 56 78",
+        company: "Unternehmen (optional)",
+        companyPlaceholder: "Name Ihres Unternehmens",
+        vehicleRequirements: "Fahrzeuganforderungen",
+        vehicleType: "Gewünschter Fahrzeugtyp",
+        vehicleTypePlaceholder: "Typ auswählen",
+        capacity: "Gewünschte Kapazität",
+        capacityPlaceholder: "Anzahl der Pferde",
+        budget: "Geschätztes Budget",
+        budgetPlaceholder: "Budget auswählen",
+        usage: "Geplante Nutzung",
+        usageType: "Art der Nutzung",
+        usageTypePlaceholder: "Privat, beruflich...",
+        annualKm: "Geschätzter Jahreskilometerstand",
+        annualKmPlaceholder: "Z.B: 15.000 km/Jahr",
+        urgency: "Gewünschter Zeitrahmen",
+        urgencyPlaceholder: "Wann möchten Sie kaufen?",
+        additionalInfo: "Zusätzliche Informationen",
+        message: "Nachricht (spezifische Bedürfnisse, Fragen...)",
+        messagePlaceholder: "Beschreiben Sie Ihre spezifischen Bedürfnisse, besondere Einschränkungen, gewünschte Ausstattung...",
+        submitButton: "Meine Angebotsanfrage Senden",
+        successMessage: "Ihre Anfrage wurde erfolgreich gesendet! Wir kontaktieren Sie innerhalb von 24h.",
+        vehicleTypes: {
+          truck: "Pferdetransporter",
+          van: "Pferde-Van",
+          trailer: "Pferdeanhänger",
+          other: "Andere / Beratung"
+        },
+        capacities: {
+          oneHorse: "1 Pferd",
+          twoHorses: "2 Pferde",
+          threeHorses: "3 Pferde",
+          fourHorses: "4 Pferde",
+          fiveHorses: "5 Pferde",
+          sixPlusHorses: "6+ Pferde"
+        },
+        budgetRanges: {
+          under30k: "Unter 30.000€",
+          range30k50k: "30.000€ - 50.000€",
+          range50k80k: "50.000€ - 80.000€",
+          range80k120k: "80.000€ - 120.000€",
+          over120k: "Über 120.000€"
+        },
+        usageTypes: {
+          personal: "Private Nutzung",
+          professional: "Berufliche Nutzung",
+          mixed: "Gemischte Nutzung"
+        },
+        urgencyOptions: {
+          immediate: "Sofort (innerhalb eines Monats)",
+          month: "Innerhalb 1 bis 3 Monaten",
+          threeMonths: "Innerhalb 3 bis 6 Monaten",
+          sixMonths: "Innerhalb 6 Monaten bis 1 Jahr",
+          noUrgency: "Keine besondere Eile"
+        }
+      }
     }
   }
 };

@@ -6,47 +6,59 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Badge } from "@/components/ui/badge";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const DemandeDevis = () => {
+  const { t } = useTranslation();
+
   const benefits = [
     {
       icon: Clock,
-      title: "Réponse Sous 24h",
-      description: "Votre devis personnalisé dans votre boîte mail"
+      title: t.language === 'fr' ? "Réponse Sous 24h" : t.language === 'en' ? "Response Within 24h" : t.language === 'es' ? "Respuesta en 24h" : "Antwort Innerhalb 24h",
+      description: t.language === 'fr' ? "Votre devis personnalisé dans votre boîte mail" : t.language === 'en' ? "Your personalized quote in your inbox" : t.language === 'es' ? "Su presupuesto personalizado en su bandeja de entrada" : "Ihr persönliches Angebot in Ihrem Postfach"
     },
     {
       icon: Calculator,
-      title: "100% Gratuit",
-      description: "Aucun frais, aucun engagement de votre part"
+      title: t.language === 'fr' ? "100% Gratuit" : t.language === 'en' ? "100% Free" : t.language === 'es' ? "100% Gratuito" : "100% Kostenlos",
+      description: t.language === 'fr' ? "Aucun frais, aucun engagement de votre part" : t.language === 'en' ? "No fees, no commitment on your part" : t.language === 'es' ? "Sin tarifas, sin compromiso de su parte" : "Keine Gebühren, keine Verpflichtung Ihrerseits"
     },
     {
       icon: Shield,
-      title: "Prix Transparent",
-      description: "Tous les coûts inclus, aucune surprise"
+      title: t.language === 'fr' ? "Prix Transparent" : t.language === 'en' ? "Transparent Pricing" : t.language === 'es' ? "Precios Transparentes" : "Transparente Preise",
+      description: t.language === 'fr' ? "Tous les coûts inclus, aucune surprise" : t.language === 'en' ? "All costs included, no surprises" : t.language === 'es' ? "Todos los costos incluidos, sin sorpresas" : "Alle Kosten inklusive, keine Überraschungen"
     },
     {
       icon: CheckCircle,
-      title: "Expert Dédié",
-      description: "Un conseiller personnel suit votre dossier"
+      title: t.language === 'fr' ? "Expert Dédié" : t.language === 'en' ? "Dedicated Expert" : t.language === 'es' ? "Experto Dedicado" : "Spezieller Experte",
+      description: t.language === 'fr' ? "Un conseiller personnel suit votre dossier" : t.language === 'en' ? "A personal advisor follows your case" : t.language === 'es' ? "Un asesor personal sigue su caso" : "Ein persönlicher Berater betreut Ihren Fall"
     }
   ];
 
   const vehicleTypes = [
     {
-      type: "Camion Chevaux",
-      capacities: ["2 chevaux", "3 chevaux", "4 chevaux", "5 chevaux", "6 chevaux et +"],
+      type: t.language === 'fr' ? "Camion Chevaux" : t.language === 'en' ? "Horse Truck" : t.language === 'es' ? "Camión para Caballos" : "Pferdetransporter",
+      capacities: t.language === 'fr' ? ["2 chevaux", "3 chevaux", "4 chevaux", "5 chevaux", "6 chevaux et +"] : 
+                  t.language === 'en' ? ["2 horses", "3 horses", "4 horses", "5 horses", "6+ horses"] :
+                  t.language === 'es' ? ["2 caballos", "3 caballos", "4 caballos", "5 caballos", "6+ caballos"] :
+                  ["2 Pferde", "3 Pferde", "4 Pferde", "5 Pferde", "6+ Pferde"],
       priceRange: "45 000€ - 120 000€",
       popular: true
     },
     {
-      type: "Van Chevaux", 
-      capacities: ["1 cheval", "2 chevaux", "3 chevaux"],
+      type: t.language === 'fr' ? "Van Chevaux" : t.language === 'en' ? "Horse Van" : t.language === 'es' ? "Furgoneta para Caballos" : "Pferde-Van",
+      capacities: t.language === 'fr' ? ["1 cheval", "2 chevaux", "3 chevaux"] :
+                  t.language === 'en' ? ["1 horse", "2 horses", "3 horses"] :
+                  t.language === 'es' ? ["1 caballo", "2 caballos", "3 caballos"] :
+                  ["1 Pferd", "2 Pferde", "3 Pferde"],
       priceRange: "25 000€ - 85 000€",
       popular: false
     },
     {
-      type: "Remorque Chevaux",
-      capacities: ["1 cheval", "2 chevaux", "3 chevaux"],
+      type: t.language === 'fr' ? "Remorque Chevaux" : t.language === 'en' ? "Horse Trailer" : t.language === 'es' ? "Remolque para Caballos" : "Pferdeanhänger",
+      capacities: t.language === 'fr' ? ["1 cheval", "2 chevaux", "3 chevaux"] :
+                  t.language === 'en' ? ["1 horse", "2 horses", "3 horses"] :
+                  t.language === 'es' ? ["1 caballo", "2 caballos", "3 caballos"] :
+                  ["1 Pferd", "2 Pferde", "3 Pferde"],
       priceRange: "15 000€ - 55 000€",
       popular: false
     }
