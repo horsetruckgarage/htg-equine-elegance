@@ -64,26 +64,25 @@ const DemandeDevis = () => {
           <div className="text-center max-w-4xl mx-auto space-y-6">
             <div className="inline-flex items-center space-x-2 bg-copper/10 rounded-full px-4 py-2">
               <Calculator className="w-4 h-4 text-copper" />
-              <span className="text-copper font-semibold">Devis Gratuit</span>
+              <span className="text-copper font-semibold">{t.quotePage.hero.badge}</span>
             </div>
             <h1 className="text-4xl lg:text-6xl font-bold">
-              <span className="text-foreground">Votre Devis</span>
-              <span className="block htg-text-gradient">en Moins de 24h</span>
+              <span className="text-foreground">{t.quotePage.hero.title1}</span>
+              <span className="block htg-text-gradient">{t.quotePage.hero.title2}</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Obtenez un devis personnalisé pour votre véhicule de transport équin. 
-              Notre expert analyse vos besoins et vous propose la solution parfaite.
+              {t.quotePage.hero.description}
             </p>
             
             {/* Trust Indicators */}
             <div className="flex justify-center items-center gap-6 mt-8">
               <div className="flex items-center gap-2 bg-green-600/10 rounded-full px-4 py-2">
                 <CheckCircle className="w-4 h-4 text-green-600" />
-                <span className="text-green-600 font-medium text-sm">100% Gratuit</span>
+                <span className="text-green-600 font-medium text-sm">{t.quotePage.benefits.free.title}</span>
               </div>
               <div className="flex items-center gap-2 bg-blue-600/10 rounded-full px-4 py-2">
                 <Clock className="w-4 h-4 text-blue-600" />
-                <span className="text-blue-600 font-medium text-sm">Réponse 24h</span>
+                <span className="text-blue-600 font-medium text-sm">{t.quotePage.benefits.response24h.title}</span>
               </div>
               <div className="flex items-center gap-2 bg-copper/10 rounded-full px-4 py-2">
                 <Shield className="w-4 h-4 text-copper" />

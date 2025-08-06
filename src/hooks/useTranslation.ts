@@ -605,7 +605,8 @@ export interface Translations {
         vehicleType: string;
         budget: string;
         message: string;
-      };
+    };
+    noCommitment: string;
       placeholders: {
         firstName: string;
         lastName: string;
@@ -1262,6 +1263,7 @@ const translations: Record<Language, Translations> = {
         free: { title: "100% Gratuit", description: "Aucun frais, aucun engagement de votre part" },
         expertise: { title: "Prix Transparent", description: "Tous les coûts inclus, aucune surprise" }
       },
+      commitment: "Sans engagement",
       hero: {
         badge: "Devis Gratuit",
         title1: "Obtenez Votre Devis",
