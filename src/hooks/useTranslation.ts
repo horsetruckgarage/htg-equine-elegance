@@ -452,6 +452,124 @@ export interface Translations {
       button2: string;
     };
   };
+
+  // Contact Page
+  contactPage: {
+    hero: {
+      badge: string;
+      title1: string;
+      title2: string;
+      description: string;
+    };
+    contactMethods: {
+      phone: {
+        title: string;
+        subtitle: string;
+        description: string;
+        action: string;
+        actionText: string;
+      };
+      chat: {
+        title: string;
+        subtitle: string;
+        description: string;
+        action: string;
+        actionText: string;
+      };
+      appointment: {
+        title: string;
+        subtitle: string;
+        description: string;
+        action: string;
+        actionText: string;
+      };
+    };
+    methodsSection: {
+      title1: string;
+      title2: string;
+      subtitle: string;
+    };
+    contactInfo: {
+      title1: string;
+      title2: string;
+      subtitle: string;
+      address: {
+        title: string;
+        street: string;
+        city: string;
+      };
+      hours: {
+        title: string;
+        weekdays: string;
+        saturday: string;
+        sunday: string;
+      };
+      phone: {
+        title: string;
+        number: string;
+      };
+      email: {
+        title: string;
+        address: string;
+      };
+    };
+    services: {
+      title: string;
+      expertise: {
+        title: string;
+        description: string;
+        duration: string;
+      };
+      financing: {
+        title: string;
+        description: string;
+        duration: string;
+      };
+      advice: {
+        title: string;
+        description: string;
+        duration: string;
+      };
+    };
+    form: {
+      title: string;
+      subtitle: string;
+      fields: {
+        firstName: string;
+        lastName: string;
+        email: string;
+        phone: string;
+        vehicleType: string;
+        budget: string;
+        message: string;
+      };
+      placeholders: {
+        firstName: string;
+        lastName: string;
+        email: string;
+        phone: string;
+        vehicleTypeSelect: string;
+        budgetSelect: string;
+        message: string;
+      };
+      vehicleTypes: {
+        truck: string;
+        van: string;
+        trailer: string;
+        other: string;
+      };
+      budgetRanges: {
+        under30k: string;
+        range30to50k: string;
+        range50to80k: string;
+        over80k: string;
+      };
+      submitInfo: string;
+      submitSubtitle: string;
+      submitButton: string;
+      required: string;
+    };
+  };
 }
 
 const translations: Record<Language, Translations> = {
@@ -960,6 +1078,122 @@ const translations: Record<Language, Translations> = {
         button1: "Voir Nos Véhicules",
         button2: "Prendre Rendez-vous"
       }
+    },
+    contactPage: {
+      hero: {
+        badge: "Contactez-nous",
+        title1: "Parlons de Votre",
+        title2: "Projet Transport",
+        description: "Nos experts vous accompagnent dans le choix de votre véhicule de transport équin. Contactez-nous par le moyen qui vous convient le mieux."
+      },
+      contactMethods: {
+        phone: {
+          title: "Appelez-nous",
+          subtitle: "Réponse immédiate",
+          description: "Nos experts vous répondent du lundi au samedi",
+          action: "01 23 45 67 89",
+          actionText: "Appeler maintenant"
+        },
+        chat: {
+          title: "Chat en Ligne",
+          subtitle: "Assistance instantanée",
+          description: "Posez vos questions en temps réel",
+          action: "Démarrer le chat",
+          actionText: "Chatter maintenant"
+        },
+        appointment: {
+          title: "Rendez-vous",
+          subtitle: "Conseil personnalisé",
+          description: "Rencontrez nos experts en visio ou au showroom",
+          action: "Réserver un créneau",
+          actionText: "Planifier maintenant"
+        }
+      },
+      methodsSection: {
+        title1: "Comment Nous",
+        title2: " Joindre ?",
+        subtitle: "Choisissez le canal de communication qui vous convient"
+      },
+      contactInfo: {
+        title1: "Informations",
+        title2: " Pratiques",
+        subtitle: "Retrouvez-nous dans notre showroom ou contactez-nous directement.",
+        address: {
+          title: "Adresse",
+          street: "Zone Industrielle de la Forêt\n123 Rue des Chevaux",
+          city: "45000 Orléans, France"
+        },
+        hours: {
+          title: "Horaires",
+          weekdays: "Lundi - Vendredi : 8h - 18h",
+          saturday: "Samedi : 9h - 17h",
+          sunday: "Dimanche : Sur rendez-vous"
+        },
+        phone: {
+          title: "Téléphone",
+          number: "01 23 45 67 89"
+        },
+        email: {
+          title: "Email",
+          address: "contact@htg-france.com"
+        }
+      },
+      services: {
+        title: "Services Express",
+        expertise: {
+          title: "Expertise Véhicule",
+          description: "Contrôle technique complet avant achat",
+          duration: "Sous 48h"
+        },
+        financing: {
+          title: "Simulation Financement",
+          description: "Calculez vos mensualités en temps réel",
+          duration: "Immédiat"
+        },
+        advice: {
+          title: "Conseil Personnalisé",
+          description: "Aide au choix selon vos besoins",
+          duration: "30 min"
+        }
+      },
+      form: {
+        title: "Demande de Contact",
+        subtitle: "Remplissez ce formulaire et recevez une réponse personnalisée sous 24h.",
+        fields: {
+          firstName: "Prénom",
+          lastName: "Nom",
+          email: "Email",
+          phone: "Téléphone",
+          vehicleType: "Type de véhicule recherché",
+          budget: "Budget estimé",
+          message: "Message"
+        },
+        placeholders: {
+          firstName: "Votre prénom",
+          lastName: "Votre nom",
+          email: "votre@email.com",
+          phone: "06 12 34 56 78",
+          vehicleTypeSelect: "Sélectionnez un type",
+          budgetSelect: "Sélectionnez votre budget",
+          message: "Décrivez-nous votre projet, vos besoins spécifiques, le nombre de chevaux à transporter..."
+        },
+        vehicleTypes: {
+          truck: "Camion Chevaux",
+          van: "Van Chevaux",
+          trailer: "Remorque Chevaux",
+          other: "Autre / Conseil"
+        },
+        budgetRanges: {
+          under30k: "Moins de 30 000€",
+          range30to50k: "30 000€ - 50 000€",
+          range50to80k: "50 000€ - 80 000€",
+          over80k: "Plus de 80 000€"
+        },
+        submitInfo: "Recevez votre réponse personnalisée en moins de 24h",
+        submitSubtitle: "Sans engagement • Conseil gratuit",
+        submitButton: "Envoyer ma Demande",
+        required: "*"
+      }
     }
   },
   en: {
@@ -1467,6 +1701,122 @@ const translations: Record<Language, Translations> = {
         button1: "See Our Vehicles",
         button2: "Make an Appointment"
       }
+    },
+    contactPage: {
+      hero: {
+        badge: "Contact Us",
+        title1: "Let's Talk About Your",
+        title2: "Transport Project",
+        description: "Our experts will guide you in choosing your equestrian transport vehicle. Contact us using the method that suits you best."
+      },
+      contactMethods: {
+        phone: {
+          title: "Call Us",
+          subtitle: "Immediate Response",
+          description: "Our experts are available Monday to Saturday",
+          action: "01 23 45 67 89",
+          actionText: "Call Now"
+        },
+        chat: {
+          title: "Live Chat",
+          subtitle: "Instant Support",
+          description: "Ask your questions in real time",
+          action: "Start chat",
+          actionText: "Chat Now"
+        },
+        appointment: {
+          title: "Appointment",
+          subtitle: "Personalized Advice",
+          description: "Meet our experts via video call or at our showroom",
+          action: "Book a slot",
+          actionText: "Schedule Now"
+        }
+      },
+      methodsSection: {
+        title1: "How to",
+        title2: " Reach Us?",
+        subtitle: "Choose the communication channel that suits you"
+      },
+      contactInfo: {
+        title1: "Practical",
+        title2: " Information",
+        subtitle: "Find us at our showroom or contact us directly.",
+        address: {
+          title: "Address",
+          street: "Zone Industrielle de la Forêt\n123 Rue des Chevaux",
+          city: "45000 Orléans, France"
+        },
+        hours: {
+          title: "Hours",
+          weekdays: "Monday - Friday: 8am - 6pm",
+          saturday: "Saturday: 9am - 5pm",
+          sunday: "Sunday: By appointment"
+        },
+        phone: {
+          title: "Phone",
+          number: "01 23 45 67 89"
+        },
+        email: {
+          title: "Email",
+          address: "contact@htg-france.com"
+        }
+      },
+      services: {
+        title: "Express Services",
+        expertise: {
+          title: "Vehicle Expertise",
+          description: "Complete technical inspection before purchase",
+          duration: "Within 48h"
+        },
+        financing: {
+          title: "Financing Simulation",
+          description: "Calculate your monthly payments in real time",
+          duration: "Immediate"
+        },
+        advice: {
+          title: "Personalized Advice",
+          description: "Help choosing according to your needs",
+          duration: "30 min"
+        }
+      },
+      form: {
+        title: "Contact Request",
+        subtitle: "Fill out this form and receive a personalized response within 24h.",
+        fields: {
+          firstName: "First Name",
+          lastName: "Last Name",
+          email: "Email",
+          phone: "Phone",
+          vehicleType: "Vehicle type sought",
+          budget: "Estimated budget",
+          message: "Message"
+        },
+        placeholders: {
+          firstName: "Your first name",
+          lastName: "Your last name",
+          email: "your@email.com",
+          phone: "06 12 34 56 78",
+          vehicleTypeSelect: "Select a type",
+          budgetSelect: "Select your budget",
+          message: "Describe your project, specific needs, number of horses to transport..."
+        },
+        vehicleTypes: {
+          truck: "Horse Truck",
+          van: "Horse Van",
+          trailer: "Horse Trailer",
+          other: "Other / Advice"
+        },
+        budgetRanges: {
+          under30k: "Less than €30,000",
+          range30to50k: "€30,000 - €50,000",
+          range50to80k: "€50,000 - €80,000",
+          over80k: "More than €80,000"
+        },
+        submitInfo: "Receive your personalized response in less than 24h",
+        submitSubtitle: "No commitment • Free advice",
+        submitButton: "Send My Request",
+        required: "*"
+      }
     }
   },
   es: {
@@ -1924,6 +2274,122 @@ const translations: Record<Language, Translations> = {
         button1: "Ver Nuestros Vehículos",
         button2: "Concertar una Cita"
       }
+    },
+    contactPage: {
+      hero: {
+        badge: "Contáctanos",
+        title1: "Hablemos de Tu",
+        title2: "Proyecto de Transporte",
+        description: "Nuestros expertos te acompañan en la elección de tu vehículo de transporte ecuestre. Contáctanos por el medio que más te convenga."
+      },
+      contactMethods: {
+        phone: {
+          title: "Llámanos",
+          subtitle: "Respuesta inmediata",
+          description: "Nuestros expertos te responden de lunes a sábado",
+          action: "01 23 45 67 89",
+          actionText: "Llamar ahora"
+        },
+        chat: {
+          title: "Chat en Línea",
+          subtitle: "Asistencia instantánea",
+          description: "Haz tus preguntas en tiempo real",
+          action: "Iniciar el chat",
+          actionText: "Chatear ahora"
+        },
+        appointment: {
+          title: "Cita",
+          subtitle: "Consejo personalizado",
+          description: "Reúnete con nuestros expertos por video o en el showroom",
+          action: "Reservar un horario",
+          actionText: "Programar ahora"
+        }
+      },
+      methodsSection: {
+        title1: "¿Cómo",
+        title2: " Contactarnos?",
+        subtitle: "Elige el canal de comunicación que más te convenga"
+      },
+      contactInfo: {
+        title1: "Información",
+        title2: " Práctica",
+        subtitle: "Encuéntranos en nuestro showroom o contáctanos directamente.",
+        address: {
+          title: "Dirección",
+          street: "Zone Industrielle de la Forêt\n123 Rue des Chevaux",
+          city: "45000 Orléans, Francia"
+        },
+        hours: {
+          title: "Horarios",
+          weekdays: "Lunes - Viernes: 8h - 18h",
+          saturday: "Sábado: 9h - 17h",
+          sunday: "Domingo: Con cita previa"
+        },
+        phone: {
+          title: "Teléfono",
+          number: "01 23 45 67 89"
+        },
+        email: {
+          title: "Email",
+          address: "contact@htg-france.com"
+        }
+      },
+      services: {
+        title: "Servicios Exprés",
+        expertise: {
+          title: "Pericia del Vehículo",
+          description: "Control técnico completo antes de la compra",
+          duration: "En 48h"
+        },
+        financing: {
+          title: "Simulación de Financiación",
+          description: "Calcula tus cuotas mensuales en tiempo real",
+          duration: "Inmediato"
+        },
+        advice: {
+          title: "Consejo Personalizado",
+          description: "Ayuda en la elección según tus necesidades",
+          duration: "30 min"
+        }
+      },
+      form: {
+        title: "Solicitud de Contacto",
+        subtitle: "Completa este formulario y recibe una respuesta personalizada en 24h.",
+        fields: {
+          firstName: "Nombre",
+          lastName: "Apellido",
+          email: "Email",
+          phone: "Teléfono",
+          vehicleType: "Tipo de vehículo buscado",
+          budget: "Presupuesto estimado",
+          message: "Mensaje"
+        },
+        placeholders: {
+          firstName: "Tu nombre",
+          lastName: "Tu apellido",
+          email: "tu@email.com",
+          phone: "06 12 34 56 78",
+          vehicleTypeSelect: "Selecciona un tipo",
+          budgetSelect: "Selecciona tu presupuesto",
+          message: "Descríbenos tu proyecto, tus necesidades específicas, el número de caballos a transportar..."
+        },
+        vehicleTypes: {
+          truck: "Camión para Caballos",
+          van: "Furgoneta para Caballos",
+          trailer: "Remolque para Caballos",
+          other: "Otro / Consejo"
+        },
+        budgetRanges: {
+          under30k: "Menos de 30.000€",
+          range30to50k: "30.000€ - 50.000€",
+          range50to80k: "50.000€ - 80.000€",
+          over80k: "Más de 80.000€"
+        },
+        submitInfo: "Recibe tu respuesta personalizada en menos de 24h",
+        submitSubtitle: "Sin compromiso • Consejo gratuito",
+        submitButton: "Enviar mi Solicitud",
+        required: "*"
+      }
     }
   },
   de: {
@@ -2313,6 +2779,122 @@ const translations: Record<Language, Translations> = {
       team: { director: { role: "Direktor & Gründer", experience: "20 Jahre im Pferdetransport", speciality: "Experte für Premium-Pferdetransporter" }, sales: { role: "Verkaufsleiter", experience: "12 Jahre bei HTG", speciality: "Spezialist für Transporter" }, technical: { role: "Technischer Experte", experience: "15 Jahre spezialisierter Mechaniker", speciality: "Qualitätskontrolle" } },
       teamSection: { title1: "Unser", title2: " Team", subtitle: "Leidenschaftliche Experten zu Ihren Diensten" },
       cta: { title: "Bereit, unserer Expertise zu vertrauen?", description: "Entdecken Sie, warum mehr als 2500 Reitsport-Enthusiasten uns vertrauen.", button1: "Unsere Fahrzeuge ansehen", button2: "Termin vereinbaren" }
+    },
+    contactPage: {
+      hero: {
+        badge: "Kontaktieren Sie uns",
+        title1: "Sprechen wir über Ihr",
+        title2: "Transport-Projekt",
+        description: "Unsere Experten begleiten Sie bei der Auswahl Ihres Reitfahrzeugs. Kontaktieren Sie uns auf die Art, die Ihnen am besten passt."
+      },
+      contactMethods: {
+        phone: {
+          title: "Rufen Sie uns an",
+          subtitle: "Sofortige Antwort",
+          description: "Unsere Experten antworten Ihnen von Montag bis Samstag",
+          action: "01 23 45 67 89",
+          actionText: "Jetzt anrufen"
+        },
+        chat: {
+          title: "Live-Chat",
+          subtitle: "Sofortige Unterstützung",
+          description: "Stellen Sie Ihre Fragen in Echtzeit",
+          action: "Chat starten",
+          actionText: "Jetzt chatten"
+        },
+        appointment: {
+          title: "Termin",
+          subtitle: "Persönliche Beratung",
+          description: "Treffen Sie unsere Experten per Video oder im Showroom",
+          action: "Slot buchen",
+          actionText: "Jetzt planen"
+        }
+      },
+      methodsSection: {
+        title1: "Wie Sie",
+        title2: " uns Erreichen?",
+        subtitle: "Wählen Sie den Kommunikationskanal, der Ihnen passt"
+      },
+      contactInfo: {
+        title1: "Praktische",
+        title2: " Informationen",
+        subtitle: "Besuchen Sie uns in unserem Showroom oder kontaktieren Sie uns direkt.",
+        address: {
+          title: "Adresse",
+          street: "Zone Industrielle de la Forêt\n123 Rue des Chevaux",
+          city: "45000 Orléans, Frankreich"
+        },
+        hours: {
+          title: "Öffnungszeiten",
+          weekdays: "Montag - Freitag: 8h - 18h",
+          saturday: "Samstag: 9h - 17h",
+          sunday: "Sonntag: Nach Vereinbarung"
+        },
+        phone: {
+          title: "Telefon",
+          number: "01 23 45 67 89"
+        },
+        email: {
+          title: "E-Mail",
+          address: "contact@htg-france.com"
+        }
+      },
+      services: {
+        title: "Express-Services",
+        expertise: {
+          title: "Fahrzeug-Expertise",
+          description: "Komplette technische Kontrolle vor dem Kauf",
+          duration: "Binnen 48h"
+        },
+        financing: {
+          title: "Finanzierungs-Simulation",
+          description: "Berechnen Sie Ihre monatlichen Raten in Echtzeit",
+          duration: "Sofort"
+        },
+        advice: {
+          title: "Persönliche Beratung",
+          description: "Hilfe bei der Auswahl nach Ihren Bedürfnissen",
+          duration: "30 min"
+        }
+      },
+      form: {
+        title: "Kontaktanfrage",
+        subtitle: "Füllen Sie dieses Formular aus und erhalten Sie eine persönliche Antwort innerhalb von 24h.",
+        fields: {
+          firstName: "Vorname",
+          lastName: "Nachname",
+          email: "E-Mail",
+          phone: "Telefon",
+          vehicleType: "Gesuchter Fahrzeugtyp",
+          budget: "Geschätztes Budget",
+          message: "Nachricht"
+        },
+        placeholders: {
+          firstName: "Ihr Vorname",
+          lastName: "Ihr Nachname",
+          email: "ihre@email.com",
+          phone: "06 12 34 56 78",
+          vehicleTypeSelect: "Typ auswählen",
+          budgetSelect: "Budget auswählen",
+          message: "Beschreiben Sie uns Ihr Projekt, Ihre spezifischen Bedürfnisse, die Anzahl der zu transportierenden Pferde..."
+        },
+        vehicleTypes: {
+          truck: "Pferdetransporter",
+          van: "Pferde-Van",
+          trailer: "Pferdeanhänger",
+          other: "Andere / Beratung"
+        },
+        budgetRanges: {
+          under30k: "Weniger als 30.000€",
+          range30to50k: "30.000€ - 50.000€",
+          range50to80k: "50.000€ - 80.000€",
+          over80k: "Mehr als 80.000€"
+        },
+        submitInfo: "Erhalten Sie Ihre persönliche Antwort in weniger als 24h",
+        submitSubtitle: "Unverbindlich • Kostenlose Beratung",
+        submitButton: "Meine Anfrage senden",
+        required: "*"
+      }
     }
   }
 };
