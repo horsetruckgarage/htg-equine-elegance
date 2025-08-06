@@ -12,50 +12,61 @@ const Remorques = () => {
   const { t, language } = useTranslation();
   
   const getLocalizedFeatures = (features: string[]) => {
-    const featureMap: { [key: string]: string } = {
-      "Aluminium": "Aluminium",
-      "Suspension AL-KO": "Suspension AL-KO", 
-      "Plancher caoutchouc": "Plancher caoutchouc",
-      "Éclairage LED": "Éclairage LED",
-      "Système de freinage AL-KO": "Système de freinage AL-KO",
-      "Éclairage full LED": "Éclairage full LED",
-      "Sellerie cuir": "Sellerie cuir",
-      "Plancher bois": "Plancher bois",
-      "Construction robuste": "Construction robuste",
-      "Plancher antidérapant": "Plancher antidérapant",
-      "Ventilation optimale": "Ventilation optimale",
-      "Facilité d'entretien": "Facilité d'entretien",
-      "Made in France": "Made in France",
-      "Suspension pneumatique": "Suspension pneumatique",
-      "Plancher bois massif": "Plancher bois massif",
-      "Design moderne": "Design moderne",
-      "Compact": "Compact",
-      "Légère": "Légère",
-      "Manœuvrable": "Manœuvrable",
-      "Idéale débutant": "Idéale débutant",
-      "Technologie avancée": "Technologie avancée",
-      "Suspension independent": "Suspension independent",
-      "Confort maximum": "Confort maximum",
-      "Sécurité renforcée": "Sécurité renforcée"
+    const featureTranslations: { [key: string]: { [lang: string]: string } } = {
+      "Aluminium": { fr: "Aluminium", en: "Aluminum", es: "Aluminio", de: "Aluminium" },
+      "Suspension AL-KO": { fr: "Suspension AL-KO", en: "AL-KO Suspension", es: "Suspensión AL-KO", de: "AL-KO Federung" },
+      "Plancher caoutchouc": { fr: "Plancher caoutchouc", en: "Rubber flooring", es: "Suelo de goma", de: "Gummiboden" },
+      "Éclairage LED": { fr: "Éclairage LED", en: "LED lighting", es: "Iluminación LED", de: "LED-Beleuchtung" },
+      "Système de freinage AL-KO": { fr: "Système de freinage AL-KO", en: "AL-KO braking system", es: "Sistema de frenos AL-KO", de: "AL-KO Bremssystem" },
+      "Éclairage full LED": { fr: "Éclairage full LED", en: "Full LED lighting", es: "Iluminación LED completa", de: "Vollständige LED-Beleuchtung" },
+      "Sellerie cuir": { fr: "Sellerie cuir", en: "Leather upholstery", es: "Tapicería de cuero", de: "Lederausstattung" },
+      "Plancher bois": { fr: "Plancher bois", en: "Wooden flooring", es: "Suelo de madera", de: "Holzboden" },
+      "Construction robuste": { fr: "Construction robuste", en: "Robust construction", es: "Construcción robusta", de: "Robuste Konstruktion" },
+      "Plancher antidérapant": { fr: "Plancher antidérapant", en: "Non-slip flooring", es: "Suelo antideslizante", de: "Rutschfester Boden" },
+      "Ventilation optimale": { fr: "Ventilation optimale", en: "Optimal ventilation", es: "Ventilación óptima", de: "Optimale Belüftung" },
+      "Facilité d'entretien": { fr: "Facilité d'entretien", en: "Easy maintenance", es: "Fácil mantenimiento", de: "Einfache Wartung" },
+      "Made in France": { fr: "Made in France", en: "Made in France", es: "Hecho en Francia", de: "Made in France" },
+      "Suspension pneumatique": { fr: "Suspension pneumatique", en: "Air suspension", es: "Suspensión neumática", de: "Luftfederung" },
+      "Plancher bois massif": { fr: "Plancher bois massif", en: "Solid wood flooring", es: "Suelo de madera maciza", de: "Massivholzboden" },
+      "Design moderne": { fr: "Design moderne", en: "Modern design", es: "Diseño moderno", de: "Modernes Design" },
+      "Compact": { fr: "Compact", en: "Compact", es: "Compacto", de: "Kompakt" },
+      "Légère": { fr: "Légère", en: "Lightweight", es: "Ligero", de: "Leicht" },
+      "Manœuvrable": { fr: "Manœuvrable", en: "Maneuverable", es: "Maniobrable", de: "Wendig" },
+      "Idéale débutant": { fr: "Idéale débutant", en: "Ideal for beginners", es: "Ideal para principiantes", de: "Ideal für Anfänger" },
+      "Technologie avancée": { fr: "Technologie avancée", en: "Advanced technology", es: "Tecnología avanzada", de: "Fortschrittliche Technologie" },
+      "Suspension independent": { fr: "Suspension independent", en: "Independent suspension", es: "Suspensión independiente", de: "Unabhängige Aufhängung" },
+      "Confort maximum": { fr: "Confort maximum", en: "Maximum comfort", es: "Máximo confort", de: "Maximaler Komfort" },
+      "Sécurité renforcée": { fr: "Sécurité renforcée", en: "Enhanced security", es: "Seguridad reforzada", de: "Verstärkte Sicherheit" }
     };
-    return features.map(feature => featureMap[feature] || feature);
+    
+    return features.map(feature => {
+      const translations = featureTranslations[feature];
+      return translations ? translations[language] || feature : feature;
+    });
   };
 
   const getLocalizedBadge = (badge: string) => {
-    const badgeMap: { [key: string]: string } = {
-      "Premium": "Premium",
-      "Nouveauté": "Nouveauté",
-      "Promotion": "Promotion",
-      "Français": "Français",
-      "Économique": "Économique",
-      "Innovant": "Innovant"
+    const badgeTranslations: { [key: string]: { [lang: string]: string } } = {
+      "Premium": { fr: "Premium", en: "Premium", es: "Premium", de: "Premium" },
+      "Nouveauté": { fr: "Nouveauté", en: "New", es: "Novedad", de: "Neuheit" },
+      "Promotion": { fr: "Promotion", en: "Sale", es: "Promoción", de: "Angebot" },
+      "Français": { fr: "Français", en: "French", es: "Francés", de: "Französisch" },
+      "Économique": { fr: "Économique", en: "Economic", es: "Económico", de: "Wirtschaftlich" },
+      "Innovant": { fr: "Innovant", en: "Innovative", es: "Innovador", de: "Innovativ" }
     };
-    return badgeMap[badge] || badge;
+    
+    const translations = badgeTranslations[badge];
+    return translations ? translations[language] || badge : badge;
   };
 
   const getLocalizedCondition = (condition: string) => {
-    return condition === "Neuf" ? "Neuf" : 
-           condition === "Occasion" ? "Occasion" : condition;
+    const conditionTranslations: { [key: string]: { [lang: string]: string } } = {
+      "Neuf": { fr: "Neuf", en: "New", es: "Nuevo", de: "Neu" },
+      "Occasion": { fr: "Occasion", en: "Used", es: "Usado", de: "Gebraucht" }
+    };
+    
+    const translations = conditionTranslations[condition];
+    return translations ? translations[language] || condition : condition;
   };
 
   const remorques = [
@@ -272,7 +283,12 @@ const Remorques = () => {
                     </div>
                     <div className="text-center">
                       <Users className="w-4 h-4 text-copper mx-auto mb-1" />
-                      <span className="text-muted-foreground">{remorque.capacity}</span>
+                      <span className="text-muted-foreground">
+                        {language === 'fr' ? remorque.capacity :
+                         language === 'en' ? remorque.capacity.replace('chevaux', 'horses').replace('cheval', 'horse') :
+                         language === 'es' ? remorque.capacity.replace('chevaux', 'caballos').replace('cheval', 'caballo') :
+                         remorque.capacity.replace('chevaux', 'Pferde').replace('cheval', 'Pferd')}
+                      </span>
                     </div>
                   </div>
 
