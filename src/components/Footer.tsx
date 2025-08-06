@@ -7,55 +7,32 @@ import { getLocalizedPath } from "@/hooks/useLocalizedRouting";
 const Footer = () => {
   const { t, language } = useTranslation();
   
-  // Fallback pour les traductions manquantes
-  const footer = (t as any).footer || {
-    vehicles: {
-      title: "Véhicules",
-      horseTrucks: "Camions Chevaux",
-      horseVans: "Vans Chevaux", 
-      horseTrailers: "Remorques Chevaux",
-      occasions: "Occasions"
-    },
-    company2: {
-      title: "Entreprise",
-      about: "À Propos",
-      contact: "Contact"
-    },
-    services: {
-      title: "Services",
-      financing: "Financement",
-      insurance: "Assurance",
-      warranty: "Garantie",
-      maintenance: "Maintenance"
-    }
-  };
-  
   const footerSections = [
     {
-      title: footer.vehicles.title,
+      title: t.footer.vehicles.title,
       links: [
-        { name: footer.vehicles.horseTrucks, href: getLocalizedPath("/camions", language) },
-        { name: footer.vehicles.horseVans, href: getLocalizedPath("/vans", language) },
-        { name: footer.vehicles.horseTrailers, href: getLocalizedPath("/remorques", language) },
-        { name: footer.vehicles.occasions, href: getLocalizedPath("/occasions", language) },
-        { name: t.nav?.getQuote || "Devis", href: getLocalizedPath("/devis", language) }
+        { name: t.footer.vehicles.horseTrucks, href: getLocalizedPath("/camions", language) },
+        { name: t.footer.vehicles.horseVans, href: getLocalizedPath("/vans", language) },
+        { name: t.footer.vehicles.horseTrailers, href: getLocalizedPath("/remorques", language) },
+        { name: t.footer.vehicles.occasions, href: getLocalizedPath("/occasions", language) },
+        { name: t.nav.getQuote, href: getLocalizedPath("/devis", language) }
       ]
     },
     {
-      title: footer.company2.title,
+      title: t.footer.company2.title,
       links: [
-        { name: footer.company2.about, href: getLocalizedPath("/about", language) },
-        { name: footer.company2.contact, href: getLocalizedPath("/contact", language) },
-        { name: t.nav?.getQuote || "Devis", href: getLocalizedPath("/devis", language) }
+        { name: t.footer.company2.about, href: getLocalizedPath("/about", language) },
+        { name: t.footer.company2.contact, href: getLocalizedPath("/contact", language) },
+        { name: t.nav.getQuote, href: getLocalizedPath("/devis", language) }
       ]
     },
     {
-      title: footer.services.title,
+      title: t.footer.services.title,
       links: [
-        { name: footer.services.financing, href: getLocalizedPath("/devis", language) },
-        { name: footer.services.insurance, href: getLocalizedPath("/contact", language) },
-        { name: footer.services.warranty, href: getLocalizedPath("/contact", language) },
-        { name: footer.services.maintenance, href: getLocalizedPath("/contact", language) }
+        { name: t.footer.services.financing, href: getLocalizedPath("/devis", language) },
+        { name: t.footer.services.insurance, href: getLocalizedPath("/contact", language) },
+        { name: t.footer.services.warranty, href: getLocalizedPath("/contact", language) },
+        { name: t.footer.services.maintenance, href: getLocalizedPath("/contact", language) }
       ]
     }
   ];
@@ -73,19 +50,19 @@ const Footer = () => {
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center space-y-6">
             <h3 className="text-3xl font-bold text-gray-800">
-              {(t as any).footer?.newsletter?.title || "Newsletter"}
+              {t.footer.newsletter.title}
             </h3>
             <p className="text-lg text-gray-600">
-              {(t as any).footer?.newsletter?.description || "Restez informé de nos dernières offres"}
+              {t.footer.newsletter.description}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
               <input
                 type="email"
-                placeholder={(t as any).footer?.newsletter?.placeholder || "Votre email"}
+                placeholder={t.footer.newsletter.placeholder}
                 className="flex-1 px-4 py-3 rounded-lg bg-white border border-gray-300 text-gray-800"
               />
               <Button className="htg-button-primary whitespace-nowrap">
-                {(t as any).footer?.newsletter?.subscribe || "S'abonner"}
+                {t.footer.newsletter.subscribe}
               </Button>
             </div>
           </div>
@@ -106,12 +83,12 @@ const Footer = () => {
                 />
                 <div>
                   <h3 className="text-2xl font-bold text-copper">HTG</h3>
-                  <p className="text-gray-600">{(t as any).footer?.company?.title || "HTG France"}</p>
+                  <p className="text-gray-600">{t.footer.company.title}</p>
                 </div>
               </div>
               
               <p className="text-gray-600 leading-relaxed">
-                {(t as any).footer?.company?.description || "Spécialiste du transport équin depuis plus de 30 ans"}
+                {t.footer.company.description}
               </p>
 
               {/* Contact Info */}
@@ -193,19 +170,19 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-center md:text-left">
               <p className="text-gray-600">
-                © 2024 {(t as any).footer?.company?.title || "HTG France"}. {(t as any).footer?.copyright || "Tous droits réservés."}
+                © 2024 {t.footer.company.title}. {t.footer.copyright}
               </p>
             </div>
             
             <div className="flex flex-wrap justify-center md:justify-end gap-6 text-sm">
               <Link to={getLocalizedPath("/about", language)} className="text-gray-600 hover:text-copper transition-colors">
-                {footer.company2.about}
+                {t.footer.company2.about}
               </Link>
               <Link to={getLocalizedPath("/contact", language)} className="text-gray-600 hover:text-copper transition-colors">
-                {footer.company2.contact}
+                {t.footer.company2.contact}
               </Link>
               <Link to={getLocalizedPath("/devis", language)} className="text-gray-600 hover:text-copper transition-colors">
-                {t.nav?.getQuote || "Devis"}
+                {t.nav.getQuote}
               </Link>
             </div>
           </div>

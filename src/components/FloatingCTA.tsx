@@ -7,11 +7,6 @@ import { getLocalizedPath } from "@/hooks/useLocalizedRouting";
 const FloatingCTA = () => {
   const { t, language } = useTranslation();
   
-  // Fallback pour les traductions manquantes
-  const floating = (t as any).floating || {
-    quote24h: "Devis 24h"
-  };
-  
   return (
     <>
       {/* Floating CTA Button */}
@@ -22,7 +17,7 @@ const FloatingCTA = () => {
             size="lg"
           >
             <MessageCircle className="w-5 h-5 mr-2" />
-            {floating.quote24h}
+            {t.floating.quote24h}
           </Button>
         </Link>
       </div>
