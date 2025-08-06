@@ -5,38 +5,38 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { useTranslation } from "@/hooks/useTranslation";
 
 const Contact = () => {
-  const { t } = useTranslation();
-  
   const contactMethods = [
     {
       icon: Phone,
-      title: t.contactPage.contactMethods.phone.title,
-      subtitle: t.contactPage.contactMethods.phone.subtitle,
-      description: t.contactPage.contactMethods.phone.description,
-      actionText: t.contactPage.contactMethods.phone.actionText,
+      title: "Appelez-nous",
+      subtitle: "Réponse immédiate",
+      description: "Nos experts vous répondent du lundi au samedi",
+      action: "01 23 45 67 89",
+      actionText: "Appeler maintenant",
       bgColor: "bg-green-600/10",
       iconColor: "text-green-600",
       buttonColor: "bg-green-600 hover:bg-green-700"
     },
     {
       icon: MessageSquare,
-      title: t.contactPage.contactMethods.chat.title,
-      subtitle: t.contactPage.contactMethods.chat.subtitle,
-      description: t.contactPage.contactMethods.chat.description,
-      actionText: t.contactPage.contactMethods.chat.actionText,
+      title: "Chat en Ligne",
+      subtitle: "Assistance instantanée",
+      description: "Posez vos questions en temps réel",
+      action: "Démarrer le chat",
+      actionText: "Chatter maintenant",
       bgColor: "bg-blue-600/10",
       iconColor: "text-blue-600",
       buttonColor: "bg-blue-600 hover:bg-blue-700"
     },
     {
       icon: Calendar,
-      title: t.contactPage.contactMethods.appointment.title,
-      subtitle: t.contactPage.contactMethods.appointment.subtitle,
-      description: t.contactPage.contactMethods.appointment.description,
-      actionText: t.contactPage.contactMethods.appointment.actionText,
+      title: "Rendez-vous",
+      subtitle: "Conseil personnalisé",
+      description: "Rencontrez nos experts en visio ou au showroom",
+      action: "Réserver un créneau",
+      actionText: "Planifier maintenant",
       bgColor: "bg-copper/10",
       iconColor: "text-copper",
       buttonColor: "bg-copper hover:bg-copper/90 text-black"
@@ -46,21 +46,21 @@ const Contact = () => {
   const services = [
     {
       icon: Car,
-      title: t.contactPage.services.expertise.title,
-      description: t.contactPage.services.expertise.description,
-      duration: t.contactPage.services.expertise.duration
+      title: "Expertise Véhicule",
+      description: "Contrôle technique complet avant achat",
+      duration: "Sous 48h"
     },
     {
       icon: Calculator,
-      title: t.contactPage.services.financing.title,
-      description: t.contactPage.services.financing.description,
-      duration: t.contactPage.services.financing.duration
+      title: "Simulation Financement",
+      description: "Calculez vos mensualités en temps réel",
+      duration: "Immédiat"
     },
     {
       icon: MessageSquare,
-      title: t.contactPage.services.advice.title,
-      description: t.contactPage.services.advice.description,
-      duration: t.contactPage.services.advice.duration
+      title: "Conseil Personnalisé",
+      description: "Aide au choix selon vos besoins",
+      duration: "30 min"
     }
   ];
 
@@ -74,14 +74,15 @@ const Contact = () => {
           <div className="text-center max-w-4xl mx-auto space-y-6">
             <div className="inline-flex items-center space-x-2 bg-copper/10 rounded-full px-4 py-2">
               <Phone className="w-4 h-4 text-copper" />
-              <span className="text-copper font-semibold">{t.contactPage.hero.badge}</span>
+              <span className="text-copper font-semibold">Contactez-nous</span>
             </div>
             <h1 className="text-4xl lg:text-6xl font-bold">
-              <span className="text-foreground">{t.contactPage.hero.title}</span>
-              <span className="block htg-text-gradient">{t.contactPage.hero.subtitle}</span>
+              <span className="text-foreground">Parlons de Votre</span>
+              <span className="block htg-text-gradient">Projet Transport</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              {t.contactPage.hero.description}
+              Nos experts vous accompagnent dans le choix de votre véhicule de transport équin. 
+              Contactez-nous par le moyen qui vous convient le mieux.
             </p>
           </div>
         </div>
@@ -92,8 +93,8 @@ const Contact = () => {
         <div className="container mx-auto px-6">
           <div className="text-center mb-16 space-y-4">
             <h2 className="text-3xl lg:text-4xl font-bold">
-              <span className="text-foreground">{t.contactPage.contactMethods.title}</span>
-              <span className="htg-text-gradient"> {t.contactPage.contactMethods.subtitle}</span>
+              <span className="text-foreground">Comment Nous</span>
+              <span className="htg-text-gradient"> Joindre ?</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Choisissez le canal de communication qui vous convient
@@ -130,11 +131,11 @@ const Contact = () => {
             <div className="space-y-8">
               <div className="space-y-4">
                 <h2 className="text-3xl font-bold">
-                  <span className="text-foreground">{t.contactPage.contactInfo.title}</span>
-                  <span className="htg-text-gradient"> {t.contactPage.contactInfo.subtitle}</span>
+                  <span className="text-foreground">Informations</span>
+                  <span className="htg-text-gradient"> Pratiques</span>
                 </h2>
                 <p className="text-lg text-muted-foreground">
-                  {t.contactPage.contactInfo.description}
+                  Retrouvez-nous dans notre showroom ou contactez-nous directement.
                 </p>
               </div>
 
@@ -144,14 +145,11 @@ const Contact = () => {
                     <MapPin className="w-6 h-6 text-copper" />
                   </div>
                   <div className="space-y-1">
-                    <h4 className="font-semibold text-foreground">{t.contactPage.contactInfo.address.title}</h4>
+                    <h4 className="font-semibold text-foreground">Adresse</h4>
                     <p className="text-muted-foreground">
-                      {t.contactPage.contactInfo.address.value.split('\n').map((line, index) => (
-                        <span key={index}>
-                          {line}
-                          {index < t.contactPage.contactInfo.address.value.split('\n').length - 1 && <br />}
-                        </span>
-                      ))}
+                      Zone Industrielle de la Forêt<br />
+                      123 Rue des Chevaux<br />
+                      45000 Orléans, France
                     </p>
                   </div>
                 </div>
@@ -161,11 +159,11 @@ const Contact = () => {
                     <Clock className="w-6 h-6 text-copper" />
                   </div>
                   <div className="space-y-1">
-                    <h4 className="font-semibold text-foreground">{t.contactPage.contactInfo.hours.title}</h4>
+                    <h4 className="font-semibold text-foreground">Horaires</h4>
                     <div className="text-muted-foreground space-y-1">
-                      <p>{t.contactPage.contactInfo.hours.weekdays}</p>
-                      <p>{t.contactPage.contactInfo.hours.saturday}</p>
-                      <p>{t.contactPage.contactInfo.hours.sunday}</p>
+                      <p>Lundi - Vendredi : 8h - 18h</p>
+                      <p>Samedi : 9h - 17h</p>
+                      <p>Dimanche : Sur rendez-vous</p>
                     </div>
                   </div>
                 </div>
@@ -175,8 +173,8 @@ const Contact = () => {
                     <Phone className="w-6 h-6 text-copper" />
                   </div>
                   <div className="space-y-1">
-                    <h4 className="font-semibold text-foreground">{t.contactPage.contactInfo.phone.title}</h4>
-                    <p className="text-muted-foreground">{t.contactPage.contactInfo.phone.value}</p>
+                    <h4 className="font-semibold text-foreground">Téléphone</h4>
+                    <p className="text-muted-foreground">01 23 45 67 89</p>
                   </div>
                 </div>
 
@@ -185,15 +183,15 @@ const Contact = () => {
                     <Mail className="w-6 h-6 text-copper" />
                   </div>
                   <div className="space-y-1">
-                    <h4 className="font-semibold text-foreground">{t.contactPage.contactInfo.email.title}</h4>
-                    <p className="text-muted-foreground">{t.contactPage.contactInfo.email.value}</p>
+                    <h4 className="font-semibold text-foreground">Email</h4>
+                    <p className="text-muted-foreground">contact@htg-france.com</p>
                   </div>
                 </div>
               </div>
 
               {/* Services Quick Access */}
               <div className="space-y-6">
-                <h3 className="text-xl font-bold text-foreground">{t.contactPage.services.title}</h3>
+                <h3 className="text-xl font-bold text-foreground">Services Express</h3>
                 <div className="space-y-4">
                   {services.map((service, index) => {
                     const IconComponent = service.icon;
@@ -216,79 +214,79 @@ const Contact = () => {
             <div className="htg-card p-8">
               <div className="space-y-6">
                 <div className="space-y-2">
-                  <h3 className="text-2xl font-bold text-foreground">{t.contactPage.form.title}</h3>
+                  <h3 className="text-2xl font-bold text-foreground">Demande de Contact</h3>
                   <p className="text-muted-foreground">
-                    {t.contactPage.form.description}
+                    Remplissez ce formulaire et recevez une réponse personnalisée sous 24h.
                   </p>
                 </div>
 
                 <form className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <label className="text-sm font-medium text-foreground">{t.contactPage.form.firstName}</label>
-                      <Input placeholder={t.contactPage.form.firstNamePlaceholder} />
+                      <label className="text-sm font-medium text-foreground">Prénom *</label>
+                      <Input placeholder="Votre prénom" />
                     </div>
                     <div className="space-y-2">
-                      <label className="text-sm font-medium text-foreground">{t.contactPage.form.lastName}</label>
-                      <Input placeholder={t.contactPage.form.lastNamePlaceholder} />
+                      <label className="text-sm font-medium text-foreground">Nom *</label>
+                      <Input placeholder="Votre nom" />
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-foreground">{t.contactPage.form.email}</label>
-                    <Input type="email" placeholder={t.contactPage.form.emailPlaceholder} />
+                    <label className="text-sm font-medium text-foreground">Email *</label>
+                    <Input type="email" placeholder="votre@email.com" />
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-foreground">{t.contactPage.form.phone}</label>
-                    <Input placeholder={t.contactPage.form.phonePlaceholder} />
+                    <label className="text-sm font-medium text-foreground">Téléphone</label>
+                    <Input placeholder="06 12 34 56 78" />
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-foreground">{t.contactPage.form.vehicleType}</label>
+                    <label className="text-sm font-medium text-foreground">Type de véhicule recherché</label>
                     <Select>
                       <SelectTrigger>
-                        <SelectValue placeholder={t.contactPage.form.vehicleTypePlaceholder} />
+                        <SelectValue placeholder="Sélectionnez un type" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="camion">{t.contactPage.form.vehicleTypes.truck}</SelectItem>
-                        <SelectItem value="van">{t.contactPage.form.vehicleTypes.van}</SelectItem>
-                        <SelectItem value="remorque">{t.contactPage.form.vehicleTypes.trailer}</SelectItem>
-                        <SelectItem value="autre">{t.contactPage.form.vehicleTypes.other}</SelectItem>
+                        <SelectItem value="camion">Camion Chevaux</SelectItem>
+                        <SelectItem value="van">Van Chevaux</SelectItem>
+                        <SelectItem value="remorque">Remorque Chevaux</SelectItem>
+                        <SelectItem value="autre">Autre / Conseil</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-foreground">{t.contactPage.form.budget}</label>
+                    <label className="text-sm font-medium text-foreground">Budget estimé</label>
                     <Select>
                       <SelectTrigger>
-                        <SelectValue placeholder={t.contactPage.form.budgetPlaceholder} />
+                        <SelectValue placeholder="Sélectionnez votre budget" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="moins-30k">{t.contactPage.form.budgetRanges.under30k}</SelectItem>
-                        <SelectItem value="30k-50k">{t.contactPage.form.budgetRanges.range30k50k}</SelectItem>
-                        <SelectItem value="50k-80k">{t.contactPage.form.budgetRanges.range50k80k}</SelectItem>
-                        <SelectItem value="80k-plus">{t.contactPage.form.budgetRanges.over80k}</SelectItem>
+                        <SelectItem value="moins-30k">Moins de 30 000€</SelectItem>
+                        <SelectItem value="30k-50k">30 000€ - 50 000€</SelectItem>
+                        <SelectItem value="50k-80k">50 000€ - 80 000€</SelectItem>
+                        <SelectItem value="80k-plus">Plus de 80 000€</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-foreground">{t.contactPage.form.message}</label>
+                    <label className="text-sm font-medium text-foreground">Message *</label>
                     <Textarea 
-                      placeholder={t.contactPage.form.messagePlaceholder}
+                      placeholder="Décrivez-nous votre projet, vos besoins spécifiques, le nombre de chevaux à transporter..."
                       rows={4}
                     />
                   </div>
 
                   <div className="space-y-4">
                     <div className="text-center space-y-2">
-                      <p className="text-copper font-medium">{t.contactPage.form.responseTime}</p>
-                      <p className="text-sm text-muted-foreground">{t.contactPage.form.noCommitment}</p>
+                      <p className="text-copper font-medium">Recevez votre réponse personnalisée en moins de 24h</p>
+                      <p className="text-sm text-muted-foreground">Sans engagement • Conseil gratuit</p>
                     </div>
                     <Button className="htg-button-primary w-full text-lg py-3">
-                      {t.contactPage.form.submitButton}
+                      Envoyer ma Demande
                     </Button>
                   </div>
                 </form>
