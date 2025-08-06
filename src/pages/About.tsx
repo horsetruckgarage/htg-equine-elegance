@@ -8,53 +8,53 @@ const About = () => {
   const { t } = useTranslation();
   
   const stats = [
-    { icon: Calendar, value: "15+", label: (t as any).aboutPage?.stats?.experience || "Années d'Expertise" },
-    { icon: Users, value: "2500+", label: (t as any).aboutPage?.stats?.clients || "Clients Satisfaits" },
-    { icon: Shield, value: "100%", label: (t as any).aboutPage?.stats?.certified || "Véhicules Certifiés" },
-    { icon: Award, value: "98%", label: (t as any).aboutPage?.stats?.recommendations || "Recommandations" }
+    { icon: Calendar, value: "15+", label: t.aboutPage.stats.experience },
+    { icon: Users, value: "2500+", label: t.aboutPage.stats.clients },
+    { icon: Shield, value: "100%", label: t.aboutPage.stats.certified },
+    { icon: Award, value: "98%", label: t.aboutPage.stats.recommendations }
   ];
 
   const values = [
     {
       icon: Heart,
-      title: (t as any).aboutPage?.values?.passion?.title || "Passion Équestre",
-      description: (t as any).aboutPage?.values?.passion?.description || "Notre équipe partage votre passion pour le monde équin et comprend l'importance du bien-être animal."
+      title: t.aboutPage.values.passion.title,
+      description: t.aboutPage.values.passion.description
     },
     {
       icon: Shield,
-      title: (t as any).aboutPage?.values?.expertise?.title || "Expertise Reconnue",
-      description: (t as any).aboutPage?.values?.expertise?.description || "15 ans d'expérience dans le transport équin nous permettent de sélectionner les meilleurs véhicules."
+      title: t.aboutPage.values.expertise.title,
+      description: t.aboutPage.values.expertise.description
     },
     {
       icon: Star,
-      title: (t as any).aboutPage?.values?.excellence?.title || "Excellence du Service",
-      description: (t as any).aboutPage?.values?.excellence?.description || "De la première visite à l'après-vente, nous nous engageons à vous offrir un service exceptionnel."
+      title: t.aboutPage.values.excellence.title,
+      description: t.aboutPage.values.excellence.description
     },
     {
       icon: Wrench,
-      title: (t as any).aboutPage?.values?.support?.title || "Accompagnement Complet",
-      description: (t as any).aboutPage?.values?.support?.description || "Financement, assurance, entretien : nous vous accompagnons dans tous les aspects de votre achat."
+      title: t.aboutPage.values.support.title,
+      description: t.aboutPage.values.support.description
     }
   ];
 
   const team = [
     {
       name: "Jean-Pierre Dubois",
-      role: (t as any).aboutPage?.team?.director?.role || "Directeur & Fondateur",
-      experience: (t as any).aboutPage?.team?.director?.experience || "20 ans dans le transport équin",
-      speciality: (t as any).aboutPage?.team?.director?.speciality || "Expert en camions chevaux premium"
+      role: t.aboutPage.team.director.role,
+      experience: t.aboutPage.team.director.experience,
+      speciality: t.aboutPage.team.director.speciality
     },
     {
       name: "Marie Leclerc",
-      role: (t as any).aboutPage?.team?.sales?.role || "Responsable Commerciale",
-      experience: (t as any).aboutPage?.team?.sales?.experience || "12 ans chez HTG",
-      speciality: (t as any).aboutPage?.team?.sales?.speciality || "Spécialiste vans et remorques"
+      role: t.aboutPage.team.sales.role,
+      experience: t.aboutPage.team.sales.experience,
+      speciality: t.aboutPage.team.sales.speciality
     },
     {
       name: "Thomas Martin",
-      role: (t as any).aboutPage?.team?.technical?.role || "Expert Technique",
-      experience: (t as any).aboutPage?.team?.technical?.experience || "15 ans mécanicien spécialisé",
-      speciality: (t as any).aboutPage?.team?.technical?.speciality || "Contrôle qualité et expertise"
+      role: t.aboutPage.team.technical.role,
+      experience: t.aboutPage.team.technical.experience,
+      speciality: t.aboutPage.team.technical.speciality
     }
   ];
 
@@ -68,14 +68,14 @@ const About = () => {
           <div className="text-center max-w-4xl mx-auto space-y-6">
             <div className="inline-flex items-center space-x-2 bg-copper/10 rounded-full px-4 py-2">
               <Heart className="w-4 h-4 text-copper" />
-              <span className="text-copper font-semibold">{(t as any).aboutPage?.hero?.badge || "Notre Histoire"}</span>
+              <span className="text-copper font-semibold">{t.aboutPage.hero.badge}</span>
             </div>
             <h1 className="text-4xl lg:text-6xl font-bold">
-              <span className="text-foreground">{(t as any).aboutPage?.hero?.title1 || "L'Excellence"}</span>
-              <span className="block htg-text-gradient">{(t as any).aboutPage?.hero?.title2 || "au Service des Chevaux"}</span>
+              <span className="text-foreground">{t.aboutPage.hero.title1}</span>
+              <span className="block htg-text-gradient">{t.aboutPage.hero.title2}</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              {(t as any).aboutPage?.hero?.description || "Depuis 2008, Horse Truck Garage accompagne les passionnés d'équitation dans le choix de leurs véhicules de transport. Notre expertise française au service de vos champions."}
+              {t.aboutPage.hero.description}
             </p>
           </div>
         </div>
@@ -109,37 +109,37 @@ const About = () => {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-6">
               <h2 className="text-3xl lg:text-4xl font-bold">
-                <span className="text-foreground">{(t as any).aboutPage?.story?.title1 || "Une Passion"}</span>
-                <span className="block htg-text-gradient">{(t as any).aboutPage?.story?.title2 || "Devenue Expertise"}</span>
+                <span className="text-foreground">{t.aboutPage.story.title1}</span>
+                <span className="block htg-text-gradient">{t.aboutPage.story.title2}</span>
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                {(t as any).aboutPage?.story?.paragraph1 || "Tout a commencé en 2008 avec une simple conviction : les chevaux méritent le meilleur transport possible. Jean-Pierre Dubois, cavalier passionné et entrepreneur, a fondé HTG avec l'ambition de révolutionner le marché du transport équin en France."}
+                {t.aboutPage.story.paragraph1}
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                {(t as any).aboutPage?.story?.paragraph2 || "Aujourd'hui, nous sommes fiers d'être devenus la référence française en matière de véhicules de transport équin, avec plus de 2500 clients qui nous font confiance pour leurs champions."}
+                {t.aboutPage.story.paragraph2}
               </p>
               <Button className="htg-button-primary">
-                {(t as any).aboutPage?.story?.cta || "Demander un Devis Personnalisé"}
+                {t.aboutPage.story.cta}
               </Button>
             </div>
             <div className="relative">
               <div className="htg-card p-8 space-y-6">
-                <h3 className="text-2xl font-bold text-foreground">{(t as any).aboutPage?.mission?.title || "Notre Mission"}</h3>
+                <h3 className="text-2xl font-bold text-foreground">{t.aboutPage.mission.title}</h3>
                 <p className="text-muted-foreground">
-                  {(t as any).aboutPage?.mission?.description || "Offrir aux passionnés d'équitation des solutions de transport qui allient sécurité, confort et performance, tout en garantissant le bien-être de leurs chevaux."}
+                  {t.aboutPage.mission.description}
                 </p>
                 <div className="space-y-4">
                   <div className="flex items-center space-x-3">
                     <div className="w-2 h-2 bg-copper rounded-full"></div>
-                    <span className="text-sm">{(t as any).aboutPage?.mission?.point1 || "Sélection rigoureuse des véhicules"}</span>
+                    <span className="text-sm">{t.aboutPage.mission.point1}</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <div className="w-2 h-2 bg-copper rounded-full"></div>
-                    <span className="text-sm">{(t as any).aboutPage?.mission?.point2 || "Expertise technique reconnue"}</span>
+                    <span className="text-sm">{t.aboutPage.mission.point2}</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <div className="w-2 h-2 bg-copper rounded-full"></div>
-                    <span className="text-sm">{(t as any).aboutPage?.mission?.point3 || "Service client personnalisé"}</span>
+                    <span className="text-sm">{t.aboutPage.mission.point3}</span>
                   </div>
                 </div>
               </div>
@@ -153,11 +153,11 @@ const About = () => {
         <div className="container mx-auto px-6">
           <div className="text-center mb-16 space-y-4">
             <h2 className="text-3xl lg:text-4xl font-bold">
-              <span className="text-foreground">{(t as any).aboutPage?.valuesSection?.title1 || "Nos"}</span>
-              <span className="htg-text-gradient">{(t as any).aboutPage?.valuesSection?.title2 || " Valeurs"}</span>
+              <span className="text-foreground">{t.aboutPage.valuesSection.title1}</span>
+              <span className="htg-text-gradient">{t.aboutPage.valuesSection.title2}</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              {(t as any).aboutPage?.valuesSection?.subtitle || "Les principes qui guident notre action depuis plus de 15 ans"}
+              {t.aboutPage.valuesSection.subtitle}
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -182,11 +182,11 @@ const About = () => {
         <div className="container mx-auto px-6">
           <div className="text-center mb-16 space-y-4">
             <h2 className="text-3xl lg:text-4xl font-bold">
-              <span className="text-foreground">{(t as any).aboutPage?.teamSection?.title1 || "Notre"}</span>
-              <span className="htg-text-gradient">{(t as any).aboutPage?.teamSection?.title2 || " Équipe"}</span>
+              <span className="text-foreground">{t.aboutPage.teamSection.title1}</span>
+              <span className="htg-text-gradient">{t.aboutPage.teamSection.title2}</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              {(t as any).aboutPage?.teamSection?.subtitle || "Des experts passionnés à votre service"}
+              {t.aboutPage.teamSection.subtitle}
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
@@ -212,17 +212,17 @@ const About = () => {
         <div className="container mx-auto px-6">
           <div className="htg-card max-w-4xl mx-auto p-8 lg:p-12 text-center space-y-6">
             <h3 className="text-3xl font-bold text-foreground">
-              {(t as any).aboutPage?.cta?.title || "Prêt à Faire Confiance à Notre Expertise ?"}
+              {t.aboutPage.cta.title}
             </h3>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              {(t as any).aboutPage?.cta?.description || "Découvrez pourquoi plus de 2500 passionnés d'équitation nous font confiance pour leurs véhicules de transport."}
+              {t.aboutPage.cta.description}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button className="htg-button-primary">
-                {(t as any).aboutPage?.cta?.button1 || "Voir Nos Véhicules"}
+                {t.aboutPage.cta.button1}
               </Button>
               <Button variant="outline" className="htg-button-secondary">
-                {(t as any).aboutPage?.cta?.button2 || "Prendre Rendez-vous"}
+                {t.aboutPage.cta.button2}
               </Button>
             </div>
           </div>

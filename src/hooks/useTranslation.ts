@@ -371,6 +371,87 @@ export interface Translations {
       contactExpert: string;
     };
   };
+  
+  // About Page
+  aboutPage: {
+    hero: {
+      badge: string;
+      title1: string;
+      title2: string;
+      description: string;
+    };
+    stats: {
+      experience: string;
+      clients: string;
+      certified: string;
+      recommendations: string;
+    };
+    story: {
+      title1: string;
+      title2: string;
+      paragraph1: string;
+      paragraph2: string;
+      cta: string;
+    };
+    mission: {
+      title: string;
+      description: string;
+      point1: string;
+      point2: string;
+      point3: string;
+    };
+    values: {
+      passion: {
+        title: string;
+        description: string;
+      };
+      expertise: {
+        title: string;
+        description: string;
+      };
+      excellence: {
+        title: string;
+        description: string;
+      };
+      support: {
+        title: string;
+        description: string;
+      };
+    };
+    valuesSection: {
+      title1: string;
+      title2: string;
+      subtitle: string;
+    };
+    team: {
+      director: {
+        role: string;
+        experience: string;
+        speciality: string;
+      };
+      sales: {
+        role: string;
+        experience: string;
+        speciality: string;
+      };
+      technical: {
+        role: string;
+        experience: string;
+        speciality: string;
+      };
+    };
+    teamSection: {
+      title1: string;
+      title2: string;
+      subtitle: string;
+    };
+    cta: {
+      title: string;
+      description: string;
+      button1: string;
+      button2: string;
+    };
+  };
 }
 
 const translations: Record<Language, Translations> = {
@@ -800,6 +881,85 @@ const translations: Record<Language, Translations> = {
         getQuote: "Demander un Devis Gratuit",
         contactExpert: "Prendre Rendez-vous"
       }
+    },
+    aboutPage: {
+      hero: {
+        badge: "Notre Histoire",
+        title1: "L'Excellence",
+        title2: "au Service des Chevaux",
+        description: "Depuis 2008, Horse Truck Garage accompagne les passionnés d'équitation dans le choix de leurs véhicules de transport. Notre expertise française au service de vos champions."
+      },
+      stats: {
+        experience: "Années d'Expertise",
+        clients: "Clients Satisfaits",
+        certified: "Véhicules Certifiés",
+        recommendations: "Recommandations"
+      },
+      story: {
+        title1: "Une Passion",
+        title2: "Devenue Expertise",
+        paragraph1: "Tout a commencé en 2008 avec une simple conviction : les chevaux méritent le meilleur transport possible. Jean-Pierre Dubois, cavalier passionné et entrepreneur, a fondé HTG avec l'ambition de révolutionner le marché du transport équin en France.",
+        paragraph2: "Aujourd'hui, nous sommes fiers d'être devenus la référence française en matière de véhicules de transport équin, avec plus de 2500 clients qui nous font confiance pour leurs champions.",
+        cta: "Demander un Devis Personnalisé"
+      },
+      mission: {
+        title: "Notre Mission",
+        description: "Offrir aux passionnés d'équitation des solutions de transport qui allient sécurité, confort et performance, tout en garantissant le bien-être de leurs chevaux.",
+        point1: "Sélection rigoureuse des véhicules",
+        point2: "Expertise technique reconnue",
+        point3: "Service client personnalisé"
+      },
+      values: {
+        passion: {
+          title: "Passion Équestre",
+          description: "Notre équipe partage votre passion pour le monde équin et comprend l'importance du bien-être animal."
+        },
+        expertise: {
+          title: "Expertise Reconnue",
+          description: "15 ans d'expérience dans le transport équin nous permettent de sélectionner les meilleurs véhicules."
+        },
+        excellence: {
+          title: "Excellence du Service",
+          description: "De la première visite à l'après-vente, nous nous engageons à vous offrir un service exceptionnel."
+        },
+        support: {
+          title: "Accompagnement Complet",
+          description: "Financement, assurance, entretien : nous vous accompagnons dans tous les aspects de votre achat."
+        }
+      },
+      valuesSection: {
+        title1: "Nos",
+        title2: " Valeurs",
+        subtitle: "Les principes qui guident notre action depuis plus de 15 ans"
+      },
+      team: {
+        director: {
+          role: "Directeur & Fondateur",
+          experience: "20 ans dans le transport équin",
+          speciality: "Expert en camions chevaux premium"
+        },
+        sales: {
+          role: "Responsable Commerciale",
+          experience: "12 ans chez HTG",
+          speciality: "Spécialiste vans et remorques"
+        },
+        technical: {
+          role: "Expert Technique",
+          experience: "15 ans mécanicien spécialisé",
+          speciality: "Contrôle qualité et expertise"
+        }
+      },
+      teamSection: {
+        title1: "Notre",
+        title2: " Équipe",
+        subtitle: "Des experts passionnés à votre service"
+      },
+      cta: {
+        title: "Prêt à Faire Confiance à Notre Expertise ?",
+        description: "Découvrez pourquoi plus de 2500 passionnés d'équitation nous font confiance pour leurs véhicules de transport.",
+        button1: "Voir Nos Véhicules",
+        button2: "Prendre Rendez-vous"
+      }
     }
   },
   en: {
@@ -1228,6 +1388,85 @@ const translations: Record<Language, Translations> = {
         getQuote: "Get a Free Quote",
         contactExpert: "Make an Appointment"
       }
+    },
+    aboutPage: {
+      hero: {
+        badge: "Our Story",
+        title1: "Excellence",
+        title2: "at the Service of Horses",
+        description: "Since 2008, Horse Truck Garage has been supporting equestrian enthusiasts in choosing their transport vehicles. Our French expertise at the service of your champions."
+      },
+      stats: {
+        experience: "Years of Expertise",
+        clients: "Satisfied Clients",
+        certified: "Certified Vehicles",
+        recommendations: "Recommendations"
+      },
+      story: {
+        title1: "A Passion",
+        title2: "Became Expertise",
+        paragraph1: "It all started in 2008 with a simple conviction: horses deserve the best possible transport. Jean-Pierre Dubois, passionate rider and entrepreneur, founded HTG with the ambition to revolutionize the equine transport market in France.",
+        paragraph2: "Today, we are proud to have become the French reference in terms of equine transport vehicles, with more than 2500 clients who trust us for their champions.",
+        cta: "Request a Personalized Quote"
+      },
+      mission: {
+        title: "Our Mission",
+        description: "To offer equestrian enthusiasts transport solutions that combine safety, comfort and performance, while guaranteeing the welfare of their horses.",
+        point1: "Rigorous vehicle selection",
+        point2: "Recognized technical expertise",
+        point3: "Personalized customer service"
+      },
+      values: {
+        passion: {
+          title: "Equestrian Passion",
+          description: "Our team shares your passion for the equine world and understands the importance of animal welfare."
+        },
+        expertise: {
+          title: "Recognized Expertise",
+          description: "15 years of experience in equine transport allow us to select the best vehicles."
+        },
+        excellence: {
+          title: "Service Excellence",
+          description: "From the first visit to after-sales service, we are committed to offering you exceptional service."
+        },
+        support: {
+          title: "Complete Support",
+          description: "Financing, insurance, maintenance: we support you in all aspects of your purchase."
+        }
+      },
+      valuesSection: {
+        title1: "Our",
+        title2: " Values",
+        subtitle: "The principles that have guided our action for more than 15 years"
+      },
+      team: {
+        director: {
+          role: "Director & Founder",
+          experience: "20 years in equine transport",
+          speciality: "Expert in premium horse trucks"
+        },
+        sales: {
+          role: "Sales Manager",
+          experience: "12 years at HTG",
+          speciality: "Specialist in vans and trailers"
+        },
+        technical: {
+          role: "Technical Expert",
+          experience: "15 years specialized mechanic",
+          speciality: "Quality control and expertise"
+        }
+      },
+      teamSection: {
+        title1: "Our",
+        title2: " Team",
+        subtitle: "Passionate experts at your service"
+      },
+      cta: {
+        title: "Ready to Trust Our Expertise?",
+        description: "Discover why more than 2500 equestrian enthusiasts trust us for their transport vehicles.",
+        button1: "See Our Vehicles",
+        button2: "Make an Appointment"
+      }
     }
   },
   es: {
@@ -1606,6 +1845,85 @@ const translations: Record<Language, Translations> = {
         actions: { seeDetails: "Ver Detalles" }
       },
       cta: { title: "Encuentra la Furgoneta Perfecta para Ti", description: "Nuestros expertos te aconsejan para elegir la furgoneta para caballos adecuada a tus necesidades y presupuesto.", getQuote: "Solicitar Presupuesto Gratuito", contactExpert: "Concertar Cita" }
+    },
+    aboutPage: {
+      hero: {
+        badge: "Nuestra Historia",
+        title1: "La Excelencia",
+        title2: "al Servicio de los Caballos",
+        description: "Desde 2008, Horse Truck Garage acompaña a los entusiastas de la equitación en la elección de sus vehículos de transporte. Nuestra experiencia francesa al servicio de tus campeones."
+      },
+      stats: {
+        experience: "Años de Experiencia",
+        clients: "Clientes Satisfechos",
+        certified: "Vehículos Certificados",
+        recommendations: "Recomendaciones"
+      },
+      story: {
+        title1: "Una Pasión",
+        title2: "Convertida en Experiencia",
+        paragraph1: "Todo comenzó en 2008 con una simple convicción: los caballos merecen el mejor transporte posible. Jean-Pierre Dubois, jinete apasionado y empresario, fundó HTG con la ambición de revolucionar el mercado del transporte equino en Francia.",
+        paragraph2: "Hoy, estamos orgullosos de habernos convertido en la referencia francesa en términos de vehículos de transporte equino, con más de 2500 clientes que confían en nosotros para sus campeones.",
+        cta: "Solicitar un Presupuesto Personalizado"
+      },
+      mission: {
+        title: "Nuestra Misión",
+        description: "Ofrecer a los entusiastas de la equitación soluciones de transporte que combinen seguridad, comodidad y rendimiento, garantizando el bienestar de sus caballos.",
+        point1: "Selección rigurosa de vehículos",
+        point2: "Experiencia técnica reconocida",
+        point3: "Servicio al cliente personalizado"
+      },
+      values: {
+        passion: {
+          title: "Pasión Ecuestre",
+          description: "Nuestro equipo comparte tu pasión por el mundo equino y comprende la importancia del bienestar animal."
+        },
+        expertise: {
+          title: "Experiencia Reconocida",
+          description: "15 años de experiencia en transporte equino nos permiten seleccionar los mejores vehículos."
+        },
+        excellence: {
+          title: "Excelencia del Servicio",
+          description: "Desde la primera visita hasta el servicio postventa, nos comprometemos a ofrecerte un servicio excepcional."
+        },
+        support: {
+          title: "Apoyo Completo",
+          description: "Financiación, seguro, mantenimiento: te apoyamos en todos los aspectos de tu compra."
+        }
+      },
+      valuesSection: {
+        title1: "Nuestros",
+        title2: " Valores",
+        subtitle: "Los principios que han guiado nuestra acción durante más de 15 años"
+      },
+      team: {
+        director: {
+          role: "Director y Fundador",
+          experience: "20 años en transporte equino",
+          speciality: "Experto en camiones para caballos premium"
+        },
+        sales: {
+          role: "Gerente de Ventas",
+          experience: "12 años en HTG",
+          speciality: "Especialista en furgonetas y remolques"
+        },
+        technical: {
+          role: "Experto Técnico",
+          experience: "15 años mecánico especializado",
+          speciality: "Control de calidad y experiencia"
+        }
+      },
+      teamSection: {
+        title1: "Nuestro",
+        title2: " Equipo",
+        subtitle: "Expertos apasionados a tu servicio"
+      },
+      cta: {
+        title: "¿Listo para Confiar en Nuestra Experiencia?",
+        description: "Descubre por qué más de 2500 entusiastas de la equitación confían en nosotros para sus vehículos de transporte.",
+        button1: "Ver Nuestros Vehículos",
+        button2: "Concertar una Cita"
+      }
     }
   },
   de: {
@@ -1984,6 +2302,17 @@ const translations: Record<Language, Translations> = {
         actions: { seeDetails: "Details Anzeigen" }
       },
       cta: { title: "Finden Sie den Perfekten Transporter für Sie", description: "Unsere Experten beraten Sie bei der Auswahl des für Ihre Bedürfnisse und Ihr Budget geeigneten Pferdetransporters.", getQuote: "Kostenloses Angebot Anfordern", contactExpert: "Termin Vereinbaren" }
+    },
+    aboutPage: {
+      hero: { badge: "Unsere Geschichte", title1: "Exzellenz", title2: "im Dienste der Pferde", description: "Seit 2008 begleitet Horse Truck Garage Reitsport-Enthusiasten bei der Auswahl ihrer Transportfahrzeuge." },
+      stats: { experience: "Jahre Erfahrung", clients: "Zufriedene Kunden", certified: "Zertifizierte Fahrzeuge", recommendations: "Empfehlungen" },
+      story: { title1: "Eine Leidenschaft", title2: "Wurde zur Expertise", paragraph1: "Alles begann 2008 mit einer einfachen Überzeugung: Pferde verdienen den bestmöglichen Transport.", paragraph2: "Heute sind wir stolz darauf, die französische Referenz für Pferdetransportfahrzeuge geworden zu sein.", cta: "Persönliches Angebot anfordern" },
+      mission: { title: "Unsere Mission", description: "Reitsport-Enthusiasten Transportlösungen anzubieten, die Sicherheit, Komfort und Leistung vereinen.", point1: "Strenge Fahrzeugauswahl", point2: "Anerkannte technische Expertise", point3: "Persönlicher Kundenservice" },
+      values: { passion: { title: "Reitsport-Leidenschaft", description: "Unser Team teilt Ihre Leidenschaft für die Pferdewelt." }, expertise: { title: "Anerkannte Expertise", description: "15 Jahre Erfahrung im Pferdetransport." }, excellence: { title: "Service-Exzellenz", description: "Wir bieten Ihnen einen außergewöhnlichen Service." }, support: { title: "Komplette Unterstützung", description: "Finanzierung, Versicherung, Wartung." } },
+      valuesSection: { title1: "Unsere", title2: " Werte", subtitle: "Die Prinzipien, die unser Handeln leiten" },
+      team: { director: { role: "Direktor & Gründer", experience: "20 Jahre im Pferdetransport", speciality: "Experte für Premium-Pferdetransporter" }, sales: { role: "Verkaufsleiter", experience: "12 Jahre bei HTG", speciality: "Spezialist für Transporter" }, technical: { role: "Technischer Experte", experience: "15 Jahre spezialisierter Mechaniker", speciality: "Qualitätskontrolle" } },
+      teamSection: { title1: "Unser", title2: " Team", subtitle: "Leidenschaftliche Experten zu Ihren Diensten" },
+      cta: { title: "Bereit, unserer Expertise zu vertrauen?", description: "Entdecken Sie, warum mehr als 2500 Reitsport-Enthusiasten uns vertrauen.", button1: "Unsere Fahrzeuge ansehen", button2: "Termin vereinbaren" }
     }
   }
 };
