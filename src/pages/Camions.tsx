@@ -7,9 +7,11 @@ import { Truck, Calendar, Gauge, Users, Eye, Heart, Star, Filter, ArrowRight } f
 import { Link } from "react-router-dom";
 import { useTranslation } from "@/hooks/useTranslation";
 import { getLocalizedPath } from "@/hooks/useLocalizedRouting";
+import { useVehicles } from "@/hooks/useVehicles";
 
 const Camions = () => {
   const { t, language } = useTranslation();
+  const { vehicles: camions, loading, error } = useVehicles({ type: 'truck' });
   
   const getLocalizedFeatures = (features: string[]) => {
     const featureMap: { [key: string]: string } = {
@@ -51,80 +53,6 @@ const Camions = () => {
     return badgeMap[badge] || badge;
   };
 
-  const camions = [
-    {
-      id: 1,
-      title: "Iveco Daily 70C21",
-      price: "79 900",
-      originalPrice: "89 500",
-      promo: true,
-      year: 2019,
-      km: "125 000",
-      capacity: `4 ${t.trucksPage.vehicle.specs.horses}`,
-      features: ["Suspension pneumatique", "Climatisation", "Cabine couchette", "Boîte automatique"],
-      badge: "Bestseller",
-      rating: 4.9,
-      savings: "9 600"
-    },
-    {
-      id: 2,
-      title: "MAN TGL 8.180",
-      price: "95 500",
-      year: 2020,
-      km: "89 000",
-      capacity: `6 ${t.trucksPage.vehicle.specs.horses}`,
-      features: ["Suspension pneumatique", "GPS intégré", "Cabine grand confort", "Boîte manuelle"],
-      badge: "Premium",
-      rating: 4.8
-    },
-    {
-      id: 3,
-      title: "Mercedes Atego 1224",
-      price: "87 900",
-      originalPrice: "94 500",
-      promo: true,
-      year: 2018,
-      km: "156 000",
-      capacity: `5 ${t.trucksPage.vehicle.specs.horses}`,
-      features: ["BlueEFFICIENCY", "Climatisation automatique", "Régulateur de vitesse", "Système télématique"],
-      badge: "Promotion",
-      rating: 4.7,
-      savings: "6 600"
-    },
-    {
-      id: 4,
-      title: "Renault D 7.5T",
-      price: "68 900",
-      year: 2019,
-      km: "142 000",
-      capacity: `4 ${t.trucksPage.vehicle.specs.horses}`,
-      features: ["Moteur DTI", "Direction assistée", "Vitres électriques", "Verrouillage centralisé"],
-      badge: "Occasion Certifiée",
-      rating: 4.6
-    },
-    {
-      id: 5,
-      title: "DAF LF 45.160",
-      price: "105 900",
-      year: 2021,
-      km: "67 000",
-      capacity: `6 ${t.trucksPage.vehicle.specs.horses}`,
-      features: ["Euro 6", "Système AdBlue", "Cabine spacieuse", "Transmission manuelle"],
-      badge: "Récent",
-      rating: 4.9
-    },
-    {
-      id: 6,
-      title: "Isuzu N-Series",
-      price: "72 500",
-      year: 2018,
-      km: "178 000",
-      capacity: `4 ${t.trucksPage.vehicle.specs.horses}`,
-      features: ["Moteur efficient", "Maintenance facilité", "Cabine ergonomique", "Boîte manuelle"],
-      badge: "Fiable",
-      rating: 4.5
-    }
-  ];
 
   return (
     <div className="min-h-screen bg-background">
@@ -173,8 +101,26 @@ const Camions = () => {
       {/* Vehicles Grid */}
       <section className="py-16">
         <div className="container mx-auto px-6">
+          {loading && (
+            <div className="text-center py-12">
+              <div className="text-muted-foreground">Chargement...</div>
+            </div>
+          )}
+          
+          {error && (
+            <div className="text-center py-12">
+              <div className="text-red-600">Erreur: {error}</div>
+            </div>
+          )}
+          
+          {!loading && !error && camions.length === 0 && (
+            <div className="text-center py-12">
+              <div className="text-muted-foreground">Aucun camion disponible pour le moment.</div>
+            </div>
+          )}
+          
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {camions.map((camion, index) => (
+            {!loading && camions.map((camion, index) => (
               <div 
                 key={camion.id} 
                 className="htg-card p-0 overflow-hidden group hover:scale-105 transition-all duration-300"
@@ -189,49 +135,33 @@ const Camions = () => {
                     </div>
                   </div>
                   
-                  {/* Badges */}
-                  <div className="absolute top-4 left-4 flex flex-col gap-2 z-10">
-                    <Badge className={`font-semibold ${
-                      camion.badge === 'Bestseller' ? 'bg-copper text-black' :
-                      camion.badge === 'Premium' ? 'bg-gradient-to-r from-copper to-bronze text-white' :
-                      camion.badge === 'Promotion' ? 'bg-red-600 text-white' :
-                      'bg-copper/90 text-black'
-                    }`}>
-                      {getLocalizedBadge(camion.badge)}
-                    </Badge>
-                    {camion.promo && (
-                      <Badge variant="destructive" className="bg-red-600 animate-pulse">
-                        -11%
-                      </Badge>
-                    )}
-                  </div>
+                   {/* Badges */}
+                   {camion.featured && (
+                     <div className="absolute top-4 left-4 flex flex-col gap-2 z-10">
+                       <Badge className="font-semibold bg-copper text-black">
+                         En vedette
+                       </Badge>
+                     </div>
+                   )}
 
-                  {/* Actions */}
-                  <div className="absolute top-4 right-4 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <Button size="sm" variant="secondary" className="w-10 h-10 p-0 bg-white/90 hover:bg-white">
-                      <Heart className="w-4 h-4" />
-                    </Button>
-                    <Button size="sm" variant="secondary" className="w-10 h-10 p-0 bg-white/90 hover:bg-white">
-                      <Eye className="w-4 h-4" />
-                    </Button>
-                  </div>
-
-                  {/* Rating */}
-                  <div className="absolute bottom-4 left-4">
-                    <div className="htg-glass rounded-lg px-3 py-1 flex items-center space-x-1">
-                      <Star className="w-4 h-4 text-copper fill-copper" />
-                      <span className="text-copper font-semibold">{camion.rating}</span>
-                    </div>
-                  </div>
+                   {/* Actions */}
+                   <div className="absolute top-4 right-4 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                     <Button size="sm" variant="secondary" className="w-10 h-10 p-0 bg-white/90 hover:bg-white">
+                       <Heart className="w-4 h-4" />
+                     </Button>
+                     <Button size="sm" variant="secondary" className="w-10 h-10 p-0 bg-white/90 hover:bg-white">
+                       <Eye className="w-4 h-4" />
+                     </Button>
+                   </div>
                 </div>
 
                 {/* Content */}
                 <div className="p-6 space-y-4">
                   {/* Header */}
                   <div className="space-y-2">
-                    <h3 className="text-xl font-bold text-foreground group-hover:text-copper transition-colors">
-                      {camion.title}
-                    </h3>
+                     <h3 className="text-xl font-bold text-foreground group-hover:text-copper transition-colors">
+                       {camion.name}
+                     </h3>
                     <p className="text-copper text-sm font-medium">{t.trucksPage.vehicle.horseTruck}</p>
                   </div>
 
@@ -243,7 +173,7 @@ const Camions = () => {
                     </div>
                     <div className="text-center">
                       <Gauge className="w-4 h-4 text-copper mx-auto mb-1" />
-                      <span className="text-muted-foreground">{camion.km} {t.trucksPage.vehicle.specs.km}</span>
+                      <span className="text-muted-foreground">{camion.mileage} {t.trucksPage.vehicle.specs.km}</span>
                     </div>
                     <div className="text-center">
                       <Users className="w-4 h-4 text-copper mx-auto mb-1" />
@@ -251,9 +181,9 @@ const Camions = () => {
                     </div>
                   </div>
 
-                  {/* Features */}
-                  <div className="space-y-1">
-                    {getLocalizedFeatures(camion.features).slice(0, 3).map((feature, idx) => (
+                   {/* Features */}
+                   <div className="space-y-1">
+                     {camion.features && getLocalizedFeatures(camion.features).slice(0, 3).map((feature, idx) => (
                       <div key={idx} className="flex items-center space-x-2">
                         <div className="w-1.5 h-1.5 bg-copper rounded-full"></div>
                         <span className="text-sm text-muted-foreground">{feature}</span>
@@ -261,38 +191,26 @@ const Camions = () => {
                     ))}
                   </div>
 
-                  {/* Pricing */}
-                  <div className="space-y-2 pt-4 border-t border-border">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        {camion.originalPrice && (
-                          <span className="text-lg text-muted-foreground line-through">
-                            {camion.originalPrice}€
-                          </span>
-                        )}
-                        <div className="text-2xl font-bold text-copper">
-                          {camion.price}€
-                        </div>
-                      </div>
-                      {camion.promo && camion.savings && (
-                        <div className="text-right">
-                          <div className="text-green-600 font-semibold text-sm">
-                            {t.trucksPage.vehicle.pricing.save} {camion.savings}€
-                          </div>
-                        </div>
-                      )}
-                    </div>
+                   {/* Pricing */}
+                   <div className="space-y-2 pt-4 border-t border-border">
+                     <div className="flex items-center justify-between">
+                       <div className="flex items-center gap-2">
+                         <div className="text-2xl font-bold text-copper">
+                           {camion.price}€
+                         </div>
+                       </div>
+                     </div>
                     <div className="text-xs text-muted-foreground">
                       {t.trucksPage.vehicle.pricing.financing} 890€{t.trucksPage.vehicle.pricing.perMonth}
                     </div>
                   </div>
                   
-                   <div className="flex gap-2 pt-2">
-                     <Link to={`${getLocalizedPath('/vehicule', language)}/trucks/${index + 1}`} className="flex-1">
-                       <Button className="htg-button-primary w-full">
-                         {t.trucksPage.vehicle.actions.seeDetails}
-                       </Button>
-                     </Link>
+                    <div className="flex gap-2 pt-2">
+                      <Link to={`${getLocalizedPath('/vehicule', language)}/${camion.id}`} className="flex-1">
+                        <Button className="htg-button-primary w-full">
+                          {t.trucksPage.vehicle.actions.seeDetails}
+                        </Button>
+                      </Link>
                      <Button variant="outline" className="htg-button-secondary px-3">
                        <Heart className="w-4 h-4" />
                      </Button>

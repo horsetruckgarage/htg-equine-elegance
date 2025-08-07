@@ -7,9 +7,11 @@ import { Zap, Calendar, Gauge, Users, Eye, Heart, Star, Filter, ArrowRight } fro
 import { Link } from "react-router-dom";
 import { useTranslation } from "@/hooks/useTranslation";
 import { getLocalizedPath } from "@/hooks/useLocalizedRouting";
+import { useVehicles } from "@/hooks/useVehicles";
 
 const Remorques = () => {
   const { t, language } = useTranslation();
+  const { vehicles: remorques, loading, error } = useVehicles({ type: 'trailer' });
   
   const getLocalizedFeatures = (features: string[]) => {
     const featureTranslations: { [key: string]: { [lang: string]: string } } = {
@@ -69,80 +71,6 @@ const Remorques = () => {
     return translations ? translations[language] || condition : condition;
   };
 
-  const remorques = [
-    {
-      id: 1,
-      title: "Böckmann Comfort",
-      price: "32 900",
-      year: 2021,
-      km: "Neuf",
-      capacity: "2 chevaux",
-      features: ["Aluminium", "Suspension AL-KO", "Plancher caoutchouc", "Éclairage LED"],
-      badge: "Premium",
-      rating: 5.0
-    },
-    {
-      id: 2,
-      title: "Humbaur Xanthos",
-      price: "45 900",
-      year: 2022,
-      km: "Neuf",
-      capacity: "3 chevaux",
-      features: ["Système de freinage AL-KO", "Éclairage full LED", "Sellerie cuir", "Plancher bois"],
-      badge: "Nouveauté",
-      rating: 5.0
-    },
-    {
-      id: 3,
-      title: "Ifor Williams HB511",
-      price: "28 500",
-      originalPrice: "31 900",
-      promo: true,
-      year: 2020,
-      km: "Occasion",
-      capacity: "2 chevaux",
-      features: ["Construction robuste", "Plancher antidérapant", "Ventilation optimale", "Facilité d'entretien"],
-      badge: "Promotion",
-      rating: 4.8,
-      savings: "3 400"
-    },
-    {
-      id: 4,
-      title: "Cheval Liberte Gold",
-      price: "38 900",
-      year: 2021,
-      km: "Neuf",
-      capacity: "2 chevaux",
-      features: ["Made in France", "Suspension pneumatique", "Plancher bois massif", "Design moderne"],
-      badge: "Français",
-      rating: 4.9
-    },
-    {
-      id: 5,
-      title: "Westfalia BC 60",
-      price: "24 900",
-      originalPrice: "27 500",
-      promo: true,
-      year: 2019,
-      km: "Occasion",
-      capacity: "1 cheval",
-      features: ["Compact", "Légère", "Manœuvrable", "Idéale débutant"],
-      badge: "Économique",
-      rating: 4.6,
-      savings: "2 600"
-    },
-    {
-      id: 6,
-      title: "Anssems PSX",
-      price: "41 500",
-      year: 2022,
-      km: "Neuf",
-      capacity: "3 chevaux",
-      features: ["Technologie avancée", "Suspension independent", "Confort maximum", "Sécurité renforcée"],
-      badge: "Innovant",
-      rating: 4.7
-    }
-  ];
 
   return (
     <div className="min-h-screen bg-background">
@@ -208,8 +136,26 @@ const Remorques = () => {
       {/* Vehicles Grid */}
       <section className="py-16">
         <div className="container mx-auto px-6">
+          {loading && (
+            <div className="text-center py-12">
+              <div className="text-muted-foreground">Chargement...</div>
+            </div>
+          )}
+          
+          {error && (
+            <div className="text-center py-12">
+              <div className="text-red-600">Erreur: {error}</div>
+            </div>
+          )}
+          
+          {!loading && !error && remorques.length === 0 && (
+            <div className="text-center py-12">
+              <div className="text-muted-foreground">Aucune remorque disponible pour le moment.</div>
+            </div>
+          )}
+          
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {remorques.map((remorque, index) => (
+            {!loading && remorques.map((remorque, index) => (
               <div 
                 key={remorque.id} 
                 className="htg-card p-0 overflow-hidden group hover:scale-105 transition-all duration-300"
@@ -224,50 +170,33 @@ const Remorques = () => {
                     </div>
                   </div>
                   
-                  {/* Badges */}
-                  <div className="absolute top-4 left-4 flex flex-col gap-2 z-10">
-                    <Badge className={`font-semibold ${
-                      remorque.badge === 'Premium' ? 'bg-gradient-to-r from-copper to-bronze text-white' :
-                      remorque.badge === 'Nouveauté' ? 'bg-green-600 text-white' :
-                      remorque.badge === 'Promotion' ? 'bg-red-600 text-white' :
-                      remorque.badge === 'Français' ? 'bg-blue-600 text-white' :
-                      'bg-copper/90 text-black'
-                    }`}>
-                      {getLocalizedBadge(remorque.badge)}
-                    </Badge>
-                    {remorque.promo && (
-                      <Badge variant="destructive" className="bg-red-600 animate-pulse">
-                        -11%
-                      </Badge>
-                    )}
-                  </div>
+                   {/* Badges */}
+                   {remorque.featured && (
+                     <div className="absolute top-4 left-4 flex flex-col gap-2 z-10">
+                       <Badge className="font-semibold bg-copper text-black">
+                         En vedette
+                       </Badge>
+                     </div>
+                   )}
 
-                  {/* Actions */}
-                  <div className="absolute top-4 right-4 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <Button size="sm" variant="secondary" className="w-10 h-10 p-0 bg-white/90 hover:bg-white">
-                      <Heart className="w-4 h-4" />
-                    </Button>
-                    <Button size="sm" variant="secondary" className="w-10 h-10 p-0 bg-white/90 hover:bg-white">
-                      <Eye className="w-4 h-4" />
-                    </Button>
-                  </div>
-
-                  {/* Rating */}
-                  <div className="absolute bottom-4 left-4">
-                    <div className="htg-glass rounded-lg px-3 py-1 flex items-center space-x-1">
-                      <Star className="w-4 h-4 text-copper fill-copper" />
-                      <span className="text-copper font-semibold">{remorque.rating}</span>
-                    </div>
-                  </div>
+                   {/* Actions */}
+                   <div className="absolute top-4 right-4 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                     <Button size="sm" variant="secondary" className="w-10 h-10 p-0 bg-white/90 hover:bg-white">
+                       <Heart className="w-4 h-4" />
+                     </Button>
+                     <Button size="sm" variant="secondary" className="w-10 h-10 p-0 bg-white/90 hover:bg-white">
+                       <Eye className="w-4 h-4" />
+                     </Button>
+                   </div>
                 </div>
 
                 {/* Content */}
                 <div className="p-6 space-y-4">
                   {/* Header */}
                   <div className="space-y-2">
-                    <h3 className="text-xl font-bold text-foreground group-hover:text-copper transition-colors">
-                      {remorque.title}
-                    </h3>
+                     <h3 className="text-xl font-bold text-foreground group-hover:text-copper transition-colors">
+                       {remorque.name}
+                     </h3>
                     <p className="text-copper text-sm font-medium">{t.nav.horseTrailers}</p>
                   </div>
 
@@ -279,7 +208,7 @@ const Remorques = () => {
                     </div>
                     <div className="text-center">
                       <Gauge className="w-4 h-4 text-copper mx-auto mb-1" />
-                      <span className="text-muted-foreground">{getLocalizedCondition(remorque.km)}</span>
+                      <span className="text-muted-foreground">{remorque.condition}</span>
                     </div>
                     <div className="text-center">
                       <Users className="w-4 h-4 text-copper mx-auto mb-1" />
@@ -292,9 +221,9 @@ const Remorques = () => {
                     </div>
                   </div>
 
-                  {/* Features */}
-                  <div className="space-y-1">
-                    {getLocalizedFeatures(remorque.features).slice(0, 3).map((feature, idx) => (
+                   {/* Features */}
+                   <div className="space-y-1">
+                     {remorque.features && getLocalizedFeatures(remorque.features).slice(0, 3).map((feature, idx) => (
                       <div key={idx} className="flex items-center space-x-2">
                         <div className="w-1.5 h-1.5 bg-copper rounded-full"></div>
                         <span className="text-sm text-muted-foreground">{feature}</span>
@@ -302,42 +231,26 @@ const Remorques = () => {
                     ))}
                   </div>
 
-                  {/* Pricing */}
-                  <div className="space-y-2 pt-4 border-t border-border">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        {remorque.originalPrice && (
-                          <span className="text-lg text-muted-foreground line-through">
-                            {remorque.originalPrice}€
-                          </span>
-                        )}
-                        <div className="text-2xl font-bold text-copper">
-                          {remorque.price}€
-                        </div>
-                      </div>
-                      {remorque.promo && remorque.savings && (
-                        <div className="text-right">
-                          <div className="text-green-600 font-semibold text-sm">
-                            {t.trucksPage?.vehicle?.pricing?.save || "Économisez"} {remorque.savings}€
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                    <div className="text-xs text-muted-foreground">
-                      {remorque.km === 'Neuf' ? 
-                        (language === 'fr' ? 'Garantie constructeur incluse' :
-                         language === 'en' ? 'Manufacturer warranty included' :
-                         language === 'es' ? 'Garantía del fabricante incluida' : 'Herstellergarantie inbegriffen') :
-                        `${t.trucksPage?.vehicle?.pricing?.financing || "Financement disponible dès"} 290€${t.trucksPage?.vehicle?.pricing?.perMonth || "/mois"}`}
-                    </div>
+                   {/* Pricing */}
+                   <div className="space-y-2 pt-4 border-t border-border">
+                     <div className="flex items-center justify-between">
+                       <div className="flex items-center gap-2">
+                         <div className="text-2xl font-bold text-copper">
+                           {remorque.price}€
+                         </div>
+                       </div>
+                     </div>
+                     <div className="text-xs text-muted-foreground">
+                       Financement disponible dès 290€/mois
+                     </div>
                   </div>
                   
-                   <div className="flex gap-2 pt-2">
-                     <Link to={`${getLocalizedPath('/vehicule', language)}/trailers/${index + 1}`} className="flex-1">
-                       <Button className="htg-button-primary w-full">
-                         {t.trucksPage?.vehicle?.actions?.seeDetails || "Voir Détails"}
-                       </Button>
-                     </Link>
+                    <div className="flex gap-2 pt-2">
+                      <Link to={`${getLocalizedPath('/vehicule', language)}/${remorque.id}`} className="flex-1">
+                        <Button className="htg-button-primary w-full">
+                          Voir Détails
+                        </Button>
+                      </Link>
                      <Button variant="outline" className="htg-button-secondary px-3">
                        <Heart className="w-4 h-4" />
                      </Button>
