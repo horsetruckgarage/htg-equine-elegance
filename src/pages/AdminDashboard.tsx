@@ -17,12 +17,13 @@ import {
 import { toast } from 'sonner';
 import AdminLogin from '@/components/admin/AdminLogin';
 import ProductsManager from '@/components/admin/ProductsManager';
-import { useQuery } from '@tanstack/react-query';
-import { getProducts } from '@/services/productService';
+import { useVehicles } from '@/hooks/useSupabaseVehicles';
 
 const AdminDashboard = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [activeTab, setActiveTab] = useState('dashboard');
+  
+  const { vehicles: products, loading } = useVehicles();
 
   useEffect(() => {
     const authStatus = localStorage.getItem('admin-authenticated');
@@ -42,12 +43,6 @@ const AdminDashboard = () => {
     toast.success('Déconnexion réussie');
   };
 
-  const { data: products = [] } = useQuery({
-    queryKey: ['products'],
-    queryFn: getProducts,
-    enabled: isAuthenticated,
-  });
-
   if (!isAuthenticated) {
     return <AdminLogin onLogin={handleLogin} />;
   }
@@ -62,9 +57,9 @@ const AdminDashboard = () => {
 
   const stats = {
     totalProducts: products.length,
-    inStock: products.filter(p => p.in_stock).length,
+    inStock: products.filter(p => p.availability === 'available_immediately').length,
     featured: products.filter(p => p.featured).length,
-    lowStock: products.filter(p => !p.in_stock).length,
+    lowStock: products.filter(p => p.availability !== 'available_immediately').length,
   };
 
   const DashboardOverview = () => (
@@ -173,9 +168,9 @@ const AdminDashboard = () => {
             {products.slice(0, 5).map((product) => (
               <div key={product.id} className="flex items-center space-x-4">
                 <div className="w-12 h-12 bg-muted rounded flex items-center justify-center">
-                  {product.image_url ? (
+                  {product.images && product.images.length > 0 ? (
                     <img
-                      src={product.image_url}
+                      src={product.images[0]}
                       alt={product.name}
                       className="w-full h-full object-cover rounded"
                     />
@@ -185,9 +180,9 @@ const AdminDashboard = () => {
                 </div>
                 <div className="flex-1 space-y-1">
                   <p className="text-sm font-medium leading-none">{product.name}</p>
-                  <p className="text-sm text-muted-foreground">{product.category}</p>
+                  <p className="text-sm text-muted-foreground">{product.type}</p>
                 </div>
-                <div className="text-sm font-medium">{product.price}€</div>
+                <div className="text-sm font-medium">{product.price}</div>
               </div>
             ))}
           </div>

@@ -14,51 +14,6 @@ export type Database = {
   }
   public: {
     Tables: {
-      products: {
-        Row: {
-          category: string
-          created_at: string
-          description: string | null
-          discount_price: number | null
-          featured: boolean
-          id: string
-          image_url: string | null
-          in_stock: boolean
-          name: string
-          price: number
-          rating: number | null
-          updated_at: string
-        }
-        Insert: {
-          category: string
-          created_at?: string
-          description?: string | null
-          discount_price?: number | null
-          featured?: boolean
-          id?: string
-          image_url?: string | null
-          in_stock?: boolean
-          name: string
-          price: number
-          rating?: number | null
-          updated_at?: string
-        }
-        Update: {
-          category?: string
-          created_at?: string
-          description?: string | null
-          discount_price?: number | null
-          featured?: boolean
-          id?: string
-          image_url?: string | null
-          in_stock?: boolean
-          name?: string
-          price?: number
-          rating?: number | null
-          updated_at?: string
-        }
-        Relationships: []
-      }
       vehicle_features: {
         Row: {
           created_at: string

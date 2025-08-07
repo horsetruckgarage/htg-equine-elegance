@@ -1,6 +1,6 @@
 export interface Vehicle {
   id: number;
-  type: 'trucks' | 'vans' | 'trailers';
+  type: 'truck' | 'van' | 'trailer';
   name: string;
   price: string;
   originalPrice?: string;
@@ -27,7 +27,7 @@ export interface Vehicle {
 }
 
 export interface VehicleFilter {
-  type?: 'trucks' | 'vans' | 'trailers';
+  type?: 'truck' | 'van' | 'trailer';
   minPrice?: number;
   maxPrice?: number;
   minYear?: number;

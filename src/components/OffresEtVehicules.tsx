@@ -37,8 +37,8 @@ const OffresEtVehicules = () => {
   const featuredVehicles = vehicles.slice(0, 3).map(vehicle => ({
     id: vehicle.id,
     title: vehicle.name,
-    category: vehicle.type === 'trucks' ? t.categories.horseTrucks.title : 
-              vehicle.type === 'vans' ? t.categories.horseVans.title : 
+    category: vehicle.type === 'truck' ? t.categories.horseTrucks.title : 
+              vehicle.type === 'van' ? t.categories.horseVans.title : 
               t.categories.horseTrailers.title,
     price: vehicle.price,
     year: vehicle.year,
