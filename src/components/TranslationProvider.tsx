@@ -61,13 +61,6 @@ export const TranslationProvider: React.FC<TranslationProviderProps> = ({ childr
     t: translations[language],
   };
 
-  // Debug log pour identifier les problèmes d'actualisation
-  console.log('TranslationProvider:', { 
-    pathname: location.pathname, 
-    language, 
-    hasTranslations: !!translations[language] 
-  });
-
   return (
     <TranslationContext.Provider value={value}>
       {children}
