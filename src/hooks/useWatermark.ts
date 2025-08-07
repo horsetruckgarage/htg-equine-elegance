@@ -3,8 +3,8 @@ import { createClient } from '@supabase/supabase-js';
 import { toast } from 'sonner';
 
 const supabase = createClient(
-  import.meta.env.VITE_SUPABASE_URL,
-  import.meta.env.VITE_SUPABASE_ANON_KEY
+  'https://cfftjfvrzbbtrjkuzdwa.supabase.co',
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNmZnRqZnZyemJidHJqa3V6ZHdhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ1NTE3ODMsImV4cCI6MjA3MDEyNzc4M30.CRq8200xhr3uZelaFB3B1b0Y-EyDGbsKh5FulQovriA'
 );
 
 export const useWatermark = () => {
