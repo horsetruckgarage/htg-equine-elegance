@@ -288,17 +288,11 @@ const Camions = () => {
                   </div>
                   
                    <div className="flex gap-2 pt-2">
-                     {(() => {
-                       const linkUrl = `${getLocalizedPath('/vehicule', language)}/trucks/${index + 1}`;
-                       console.log('Generated link URL:', linkUrl, 'for language:', language);
-                       return (
-                         <Link to={linkUrl} className="flex-1">
-                           <Button className="htg-button-primary w-full">
-                             {t.trucksPage.vehicle.actions.seeDetails}
-                           </Button>
-                         </Link>
-                       );
-                     })()}
+                     <Link to={`${getLocalizedPath('/vehicule', language)}/trucks/${index + 1}`} className="flex-1">
+                       <Button className="htg-button-primary w-full">
+                         {t.trucksPage.vehicle.actions.seeDetails}
+                       </Button>
+                     </Link>
                      <Button variant="outline" className="htg-button-secondary px-3">
                        <Heart className="w-4 h-4" />
                      </Button>
