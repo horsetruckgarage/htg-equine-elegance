@@ -324,7 +324,7 @@ const ProductsManager = () => {
                     }}
                   />
                   <p className="text-sm text-muted-foreground">
-                    Le filigrane HTG sera automatiquement ajouté aux images
+                    Le filigrane HTG sera automatiquement ajouté aux images. Vous pouvez sélectionner jusqu'à 20 images ou plus.
                   </p>
                 </div>
                 <div className="flex items-center space-x-2">
