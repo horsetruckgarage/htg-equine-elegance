@@ -45,10 +45,10 @@ const OffresEtVehicules = () => {
     year: vehicle.year,
     km: vehicle.mileage,
     capacity: vehicle.capacity,
-    features: vehicle.features.slice(0, 4),
+    features: vehicle.features || [],
     badge: t.common.bestseller,
     rating: 4.8,
-    images: vehicle.images,
+    images: vehicle.images || [],
     promo: false,
     promoText: '',
     urgency: '',
@@ -266,7 +266,7 @@ const OffresEtVehicules = () => {
                   </div>
                   
                   <div className="flex gap-2 pt-2">
-                    <Link to={getLocalizedPath(`/vehicule/${vehicle.category.toLowerCase().includes('camion') ? 'camions' : vehicle.category.toLowerCase().includes('van') ? 'vans' : 'remorques'}/${vehicle.id}`, language)} className="flex-1">
+                    <Link to={getLocalizedPath(`/vehicule/${vehicle.category.toLowerCase().includes('camion') ? 'trucks' : vehicle.category.toLowerCase().includes('van') ? 'vans' : 'trailers'}/${vehicle.id}`, language)} className="flex-1">
                       <Button className="htg-button-primary w-full" title={t.common.discoverCharacteristics}>
                         {t.common.viewDetails}
                       </Button>
