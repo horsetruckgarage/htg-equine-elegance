@@ -4,52 +4,56 @@ import { Eye, Heart, Star, Calendar, Gauge, Users, Clock, TrendingUp, TrendingDo
 import { Link } from "react-router-dom";
 import { useTranslation } from "@/hooks/useTranslation";
 import { getLocalizedPath } from "@/hooks/useLocalizedRouting";
+import { useVehicles } from "@/hooks/useSupabaseVehicles";
 
 const OffresEtVehicules = () => {
   const { t, language } = useTranslation();
-  const featuredVehicles = [
-    {
-      id: 1,
-      title: "Iveco Daily 70C21",
-      category: t.categories.horseTrucks.title,
-      price: "79 900",
-      originalPrice: "89 500",
-      promo: true,
-      promoText: "-11%",
-      year: 2019,
-      km: "125 000",
-      capacity: "4 " + t.common.horsesCapacity,
-      features: [t.features.pneumaticSuspension, t.features.airConditioning, t.features.sleepingCabin, t.features.automaticTransmission],
-      badge: t.common.bestseller,
-      rating: 4.9,
-      urgency: t.common.onlyXDaysLeft,
-      savings: "9 600"
-    },
-    {
-      id: 2,
-      title: "Renault Master L3H2",
-      category: t.categories.horseVans.title,
-      price: "67 900",
-      year: 2020,
-      km: "89 500",
-      capacity: "2 " + t.common.horsesCapacity,
-      features: [t.features.nonSlipFlooring, t.features.ledLighting, t.features.ventilation, t.features.handsFreeeKit],
-      badge: t.common.favorite,
-      rating: 4.8
-    },
-    {
-      id: 3,
-      title: "Böckmann Comfort",
-      category: t.categories.horseTrailers.title,
-      price: "32 900",
-      year: 2021,
-      km: t.common.newArrival,
-      capacity: "2 " + t.common.horsesCapacity,
-      features: [t.features.aluminum, t.features.alkoSuspension, t.features.rubberFlooring, t.features.ledLighting],
-      badge: t.common.promotion,
-      rating: 5.0
-    }
-  ];
+  const { vehicles, loading } = useVehicles({ featured: true });
+  
+  if (loading) {
+    return (
+      <section className="py-20 bg-muted/30">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-4">
+              {t.common.featuredVehicles}
+            </h2>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="htg-card p-6 animate-pulse">
+                <div className="bg-muted h-48 rounded-lg mb-4"></div>
+                <div className="bg-muted h-6 rounded mb-2"></div>
+                <div className="bg-muted h-4 rounded mb-4"></div>
+                <div className="bg-muted h-4 rounded"></div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  const featuredVehicles = vehicles.slice(0, 3).map(vehicle => ({
+    id: vehicle.id,
+    title: vehicle.name,
+    category: vehicle.type === 'trucks' ? t.categories.horseTrucks.title : 
+              vehicle.type === 'vans' ? t.categories.horseVans.title : 
+              t.categories.horseTrailers.title,
+    price: vehicle.price,
+    year: vehicle.year,
+    km: vehicle.mileage,
+    capacity: vehicle.capacity,
+    features: vehicle.features.slice(0, 4),
+    badge: t.common.bestseller,
+    rating: 4.8,
+    images: vehicle.images,
+    promo: false,
+    promoText: '',
+    urgency: '',
+    originalPrice: '',
+    savings: ''
+  }));
 
   const promotions = [
     {
@@ -133,12 +137,20 @@ const OffresEtVehicules = () => {
               >
                 {/* Image */}
                 <div className="relative aspect-[4/3] overflow-hidden">
-                  <div className="w-full h-full bg-gradient-to-br from-leather/30 to-copper/10 flex items-center justify-center">
-                    <div className="text-center space-y-2">
-                      <Gauge className="w-16 h-16 text-copper mx-auto" />
-                      <p className="text-copper font-semibold text-lg">{vehicle.category}</p>
+                  {vehicle.images && vehicle.images.length > 0 ? (
+                    <img 
+                      src={vehicle.images[0]} 
+                      alt={vehicle.title}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-leather/30 to-copper/10 flex items-center justify-center">
+                      <div className="text-center space-y-2">
+                        <Gauge className="w-16 h-16 text-copper mx-auto" />
+                        <p className="text-copper font-semibold text-lg">{vehicle.category}</p>
+                      </div>
                     </div>
-                  </div>
+                  )}
                   
                   {/* Badges */}
                   <div className="absolute top-4 left-4 flex flex-col gap-2 z-10">
@@ -253,7 +265,7 @@ const OffresEtVehicules = () => {
                   </div>
                   
                   <div className="flex gap-2 pt-2">
-                    <Link to={getLocalizedPath(`/${vehicle.category.toLowerCase().includes('camion') ? 'camions' : vehicle.category.toLowerCase().includes('van') ? 'vans' : 'remorques'}`, language)} className="flex-1">
+                    <Link to={getLocalizedPath(`/vehicule/${vehicle.category.toLowerCase().includes('camion') ? 'camions' : vehicle.category.toLowerCase().includes('van') ? 'vans' : 'remorques'}/${vehicle.id}`, language)} className="flex-1">
                       <Button className="htg-button-primary w-full" title={t.common.discoverCharacteristics}>
                         {t.common.viewDetails}
                       </Button>

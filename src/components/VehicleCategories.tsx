@@ -3,12 +3,16 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useTranslation } from "@/hooks/useTranslation";
 import { getLocalizedPath } from "@/hooks/useLocalizedRouting";
+import { useVehicles } from "@/hooks/useSupabaseVehicles";
 import camionChevaux from "@/assets/camion-chevaux.jpg";
 import vanChevaux from "@/assets/van-chevaux.jpg";
 import remorqueChevaux from "@/assets/remorque-chevaux.jpg";
 
 const VehicleCategories = () => {
   const { t, language } = useTranslation();
+  const { vehicles: truckVehicles } = useVehicles({ type: 'truck' });
+  const { vehicles: vanVehicles } = useVehicles({ type: 'van' });
+  const { vehicles: trailerVehicles } = useVehicles({ type: 'trailer' });
   
   const categories = [
     {
@@ -17,7 +21,7 @@ const VehicleCategories = () => {
       description: t.categories.horseTrucks.description,
       image: camionChevaux,
       features: t.categories.horseTrucks.features,
-      count: "25+ " + t.common.models,
+      count: truckVehicles.length + "+ " + t.common.models,
       promo: t.common.upTo15Off,
       startingPrice: t.categories.horseTrucks.from + " 45 000€",
       highlight: t.common.bestseller
@@ -28,7 +32,7 @@ const VehicleCategories = () => {
       description: t.categories.horseVans.description,
       image: vanChevaux,
       features: t.categories.horseVans.features,
-      count: "18+ " + t.common.models,
+      count: vanVehicles.length + "+ " + t.common.models,
       promo: t.common.specialOffers,
       startingPrice: t.categories.horseVans.from + " 28 000€",
       highlight: t.common.mostRequested
@@ -39,7 +43,7 @@ const VehicleCategories = () => {
       description: t.categories.horseTrailers.description,
       image: remorqueChevaux,
       features: t.categories.horseTrailers.features,
-      count: "12+ " + t.common.models,
+      count: trailerVehicles.length + "+ " + t.common.models,
       promo: t.common.newArrivals2024,
       startingPrice: t.categories.horseTrailers.from + " 15 000€",
       highlight: t.common.bestPrice
