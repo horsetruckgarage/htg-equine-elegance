@@ -11,6 +11,7 @@ import { Package, Download, Plus, Edit, Trash2 } from 'lucide-react';
 import { toast } from 'sonner';
 import { useVehicles } from '@/hooks/useSupabaseVehicles';
 import { supabase } from '@/integrations/supabase/client';
+import { useWatermark } from '@/hooks/useWatermark';
 
 interface VehicleFormData {
   name: string;
@@ -34,8 +35,10 @@ const ProductsManager = () => {
   const [isCreateDialogOpen, setIsCreateDialogOpen] = useState(false);
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
   const [editingProduct, setEditingProduct] = useState<any>(null);
+  const [imageFiles, setImageFiles] = useState<File[]>([]);
   
   const queryClient = useQueryClient();
+  const { addWatermarkToImage } = useWatermark();
 
   const [formData, setFormData] = useState<VehicleFormData>({
     name: '',
@@ -301,6 +304,28 @@ const ProductsManager = () => {
                     onChange={(e) => setFormData({...formData, description: e.target.value})}
                     placeholder="Description du véhicule..."
                   />
+                </div>
+                <div className="col-span-2 space-y-2">
+                  <Label htmlFor="images">Images du véhicule</Label>
+                  <Input
+                    id="images"
+                    type="file"
+                    multiple
+                    accept="image/*"
+                    onChange={async (e) => {
+                      const files = Array.from(e.target.files || []);
+                      if (files.length > 0) {
+                        toast.info('Ajout des filigranes en cours...');
+                        const watermarkedFiles = await Promise.all(
+                          files.map(file => addWatermarkToImage(file))
+                        );
+                        setImageFiles(watermarkedFiles);
+                      }
+                    }}
+                  />
+                  <p className="text-sm text-muted-foreground">
+                    Le filigrane HTG sera automatiquement ajouté aux images
+                  </p>
                 </div>
                 <div className="flex items-center space-x-2">
                   <input
