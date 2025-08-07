@@ -14,7 +14,127 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      vehicle_features: {
+        Row: {
+          created_at: string
+          feature: string
+          id: string
+          vehicle_id: string
+        }
+        Insert: {
+          created_at?: string
+          feature: string
+          id?: string
+          vehicle_id: string
+        }
+        Update: {
+          created_at?: string
+          feature?: string
+          id?: string
+          vehicle_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "vehicle_features_vehicle_id_fkey"
+            columns: ["vehicle_id"]
+            isOneToOne: false
+            referencedRelation: "vehicles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      vehicle_images: {
+        Row: {
+          alt_text: string | null
+          created_at: string
+          id: string
+          image_url: string
+          is_primary: boolean | null
+          sort_order: number | null
+          vehicle_id: string
+        }
+        Insert: {
+          alt_text?: string | null
+          created_at?: string
+          id?: string
+          image_url: string
+          is_primary?: boolean | null
+          sort_order?: number | null
+          vehicle_id: string
+        }
+        Update: {
+          alt_text?: string | null
+          created_at?: string
+          id?: string
+          image_url?: string
+          is_primary?: boolean | null
+          sort_order?: number | null
+          vehicle_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "vehicle_images_vehicle_id_fkey"
+            columns: ["vehicle_id"]
+            isOneToOne: false
+            referencedRelation: "vehicles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      vehicles: {
+        Row: {
+          available: boolean | null
+          capacity: string | null
+          created_at: string
+          description: string | null
+          featured: boolean | null
+          fuel: string | null
+          id: string
+          mileage: number | null
+          name: string
+          power: string | null
+          price: number
+          transmission: string | null
+          type: string
+          updated_at: string
+          year: number | null
+        }
+        Insert: {
+          available?: boolean | null
+          capacity?: string | null
+          created_at?: string
+          description?: string | null
+          featured?: boolean | null
+          fuel?: string | null
+          id?: string
+          mileage?: number | null
+          name: string
+          power?: string | null
+          price: number
+          transmission?: string | null
+          type: string
+          updated_at?: string
+          year?: number | null
+        }
+        Update: {
+          available?: boolean | null
+          capacity?: string | null
+          created_at?: string
+          description?: string | null
+          featured?: boolean | null
+          fuel?: string | null
+          id?: string
+          mileage?: number | null
+          name?: string
+          power?: string | null
+          price?: number
+          transmission?: string | null
+          type?: string
+          updated_at?: string
+          year?: number | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
