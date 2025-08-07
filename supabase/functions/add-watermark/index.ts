@@ -65,8 +65,28 @@ serve(async (req) => {
     const x = canvas.width - watermarkWidth - padding
     const y = canvas.height - watermarkHeight - verticalPadding
 
-    // Set transparency for watermark (plus visible)
-    ctx.globalAlpha = 0.8
+    // Ajouter un fond semi-transparent derrière le logo pour améliorer la visibilité
+    const backgroundPadding = 10
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.8)' // Fond blanc semi-transparent
+    ctx.fillRect(
+      x - backgroundPadding, 
+      y - backgroundPadding, 
+      watermarkWidth + (backgroundPadding * 2), 
+      watermarkHeight + (backgroundPadding * 2)
+    )
+    
+    // Ajouter une bordure subtile
+    ctx.strokeStyle = 'rgba(0, 0, 0, 0.3)'
+    ctx.lineWidth = 1
+    ctx.strokeRect(
+      x - backgroundPadding, 
+      y - backgroundPadding, 
+      watermarkWidth + (backgroundPadding * 2), 
+      watermarkHeight + (backgroundPadding * 2)
+    )
+
+    // Set transparency for watermark (logo complètement opaque)
+    ctx.globalAlpha = 1.0
 
     // Draw watermark
     ctx.drawImage(logoBitmap, x, y, watermarkWidth, watermarkHeight)

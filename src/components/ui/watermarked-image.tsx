@@ -20,9 +20,12 @@ export const WatermarkedImage: React.FC<WatermarkedImageProps> = ({
       try {
         // Skip if already watermarked or if it's the logo itself
         if (src.includes('watermarked') || src.includes('cf145a57-409b-41c6-9c1d-bc4fb00db3ed')) {
+          console.log('Skipping watermark for:', src);
           setWatermarkedSrc(src);
           return;
         }
+
+        console.log('Adding watermark to:', src);
 
         // Create canvas for watermarking
         const canvas = document.createElement('canvas');
@@ -57,8 +60,28 @@ export const WatermarkedImage: React.FC<WatermarkedImageProps> = ({
             const x = canvas.width - watermarkWidth - padding;
             const y = canvas.height - watermarkHeight - verticalPadding;
 
-            // Set transparency (moins transparent pour plus de visibilité)
-            ctx.globalAlpha = 0.8;
+            // Ajouter un fond semi-transparent derrière le logo pour améliorer la visibilité
+            const backgroundPadding = 8;
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.8)'; // Fond blanc semi-transparent
+            ctx.fillRect(
+              x - backgroundPadding, 
+              y - backgroundPadding, 
+              watermarkWidth + (backgroundPadding * 2), 
+              watermarkHeight + (backgroundPadding * 2)
+            );
+            
+            // Ajouter une bordure subtile
+            ctx.strokeStyle = 'rgba(0, 0, 0, 0.3)';
+            ctx.lineWidth = 1;
+            ctx.strokeRect(
+              x - backgroundPadding, 
+              y - backgroundPadding, 
+              watermarkWidth + (backgroundPadding * 2), 
+              watermarkHeight + (backgroundPadding * 2)
+            );
+
+            // Set transparency (plus opaque pour plus de visibilité)
+            ctx.globalAlpha = 1.0; // Logo complètement opaque
             
             // Draw watermark
             ctx.drawImage(logo, x, y, watermarkWidth, watermarkHeight);
