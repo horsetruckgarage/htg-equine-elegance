@@ -53,8 +53,8 @@ serve(async (req) => {
     const logoBlob = new Blob([logoBuffer])
     const logoBitmap = await createImageBitmap(logoBlob)
 
-    // Calculate watermark size (10% of image width, maintaining aspect ratio)
-    const watermarkSize = Math.min(canvas.width * 0.1, 100)
+    // Calculate watermark size (15% of image width, maintaining aspect ratio)
+    const watermarkSize = Math.min(canvas.width * 0.15, 150)
     const logoAspectRatio = logoBitmap.width / logoBitmap.height
     const watermarkWidth = watermarkSize
     const watermarkHeight = watermarkSize / logoAspectRatio
@@ -64,8 +64,8 @@ serve(async (req) => {
     const x = canvas.width - watermarkWidth - padding
     const y = canvas.height - watermarkHeight - padding
 
-    // Set transparency for watermark
-    ctx.globalAlpha = 0.7
+    // Set transparency for watermark (plus visible)
+    ctx.globalAlpha = 0.8
 
     // Draw watermark
     ctx.drawImage(logoBitmap, x, y, watermarkWidth, watermarkHeight)

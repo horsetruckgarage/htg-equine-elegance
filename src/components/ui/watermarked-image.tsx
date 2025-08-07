@@ -45,8 +45,8 @@ export const WatermarkedImage: React.FC<WatermarkedImageProps> = ({
           logo.crossOrigin = 'anonymous';
           
           logo.onload = () => {
-            // Calculate watermark size (8% of image width)
-            const watermarkSize = Math.min(canvas.width * 0.08, 80);
+            // Calculate watermark size (15% of image width, max 150px)
+            const watermarkSize = Math.min(canvas.width * 0.15, 150);
             const logoAspectRatio = logo.width / logo.height;
             const watermarkWidth = watermarkSize;
             const watermarkHeight = watermarkSize / logoAspectRatio;
@@ -56,8 +56,8 @@ export const WatermarkedImage: React.FC<WatermarkedImageProps> = ({
             const x = canvas.width - watermarkWidth - padding;
             const y = canvas.height - watermarkHeight - padding;
 
-            // Set transparency
-            ctx.globalAlpha = 0.6;
+            // Set transparency (moins transparent pour plus de visibilité)
+            ctx.globalAlpha = 0.8;
             
             // Draw watermark
             ctx.drawImage(logo, x, y, watermarkWidth, watermarkHeight);
