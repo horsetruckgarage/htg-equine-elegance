@@ -43,6 +43,13 @@ export interface Translations {
       description: string;
     };
     cta: string;
+    ctaSubtext: string;
+    badges: {
+      premium: string;
+      quality: string;
+      excellence: string;
+      since: string;
+    };
   };
   
   // Vehicle Categories
@@ -705,7 +712,14 @@ const translations: Record<Language, Translations> = {
         title: "Véhicules d'Occasion Garantis",
         description: "Découvrez notre sélection rigoureuse de véhicules d'occasion révisés et garantis par nos experts."
       },
-      cta: "Demander un Devis Gratuit"
+      cta: "Demander un Devis Gratuit",
+      ctaSubtext: "Recevez votre offre personnalisée en moins de 24h – Sans engagement",
+      badges: {
+        premium: "Premium",
+        quality: "Qualité Française",
+        excellence: "Excellence", 
+        since: "Depuis 2008"
+      }
     },
     categories: {
       title: "Nos Véhicules",
@@ -1421,7 +1435,14 @@ const translations: Record<Language, Translations> = {
         title: "Guaranteed Used Vehicles",
         description: "Discover our rigorous selection of used vehicles inspected and guaranteed by our experts."
       },
-      cta: "Get Free Quote"
+      cta: "Get Free Quote",
+      ctaSubtext: "Receive your personalized offer in less than 24h – No commitment",
+      badges: {
+        premium: "Premium",
+        quality: "French Quality",
+        excellence: "Excellence",
+        since: "Since 2008"
+      }
     },
     categories: {
       title: "Our Vehicles",
@@ -2137,7 +2158,14 @@ const translations: Record<Language, Translations> = {
         title: "Vehículos Usados Garantizados",
         description: "Descubra nuestra selección rigurosa de vehículos usados revisados y garantizados por nuestros expertos."
       },
-      cta: "Solicitar Presupuesto Gratuito"
+      cta: "Solicitar Presupuesto Gratuito",
+      ctaSubtext: "Reciba su oferta personalizada en menos de 24h – Sin compromiso",
+      badges: {
+        premium: "Premium",
+        quality: "Calidad Francesa",
+        excellence: "Excelencia",
+        since: "Desde 2008"
+      }
     },
     categories: {
       title: "Nuestros Vehículos",
@@ -2803,7 +2831,14 @@ const translations: Record<Language, Translations> = {
         title: "Garantierte Gebrauchtwagen",
         description: "Entdecken Sie unsere strenge Auswahl an Gebrauchtwagen, die von unseren Experten geprüft und garantiert werden."
       },
-      cta: "Kostenloses Angebot anfordern"
+      cta: "Kostenloses Angebot anfordern",
+      ctaSubtext: "Erhalten Sie Ihr personalisiertes Angebot in weniger als 24h – Unverbindlich",
+      badges: {
+        premium: "Premium",
+        quality: "Französische Qualität",
+        excellence: "Exzellenz",
+        since: "Seit 2008"
+      }
     },
     categories: {
       title: "Unsere Fahrzeuge",

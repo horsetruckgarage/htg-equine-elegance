@@ -109,7 +109,7 @@ const HeroSection = () => {
                     
                     {/* Call to Action */}
                     <div className="flex flex-col gap-2 justify-center items-center animate-fade-in mb-6">
-                      <p className="text-white/80 text-sm font-medium">Recevez votre offre personnalisée en moins de 24h – Sans engagement</p>
+                      <p className="text-white/80 text-sm font-medium">{t.hero.ctaSubtext}</p>
                     </div>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in">
                       <Link to={getLocalizedPath("/devis", language)}>
@@ -168,8 +168,8 @@ const HeroSection = () => {
       <div className="absolute top-8 right-8 hidden xl:block z-20">
         <div className="htg-glass rounded-xl p-4 w-56 animate-pulse-glow">
           <div className="text-center">
-            <div className="text-2xl font-bold text-copper mb-1">Premium</div>
-            <div className="text-sm text-white/80">Qualité Française</div>
+            <div className="text-2xl font-bold text-copper mb-1">{t.hero.badges.premium}</div>
+            <div className="text-sm text-white/80">{t.hero.badges.quality}</div>
           </div>
         </div>
       </div>
@@ -177,8 +177,8 @@ const HeroSection = () => {
       <div className="absolute bottom-32 left-8 hidden xl:block z-20">
         <div className="htg-glass rounded-xl p-4 w-56">
           <div className="text-center">
-            <div className="text-2xl font-bold text-copper mb-1">Excellence</div>
-            <div className="text-sm text-white/80">Depuis 2008</div>
+            <div className="text-2xl font-bold text-copper mb-1">{t.hero.badges.excellence}</div>
+            <div className="text-sm text-white/80">{t.hero.badges.since}</div>
           </div>
         </div>
       </div>
