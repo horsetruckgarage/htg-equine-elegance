@@ -10,49 +10,6 @@ import { useTranslation } from "@/hooks/useTranslation";
 
 const DemandeDevis = () => {
   const { t } = useTranslation();
-  const benefits = [
-    {
-      icon: Clock,
-      title: "Réponse Sous 24h",
-      description: "Votre devis personnalisé dans votre boîte mail"
-    },
-    {
-      icon: Calculator,
-      title: "100% Gratuit",
-      description: "Aucun frais, aucun engagement de votre part"
-    },
-    {
-      icon: Shield,
-      title: "Prix Transparent",
-      description: "Tous les coûts inclus, aucune surprise"
-    },
-    {
-      icon: CheckCircle,
-      title: "Expert Dédié",
-      description: "Un conseiller personnel suit votre dossier"
-    }
-  ];
-
-  const vehicleTypes = [
-    {
-      type: "Camion Chevaux",
-      capacities: ["2 chevaux", "3 chevaux", "4 chevaux", "5 chevaux", "6 chevaux et +"],
-      priceRange: "45 000€ - 120 000€",
-      popular: true
-    },
-    {
-      type: "Van Chevaux", 
-      capacities: ["1 cheval", "2 chevaux", "3 chevaux"],
-      priceRange: "25 000€ - 85 000€",
-      popular: false
-    },
-    {
-      type: "Remorque Chevaux",
-      capacities: ["1 cheval", "2 chevaux", "3 chevaux"],
-      priceRange: "15 000€ - 55 000€",
-      popular: false
-    }
-  ];
 
   return (
     <div className="min-h-screen bg-background">
@@ -94,66 +51,6 @@ const DemandeDevis = () => {
         </div>
       </section>
 
-      {/* Benefits */}
-      <section className="py-16 bg-muted/30">
-        <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {benefits.map((benefit, index) => {
-              const IconComponent = benefit.icon;
-              return (
-                <div key={index} className="htg-card p-6 text-center space-y-4">
-                  <div className="w-16 h-16 bg-copper/10 rounded-full flex items-center justify-center mx-auto">
-                    <IconComponent className="w-8 h-8 text-copper" />
-                  </div>
-                  <h3 className="text-lg font-bold text-foreground">{benefit.title}</h3>
-                  <p className="text-muted-foreground">{benefit.description}</p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Vehicle Types */}
-      <section className="py-16">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-foreground mb-4">
-              Quel Type de Véhicule Recherchez-vous ?
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Sélectionnez votre catégorie pour un devis encore plus précis
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            {vehicleTypes.map((vehicle, index) => (
-              <div key={index} className="htg-card p-6 hover:scale-105 transition-all duration-300 relative">
-                {vehicle.popular && (
-                  <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-copper text-black">
-                    Plus demandé
-                  </Badge>
-                )}
-                <div className="text-center space-y-4">
-                  <Car className="w-12 h-12 text-copper mx-auto" />
-                  <h3 className="text-xl font-bold text-foreground">{vehicle.type}</h3>
-                  <div className="space-y-2">
-                    <p className="text-sm text-muted-foreground font-medium">Capacités disponibles :</p>
-                    <div className="flex flex-wrap gap-2 justify-center">
-                      {vehicle.capacities.map((capacity, idx) => (
-                        <Badge key={idx} variant="outline" className="text-xs">
-                          {capacity}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
-                  <div className="text-copper font-bold text-lg">{vehicle.priceRange}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Quote Form */}
       <section className="py-16 bg-muted/30">
@@ -173,7 +70,7 @@ const DemandeDevis = () => {
                 {/* Personal Info */}
                 <div className="space-y-6">
                   <h3 className="text-xl font-semibold text-foreground border-b border-border pb-2">
-                    📋 Vos Informations
+                    Vos Informations
                   </h3>
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
@@ -209,7 +106,7 @@ const DemandeDevis = () => {
                 {/* Vehicle Requirements */}
                 <div className="space-y-6">
                   <h3 className="text-xl font-semibold text-foreground border-b border-border pb-2">
-                    🚗 Votre Véhicule Idéal
+                    Votre Véhicule Idéal
                   </h3>
                   
                   <div className="grid md:grid-cols-2 gap-6">
@@ -283,7 +180,7 @@ const DemandeDevis = () => {
                 {/* Usage & Features */}
                 <div className="space-y-6">
                   <h3 className="text-xl font-semibold text-foreground border-b border-border pb-2">
-                    🎯 Utilisation & Équipements
+                    Utilisation & Équipements
                   </h3>
                   
                   <div className="space-y-2">
@@ -301,33 +198,12 @@ const DemandeDevis = () => {
                     </Select>
                   </div>
 
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium text-foreground">Équipements souhaités</label>
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                      {[
-                        "Suspension pneumatique",
-                        "Climatisation",
-                        "Caméra de recul", 
-                        "Boîte automatique",
-                        "Cabine couchette",
-                        "Éclairage LED",
-                        "Plancher caoutchouc",
-                        "Ventilation chevaux",
-                        "Kit mains libres"
-                      ].map((equipment, idx) => (
-                        <label key={idx} className="flex items-center space-x-2 text-sm">
-                          <input type="checkbox" className="rounded" />
-                          <span>{equipment}</span>
-                        </label>
-                      ))}
-                    </div>
-                  </div>
                 </div>
 
                 {/* Timeline & Message */}
                 <div className="space-y-6">
                   <h3 className="text-xl font-semibold text-foreground border-b border-border pb-2">
-                    💬 Informations Complémentaires
+                    Informations Complémentaires
                   </h3>
                   
                   <div className="space-y-2">
@@ -359,7 +235,7 @@ const DemandeDevis = () => {
                 {/* Submit */}
                 <div className="bg-copper/5 rounded-lg p-6 space-y-4">
                   <div className="text-center space-y-2">
-                    <h4 className="text-lg font-bold text-foreground">🎉 C'est Parti !</h4>
+                    <h4 className="text-lg font-bold text-foreground">C'est Parti !</h4>
                     <p className="text-sm text-muted-foreground">
                       En soumettant ce formulaire, vous recevrez votre devis personnalisé sous 24h maximum.
                       Un expert HTG vous contactera également pour affiner votre demande.
