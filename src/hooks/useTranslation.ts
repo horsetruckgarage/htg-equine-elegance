@@ -78,6 +78,108 @@ export interface Translations {
       findPerfectVehicle: string;
       disciplineDescription: string;
     };
+
+  // Quote Request
+  quoteRequest: {
+    hero: {
+      badge: string;
+      title: string;
+      subtitle: string;
+      description: string;
+    };
+    benefits: {
+      free: string;
+      fast: string;
+      noCommitment: string;
+    };
+    form: {
+      title: string;
+      description: string;
+      personalInfo: {
+        title: string;
+        firstName: string;
+        firstNamePlaceholder: string;
+        lastName: string;
+        lastNamePlaceholder: string;
+        email: string;
+        emailPlaceholder: string;
+        phone: string;
+        phonePlaceholder: string;
+        region: string;
+        regionPlaceholder: string;
+      };
+      vehicleInfo: {
+        title: string;
+        type: string;
+        typePlaceholder: string;
+        typeOptions: {
+          truck: string;
+          van: string;
+          trailer: string;
+          unsure: string;
+        };
+        capacity: string;
+        capacityPlaceholder: string;
+        capacityOptions: {
+          one: string;
+          two: string;
+          three: string;
+          four: string;
+          five: string;
+          sixPlus: string;
+        };
+        condition: string;
+        conditionPlaceholder: string;
+        conditionOptions: {
+          new: string;
+          used: string;
+          any: string;
+        };
+        budget: string;
+        budgetPlaceholder: string;
+        budgetOptions: {
+          under30k: string;
+          from30to50k: string;
+          from50to80k: string;
+          from80to120k: string;
+          over120k: string;
+          noBudget: string;
+        };
+      };
+      usage: {
+        title: string;
+        primary: string;
+        primaryPlaceholder: string;
+        usageOptions: {
+          leisure: string;
+          competition: string;
+          professional: string;
+          mixed: string;
+        };
+      };
+      additional: {
+        title: string;
+        timeline: string;
+        timelinePlaceholder: string;
+        timelineOptions: {
+          immediate: string;
+          oneToThree: string;
+          threeToSix: string;
+          sixToTwelve: string;
+          overYear: string;
+          infoOnly: string;
+        };
+        message: string;
+        messagePlaceholder: string;
+      };
+      submit: {
+        title: string;
+        description: string;
+        button: string;
+        disclaimer: string;
+      };
+    };
+  };
   
     // Trust & Contact
     trust: {
@@ -1194,6 +1296,106 @@ const translations: Record<Language, Translations> = {
         submitButton: "Envoyer ma Demande",
         required: "*"
       }
+    },
+    quoteRequest: {
+      hero: {
+        badge: "Devis Gratuit",
+        title: "Votre Devis",
+        subtitle: "en Moins de 24h",
+        description: "Obtenez un devis personnalisé pour votre véhicule de transport équin. Notre expert analyse vos besoins et vous propose la solution parfaite."
+      },
+      benefits: {
+        free: "100% Gratuit",
+        fast: "Réponse 24h",
+        noCommitment: "Sans engagement"
+      },
+      form: {
+        title: "Formulaire de Demande de Devis",
+        description: "Plus vous nous donnez d'informations, plus votre devis sera précis et adapté",
+        personalInfo: {
+          title: "Vos Informations",
+          firstName: "Prénom",
+          firstNamePlaceholder: "Votre prénom",
+          lastName: "Nom",
+          lastNamePlaceholder: "Votre nom",
+          email: "Email",
+          emailPlaceholder: "votre@email.com",
+          phone: "Téléphone",
+          phonePlaceholder: "06 12 34 56 78",
+          region: "Région",
+          regionPlaceholder: "Votre région (pour optimiser la livraison)"
+        },
+        vehicleInfo: {
+          title: "Votre Véhicule Idéal",
+          type: "Type de véhicule",
+          typePlaceholder: "Choisissez le type",
+          typeOptions: {
+            truck: "Camion Chevaux",
+            van: "Van Chevaux",
+            trailer: "Remorque Chevaux",
+            unsure: "Je ne sais pas encore"
+          },
+          capacity: "Nombre de chevaux à transporter",
+          capacityPlaceholder: "Sélectionnez",
+          capacityOptions: {
+            one: "1 cheval",
+            two: "2 chevaux",
+            three: "3 chevaux",
+            four: "4 chevaux",
+            five: "5 chevaux",
+            sixPlus: "6 chevaux et plus"
+          },
+          condition: "État souhaité",
+          conditionPlaceholder: "Neuf ou occasion ?",
+          conditionOptions: {
+            new: "Neuf uniquement",
+            used: "Occasion acceptée",
+            any: "Indifférent"
+          },
+          budget: "Budget approximatif",
+          budgetPlaceholder: "Votre fourchette de prix",
+          budgetOptions: {
+            under30k: "Moins de 30 000€",
+            from30to50k: "30 000€ - 50 000€",
+            from50to80k: "50 000€ - 80 000€",
+            from80to120k: "80 000€ - 120 000€",
+            over120k: "Plus de 120 000€",
+            noBudget: "Pas de budget défini"
+          }
+        },
+        usage: {
+          title: "Utilisation & Équipements",
+          primary: "Utilisation principale",
+          primaryPlaceholder: "Comment allez-vous utiliser le véhicule ?",
+          usageOptions: {
+            leisure: "Loisir / Balades",
+            competition: "Compétition",
+            professional: "Usage professionnel",
+            mixed: "Usage mixte"
+          }
+        },
+        additional: {
+          title: "Informations Complémentaires",
+          timeline: "Délai souhaité pour l'achat",
+          timelinePlaceholder: "Quand souhaitez-vous acquérir votre véhicule ?",
+          timelineOptions: {
+            immediate: "Immédiatement",
+            oneToThree: "Dans 1 à 3 mois",
+            threeToSix: "Dans 3 à 6 mois",
+            sixToTwelve: "Dans 6 mois à 1 an",
+            overYear: "Plus d'1 an",
+            infoOnly: "Simple demande d'information"
+          },
+          message: "Message complémentaire",
+          messagePlaceholder: "Décrivez-nous vos besoins spécifiques, contraintes particulières, questions sur le financement, etc."
+        },
+        submit: {
+          title: "C'est Parti !",
+          description: "En soumettant ce formulaire, vous recevrez votre devis personnalisé sous 24h maximum. Un expert HTG vous contactera également pour affiner votre demande.",
+          button: "Recevoir Mon Devis Gratuit",
+          disclaimer: "* Aucun engagement • Réponse garantie sous 24h • Service 100% gratuit"
+        }
+      }
     }
   },
   en: {
@@ -1817,6 +2019,106 @@ const translations: Record<Language, Translations> = {
         submitButton: "Send My Request",
         required: "*"
       }
+    },
+    quoteRequest: {
+      hero: {
+        badge: "Free Quote",
+        title: "Your Quote",
+        subtitle: "in Less than 24h",
+        description: "Get a personalized quote for your equine transport vehicle. Our expert analyzes your needs and offers you the perfect solution."
+      },
+      benefits: {
+        free: "100% Free",
+        fast: "24h Response",
+        noCommitment: "No commitment"
+      },
+      form: {
+        title: "Quote Request Form",
+        description: "The more information you give us, the more precise and adapted your quote will be",
+        personalInfo: {
+          title: "Your Information",
+          firstName: "First Name",
+          firstNamePlaceholder: "Your first name",
+          lastName: "Last Name",
+          lastNamePlaceholder: "Your last name",
+          email: "Email",
+          emailPlaceholder: "your@email.com",
+          phone: "Phone",
+          phonePlaceholder: "06 12 34 56 78",
+          region: "Region",
+          regionPlaceholder: "Your region (to optimize delivery)"
+        },
+        vehicleInfo: {
+          title: "Your Ideal Vehicle",
+          type: "Vehicle type",
+          typePlaceholder: "Choose the type",
+          typeOptions: {
+            truck: "Horse Truck",
+            van: "Horse Van",
+            trailer: "Horse Trailer",
+            unsure: "I don't know yet"
+          },
+          capacity: "Number of horses to transport",
+          capacityPlaceholder: "Select",
+          capacityOptions: {
+            one: "1 horse",
+            two: "2 horses",
+            three: "3 horses",
+            four: "4 horses",
+            five: "5 horses",
+            sixPlus: "6 horses and more"
+          },
+          condition: "Desired condition",
+          conditionPlaceholder: "New or used?",
+          conditionOptions: {
+            new: "New only",
+            used: "Used accepted",
+            any: "Indifferent"
+          },
+          budget: "Approximate budget",
+          budgetPlaceholder: "Your price range",
+          budgetOptions: {
+            under30k: "Less than €30,000",
+            from30to50k: "€30,000 - €50,000",
+            from50to80k: "€50,000 - €80,000",
+            from80to120k: "€80,000 - €120,000",
+            over120k: "More than €120,000",
+            noBudget: "No defined budget"
+          }
+        },
+        usage: {
+          title: "Usage & Equipment",
+          primary: "Primary use",
+          primaryPlaceholder: "How will you use the vehicle?",
+          usageOptions: {
+            leisure: "Leisure / Rides",
+            competition: "Competition",
+            professional: "Professional use",
+            mixed: "Mixed use"
+          }
+        },
+        additional: {
+          title: "Additional Information",
+          timeline: "Desired timeline for purchase",
+          timelinePlaceholder: "When would you like to acquire your vehicle?",
+          timelineOptions: {
+            immediate: "Immediately",
+            oneToThree: "In 1 to 3 months",
+            threeToSix: "In 3 to 6 months",
+            sixToTwelve: "In 6 months to 1 year",
+            overYear: "More than 1 year",
+            infoOnly: "Simple information request"
+          },
+          message: "Additional message",
+          messagePlaceholder: "Describe your specific needs, particular constraints, financing questions, etc."
+        },
+        submit: {
+          title: "Let's Go!",
+          description: "By submitting this form, you will receive your personalized quote within 24 hours maximum. An HTG expert will also contact you to refine your request.",
+          button: "Get My Free Quote",
+          disclaimer: "* No commitment • Guaranteed response within 24h • 100% free service"
+        }
+      }
     }
   },
   es: {
@@ -2390,6 +2692,106 @@ const translations: Record<Language, Translations> = {
         submitButton: "Enviar mi Solicitud",
         required: "*"
       }
+    },
+    quoteRequest: {
+      hero: {
+        badge: "Presupuesto Gratuito",
+        title: "Su Presupuesto",
+        subtitle: "en Menos de 24h",
+        description: "Obtenga un presupuesto personalizado para su vehículo de transporte equino. Nuestro experto analiza sus necesidades y le propone la solución perfecta."
+      },
+      benefits: {
+        free: "100% Gratuito",
+        fast: "Respuesta 24h",
+        noCommitment: "Sin compromiso"
+      },
+      form: {
+        title: "Formulario de Solicitud de Presupuesto",
+        description: "Cuanta más información nos proporcione, más preciso y adaptado será su presupuesto",
+        personalInfo: {
+          title: "Su Información",
+          firstName: "Nombre",
+          firstNamePlaceholder: "Su nombre",
+          lastName: "Apellido",
+          lastNamePlaceholder: "Su apellido",
+          email: "Email",
+          emailPlaceholder: "su@email.com",
+          phone: "Teléfono",
+          phonePlaceholder: "06 12 34 56 78",
+          region: "Región",
+          regionPlaceholder: "Su región (para optimizar la entrega)"
+        },
+        vehicleInfo: {
+          title: "Su Vehículo Ideal",
+          type: "Tipo de vehículo",
+          typePlaceholder: "Elija el tipo",
+          typeOptions: {
+            truck: "Camión para Caballos",
+            van: "Furgoneta para Caballos",
+            trailer: "Remolque para Caballos",
+            unsure: "Aún no lo sé"
+          },
+          capacity: "Número de caballos a transportar",
+          capacityPlaceholder: "Seleccionar",
+          capacityOptions: {
+            one: "1 caballo",
+            two: "2 caballos",
+            three: "3 caballos",
+            four: "4 caballos",
+            five: "5 caballos",
+            sixPlus: "6 caballos y más"
+          },
+          condition: "Estado deseado",
+          conditionPlaceholder: "¿Nuevo o usado?",
+          conditionOptions: {
+            new: "Solo nuevo",
+            used: "Usado aceptado",
+            any: "Indiferente"
+          },
+          budget: "Presupuesto aproximado",
+          budgetPlaceholder: "Su rango de precios",
+          budgetOptions: {
+            under30k: "Menos de 30.000€",
+            from30to50k: "30.000€ - 50.000€",
+            from50to80k: "50.000€ - 80.000€",
+            from80to120k: "80.000€ - 120.000€",
+            over120k: "Más de 120.000€",
+            noBudget: "Sin presupuesto definido"
+          }
+        },
+        usage: {
+          title: "Uso y Equipamiento",
+          primary: "Uso principal",
+          primaryPlaceholder: "¿Cómo va a usar el vehículo?",
+          usageOptions: {
+            leisure: "Ocio / Paseos",
+            competition: "Competición",
+            professional: "Uso profesional",
+            mixed: "Uso mixto"
+          }
+        },
+        additional: {
+          title: "Información Adicional",
+          timeline: "Plazo deseado para la compra",
+          timelinePlaceholder: "¿Cuándo le gustaría adquirir su vehículo?",
+          timelineOptions: {
+            immediate: "Inmediatamente",
+            oneToThree: "En 1 a 3 meses",
+            threeToSix: "En 3 a 6 meses",
+            sixToTwelve: "En 6 meses a 1 año",
+            overYear: "Más de 1 año",
+            infoOnly: "Simple solicitud de información"
+          },
+          message: "Mensaje adicional",
+          messagePlaceholder: "Describa sus necesidades específicas, limitaciones particulares, preguntas sobre financiación, etc."
+        },
+        submit: {
+          title: "¡Vamos!",
+          description: "Al enviar este formulario, recibirá su presupuesto personalizado en un máximo de 24 horas. Un experto de HTG también se pondrá en contacto con usted para afinar su solicitud.",
+          button: "Recibir Mi Presupuesto Gratuito",
+          disclaimer: "* Sin compromiso • Respuesta garantizada en 24h • Servicio 100% gratuito"
+        }
+      }
     }
   },
   de: {
@@ -2894,6 +3296,106 @@ const translations: Record<Language, Translations> = {
         submitSubtitle: "Unverbindlich • Kostenlose Beratung",
         submitButton: "Meine Anfrage senden",
         required: "*"
+      }
+    },
+    quoteRequest: {
+      hero: {
+        badge: "Kostenloses Angebot",
+        title: "Ihr Angebot",
+        subtitle: "in weniger als 24h",
+        description: "Erhalten Sie ein personalisiertes Angebot für Ihr Pferdetransportfahrzeug. Unser Experte analysiert Ihre Bedürfnisse und bietet Ihnen die perfekte Lösung."
+      },
+      benefits: {
+        free: "100% Kostenlos",
+        fast: "24h Antwort",
+        noCommitment: "Unverbindlich"
+      },
+      form: {
+        title: "Angebotsanfrage Formular",
+        description: "Je mehr Informationen Sie uns geben, desto präziser und angepasster wird Ihr Angebot sein",
+        personalInfo: {
+          title: "Ihre Informationen",
+          firstName: "Vorname",
+          firstNamePlaceholder: "Ihr Vorname",
+          lastName: "Nachname",
+          lastNamePlaceholder: "Ihr Nachname",
+          email: "E-Mail",
+          emailPlaceholder: "ihre@email.com",
+          phone: "Telefon",
+          phonePlaceholder: "06 12 34 56 78",
+          region: "Region",
+          regionPlaceholder: "Ihre Region (zur Optimierung der Lieferung)"
+        },
+        vehicleInfo: {
+          title: "Ihr ideales Fahrzeug",
+          type: "Fahrzeugtyp",
+          typePlaceholder: "Wählen Sie den Typ",
+          typeOptions: {
+            truck: "Pferdetransporter",
+            van: "Pferde-Van",
+            trailer: "Pferdeanhänger",
+            unsure: "Ich weiß es noch nicht"
+          },
+          capacity: "Anzahl der zu transportierenden Pferde",
+          capacityPlaceholder: "Auswählen",
+          capacityOptions: {
+            one: "1 Pferd",
+            two: "2 Pferde",
+            three: "3 Pferde",
+            four: "4 Pferde",
+            five: "5 Pferde",
+            sixPlus: "6 Pferde und mehr"
+          },
+          condition: "Gewünschter Zustand",
+          conditionPlaceholder: "Neu oder gebraucht?",
+          conditionOptions: {
+            new: "Nur neu",
+            used: "Gebraucht akzeptiert",
+            any: "Gleichgültig"
+          },
+          budget: "Ungefähres Budget",
+          budgetPlaceholder: "Ihre Preisspanne",
+          budgetOptions: {
+            under30k: "Weniger als 30.000€",
+            from30to50k: "30.000€ - 50.000€",
+            from50to80k: "50.000€ - 80.000€",
+            from80to120k: "80.000€ - 120.000€",
+            over120k: "Mehr als 120.000€",
+            noBudget: "Kein definiertes Budget"
+          }
+        },
+        usage: {
+          title: "Nutzung & Ausstattung",
+          primary: "Hauptnutzung",
+          primaryPlaceholder: "Wie werden Sie das Fahrzeug nutzen?",
+          usageOptions: {
+            leisure: "Freizeit / Ausritte",
+            competition: "Wettkampf",
+            professional: "Professionelle Nutzung",
+            mixed: "Gemischte Nutzung"
+          }
+        },
+        additional: {
+          title: "Zusätzliche Informationen",
+          timeline: "Gewünschter Zeitrahmen für den Kauf",
+          timelinePlaceholder: "Wann möchten Sie Ihr Fahrzeug erwerben?",
+          timelineOptions: {
+            immediate: "Sofort",
+            oneToThree: "In 1 bis 3 Monaten",
+            threeToSix: "In 3 bis 6 Monaten",
+            sixToTwelve: "In 6 Monaten bis 1 Jahr",
+            overYear: "Mehr als 1 Jahr",
+            infoOnly: "Einfache Informationsanfrage"
+          },
+          message: "Zusätzliche Nachricht",
+          messagePlaceholder: "Beschreiben Sie Ihre spezifischen Bedürfnisse, besonderen Einschränkungen, Finanzierungsfragen, etc."
+        },
+        submit: {
+          title: "Los geht's!",
+          description: "Durch das Absenden dieses Formulars erhalten Sie Ihr personalisiertes Angebot innerhalb von maximal 24 Stunden. Ein HTG-Experte wird Sie auch kontaktieren, um Ihre Anfrage zu verfeinern.",
+          button: "Mein kostenloses Angebot erhalten",
+          disclaimer: "* Unverbindlich • Garantierte Antwort innerhalb von 24h • 100% kostenloser Service"
+        }
       }
     }
   }
