@@ -63,7 +63,23 @@ export const extractLanguageFromPath = (pathname: string): { language: Language;
   if (['fr', 'en', 'es', 'de'].includes(possibleLang)) {
     const localizedPath = '/' + segments.slice(2).join('/');
     
-    // Convertir le chemin localisé en chemin de base
+    // Gérer les routes avec des paramètres (comme /vehiculo/trucks/1)
+    const pathParts = localizedPath.split('/');
+    let matchingBasePath = localizedPath;
+    
+    // Vérifier si c'est une route de véhicule avec des paramètres
+    if (pathParts.length >= 3 && pathParts[2] && pathParts[3]) {
+      const possibleVehicleRoute = '/' + pathParts[1]; // /vehiculo, /vehicle, etc.
+      const reverseVehicleMapping = Object.entries(routeTranslations[possibleLang]).find(
+        ([basePath, translatedPath]) => translatedPath === possibleVehicleRoute
+      );
+      if (reverseVehicleMapping) {
+        matchingBasePath = reverseVehicleMapping[0]; // /vehicule
+        return { language: possibleLang, basePath: matchingBasePath };
+      }
+    }
+    
+    // Convertir le chemin localisé en chemin de base pour les routes simples
     const reverseMapping = Object.entries(routeTranslations[possibleLang]).find(
       ([basePath, translatedPath]) => translatedPath === localizedPath
     );
