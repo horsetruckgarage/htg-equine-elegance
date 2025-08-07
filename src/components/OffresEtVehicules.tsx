@@ -1,5 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { WatermarkedImage } from "@/components/ui/watermarked-image";
 import { Eye, Heart, Star, Calendar, Gauge, Users, Clock, TrendingUp, TrendingDown, Zap, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -138,7 +139,7 @@ const OffresEtVehicules = () => {
                 {/* Image */}
                 <div className="relative aspect-[4/3] overflow-hidden">
                   {vehicle.images && vehicle.images.length > 0 ? (
-                    <img 
+                    <WatermarkedImage 
                       src={vehicle.images[0]} 
                       alt={vehicle.title}
                       className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"

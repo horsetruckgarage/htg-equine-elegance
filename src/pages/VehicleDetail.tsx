@@ -2,6 +2,7 @@ import { ArrowLeft, Calendar, Settings, Users, Fuel, Gauge, Shield, Star } from 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { WatermarkedImage } from "@/components/ui/watermarked-image";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -141,7 +142,7 @@ const VehicleDetail = () => {
                   {vehicleData.images.map((image, index) => (
                     <CarouselItem key={index}>
                       <div className="aspect-[4/3] rounded-xl overflow-hidden">
-                        <img 
+                        <WatermarkedImage 
                           src={image} 
                           alt={`${vehicleData.name} - Photo ${index + 1}`}
                           className="w-full h-full object-cover"
@@ -158,7 +159,7 @@ const VehicleDetail = () => {
               <div className="grid grid-cols-3 gap-2">
                 {vehicleData.images.map((image, index) => (
                   <div key={index} className="aspect-[4/3] rounded-lg overflow-hidden cursor-pointer hover:opacity-80 transition-opacity">
-                    <img 
+                    <WatermarkedImage 
                       src={image} 
                       alt={`Miniature ${index + 1}`}
                       className="w-full h-full object-cover"
