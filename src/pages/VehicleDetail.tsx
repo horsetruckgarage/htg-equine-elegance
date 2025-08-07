@@ -13,42 +13,96 @@ const VehicleDetail = () => {
   const { type, id } = useParams();
   const navigate = useNavigate();
 
-  // Pour l'instant, données simulées - à remplacer par de vraies données
-  const vehicleData = {
-    name: "Renault Master L3H2 - Transport 3 Chevaux",
-    category: type === 'trucks' ? t.trucksPage.vehicle.horseTruck : type === 'vans' ? t.vansPage.vehicle.horseVan : t.categories.horseTrailers.title,
-    price: "68 500€",
-    originalPrice: "75 000€",
-    images: [
-      "/lovable-uploads/a3bc9f31-af5a-4053-a835-56933ae8d26b.png",
-      "/lovable-uploads/2b478b96-e19a-4288-ac04-f0410f56f0bc.png",
-      "/lovable-uploads/35ff85cc-4513-4a11-9b8b-eda640027c91.png",
-    ],
-    specs: {
-      year: "2022",
-      mileage: "45 000 km",
-      capacity: `3 ${t.common.horsesCapacity}`,
-      transmission: t.vehicleDetail.automaticTransmission,
-      fuel: t.vehicleDetail.diesel,
-      power: "170 CV"
-    },
-    features: [
-      t.features.pneumaticSuspension,
-      t.features.airConditioning,
-      t.features.tackCompartment + " spacieux",
-      t.features.ventilationSystem + " optimisé",
-      t.features.nonSlipFlooring,
-      t.features.ledLighting,
-      "Caméra de recul",
-      t.features.automaticTransmission
-    ],
-    description: language === 'fr' ? "Ce magnifique Renault Master a été entièrement aménagé par nos soins pour le transport de 3 chevaux. Véhicule en excellent état, révisé et garanti 12 mois."
-      : language === 'en' ? "This magnificent Renault Master has been completely fitted out by us for transporting 3 horses. Vehicle in excellent condition, serviced and guaranteed for 12 months."
-      : language === 'es' ? "Esta magnífica Renault Master ha sido completamente acondicionada por nosotros para el transporte de 3 caballos. Vehículo en excelente estado, revisado y garantizado por 12 meses."
-      : "Dieser herrliche Renault Master wurde von uns vollständig für den Transport von 3 Pferden ausgestattet. Fahrzeug in ausgezeichnetem Zustand, gewartet und 12 Monate garantiert.",
-    condition: t.vehicleDetail.excellent,
-    availability: t.vehicleDetail.availableImmediately
+  // Données simulées basées sur l'ID du véhicule
+  const getVehicleData = () => {
+    const vehicleId = parseInt(id || '1');
+    
+    // Base de données simulée de véhicules
+    const vehiclesDB = {
+      trucks: [
+        {
+          name: "Renault Master L3H2 - Transport 3 Chevaux",
+          price: "68 500€", originalPrice: "75 000€",
+          year: "2022", mileage: "45 000 km", power: "170 CV",
+          images: ["/lovable-uploads/a3bc9f31-af5a-4053-a835-56933ae8d26b.png", "/lovable-uploads/2b478b96-e19a-4288-ac04-f0410f56f0bc.png", "/lovable-uploads/35ff85cc-4513-4a11-9b8b-eda640027c91.png"]
+        },
+        {
+          name: "Mercedes Sprinter Premium - 4 Chevaux",
+          price: "78 900€", originalPrice: "85 000€",
+          year: "2023", mileage: "28 000 km", power: "190 CV",
+          images: ["/lovable-uploads/2b478b96-e19a-4288-ac04-f0410f56f0bc.png", "/lovable-uploads/35ff85cc-4513-4a11-9b8b-eda640027c91.png", "/lovable-uploads/a3bc9f31-af5a-4053-a835-56933ae8d26b.png"]
+        },
+        {
+          name: "Iveco Daily Excellence - 5 Chevaux",
+          price: "89 500€", originalPrice: "95 000€",
+          year: "2023", mileage: "15 000 km", power: "210 CV",
+          images: ["/lovable-uploads/35ff85cc-4513-4a11-9b8b-eda640027c91.png", "/lovable-uploads/a3bc9f31-af5a-4053-a835-56933ae8d26b.png", "/lovable-uploads/2b478b96-e19a-4288-ac04-f0410f56f0bc.png"]
+        }
+      ],
+      vans: [
+        {
+          name: "Ford Transit Custom - 2 Chevaux",
+          price: "45 900€", originalPrice: "49 000€",
+          year: "2021", mileage: "32 000 km", power: "130 CV",
+          images: ["/lovable-uploads/bee66bcd-4af5-4ce6-a9d1-a044053fa657.png", "/lovable-uploads/2307287b-f2a8-4858-984f-44b3a646dd23.png", "/lovable-uploads/243f1cf5-f2ce-48a8-a2dd-8c9d7334fa5a.png"]
+        },
+        {
+          name: "Volkswagen Crafter Sport - 3 Chevaux",
+          price: "52 500€", originalPrice: "56 000€",
+          year: "2022", mileage: "25 000 km", power: "140 CV",
+          images: ["/lovable-uploads/2307287b-f2a8-4858-984f-44b3a646dd23.png", "/lovable-uploads/243f1cf5-f2ce-48a8-a2dd-8c9d7334fa5a.png", "/lovable-uploads/bee66bcd-4af5-4ce6-a9d1-a044053fa657.png"]
+        }
+      ],
+      trailers: [
+        {
+          name: "Böckmann Comfort - 2 Chevaux",
+          price: "28 500€", originalPrice: "32 000€",
+          year: "2023", mileage: "Neuf", power: "N/A",
+          images: ["/lovable-uploads/b90c9439-0e85-44c0-aa34-cdc82bc8b364.png", "/lovable-uploads/a0f80a95-a142-4cef-ae8c-1b305dc07a0e.png", "/lovable-uploads/bee66bcd-4af5-4ce6-a9d1-a044053fa657.png"]
+        },
+        {
+          name: "Humbaur Xanthos - 3 Chevaux",
+          price: "35 800€", originalPrice: "38 500€",
+          year: "2023", mileage: "Neuf", power: "N/A",
+          images: ["/lovable-uploads/a0f80a95-a142-4cef-ae8c-1b305dc07a0e.png", "/lovable-uploads/b90c9439-0e85-44c0-aa34-cdc82bc8b364.png", "/lovable-uploads/bee66bcd-4af5-4ce6-a9d1-a044053fa657.png"]
+        }
+      ]
+    };
+
+    const vehicles = vehiclesDB[type as keyof typeof vehiclesDB] || vehiclesDB.trucks;
+    const vehicle = vehicles[vehicleId - 1] || vehicles[0];
+    
+    return {
+      ...vehicle,
+      category: type === 'trucks' ? t.trucksPage.vehicle.horseTruck : type === 'vans' ? t.vansPage.vehicle.horseVan : t.categories.horseTrailers.title,
+      specs: {
+        year: vehicle.year,
+        mileage: vehicle.mileage,
+        capacity: type === 'trailers' ? vehicle.name.includes('2 Chevaux') ? `2 ${t.common.horsesCapacity}` : `3 ${t.common.horsesCapacity}` : vehicle.name.includes('3 Chevaux') ? `3 ${t.common.horsesCapacity}` : vehicle.name.includes('4 Chevaux') ? `4 ${t.common.horsesCapacity}` : `5 ${t.common.horsesCapacity}`,
+        transmission: type === 'trailers' ? 'N/A' : t.vehicleDetail.automaticTransmission,
+        fuel: type === 'trailers' ? 'N/A' : t.vehicleDetail.diesel,
+        power: vehicle.power
+      },
+      features: [
+        t.features.pneumaticSuspension,
+        t.features.airConditioning,
+        t.features.tackCompartment + " spacieux",
+        t.features.ventilationSystem + " optimisé",
+        t.features.nonSlipFlooring,
+        t.features.ledLighting,
+        "Caméra de recul",
+        t.features.automaticTransmission
+      ],
+      description: language === 'fr' ? `Ce ${vehicle.name} a été entièrement aménagé par nos soins. Véhicule en excellent état, révisé et garanti 12 mois.`
+        : language === 'en' ? `This ${vehicle.name} has been completely fitted out by us. Vehicle in excellent condition, serviced and guaranteed for 12 months.`
+        : language === 'es' ? `Este ${vehicle.name} ha sido completamente acondicionado por nosotros. Vehículo en excelente estado, revisado y garantizado por 12 meses.`
+        : `Dieser ${vehicle.name} wurde von uns vollständig ausgestattet. Fahrzeug in ausgezeichnetem Zustand, gewartet und 12 Monate garantiert.`,
+      condition: t.vehicleDetail.excellent,
+      availability: t.vehicleDetail.availableImmediately
+    };
   };
+
+  const vehicleData = getVehicleData();
 
   const getBackPath = () => {
     switch (type) {
