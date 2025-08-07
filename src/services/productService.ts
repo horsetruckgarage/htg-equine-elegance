@@ -13,6 +13,14 @@ export interface Product {
   rating?: number;
   created_at: string;
   updated_at: string;
+  type?: string;
+  year?: number;
+  mileage?: number;
+  capacity?: string;
+  transmission?: string;
+  fuel?: string;
+  power?: string;
+  available?: boolean;
 }
 
 export interface CreateProductData {
@@ -29,27 +37,89 @@ export interface CreateProductData {
 
 export interface UpdateProductData extends Partial<CreateProductData> {}
 
-// Get all products
+// Get all products (vehicles)
 export const getProducts = async (): Promise<Product[]> => {
   const { data, error } = await supabase
-    .from('products')
-    .select('*')
+    .from('vehicles')
+    .select(`
+      *,
+      vehicle_images (
+        image_url,
+        is_primary
+      )
+    `)
     .order('created_at', { ascending: false });
 
   if (error) throw error;
-  return data || [];
+  
+  // Transform vehicles to Product interface
+  return (data || []).map((vehicle: any) => ({
+    id: vehicle.id,
+    name: vehicle.name,
+    category: vehicle.type,
+    price: vehicle.price,
+    discount_price: null,
+    description: vehicle.description,
+    image_url: vehicle.vehicle_images?.find((img: any) => img.is_primary)?.image_url || 
+               vehicle.vehicle_images?.[0]?.image_url,
+    in_stock: vehicle.available,
+    featured: vehicle.featured,
+    rating: null,
+    created_at: vehicle.created_at,
+    updated_at: vehicle.updated_at,
+    type: vehicle.type,
+    year: vehicle.year,
+    mileage: vehicle.mileage,
+    capacity: vehicle.capacity,
+    transmission: vehicle.transmission,
+    fuel: vehicle.fuel,
+    power: vehicle.power,
+    available: vehicle.available,
+  }));
 };
 
 // Get product by ID
 export const getProduct = async (id: string): Promise<Product | null> => {
   const { data, error } = await supabase
-    .from('products')
-    .select('*')
+    .from('vehicles')
+    .select(`
+      *,
+      vehicle_images (
+        image_url,
+        is_primary
+      )
+    `)
     .eq('id', id)
     .maybeSingle();
 
   if (error) throw error;
-  return data;
+  
+  if (!data) return null;
+  
+  // Transform vehicle to Product interface
+  return {
+    id: data.id,
+    name: data.name,
+    category: data.type,
+    price: data.price,
+    discount_price: null,
+    description: data.description,
+    image_url: data.vehicle_images?.find((img: any) => img.is_primary)?.image_url || 
+               data.vehicle_images?.[0]?.image_url,
+    in_stock: data.available,
+    featured: data.featured,
+    rating: null,
+    created_at: data.created_at,
+    updated_at: data.updated_at,
+    type: data.type,
+    year: data.year,
+    mileage: data.mileage,
+    capacity: data.capacity,
+    transmission: data.transmission,
+    fuel: data.fuel,
+    power: data.power,
+    available: data.available,
+  };
 };
 
 // Create product
