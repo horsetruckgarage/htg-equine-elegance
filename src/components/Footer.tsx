@@ -106,22 +106,6 @@ const Footer = () => {
                 </div>
               </div>
 
-              {/* Social Links */}
-              <div className="flex space-x-4">
-                {socialLinks.map((social) => {
-                  const IconComponent = social.icon;
-                  return (
-                    <a
-                      key={social.name}
-                      href={social.href}
-                      className="w-10 h-10 bg-copper/10 hover:bg-copper hover:text-black rounded-lg flex items-center justify-center transition-colors"
-                      aria-label={social.name}
-                    >
-                      <IconComponent className="w-5 h-5" />
-                    </a>
-                  );
-                })}
-              </div>
             </div>
 
             {/* Footer Links */}
