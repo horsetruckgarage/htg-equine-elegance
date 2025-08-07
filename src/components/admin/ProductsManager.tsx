@@ -7,7 +7,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Package, Download, Plus, Edit, Trash2 } from 'lucide-react';
+import { Package, Download, Plus, Edit, Trash2, ArrowUp, ArrowDown, ImagePlus, Star } from 'lucide-react';
 import { toast } from 'sonner';
 import { useVehicles } from '@/hooks/useSupabaseVehicles';
 import { supabase } from '@/integrations/supabase/client';
@@ -36,6 +36,8 @@ const ProductsManager = () => {
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
   const [editingProduct, setEditingProduct] = useState<any>(null);
   const [imageFiles, setImageFiles] = useState<File[]>([]);
+  const [editImages, setEditImages] = useState<any[]>([]);
+  const [isUploading, setIsUploading] = useState(false);
   
   const queryClient = useQueryClient();
   const { addWatermarkToImage } = useWatermark();
@@ -66,11 +68,21 @@ const ProductsManager = () => {
       if (error) throw error;
       return vehicle;
     },
-    onSuccess: () => {
-      toast.success('Véhicule créé avec succès');
-      setIsCreateDialogOpen(false);
-      resetForm();
-      queryClient.invalidateQueries({ queryKey: ['vehicles'] });
+    onSuccess: async (vehicle) => {
+      try {
+        if (imageFiles.length > 0) {
+          toast.info('Téléversement des images...');
+          await uploadAndInsertImages(vehicle.id, imageFiles);
+        }
+        toast.success('Véhicule créé avec succès');
+      } catch (e: any) {
+        toast.error("Créé, mais erreur d'upload images: " + e.message);
+      } finally {
+        setIsCreateDialogOpen(false);
+        setImageFiles([]);
+        resetForm();
+        queryClient.invalidateQueries({ queryKey: ['vehicles'] });
+      }
     },
     onError: (error) => {
       toast.error('Erreur lors de la création: ' + error.message);
@@ -157,6 +169,8 @@ const ProductsManager = () => {
       featured: product.featured || false,
     });
     setIsEditDialogOpen(true);
+    setImageFiles([]);
+    fetchEditImages(product.id);
   };
 
   const handleUpdate = () => {
@@ -174,6 +188,89 @@ const ProductsManager = () => {
     if (confirm('Êtes-vous sûr de vouloir supprimer ce véhicule ?')) {
       deleteVehicleMutation.mutate(id);
     }
+  };
+
+  // Images management helpers
+  const fetchEditImages = async (vehicleId: string) => {
+    const { data, error } = await supabase
+      .from('vehicle_images')
+      .select('*')
+      .eq('vehicle_id', vehicleId)
+      .order('sort_order', { ascending: true });
+    if (error) {
+      toast.error('Erreur de chargement des images');
+      return;
+    }
+    setEditImages(data || []);
+  };
+
+  const getStoragePath = (url: string) => {
+    const marker = '/storage/v1/object/public/vehicles/';
+    const idx = url.indexOf(marker);
+    return idx !== -1 ? url.substring(idx + marker.length) : null;
+  };
+
+  const uploadAndInsertImages = async (vehicleId: string, files: File[]) => {
+    setIsUploading(true);
+    try {
+      const { data: existing } = await supabase
+        .from('vehicle_images')
+        .select('id')
+        .eq('vehicle_id', vehicleId);
+      let start = existing?.length || 0;
+
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        const safeName = file.name.replace(/[^a-zA-Z0-9.\-_]/g, '-').toLowerCase();
+        const path = `${vehicleId}/${Date.now()}_${i}_${safeName}`;
+        const { error: upErr } = await supabase.storage.from('vehicles').upload(path, file, {
+          cacheControl: '3600',
+          upsert: false,
+        });
+        if (upErr) throw upErr;
+        const { data: pub } = supabase.storage.from('vehicles').getPublicUrl(path);
+        const isPrimary = start === 0 && i === 0;
+        const { error: insErr } = await supabase.from('vehicle_images').insert({
+          vehicle_id: vehicleId,
+          sort_order: start + i + 1,
+          image_url: pub.publicUrl,
+          is_primary: isPrimary,
+        });
+        if (insErr) throw insErr;
+      }
+      toast.success('Images ajoutées');
+    } finally {
+      setIsUploading(false);
+    }
+  };
+
+  const deleteImage = async (img: any) => {
+    const path = getStoragePath(img.image_url);
+    if (path) {
+      await supabase.storage.from('vehicles').remove([path]);
+    }
+    await supabase.from('vehicle_images').delete().eq('id', img.id);
+    await fetchEditImages(editingProduct.id);
+    toast.success('Image supprimée');
+  };
+
+  const setPrimary = async (img: any) => {
+    const vehicleId = editingProduct.id;
+    await supabase.from('vehicle_images').update({ is_primary: false }).eq('vehicle_id', vehicleId);
+    await supabase.from('vehicle_images').update({ is_primary: true }).eq('id', img.id);
+    await fetchEditImages(vehicleId);
+    toast.success('Définie comme principale');
+  };
+
+  const moveImage = async (img: any, direction: 'up' | 'down') => {
+    const idx = editImages.findIndex((i) => i.id === img.id);
+    const targetIdx = direction === 'up' ? idx - 1 : idx + 1;
+    if (idx === -1 || targetIdx < 0 || targetIdx >= editImages.length) return;
+    const a = editImages[idx];
+    const b = editImages[targetIdx];
+    await supabase.from('vehicle_images').update({ sort_order: b.sort_order }).eq('id', a.id);
+    await supabase.from('vehicle_images').update({ sort_order: a.sort_order }).eq('id', b.id);
+    await fetchEditImages(editingProduct.id);
   };
 
   const filteredProducts = products.filter(product =>
@@ -556,6 +653,53 @@ const ProductsManager = () => {
                 onChange={(e) => setFormData({...formData, featured: e.target.checked})}
               />
               <Label htmlFor="edit-featured">En vedette</Label>
+            </div>
+          </div>
+          <div className="mt-6 space-y-4">
+            <Label>Gérer les images</Label>
+            <div className="flex items-center gap-3">
+              <Input
+                id="edit-images"
+                type="file"
+                multiple
+                accept="image/*"
+                onChange={async (e) => {
+                  const files = Array.from(e.target.files || []);
+                  if (!editingProduct || files.length === 0) return;
+                  toast.info('Ajout des filigranes en cours...');
+                  const watermarkedFiles = await Promise.all(files.map((f) => addWatermarkToImage(f)));
+                  await uploadAndInsertImages(editingProduct.id, watermarkedFiles);
+                  await fetchEditImages(editingProduct.id);
+                  (e.target as HTMLInputElement).value = '';
+                }}
+              />
+              {isUploading && <span className="text-sm text-muted-foreground">Téléversement en cours...</span>}
+            </div>
+            <div className="grid grid-cols-3 gap-3">
+              {editImages.map((img) => (
+                <div key={img.id} className="relative border rounded overflow-hidden">
+                  <img src={img.image_url} alt={formData.name} className="w-full h-28 object-cover" />
+                  {img.is_primary && (
+                    <div className="absolute top-1 left-1 bg-copper text-black text-xs px-2 py-0.5 rounded flex items-center">
+                      <Star className="w-3 h-3 mr-1" /> Principale
+                    </div>
+                  )}
+                  <div className="absolute bottom-1 left-1 right-1 flex justify-between gap-1">
+                    <Button size="icon" variant="secondary" className="w-8 h-8" onClick={() => moveImage(img, 'up')}>
+                      <ArrowUp className="w-4 h-4" />
+                    </Button>
+                    <Button size="icon" variant="secondary" className="w-8 h-8" onClick={() => setPrimary(img)}>
+                      <Star className="w-4 h-4" />
+                    </Button>
+                    <Button size="icon" variant="secondary" className="w-8 h-8" onClick={() => moveImage(img, 'down')}>
+                      <ArrowDown className="w-4 h-4" />
+                    </Button>
+                    <Button size="icon" variant="secondary" className="w-8 h-8 text-red-600" onClick={() => deleteImage(img)}>
+                      <Trash2 className="w-4 h-4" />
+                    </Button>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
           <DialogFooter>
