@@ -105,8 +105,161 @@ export interface Translations {
   };
   
   aboutPage: { [key: string]: any; };
-  contactPage: { [key: string]: any; };
-  vansPage: { [key: string]: any; };
+  contactPage: {
+    hero: {
+      badge: string;
+      title1: string;
+      title2: string;
+      description: string;
+    };
+    methodsSection: {
+      title1: string;
+      title2: string;
+      subtitle: string;
+    };
+    contactMethods: {
+      phone: {
+        title: string;
+        subtitle: string;
+        description: string;
+        action: string;
+        actionText: string;
+      };
+      chat: {
+        title: string;
+        subtitle: string;
+        description: string;
+        action: string;
+        actionText: string;
+      };
+      appointment: {
+        title: string;
+        subtitle: string;
+        description: string;
+        action: string;
+        actionText: string;
+      };
+    };
+    contactInfo: {
+      title1: string;
+      title2: string;
+      subtitle: string;
+      address: {
+        title: string;
+        street: string;
+        city: string;
+      };
+      hours: {
+        title: string;
+        weekdays: string;
+        saturday: string;
+        sunday: string;
+      };
+      phone: {
+        title: string;
+        number: string;
+      };
+      email: {
+        title: string;
+        address: string;
+      };
+    };
+    services: {
+      title: string;
+      expertise: {
+        title: string;
+        description: string;
+        duration: string;
+      };
+      financing: {
+        title: string;
+        description: string;
+        duration: string;
+      };
+      advice: {
+        title: string;
+        description: string;
+        duration: string;
+      };
+    };
+    form: {
+      title: string;
+      subtitle: string;
+      fields: {
+        firstName: string;
+        lastName: string;
+        email: string;
+        phone: string;
+        vehicleType: string;
+        budget: string;
+        message: string;
+      };
+      required: string;
+      placeholders: {
+        firstName: string;
+        lastName: string;
+        email: string;
+        phone: string;
+        vehicleTypeSelect: string;
+        budgetSelect: string;
+        message: string;
+      };
+      vehicleTypes: {
+        truck: string;
+        van: string;
+        trailer: string;
+        other: string;
+      };
+      budgetRanges: {
+        under30k: string;
+        range30to50k: string;
+        range50to80k: string;
+        over80k: string;
+      };
+      submitInfo: string;
+      submitSubtitle: string;
+      submitButton: string;
+    };
+  };
+  vansPage: {
+    title: string;
+    subtitle: string;
+    description: string;
+    filters: {
+      allFilters: string;
+      capacity: string;
+      price: string;
+      year: string;
+      mileage: string;
+      found: string;
+    };
+    vehicle: {
+      horseVan: string;
+      features: { [key: string]: string; };
+      badges: { [key: string]: string; };
+      specs: {
+        horses: string;
+        year: string;
+        km: string;
+        capacity: string;
+      };
+      pricing: {
+        save: string;
+        financing: string;
+        perMonth: string;
+      };
+      actions: {
+        seeDetails: string;
+        addToFavorites: string;
+      };
+    };
+    cta: {
+      title: string;
+      description: string;
+      getQuote: string;
+      contactExpert: string;
+    };
+  };
   
   footer: {
     newsletter: { title: string; description: string; placeholder: string; subscribe: string; };
@@ -255,8 +408,190 @@ export const translations: Record<Language, Translations> = {
       cta: { title: "Besoin d'un Conseil sur nos Camions ?", description: "Nos experts vous accompagnent dans le choix du camion parfait.", getQuote: "Demander un Devis Gratuit", contactExpert: "Contacter un Expert" }
     },
     aboutPage: {},
-    contactPage: {},
-    vansPage: {},
+    contactPage: {
+      hero: {
+        badge: "Nous Contacter",
+        title1: "Contactez",
+        title2: "Nos Experts",
+        description: "Notre équipe d'experts est à votre disposition pour vous accompagner dans votre projet de transport équestre."
+      },
+      methodsSection: {
+        title1: "Comment Nous ",
+        title2: "Contacter ?",
+        subtitle: "Plusieurs moyens de communication s'offrent à vous"
+      },
+      contactMethods: {
+        phone: {
+          title: "Par Téléphone",
+          subtitle: "06 12 34 56 78",
+          description: "Appelez-nous directement pour un conseil immédiat",
+          action: "tel:+33612345678",
+          actionText: "Appeler Maintenant"
+        },
+        chat: {
+          title: "Chat en Ligne",
+          subtitle: "Disponible 9h-18h",
+          description: "Discutez en direct avec un de nos conseillers",
+          action: "#",
+          actionText: "Démarrer le Chat"
+        },
+        appointment: {
+          title: "Prendre RDV",
+          subtitle: "Rendez-vous personnalisé",
+          description: "Planifiez une visite ou un appel avec un expert",
+          action: "#",
+          actionText: "Réserver un Créneau"
+        }
+      },
+      contactInfo: {
+        title1: "Nos ",
+        title2: "Coordonnées",
+        subtitle: "Retrouvez toutes nos informations pratiques",
+        address: {
+          title: "Adresse",
+          street: "123 Route des Chevaux\n75000 Paris",
+          city: "France"
+        },
+        hours: {
+          title: "Horaires d'ouverture",
+          weekdays: "Lundi - Vendredi : 9h00 - 18h00",
+          saturday: "Samedi : 9h00 - 17h00",
+          sunday: "Dimanche : Fermé"
+        },
+        phone: {
+          title: "Téléphone",
+          number: "06 12 34 56 78"
+        },
+        email: {
+          title: "Email",
+          address: "contact@horsetruckgarage.fr"
+        }
+      },
+      services: {
+        title: "Nos Services",
+        expertise: {
+          title: "Conseil Expert",
+          description: "Assistance personnalisée pour choisir votre véhicule",
+          duration: "30 min"
+        },
+        financing: {
+          title: "Solutions de Financement",
+          description: "Étude gratuite de vos options de financement",
+          duration: "45 min"
+        },
+        advice: {
+          title: "Suivi Personnalisé",
+          description: "Accompagnement de A à Z dans votre projet",
+          duration: "1h"
+        }
+      },
+      form: {
+        title: "Nous Écrire",
+        subtitle: "Envoyez-nous un message et nous vous répondrons rapidement",
+        fields: {
+          firstName: "Prénom",
+          lastName: "Nom",
+          email: "Email",
+          phone: "Téléphone",
+          vehicleType: "Type de véhicule",
+          budget: "Budget",
+          message: "Message"
+        },
+        required: "*",
+        placeholders: {
+          firstName: "Votre prénom",
+          lastName: "Votre nom",
+          email: "votre@email.com",
+          phone: "06 12 34 56 78",
+          vehicleTypeSelect: "Sélectionnez un type",
+          budgetSelect: "Sélectionnez votre budget",
+          message: "Décrivez-nous votre projet..."
+        },
+        vehicleTypes: {
+          truck: "Camion chevaux",
+          van: "Van chevaux",
+          trailer: "Remorque chevaux",
+          other: "Autre"
+        },
+        budgetRanges: {
+          under30k: "Moins de 30 000€",
+          range30to50k: "30 000€ - 50 000€",
+          range50to80k: "50 000€ - 80 000€",
+          over80k: "Plus de 80 000€"
+        },
+        submitInfo: "Réponse garantie sous 24h",
+        submitSubtitle: "Notre équipe vous recontactera rapidement",
+        submitButton: "Envoyer le Message"
+      }
+    },
+    vansPage: {
+      title: "Vans Chevaux",
+      subtitle: "Compacts & Polyvalents",
+      description: "Découvrez notre sélection de vans chevaux, parfaits pour le transport de 1 à 3 chevaux avec un permis B.",
+      filters: {
+        allFilters: "Tous les filtres",
+        capacity: "Capacité",
+        price: "Prix",
+        year: "Année",
+        mileage: "Kilométrage",
+        found: "véhicules trouvés"
+      },
+      vehicle: {
+        horseVan: "Van Chevaux",
+        features: {
+          nonSlipFlooring: "Plancher antidérapant",
+          ledLighting: "Éclairage LED",
+          ventilation: "Ventilation",
+          handsFreeMobile: "Kit mains libres",
+          blueTecEngine: "Moteur BlueTEC",
+          automaticTransmission: "Boîte automatique",
+          reverseCamera: "Caméra de recul",
+          parkingSensors: "Radar de recul",
+          optimizedVolume: "Volume optimisé",
+          cruiseControl: "Régulateur de vitesse",
+          airConditioning: "Climatisation",
+          ecoBlue: "EcoBlue",
+          sync3: "SYNC 3",
+          parkingAssist: "Aide au stationnement",
+          tdiBlueMotion: "TDI BlueMotion",
+          esp: "ESP",
+          hillStartAssist: "Assistant de démarrage en côte",
+          blueHdi: "BlueHDi",
+          mirrorScreen: "Mirror Screen",
+          fatigueSensor: "Détecteur de fatigue"
+        },
+        badges: {
+          favorite: "Coup de Cœur",
+          bestseller: "Bestseller",
+          premium: "Premium",
+          promotion: "Promotion",
+          certifiedUsed: "Occasion Certifiée",
+          recent: "Récent",
+          economical: "Économique"
+        },
+        specs: {
+          horses: "chevaux",
+          year: "Année",
+          km: "km",
+          capacity: "Capacité"
+        },
+        pricing: {
+          save: "Économisez",
+          financing: "Financement disponible dès",
+          perMonth: "/mois"
+        },
+        actions: {
+          seeDetails: "Voir Détails",
+          addToFavorites: "Ajouter aux favoris"
+        }
+      },
+      cta: {
+        title: "Besoin d'un Conseil sur nos Vans ?",
+        description: "Nos experts vous accompagnent dans le choix du van parfait pour vos besoins.",
+        getQuote: "Demander un Devis Gratuit",
+        contactExpert: "Contacter un Expert"
+      }
+    },
     footer: {
       newsletter: { title: "Newsletter", description: "Restez informé de nos nouveautés", placeholder: "Votre email", subscribe: "S'abonner" },
       company: { title: "Horse Truck Garage", description: "Votre spécialiste français du transport équestre depuis 2008." },
@@ -403,8 +738,190 @@ export const translations: Record<Language, Translations> = {
     quoteRequest: { hero: { badge: "Free Quote", title: "Your Quote", subtitle: "in Less than 24h", description: "Get a personalized quote for your equine transport vehicle.", trustIndicators: { free: "100% Free", response24h: "24h Response", noCommitment: "No commitment" } }, benefits: { response24h: { title: "Response Within 24h", description: "Your personalized quote in your inbox" }, free: { title: "100% Free", description: "No fees, no commitment on your part" }, transparent: { title: "Transparent Pricing", description: "All costs included, no surprises" }, expert: { title: "Dedicated Expert", description: "A personal advisor follows your file" } }, vehicleTypes: { title: "What Type of Vehicle Are You Looking For?", subtitle: "Select your category for an even more precise quote", popular: "Most requested", capacities: "Available capacities", horseTrucks: "Horse Truck", horseVans: "Horse Van", horseTrailers: "Horse Trailer" }, form: { title: "Quote Request Form", subtitle: "The more information you give us, the more precise your quote will be", personalInfo: { title: "Your Information", firstName: "First name", lastName: "Last name", email: "Email", phone: "Phone", region: "Region" }, vehicleRequirements: { title: "Your Ideal Vehicle", vehicleType: "Vehicle type", horseCapacity: "Number of horses", condition: "Desired condition", budget: "Approximate budget", selectVehicleType: "Choose the type", selectCapacity: "Select", selectCondition: "New or used?", selectBudget: "Your price range" }, usage: { title: "Usage & Equipment", primaryUse: "Primary use", equipment: "Desired equipment", selectUsage: "How will you use the vehicle?" }, additional: { title: "Additional Information", timeline: "Desired purchase timeframe", message: "Additional message", selectTimeline: "When do you wish to acquire your vehicle?", messagePlaceholder: "Describe your specific needs" }, submit: { title: "Let's Go!", description: "By submitting this form, you will receive your personalized quote within 24 hours maximum.", button: "Receive My Free Quote", disclaimer: "* No commitment • Response guaranteed within 24h • 100% free service" } } },
     trucksPage: { title: "Horse Trucks", subtitle: "Professional", description: "Discover our selection of high capacity horse trucks for professional transport.", filters: { allFilters: "All filters", capacity: "Capacity", price: "Price", year: "Year", mileage: "Mileage", found: "trucks found" }, vehicle: { horseTruck: "Horse Truck", features: { "pneumaticSuspension": "Air suspension", "airConditioning": "Air conditioning", "sleepingCabin": "Sleeping cabin", "automaticTransmission": "Automatic transmission", "integratedGPS": "Integrated GPS", "grandComfortCabin": "Grand comfort cabin", "manualTransmission": "Manual transmission", "blueEfficiency": "BlueEFFICIENCY", "automaticAirConditioning": "Automatic air conditioning", "cruiseControl": "Cruise control", "telematicSystem": "Telematic system", "dtiEngine": "DTI engine", "powerSteering": "Power steering", "electricWindows": "Electric windows", "centralLocking": "Central locking", "euro6": "Euro 6", "adBlueSystem": "AdBlue system", "spaciousCabin": "Spacious cabin", "efficientEngine": "Efficient engine", "easilyMaintained": "Easily maintained", "ergonomicCabin": "Ergonomic cabin" }, badges: { "bestseller": "Bestseller", "premium": "Premium", "promotion": "Promotion", "certifiedUsed": "Certified Used", "recent": "Recent", "reliable": "Reliable" }, specs: { horses: "horses", year: "Year", km: "km", capacity: "Capacity" }, pricing: { save: "Save", financing: "Financing available from", perMonth: "/month" }, actions: { seeDetails: "See Details", addToFavorites: "Add to favorites" } }, cta: { title: "Need Advice on our Trucks?", description: "Our experts guide you in choosing the perfect truck.", getQuote: "Get Free Quote", contactExpert: "Contact Expert" } },
     aboutPage: {},
-    contactPage: {},
-    vansPage: {},
+    contactPage: {
+      hero: {
+        badge: "Contact Us",
+        title1: "Contact",
+        title2: "Our Experts",
+        description: "Our team of experts is at your disposal to accompany you in your equestrian transport project."
+      },
+      methodsSection: {
+        title1: "How to ",
+        title2: "Contact Us?",
+        subtitle: "Several communication methods are available to you"
+      },
+      contactMethods: {
+        phone: {
+          title: "By Phone",
+          subtitle: "06 12 34 56 78",
+          description: "Call us directly for immediate advice",
+          action: "tel:+33612345678",
+          actionText: "Call Now"
+        },
+        chat: {
+          title: "Online Chat",
+          subtitle: "Available 9am-6pm",
+          description: "Chat live with one of our advisors",
+          action: "#",
+          actionText: "Start Chat"
+        },
+        appointment: {
+          title: "Schedule Appointment",
+          subtitle: "Personal appointment",
+          description: "Schedule a visit or call with an expert",
+          action: "#",
+          actionText: "Book a Slot"
+        }
+      },
+      contactInfo: {
+        title1: "Our ",
+        title2: "Details",
+        subtitle: "Find all our practical information",
+        address: {
+          title: "Address",
+          street: "123 Route des Chevaux\n75000 Paris",
+          city: "France"
+        },
+        hours: {
+          title: "Opening hours",
+          weekdays: "Monday - Friday: 9:00 AM - 6:00 PM",
+          saturday: "Saturday: 9:00 AM - 5:00 PM",
+          sunday: "Sunday: Closed"
+        },
+        phone: {
+          title: "Phone",
+          number: "06 12 34 56 78"
+        },
+        email: {
+          title: "Email",
+          address: "contact@horsetruckgarage.fr"
+        }
+      },
+      services: {
+        title: "Our Services",
+        expertise: {
+          title: "Expert Advice",
+          description: "Personalized assistance to choose your vehicle",
+          duration: "30 min"
+        },
+        financing: {
+          title: "Financing Solutions",
+          description: "Free study of your financing options",
+          duration: "45 min"
+        },
+        advice: {
+          title: "Personal Follow-up",
+          description: "Complete support in your project",
+          duration: "1h"
+        }
+      },
+      form: {
+        title: "Write to Us",
+        subtitle: "Send us a message and we will respond quickly",
+        fields: {
+          firstName: "First Name",
+          lastName: "Last Name",
+          email: "Email",
+          phone: "Phone",
+          vehicleType: "Vehicle Type",
+          budget: "Budget",
+          message: "Message"
+        },
+        required: "*",
+        placeholders: {
+          firstName: "Your first name",
+          lastName: "Your last name",
+          email: "your@email.com",
+          phone: "06 12 34 56 78",
+          vehicleTypeSelect: "Select a type",
+          budgetSelect: "Select your budget",
+          message: "Describe your project..."
+        },
+        vehicleTypes: {
+          truck: "Horse truck",
+          van: "Horse van",
+          trailer: "Horse trailer",
+          other: "Other"
+        },
+        budgetRanges: {
+          under30k: "Under €30,000",
+          range30to50k: "€30,000 - €50,000",
+          range50to80k: "€50,000 - €80,000",
+          over80k: "Over €80,000"
+        },
+        submitInfo: "Response guaranteed within 24h",
+        submitSubtitle: "Our team will contact you quickly",
+        submitButton: "Send Message"
+      }
+    },
+    vansPage: {
+      title: "Horse Vans",
+      subtitle: "Compact & Versatile",
+      description: "Discover our selection of horse vans, perfect for transporting 1 to 3 horses with a B license.",
+      filters: {
+        allFilters: "All filters",
+        capacity: "Capacity",
+        price: "Price",
+        year: "Year",
+        mileage: "Mileage",
+        found: "vehicles found"
+      },
+      vehicle: {
+        horseVan: "Horse Van",
+        features: {
+          nonSlipFlooring: "Non-slip flooring",
+          ledLighting: "LED lighting",
+          ventilation: "Ventilation",
+          handsFreeMobile: "Hands-free kit",
+          blueTecEngine: "BlueTEC engine",
+          automaticTransmission: "Automatic transmission",
+          reverseCamera: "Reverse camera",
+          parkingSensors: "Parking sensors",
+          optimizedVolume: "Optimized volume",
+          cruiseControl: "Cruise control",
+          airConditioning: "Air conditioning",
+          ecoBlue: "EcoBlue",
+          sync3: "SYNC 3",
+          parkingAssist: "Parking assist",
+          tdiBlueMotion: "TDI BlueMotion",
+          esp: "ESP",
+          hillStartAssist: "Hill start assist",
+          blueHdi: "BlueHDi",
+          mirrorScreen: "Mirror Screen",
+          fatigueSensor: "Fatigue sensor"
+        },
+        badges: {
+          favorite: "Favorite",
+          bestseller: "Bestseller",
+          premium: "Premium",
+          promotion: "Promotion",
+          certifiedUsed: "Certified Used",
+          recent: "Recent",
+          economical: "Economical"
+        },
+        specs: {
+          horses: "horses",
+          year: "Year",
+          km: "km",
+          capacity: "Capacity"
+        },
+        pricing: {
+          save: "Save",
+          financing: "Financing available from",
+          perMonth: "/month"
+        },
+        actions: {
+          seeDetails: "See Details",
+          addToFavorites: "Add to favorites"
+        }
+      },
+      cta: {
+        title: "Need Advice on our Vans?",
+        description: "Our experts guide you in choosing the perfect van for your needs.",
+        getQuote: "Request Free Quote",
+        contactExpert: "Contact Expert"
+      }
+    },
     footer: { newsletter: { title: "Newsletter", description: "Stay informed about our news", placeholder: "Your email", subscribe: "Subscribe" }, company: { title: "Horse Truck Garage", description: "Your French specialist in equestrian transport since 2008." }, contact: { title: "Contact", phone: "06 12 34 56 78", email: "contact@horsetruckgarage.fr", address: "123 Route des Chevaux, 75000 Paris", hours: "Monday to Friday 9am-6pm" }, vehicles: { title: "Vehicles", horseTrucks: "Horse Trucks", horseVans: "Horse Vans", horseTrailers: "Horse Trailers", occasions: "Used Vehicles" }, company2: { title: "Company", about: "About", contact: "Contact", blog: "Blog", career: "Careers" }, followUs: "Follow us", copyright: "© 2024 Horse Truck Garage. All rights reserved.", terms: "Terms and conditions", privacy: "Privacy policy", sitemap: "Sitemap" },
     floating: { quote24h: "24h Quote" },
     features: { "pneumaticSuspension": "Air suspension", "airConditioning": "Air conditioning", "sleepingCabin": "Sleeping cabin", "automaticTransmission": "Automatic transmission", "nonSlipFlooring": "Non-slip flooring", "ledLighting": "LED lighting", "ventilation": "Ventilation", "handsFreeeKit": "Hands free kit", "aluminum": "Aluminum", "alkoSuspension": "AL-KO suspension", "rubberFlooring": "Rubber flooring" },
@@ -413,8 +930,190 @@ export const translations: Record<Language, Translations> = {
   es: {
     nav: { home: "Inicio", horseTrucks: "Camiones para Caballos", horseVans: "Furgones para Caballos", horseTrailers: "Remolques para Caballos", about: "Acerca de", contact: "Contacto", getQuote: "Solicitar Presupuesto", occasions: "Vehículos Usados" },
     aboutPage: {},
-    contactPage: {},
-    vansPage: {},
+    contactPage: {
+      hero: {
+        badge: "Contactanos",
+        title1: "Contacta",
+        title2: "Nuestros Expertos",
+        description: "Nuestro equipo de expertos está a tu disposición para acompañarte en tu proyecto de transporte ecuestre."
+      },
+      methodsSection: {
+        title1: "¿Cómo ",
+        title2: "Contactarnos?",
+        subtitle: "Varios métodos de comunicación están disponibles para ti"
+      },
+      contactMethods: {
+        phone: {
+          title: "Por Teléfono",
+          subtitle: "06 12 34 56 78",
+          description: "Llámanos directamente para asesoramiento inmediato",
+          action: "tel:+33612345678",
+          actionText: "Llamar Ahora"
+        },
+        chat: {
+          title: "Chat en Línea",
+          subtitle: "Disponible 9h-18h",
+          description: "Chatea en vivo con uno de nuestros asesores",
+          action: "#",
+          actionText: "Iniciar Chat"
+        },
+        appointment: {
+          title: "Reservar Cita",
+          subtitle: "Cita personalizada",
+          description: "Programa una visita o llamada con un experto",
+          action: "#",
+          actionText: "Reservar Hora"
+        }
+      },
+      contactInfo: {
+        title1: "Nuestros ",
+        title2: "Datos",
+        subtitle: "Encuentra toda nuestra información práctica",
+        address: {
+          title: "Dirección",
+          street: "123 Route des Chevaux\n75000 París",
+          city: "Francia"
+        },
+        hours: {
+          title: "Horarios de apertura",
+          weekdays: "Lunes - Viernes: 9:00 - 18:00",
+          saturday: "Sábado: 9:00 - 17:00",
+          sunday: "Domingo: Cerrado"
+        },
+        phone: {
+          title: "Teléfono",
+          number: "06 12 34 56 78"
+        },
+        email: {
+          title: "Email",
+          address: "contact@horsetruckgarage.fr"
+        }
+      },
+      services: {
+        title: "Nuestros Servicios",
+        expertise: {
+          title: "Asesoramiento Experto",
+          description: "Asistencia personalizada para elegir tu vehículo",
+          duration: "30 min"
+        },
+        financing: {
+          title: "Soluciones de Financiación",
+          description: "Estudio gratuito de tus opciones de financiación",
+          duration: "45 min"
+        },
+        advice: {
+          title: "Seguimiento Personal",
+          description: "Acompañamiento completo en tu proyecto",
+          duration: "1h"
+        }
+      },
+      form: {
+        title: "Escríbenos",
+        subtitle: "Envíanos un mensaje y te responderemos rápidamente",
+        fields: {
+          firstName: "Nombre",
+          lastName: "Apellidos",
+          email: "Email",
+          phone: "Teléfono",
+          vehicleType: "Tipo de vehículo",
+          budget: "Presupuesto",
+          message: "Mensaje"
+        },
+        required: "*",
+        placeholders: {
+          firstName: "Tu nombre",
+          lastName: "Tus apellidos",
+          email: "tu@email.com",
+          phone: "06 12 34 56 78",
+          vehicleTypeSelect: "Selecciona un tipo",
+          budgetSelect: "Selecciona tu presupuesto",
+          message: "Describe tu proyecto..."
+        },
+        vehicleTypes: {
+          truck: "Camión para caballos",
+          van: "Furgón para caballos",
+          trailer: "Remolque para caballos",
+          other: "Otro"
+        },
+        budgetRanges: {
+          under30k: "Menos de 30.000€",
+          range30to50k: "30.000€ - 50.000€",
+          range50to80k: "50.000€ - 80.000€",
+          over80k: "Más de 80.000€"
+        },
+        submitInfo: "Respuesta garantizada en 24h",
+        submitSubtitle: "Nuestro equipo te contactará rápidamente",
+        submitButton: "Enviar Mensaje"
+      }
+    },
+    vansPage: {
+      title: "Furgones para Caballos",
+      subtitle: "Compactos y Versátiles",
+      description: "Descubre nuestra selección de furgones para caballos, perfectos para transportar de 1 a 3 caballos con carnet B.",
+      filters: {
+        allFilters: "Todos los filtros",
+        capacity: "Capacidad",
+        price: "Precio",
+        year: "Año",
+        mileage: "Kilometraje",
+        found: "vehículos encontrados"
+      },
+      vehicle: {
+        horseVan: "Furgón para Caballos",
+        features: {
+          nonSlipFlooring: "Suelo antideslizante",
+          ledLighting: "Iluminación LED",
+          ventilation: "Ventilación",
+          handsFreeMobile: "Kit manos libres",
+          blueTecEngine: "Motor BlueTEC",
+          automaticTransmission: "Transmisión automática",
+          reverseCamera: "Cámara trasera",
+          parkingSensors: "Sensores de aparcamiento",
+          optimizedVolume: "Volumen optimizado",
+          cruiseControl: "Control de crucero",
+          airConditioning: "Climatización",
+          ecoBlue: "EcoBlue",
+          sync3: "SYNC 3",
+          parkingAssist: "Asistente de aparcamiento",
+          tdiBlueMotion: "TDI BlueMotion",
+          esp: "ESP",
+          hillStartAssist: "Asistente de arranque en pendiente",
+          blueHdi: "BlueHDi",
+          mirrorScreen: "Mirror Screen",
+          fatigueSensor: "Sensor de fatiga"
+        },
+        badges: {
+          favorite: "Favorito",
+          bestseller: "Bestseller",
+          premium: "Premium",
+          promotion: "Promoción",
+          certifiedUsed: "Usado Certificado",
+          recent: "Reciente",
+          economical: "Económico"
+        },
+        specs: {
+          horses: "caballos",
+          year: "Año",
+          km: "km",
+          capacity: "Capacidad"
+        },
+        pricing: {
+          save: "Ahorra",
+          financing: "Financiación disponible desde",
+          perMonth: "/mes"
+        },
+        actions: {
+          seeDetails: "Ver Detalles",
+          addToFavorites: "Añadir a favoritos"
+        }
+      },
+      cta: {
+        title: "¿Necesitas Consejo sobre nuestros Furgones?",
+        description: "Nuestros expertos te guían en la elección del furgón perfecto para tus necesidades.",
+        getQuote: "Solicitar Presupuesto Gratis",
+        contactExpert: "Contactar Experto"
+      }
+    },
     hero: { slide1: { subtitle: "Transporte Ecuestre Premium", title: "Vehículos Excepcionales para tus Caballos", description: "Descubre nuestra gama completa de camiones, furgones y remolques." }, slide2: { subtitle: "Comodidad y Seguridad", title: "Camiones para Caballos de Alta Gama", description: "Vehículos espaciosos equipados con las últimas tecnologías." }, slide3: { subtitle: "Movilidad Óptima", title: "Furgones para Caballos Versátiles", description: "Soluciones prácticas y elegantes para el transporte de 1 a 3 caballos." }, slide4: { subtitle: "Flexibilidad Máxima", title: "Remolques para Caballos Profesionales", description: "Amplia gama de remolques adaptados a todas tus necesidades." }, slide5: { subtitle: "Usados Certificados", title: "Vehículos Usados Garantizados", description: "Descubre nuestra selección rigurosa de vehículos usados." }, cta: "Solicitar Presupuesto Gratis" },
     categories: { title: "Nuestros Vehículos", subtitle: "Ecuestres", horseTrucks: { title: "Camiones para Caballos", description: "Vehículos espaciosos y cómodos", features: ["Capacidad 2-6 caballos", "Compartimento guarnicionería"], from: "Desde", explore: "Explorar Camiones" }, horseVans: { title: "Furgones para Caballos", description: "Soluciones compactas y versátiles", features: ["Formato compacto", "Conducción licencia B"], from: "Desde", explore: "Explorar Furgones" }, horseTrailers: { title: "Remolques para Caballos", description: "Remolques robustos y fiables", features: ["1-4 plazas caballos", "Suelo antideslizante"], from: "Desde", explore: "Explorar Remolques" }, ctaTitle: "¿Necesitas ayuda para elegir?", ctaDescription: "Nuestros expertos te acompañan en la elección del vehículo perfecto.", getFreeQuote: "Presupuesto Gratis", makeAppointment: "Pedir Cita", specialties: "Nuestras Especialidades", findPerfectVehicle: "Encuentra el vehículo perfecto", disciplineDescription: "Tenemos el vehículo adaptado a tu pasión." },
     trust: { badge: "Confianza", title: "Tu Socio de Confianza", subtitle: "desde 2008", description: "Horse Truck Garage, tu especialista francés en transporte ecuestre.", stats: { experience: "15+ años de experiencia", clients: "2000+ clientes satisfechos", satisfaction: "98% de satisfacción", response: "Respuesta en 24h" }, reviewsTitle: "Testimonios de Clientes", reviewsDescription: "Descubre la experiencia de nuestros clientes", leaveReview: "Dejar una reseña", partnersTitle: "Nuestros Socios", partnersDescription: "Marcas de confianza", getQuote: "Solicitar Presupuesto", partners: [], reviews: [] },
@@ -428,8 +1127,190 @@ export const translations: Record<Language, Translations> = {
   de: {
     nav: { home: "Startseite", horseTrucks: "Pferdetransporter", horseVans: "Pferde-Vans", horseTrailers: "Pferdeanhänger", about: "Über uns", contact: "Kontakt", getQuote: "Angebot anfordern", occasions: "Gebrauchtwagen" },
     aboutPage: {},
-    contactPage: {},
-    vansPage: {},
+    contactPage: {
+      hero: {
+        badge: "Kontaktieren Sie uns",
+        title1: "Kontaktieren Sie",
+        title2: "Unsere Experten",
+        description: "Unser Expertenteam steht Ihnen zur Verfügung, um Sie bei Ihrem Pferdetransportprojekt zu begleiten."
+      },
+      methodsSection: {
+        title1: "Wie ",
+        title2: "Kontaktieren?",
+        subtitle: "Mehrere Kommunikationsmethoden stehen Ihnen zur Verfügung"
+      },
+      contactMethods: {
+        phone: {
+          title: "Telefonisch",
+          subtitle: "06 12 34 56 78",
+          description: "Rufen Sie uns direkt für sofortige Beratung an",
+          action: "tel:+33612345678",
+          actionText: "Jetzt Anrufen"
+        },
+        chat: {
+          title: "Online-Chat",
+          subtitle: "Verfügbar 9-18 Uhr",
+          description: "Chatten Sie live mit einem unserer Berater",
+          action: "#",
+          actionText: "Chat Starten"
+        },
+        appointment: {
+          title: "Termin Buchen",
+          subtitle: "Persönlicher Termin",
+          description: "Planen Sie einen Besuch oder Anruf mit einem Experten",
+          action: "#",
+          actionText: "Slot Buchen"
+        }
+      },
+      contactInfo: {
+        title1: "Unsere ",
+        title2: "Kontaktdaten",
+        subtitle: "Finden Sie alle unsere praktischen Informationen",
+        address: {
+          title: "Adresse",
+          street: "123 Route des Chevaux\n75000 Paris",
+          city: "Frankreich"
+        },
+        hours: {
+          title: "Öffnungszeiten",
+          weekdays: "Montag - Freitag: 9:00 - 18:00",
+          saturday: "Samstag: 9:00 - 17:00",
+          sunday: "Sonntag: Geschlossen"
+        },
+        phone: {
+          title: "Telefon",
+          number: "06 12 34 56 78"
+        },
+        email: {
+          title: "E-Mail",
+          address: "contact@horsetruckgarage.fr"
+        }
+      },
+      services: {
+        title: "Unsere Dienstleistungen",
+        expertise: {
+          title: "Expertenberatung",
+          description: "Persönliche Unterstützung bei der Fahrzeugwahl",
+          duration: "30 Min"
+        },
+        financing: {
+          title: "Finanzierungslösungen",
+          description: "Kostenlose Prüfung Ihrer Finanzierungsoptionen",
+          duration: "45 Min"
+        },
+        advice: {
+          title: "Persönliche Betreuung",
+          description: "Vollständige Begleitung bei Ihrem Projekt",
+          duration: "1h"
+        }
+      },
+      form: {
+        title: "Schreiben Sie uns",
+        subtitle: "Senden Sie uns eine Nachricht und wir antworten schnell",
+        fields: {
+          firstName: "Vorname",
+          lastName: "Nachname",
+          email: "E-Mail",
+          phone: "Telefon",
+          vehicleType: "Fahrzeugtyp",
+          budget: "Budget",
+          message: "Nachricht"
+        },
+        required: "*",
+        placeholders: {
+          firstName: "Ihr Vorname",
+          lastName: "Ihr Nachname",
+          email: "ihre@email.com",
+          phone: "06 12 34 56 78",
+          vehicleTypeSelect: "Typ auswählen",
+          budgetSelect: "Budget auswählen",
+          message: "Beschreiben Sie Ihr Projekt..."
+        },
+        vehicleTypes: {
+          truck: "Pferdetransporter",
+          van: "Pferde-Van",
+          trailer: "Pferdeanhänger",
+          other: "Andere"
+        },
+        budgetRanges: {
+          under30k: "Unter 30.000€",
+          range30to50k: "30.000€ - 50.000€",
+          range50to80k: "50.000€ - 80.000€",
+          over80k: "Über 80.000€"
+        },
+        submitInfo: "Antwort garantiert innerhalb 24h",
+        submitSubtitle: "Unser Team kontaktiert Sie schnell",
+        submitButton: "Nachricht Senden"
+      }
+    },
+    vansPage: {
+      title: "Pferde-Vans",
+      subtitle: "Kompakt & Vielseitig",
+      description: "Entdecken Sie unsere Auswahl an Pferde-Vans, perfekt für den Transport von 1 bis 3 Pferden mit B-Führerschein.",
+      filters: {
+        allFilters: "Alle Filter",
+        capacity: "Kapazität",
+        price: "Preis",
+        year: "Jahr",
+        mileage: "Laufleistung",
+        found: "Fahrzeuge gefunden"
+      },
+      vehicle: {
+        horseVan: "Pferde-Van",
+        features: {
+          nonSlipFlooring: "Rutschfester Boden",
+          ledLighting: "LED-Beleuchtung",
+          ventilation: "Belüftung",
+          handsFreeMobile: "Freisprecheinrichtung",
+          blueTecEngine: "BlueTEC Motor",
+          automaticTransmission: "Automatikgetriebe",
+          reverseCamera: "Rückfahrkamera",
+          parkingSensors: "Parksensoren",
+          optimizedVolume: "Optimiertes Volumen",
+          cruiseControl: "Tempomat",
+          airConditioning: "Klimaanlage",
+          ecoBlue: "EcoBlue",
+          sync3: "SYNC 3",
+          parkingAssist: "Parkassistent",
+          tdiBlueMotion: "TDI BlueMotion",
+          esp: "ESP",
+          hillStartAssist: "Berganfahrhilfe",
+          blueHdi: "BlueHDi",
+          mirrorScreen: "Mirror Screen",
+          fatigueSensor: "Müdigkeitserkennung"
+        },
+        badges: {
+          favorite: "Favorit",
+          bestseller: "Bestseller",
+          premium: "Premium",
+          promotion: "Aktion",
+          certifiedUsed: "Geprüft Gebraucht",
+          recent: "Aktuell",
+          economical: "Wirtschaftlich"
+        },
+        specs: {
+          horses: "Pferde",
+          year: "Jahr",
+          km: "km",
+          capacity: "Kapazität"
+        },
+        pricing: {
+          save: "Sparen",
+          financing: "Finanzierung verfügbar ab",
+          perMonth: "/Monat"
+        },
+        actions: {
+          seeDetails: "Details Ansehen",
+          addToFavorites: "Zu Favoriten hinzufügen"
+        }
+      },
+      cta: {
+        title: "Brauchen Sie Beratung zu unseren Vans?",
+        description: "Unsere Experten führen Sie bei der Wahl des perfekten Vans für Ihre Bedürfnisse.",
+        getQuote: "Kostenloses Angebot Anfordern",
+        contactExpert: "Experten Kontaktieren"
+      }
+    },
     hero: { slide1: { subtitle: "Premium Pferdetransport", title: "Außergewöhnliche Fahrzeuge für Ihre Pferde", description: "Entdecken Sie unser komplettes Sortiment an LKWs, Vans und Anhängern." }, slide2: { subtitle: "Komfort & Sicherheit", title: "Hochwertige Pferdetransporter", description: "Geräumige Fahrzeuge ausgestattet mit neuesten Technologien." }, slide3: { subtitle: "Optimale Mobilität", title: "Vielseitige Pferde-Vans", description: "Praktische und elegante Lösungen für den Transport von 1 bis 3 Pferden." }, slide4: { subtitle: "Maximale Flexibilität", title: "Professionelle Pferdeanhänger", description: "Breites Sortiment an Anhängern, angepasst an alle Ihre Bedürfnisse." }, slide5: { subtitle: "Zertifizierte Gebrauchtwagen", title: "Garantierte Gebrauchtwagen", description: "Entdecken Sie unsere strenge Auswahl an Gebrauchtwagen." }, cta: "Kostenloses Angebot anfordern" },
     categories: { title: "Unsere Fahrzeuge", subtitle: "Reitsport", horseTrucks: { title: "Pferdetransporter", description: "Geräumige und komfortable Fahrzeuge", features: ["Kapazität 2-6 Pferde", "Sattelkammer"], from: "Ab", explore: "LKWs erkunden" }, horseVans: { title: "Pferde-Vans", description: "Kompakte und vielseitige Lösungen", features: ["Kompaktes Format", "B-Führerschein"], from: "Ab", explore: "Vans erkunden" }, horseTrailers: { title: "Pferdeanhänger", description: "Robuste und zuverlässige Anhänger", features: ["1-4 Pferdeplätze", "Rutschfester Boden"], from: "Ab", explore: "Anhänger erkunden" }, ctaTitle: "Brauchen Sie Hilfe bei der Auswahl?", ctaDescription: "Unsere Experten begleiten Sie bei der Wahl des perfekten Fahrzeugs.", getFreeQuote: "Kostenloses Angebot", makeAppointment: "Termin vereinbaren", specialties: "Unsere Spezialitäten", findPerfectVehicle: "Finden Sie das perfekte Fahrzeug", disciplineDescription: "Wir haben das passende Fahrzeug für Ihre Leidenschaft." },
     trust: { badge: "Vertrauen", title: "Ihr Vertrauenspartner", subtitle: "seit 2008", description: "Horse Truck Garage, Ihr französischer Spezialist für Pferdetransport.", stats: { experience: "15+ Jahre Erfahrung", clients: "2000+ zufriedene Kunden", satisfaction: "98% Zufriedenheit", response: "Antwort innerhalb 24h" }, reviewsTitle: "Kundenbewertungen", reviewsDescription: "Entdecken Sie die Erfahrungen unserer Kunden", leaveReview: "Bewertung hinterlassen", partnersTitle: "Unsere Partner", partnersDescription: "Vertrauensmarken", getQuote: "Angebot anfordern", partners: [], reviews: [] },
