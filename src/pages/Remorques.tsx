@@ -332,16 +332,16 @@ const Remorques = () => {
                     </div>
                   </div>
                   
-                  <div className="flex gap-2 pt-2">
-                    <Link to={getLocalizedPath('/contact', language)} className="flex-1">
-                      <Button className="htg-button-primary w-full">
-                        {t.trucksPage?.vehicle?.actions?.seeDetails || "Voir Détails"}
-                      </Button>
-                    </Link>
-                    <Button variant="outline" className="htg-button-secondary px-3">
-                      <Heart className="w-4 h-4" />
-                    </Button>
-                  </div>
+                   <div className="flex gap-2 pt-2">
+                     <Link to={`${getLocalizedPath('/vehicule', language)}/trailers/${index + 1}`} className="flex-1">
+                       <Button className="htg-button-primary w-full">
+                         {t.trucksPage?.vehicle?.actions?.seeDetails || "Voir Détails"}
+                       </Button>
+                     </Link>
+                     <Button variant="outline" className="htg-button-secondary px-3">
+                       <Heart className="w-4 h-4" />
+                     </Button>
+                   </div>
                 </div>
               </div>
             ))}

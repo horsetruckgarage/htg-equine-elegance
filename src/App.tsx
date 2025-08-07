@@ -14,6 +14,7 @@ import Camions from "./pages/Camions";
 import Vans from "./pages/Vans";
 import Remorques from "./pages/Remorques";
 import Occasions from "./pages/Occasions";
+import VehicleDetail from "./pages/VehicleDetail";
 
 const queryClient = new QueryClient();
 
@@ -38,6 +39,7 @@ const App = () => (
             <Route path="/fr/contact" element={<Contact />} />
             <Route path="/fr/demande-devis" element={<DemandeDevis />} />
             <Route path="/fr/occasions" element={<Occasions />} />
+            <Route path="/fr/vehicule/:type/:id" element={<VehicleDetail />} />
             
             {/* English routes */}
             <Route path="/en" element={<Index />} />
@@ -48,6 +50,7 @@ const App = () => (
             <Route path="/en/contact" element={<Contact />} />
             <Route path="/en/quote" element={<DemandeDevis />} />
             <Route path="/en/used-vehicles" element={<Occasions />} />
+            <Route path="/en/vehicle/:type/:id" element={<VehicleDetail />} />
             
             {/* Spanish routes */}
             <Route path="/es" element={<Index />} />
@@ -58,6 +61,7 @@ const App = () => (
             <Route path="/es/contacto" element={<Contact />} />
             <Route path="/es/presupuesto" element={<DemandeDevis />} />
             <Route path="/es/ocasiones" element={<Occasions />} />
+            <Route path="/es/vehiculo/:type/:id" element={<VehicleDetail />} />
             
             {/* German routes */}
             <Route path="/de" element={<Index />} />
@@ -68,6 +72,7 @@ const App = () => (
             <Route path="/de/kontakt" element={<Contact />} />
             <Route path="/de/angebot" element={<DemandeDevis />} />
             <Route path="/de/gebrauchte" element={<Occasions />} />
+            <Route path="/de/fahrzeug/:type/:id" element={<VehicleDetail />} />
             
             {/* Legacy redirects (without language prefix) */}
             <Route path="/camions" element={<Navigate to="/fr/camions-chevaux" replace />} />

@@ -11,7 +11,8 @@ export const routeTranslations: Record<Language, Record<string, string>> = {
     '/about': '/a-propos',
     '/contact': '/contact',
     '/devis': '/demande-devis',
-    '/occasions': '/occasions'
+    '/occasions': '/occasions',
+    '/vehicule': '/vehicule'
   },
   en: {
     '/': '/',
@@ -21,7 +22,8 @@ export const routeTranslations: Record<Language, Record<string, string>> = {
     '/about': '/about',
     '/contact': '/contact',
     '/devis': '/quote',
-    '/occasions': '/used-vehicles'
+    '/occasions': '/used-vehicles',
+    '/vehicule': '/vehicle'
   },
   es: {
     '/': '/',
@@ -31,7 +33,8 @@ export const routeTranslations: Record<Language, Record<string, string>> = {
     '/about': '/acerca-de',
     '/contact': '/contacto', 
     '/devis': '/presupuesto',
-    '/occasions': '/ocasiones'
+    '/occasions': '/ocasiones',
+    '/vehicule': '/vehiculo'
   },
   de: {
     '/': '/',
@@ -41,7 +44,8 @@ export const routeTranslations: Record<Language, Record<string, string>> = {
     '/about': '/ueber-uns',
     '/contact': '/kontakt',
     '/devis': '/angebot',
-    '/occasions': '/gebrauchte'
+    '/occasions': '/gebrauchte',
+    '/vehicule': '/fahrzeug'
   }
 };
 
