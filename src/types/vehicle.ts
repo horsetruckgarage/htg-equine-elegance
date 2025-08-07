@@ -1,5 +1,5 @@
 export interface Vehicle {
-  id: number;
+  id: string;
   type: 'truck' | 'van' | 'trailer';
   name: string;
   price: string;

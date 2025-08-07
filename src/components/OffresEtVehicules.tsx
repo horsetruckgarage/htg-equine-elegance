@@ -37,6 +37,7 @@ const OffresEtVehicules = () => {
 
   const featuredVehicles = vehicles.slice(0, 3).map(vehicle => ({
     id: vehicle.id,
+    type: vehicle.type,
     title: vehicle.name,
     category: vehicle.type === 'truck' ? t.categories.horseTrucks.title : 
               vehicle.type === 'van' ? t.categories.horseVans.title : 
@@ -266,7 +267,7 @@ const OffresEtVehicules = () => {
                   </div>
                   
                   <div className="flex gap-2 pt-2">
-                    <Link to={getLocalizedPath(`/vehicule/${vehicle.category.toLowerCase().includes('camion') ? 'trucks' : vehicle.category.toLowerCase().includes('van') ? 'vans' : 'trailers'}/${vehicle.id}`, language)} className="flex-1">
+                    <Link to={getLocalizedPath(`/vehicule/${vehicle.type === 'truck' ? 'trucks' : vehicle.type === 'van' ? 'vans' : 'trailers'}/${vehicle.id}`, language)} className="flex-1">
                       <Button className="htg-button-primary w-full" title={t.common.discoverCharacteristics}>
                         {t.common.viewDetails}
                       </Button>

@@ -42,7 +42,7 @@ export const useVehicles = (filter?: VehicleFilter) => {
 
         // Transform data to match Vehicle interface
         const transformedVehicles: Vehicle[] = data.map((vehicle: any) => ({
-          id: parseInt(vehicle.id) || 0,
+          id: vehicle.id,
           type: vehicle.type as 'truck' | 'van' | 'trailer',
           name: vehicle.name,
           price: vehicle.price.toString(),
@@ -111,7 +111,7 @@ export const useVehicle = (id: string) => {
 
         // Transform data to match Vehicle interface
         const transformedVehicle: Vehicle = {
-          id: parseInt(data.id) || 0,
+          id: data.id,
           type: data.type as 'truck' | 'van' | 'trailer',
           name: data.name,
           price: data.price.toString(),
