@@ -11,7 +11,7 @@ import { useVehicle } from "@/hooks/useSupabaseVehicles";
 
 const VehicleDetail = () => {
   const { t, language } = useTranslation();
-  const { type, id } = useParams();
+  const { id } = useParams();
   const navigate = useNavigate();
   
   const { vehicle, loading, error } = useVehicle(id || '');
@@ -53,10 +53,12 @@ const VehicleDetail = () => {
 
 
   const getBackPath = () => {
-    switch (type) {
-      case 'trucks': return getLocalizedPath('/camions', language);
-      case 'vans': return getLocalizedPath('/vans', language);
-      case 'trailers': return getLocalizedPath('/remorques', language);
+    if (!vehicle) return getLocalizedPath('/', language);
+    
+    switch (vehicle.type) {
+      case 'truck': return getLocalizedPath('/camions-chevaux', language);
+      case 'van': return getLocalizedPath('/vans-chevaux', language);
+      case 'trailer': return getLocalizedPath('/remorques-chevaux', language);
       default: return getLocalizedPath('/', language);
     }
   };

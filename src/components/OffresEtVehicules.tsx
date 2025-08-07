@@ -1,6 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-
+import VehicleLink from "@/components/VehicleLink";
+import VehicleImage from "@/components/VehicleImage";
 import { Eye, Heart, Star, Calendar, Gauge, Users, Clock, TrendingUp, TrendingDown, Zap, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -140,10 +141,16 @@ const OffresEtVehicules = () => {
                 {/* Image */}
                 <div className="relative aspect-[4/3] overflow-hidden">
                   {vehicle.images && vehicle.images.length > 0 ? (
-                    <img 
+                    <VehicleImage 
                       src={vehicle.images[0]} 
                       alt={vehicle.title}
                       className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      fallbackIcon={
+                        <div className="text-center space-y-2">
+                          <Gauge className="w-16 h-16 text-copper mx-auto" />
+                          <p className="text-copper font-semibold text-lg">{vehicle.category}</p>
+                        </div>
+                      }
                     />
                   ) : (
                     <div className="w-full h-full bg-gradient-to-br from-leather/30 to-copper/10 flex items-center justify-center">
@@ -267,11 +274,11 @@ const OffresEtVehicules = () => {
                   </div>
                   
                   <div className="flex gap-2 pt-2">
-                    <Link to={getLocalizedPath(`/vehicule/${vehicle.type === 'truck' ? 'trucks' : vehicle.type === 'van' ? 'vans' : 'trailers'}/${vehicle.id}`, language)} className="flex-1">
+                    <VehicleLink vehicleId={vehicle.id} className="flex-1">
                       <Button className="htg-button-primary w-full" title={t.common.discoverCharacteristics}>
                         {t.common.viewDetails}
                       </Button>
-                    </Link>
+                    </VehicleLink>
                     <Button variant="outline" className="htg-button-secondary px-3" title={t.common.addToMySelection}>
                       <Heart className="w-4 h-4" />
                     </Button>

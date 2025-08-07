@@ -45,7 +45,7 @@ const App = () => (
             <Route path="/fr/demande-devis" element={<DemandeDevis />} />
             <Route path="/fr/occasions" element={<Occasions />} />
             <Route path="/fr/vehicule" element={<Navigate to="/fr/camions-chevaux" replace />} />
-            <Route path="/fr/vehicule/:type/:id" element={<VehicleDetail />} />
+            <Route path="/fr/vehicule/:id" element={<VehicleDetail />} />
             
             {/* English routes */}
             <Route path="/en" element={<Index />} />
@@ -57,7 +57,7 @@ const App = () => (
             <Route path="/en/quote" element={<DemandeDevis />} />
             <Route path="/en/used-vehicles" element={<Occasions />} />
             <Route path="/en/vehicle" element={<Navigate to="/en/horse-trucks" replace />} />
-            <Route path="/en/vehicle/:type/:id" element={<VehicleDetail />} />
+            <Route path="/en/vehicle/:id" element={<VehicleDetail />} />
             
             {/* Spanish routes */}
             <Route path="/es" element={<Index />} />
@@ -69,7 +69,7 @@ const App = () => (
             <Route path="/es/presupuesto" element={<DemandeDevis />} />
             <Route path="/es/ocasiones" element={<Occasions />} />
             <Route path="/es/vehiculo" element={<Navigate to="/es/camiones-para-caballos" replace />} />
-            <Route path="/es/vehiculo/:type/:id" element={<VehicleDetail />} />
+            <Route path="/es/vehiculo/:id" element={<VehicleDetail />} />
             
             {/* German routes */}
             <Route path="/de" element={<Index />} />
@@ -81,7 +81,7 @@ const App = () => (
             <Route path="/de/angebot" element={<DemandeDevis />} />
             <Route path="/de/gebrauchte" element={<Occasions />} />
             <Route path="/de/fahrzeug" element={<Navigate to="/de/pferdetransporter" replace />} />
-            <Route path="/de/fahrzeug/:type/:id" element={<VehicleDetail />} />
+            <Route path="/de/fahrzeug/:id" element={<VehicleDetail />} />
             
             {/* Legacy redirects (without language prefix) */}
             <Route path="/camions" element={<Navigate to="/fr/camions-chevaux" replace />} />
