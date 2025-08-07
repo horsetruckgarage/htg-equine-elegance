@@ -249,13 +249,6 @@ export interface Translations {
       blog: string;
       career: string;
     };
-    services: {
-      title: string;
-      financing: string;
-      insurance: string;
-      warranty: string;
-      maintenance: string;
-    };
     followUs: string;
     copyright: string;
     terms: string;
@@ -885,13 +878,6 @@ const translations: Record<Language, Translations> = {
         contact: "Contact",
         blog: "Blog",
         career: "Carrières"
-      },
-      services: {
-        title: "Services",
-        financing: "Financement",
-        insurance: "Assurance",
-        warranty: "Garantie",
-        maintenance: "SAV"
       },
       followUs: "Suivez-nous",
       copyright: "Tous droits réservés.",
@@ -1609,13 +1595,6 @@ const translations: Record<Language, Translations> = {
         blog: "Blog",
         career: "Careers"
       },
-      services: {
-        title: "Services",
-        financing: "Financing",
-        insurance: "Insurance",
-        warranty: "Warranty",
-        maintenance: "After Sales"
-      },
       followUs: "Follow us",
       copyright: "All rights reserved.",
       terms: "Legal Notice",
@@ -2332,13 +2311,6 @@ const translations: Record<Language, Translations> = {
         blog: "Blog",
         career: "Carreras"
       },
-      services: {
-        title: "Servicios",
-        financing: "Financiación",
-        insurance: "Seguro",
-        warranty: "Garantía",
-        maintenance: "Posventa"
-      },
       followUs: "Síguenos",
       copyright: "Todos los derechos reservados.",
       terms: "Aviso Legal",
@@ -3005,13 +2977,6 @@ const translations: Record<Language, Translations> = {
         blog: "Blog",
         career: "Karriere"
       },
-      services: {
-        title: "Services",
-        financing: "Finanzierung",
-        insurance: "Versicherung",
-        warranty: "Garantie",
-        maintenance: "Kundendienst"
-      },
       followUs: "Folgen Sie uns",
       copyright: "Alle Rechte vorbehalten.",
       terms: "Rechtliche Hinweise",
@@ -3176,7 +3141,7 @@ const translations: Record<Language, Translations> = {
       stats: { experience: "Jahre Erfahrung", clients: "Zufriedene Kunden", certified: "Zertifizierte Fahrzeuge", recommendations: "Empfehlungen" },
       story: { title1: "Eine Leidenschaft", title2: "Wurde zur Expertise", paragraph1: "Alles begann 2008 mit einer einfachen Überzeugung: Pferde verdienen den bestmöglichen Transport.", paragraph2: "Heute sind wir stolz darauf, die französische Referenz für Pferdetransportfahrzeuge geworden zu sein.", cta: "Persönliches Angebot anfordern" },
       mission: { title: "Unsere Mission", description: "Reitsport-Enthusiasten Transportlösungen anzubieten, die Sicherheit, Komfort und Leistung vereinen.", point1: "Strenge Fahrzeugauswahl", point2: "Anerkannte technische Expertise", point3: "Persönlicher Kundenservice" },
-      values: { passion: { title: "Reitsport-Leidenschaft", description: "Unser Team teilt Ihre Leidenschaft für die Pferdewelt." }, expertise: { title: "Anerkannte Expertise", description: "15 Jahre Erfahrung im Pferdetransport." }, excellence: { title: "Service-Exzellenz", description: "Wir bieten Ihnen einen außergewöhnlichen Service." }, support: { title: "Komplette Unterstützung", description: "Finanzierung, Versicherung, Wartung." } },
+      values: { passion: { title: "Reitsport-Leidenschaft", description: "Unser Team teilt Ihre Leidenschaft für die Pferdewelt." }, expertise: { title: "Anerkannte Expertise", description: "15 Jahre Erfahrung im Pferdetransport." }, excellence: { title: "Service-Exzellenz", description: "Wir bieten Ihnen einen außergewöhnlichen Service." }, support: { title: "Komplette Unterstützung", description: "Von der Beratung bis zur Wartung." } },
       valuesSection: { title1: "Unsere", title2: " Werte", subtitle: "Die Prinzipien, die unser Handeln leiten" },
       team: { director: { role: "Direktor & Gründer", experience: "20 Jahre im Pferdetransport", speciality: "Experte für Premium-Pferdetransporter" }, sales: { role: "Verkaufsleiter", experience: "12 Jahre bei HTG", speciality: "Spezialist für Transporter" }, technical: { role: "Technischer Experte", experience: "15 Jahre spezialisierter Mechaniker", speciality: "Qualitätskontrolle" } },
       teamSection: { title1: "Unser", title2: " Team", subtitle: "Leidenschaftliche Experten zu Ihren Diensten" },
@@ -3249,7 +3214,7 @@ const translations: Record<Language, Translations> = {
           duration: "Binnen 48h"
         },
         financing: {
-          title: "Finanzierungs-Simulation",
+          title: "Kalkulator",
           description: "Berechnen Sie Ihre monatlichen Raten in Echtzeit",
           duration: "Sofort"
         },
@@ -3388,7 +3353,7 @@ const translations: Record<Language, Translations> = {
             infoOnly: "Einfache Informationsanfrage"
           },
           message: "Zusätzliche Nachricht",
-          messagePlaceholder: "Beschreiben Sie Ihre spezifischen Bedürfnisse, besonderen Einschränkungen, Finanzierungsfragen, etc."
+          messagePlaceholder: "Beschreiben Sie Ihre spezifischen Bedürfnisse, besonderen Einschränkungen, Fragen, etc."
         },
         submit: {
           title: "Los geht's!",
