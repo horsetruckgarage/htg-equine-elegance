@@ -16,7 +16,7 @@ const VehicleDetail = () => {
   // Pour l'instant, données simulées - à remplacer par de vraies données
   const vehicleData = {
     name: "Renault Master L3H2 - Transport 3 Chevaux",
-    category: type === 'trucks' ? 'Camion Chevaux' : type === 'vans' ? 'Van Chevaux' : 'Remorque Chevaux',
+    category: type === 'trucks' ? t.trucksPage.vehicle.horseTruck : type === 'vans' ? t.vansPage.vehicle.horseVan : t.categories.horseTrailers.title,
     price: "68 500€",
     originalPrice: "75 000€",
     images: [
@@ -27,24 +27,27 @@ const VehicleDetail = () => {
     specs: {
       year: "2022",
       mileage: "45 000 km",
-      capacity: "3 chevaux",
-      transmission: "Automatique",
-      fuel: "Diesel",
+      capacity: `3 ${t.common.horsesCapacity}`,
+      transmission: t.vehicleDetail.automaticTransmission,
+      fuel: t.vehicleDetail.diesel,
       power: "170 CV"
     },
     features: [
-      "Suspension pneumatique",
-      "Climatisation",
-      "Compartiment sellerie spacieux",
-      "Système de ventilation optimisé",
-      "Plancher antidérapant",
-      "Éclairage LED",
+      t.features.pneumaticSuspension,
+      t.features.airConditioning,
+      t.features.tackCompartment + " spacieux",
+      t.features.ventilationSystem + " optimisé",
+      t.features.nonSlipFlooring,
+      t.features.ledLighting,
       "Caméra de recul",
-      "Boîte automatique"
+      t.features.automaticTransmission
     ],
-    description: "Ce magnifique Renault Master a été entièrement aménagé par nos soins pour le transport de 3 chevaux. Véhicule en excellent état, révisé et garanti 12 mois.",
-    condition: "Excellent",
-    availability: "Disponible immédiatement"
+    description: language === 'fr' ? "Ce magnifique Renault Master a été entièrement aménagé par nos soins pour le transport de 3 chevaux. Véhicule en excellent état, révisé et garanti 12 mois."
+      : language === 'en' ? "This magnificent Renault Master has been completely fitted out by us for transporting 3 horses. Vehicle in excellent condition, serviced and guaranteed for 12 months."
+      : language === 'es' ? "Esta magnífica Renault Master ha sido completamente acondicionada por nosotros para el transporte de 3 caballos. Vehículo en excelente estado, revisado y garantizado por 12 meses."
+      : "Dieser herrliche Renault Master wurde von uns vollständig für den Transport von 3 Pferden ausgestattet. Fahrzeug in ausgezeichnetem Zustand, gewartet und 12 Monate garantiert.",
+    condition: t.vehicleDetail.excellent,
+    availability: t.vehicleDetail.availableImmediately
   };
 
   const getBackPath = () => {
@@ -66,7 +69,7 @@ const VehicleDetail = () => {
           <Link to={getBackPath()}>
             <Button variant="ghost" className="mb-6">
               <ArrowLeft className="w-4 h-4 mr-2" />
-              Retour au catalogue
+              {t.vehicleDetail.backToCatalogue}
             </Button>
           </Link>
         </div>
@@ -120,14 +123,14 @@ const VehicleDetail = () => {
                   <span className="text-3xl font-bold text-copper">{vehicleData.price}</span>
                   <span className="text-lg text-muted-foreground line-through">{vehicleData.originalPrice}</span>
                   <Badge variant="secondary" className="bg-green-100 text-green-800">
-                    Économisez 6 500€
+                    {t.vehicleDetail.save} 6 500€
                   </Badge>
                 </div>
               </div>
 
               {/* Caractéristiques principales */}
               <div className="htg-card p-6">
-                <h3 className="text-xl font-bold mb-4">Caractéristiques principales</h3>
+                <h3 className="text-xl font-bold mb-4">{t.vehicleDetail.mainCharacteristics}</h3>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="flex items-center gap-2">
                     <Calendar className="w-5 h-5 text-copper" />
@@ -158,13 +161,13 @@ const VehicleDetail = () => {
 
               {/* Description */}
               <div className="htg-card p-6">
-                <h3 className="text-xl font-bold mb-4">Description</h3>
+                <h3 className="text-xl font-bold mb-4">{t.vehicleDetail.description}</h3>
                 <p className="text-muted-foreground leading-relaxed">{vehicleData.description}</p>
               </div>
 
               {/* Équipements */}
               <div className="htg-card p-6">
-                <h3 className="text-xl font-bold mb-4">Équipements inclus</h3>
+                <h3 className="text-xl font-bold mb-4">{t.vehicleDetail.includedEquipment}</h3>
                 <div className="grid grid-cols-2 gap-2">
                   {vehicleData.features.map((feature, index) => (
                     <div key={index} className="flex items-center gap-2">
@@ -179,12 +182,12 @@ const VehicleDetail = () => {
               <div className="grid grid-cols-2 gap-4">
                 <div className="htg-card p-4 text-center">
                   <Shield className="w-6 h-6 text-copper mx-auto mb-2" />
-                  <div className="font-semibold">État</div>
+                  <div className="font-semibold">{t.vehicleDetail.condition}</div>
                   <div className="text-sm text-muted-foreground">{vehicleData.condition}</div>
                 </div>
                 <div className="htg-card p-4 text-center">
                   <Calendar className="w-6 h-6 text-copper mx-auto mb-2" />
-                  <div className="font-semibold">Disponibilité</div>
+                  <div className="font-semibold">{t.vehicleDetail.availability}</div>
                   <div className="text-sm text-muted-foreground">{vehicleData.availability}</div>
                 </div>
               </div>
@@ -193,12 +196,12 @@ const VehicleDetail = () => {
               <div className="space-y-3">
                 <Link to={getLocalizedPath('/devis', language)} className="block">
                   <Button className="htg-button-primary w-full text-lg py-6">
-                    Demander un devis pour ce véhicule
+                    {t.vehicleDetail.requestQuoteForVehicle}
                   </Button>
                 </Link>
                 <Link to={getLocalizedPath('/contact', language)} className="block">
                   <Button variant="outline" className="htg-button-secondary w-full">
-                    Contacter un expert
+                    {t.vehicleDetail.contactExpert}
                   </Button>
                 </Link>
               </div>

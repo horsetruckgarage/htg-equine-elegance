@@ -291,6 +291,28 @@ export interface Translations {
     absBreaking: string;
   };
   
+  // Vehicle Detail Page
+  vehicleDetail: {
+    backToCatalogue: string;
+    mainCharacteristics: string;
+    description: string;
+    includedEquipment: string;
+    condition: string;
+    availability: string;
+    requestQuoteForVehicle: string;
+    contactExpert: string;
+    save: string;
+    year: string;
+    mileage: string;
+    transmission: string;
+    fuel: string;
+    power: string;
+    availableImmediately: string;
+    excellent: string;
+    automaticTransmission: string;
+    diesel: string;
+  };
+
   // Common
   common: {
     readMore: string;
@@ -922,6 +944,26 @@ const translations: Record<Language, Translations> = {
       economical: "Économique",
       horsesCapacity: "chevaux",
       absBreaking: "Freinage ABS"
+    },
+    vehicleDetail: {
+      backToCatalogue: "Retour au catalogue",
+      mainCharacteristics: "Caractéristiques principales",
+      description: "Description",
+      includedEquipment: "Équipements inclus",
+      condition: "État",
+      availability: "Disponibilité",
+      requestQuoteForVehicle: "Demander un devis pour ce véhicule",
+      contactExpert: "Contacter un expert",
+      save: "Économisez",
+      year: "Année",
+      mileage: "Kilométrage",
+      transmission: "Transmission",
+      fuel: "Carburant",
+      power: "Puissance",
+      availableImmediately: "Disponible immédiatement",
+      excellent: "Excellent",
+      automaticTransmission: "Automatique",
+      diesel: "Diesel",
     },
     common: {
       readMore: "Lire la suite",
@@ -1646,6 +1688,26 @@ const translations: Record<Language, Translations> = {
       horsesCapacity: "horses",
       absBreaking: "ABS braking"
     },
+    vehicleDetail: {
+      backToCatalogue: "Back to catalogue",
+      mainCharacteristics: "Main characteristics",
+      description: "Description",
+      includedEquipment: "Included equipment",
+      condition: "Condition",
+      availability: "Availability",
+      requestQuoteForVehicle: "Request a quote for this vehicle",
+      contactExpert: "Contact an expert",
+      save: "Save",
+      year: "Year",
+      mileage: "Mileage",
+      transmission: "Transmission",
+      fuel: "Fuel",
+      power: "Power",
+      availableImmediately: "Available immediately",
+      excellent: "Excellent",
+      automaticTransmission: "Automatic",
+      diesel: "Diesel",
+    },
     common: {
       readMore: "Read more",
       learnMore: "Learn more",
@@ -2369,6 +2431,26 @@ const translations: Record<Language, Translations> = {
       horsesCapacity: "caballos",
       absBreaking: "Frenado ABS"
     },
+    vehicleDetail: {
+      backToCatalogue: "Volver al catálogo",
+      mainCharacteristics: "Características principales",
+      description: "Descripción",
+      includedEquipment: "Equipamiento incluido",
+      condition: "Estado",
+      availability: "Disponibilidad",
+      requestQuoteForVehicle: "Solicitar presupuesto para este vehículo",
+      contactExpert: "Contactar un experto",
+      save: "Ahorrar",
+      year: "Año",
+      mileage: "Kilometraje",
+      transmission: "Transmisión",
+      fuel: "Combustible",
+      power: "Potencia",
+      availableImmediately: "Disponible inmediatamente",
+      excellent: "Excelente",
+      automaticTransmission: "Automática",
+      diesel: "Diesel",
+    },
     common: {
       readMore: "Leer más",
       learnMore: "Saber más",
@@ -3041,6 +3123,26 @@ const translations: Record<Language, Translations> = {
       economical: "Wirtschaftlich",
       horsesCapacity: "Pferde",
       absBreaking: "ABS-Bremsen"
+    },
+    vehicleDetail: {
+      backToCatalogue: "Zurück zum Katalog",
+      mainCharacteristics: "Hauptmerkmale",
+      description: "Beschreibung",
+      includedEquipment: "Enthaltene Ausstattung",
+      condition: "Zustand",
+      availability: "Verfügbarkeit",
+      requestQuoteForVehicle: "Angebot für dieses Fahrzeug anfordern",
+      contactExpert: "Experten kontaktieren",
+      save: "Sparen",
+      year: "Jahr",
+      mileage: "Kilometerstand",
+      transmission: "Getriebe",
+      fuel: "Kraftstoff",
+      power: "Leistung",
+      availableImmediately: "Sofort verfügbar",
+      excellent: "Ausgezeichnet",
+      automaticTransmission: "Automatik",
+      diesel: "Diesel",
     },
     common: {
       readMore: "Mehr lesen",
