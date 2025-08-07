@@ -37,10 +37,11 @@ export const TranslationProvider: React.FC<TranslationProviderProps> = ({ childr
   // Synchroniser les changements de route avec la langue
   useEffect(() => {
     const { language: urlLang } = extractLanguageFromPath(location.pathname);
-    if (urlLang !== language) {
+    // Seulement changer la langue si on a une langue valide de l'URL et qu'elle est différente
+    if (urlLang && ['fr', 'en', 'es', 'de'].includes(urlLang) && urlLang !== language) {
       setLanguage(urlLang);
     }
-  }, [location.pathname]);
+  }, [location.pathname, language]);
 
   useEffect(() => {
     localStorage.setItem('htg-language', language);
@@ -59,6 +60,13 @@ export const TranslationProvider: React.FC<TranslationProviderProps> = ({ childr
     setLanguage: changeLanguage,
     t: translations[language],
   };
+
+  // Debug log pour identifier les problèmes d'actualisation
+  console.log('TranslationProvider:', { 
+    pathname: location.pathname, 
+    language, 
+    hasTranslations: !!translations[language] 
+  });
 
   return (
     <TranslationContext.Provider value={value}>
