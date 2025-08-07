@@ -52,7 +52,9 @@ export const routeTranslations: Record<Language, Record<string, string>> = {
 // Fonction pour obtenir le chemin localisé
 export const getLocalizedPath = (path: string, language: Language): string => {
   const translatedPath = routeTranslations[language][path] || path;
-  return `/${language}${translatedPath === '/' ? '' : translatedPath}`;
+  const result = `/${language}${translatedPath === '/' ? '' : translatedPath}`;
+  console.log('getLocalizedPath:', path, 'for language:', language, 'translated to:', translatedPath, 'final result:', result);
+  return result;
 };
 
 // Fonction pour extraire la langue de l'URL et convertir le chemin localisé en chemin de base
