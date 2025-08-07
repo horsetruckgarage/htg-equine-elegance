@@ -118,45 +118,7 @@ const mockVehicles: Vehicle[] = [
 ];
 
 export const useVehicles = (filter?: VehicleFilter) => {
-  const [vehicles, setVehicles] = useState<Vehicle[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const fetchVehicles = async () => {
-      try {
-        setLoading(true);
-        // TODO: Remplacer par un vrai appel Supabase
-        // const { data, error } = await supabase.from('vehicles').select('*');
-        
-        // Simulation d'un délai API
-        await new Promise(resolve => setTimeout(resolve, 500));
-        
-        let filteredVehicles = mockVehicles;
-        
-        if (filter) {
-          if (filter.type) {
-            filteredVehicles = filteredVehicles.filter(v => v.type === filter.type);
-          }
-          if (filter.featured) {
-            filteredVehicles = filteredVehicles.filter(v => v.featured);
-          }
-        }
-        
-        setVehicles(filteredVehicles);
-        setError(null);
-      } catch (err) {
-        setError('Erreur lors du chargement des véhicules');
-        console.error('Error fetching vehicles:', err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchVehicles();
-  }, [filter]);
-
-  return { vehicles, loading, error };
+  return useSupabaseVehicles(filter);
 };
 
 export const useVehicle = (id: string) => {
