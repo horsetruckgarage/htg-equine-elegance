@@ -26,6 +26,15 @@ const Footer = () => {
         { name: t.nav.getQuote, href: getLocalizedPath("/devis", language) }
       ]
     },
+    {
+      title: t.footer.services.title,
+      links: [
+        { name: t.footer.services.financing, href: getLocalizedPath("/devis", language) },
+        { name: t.footer.services.insurance, href: getLocalizedPath("/contact", language) },
+        { name: t.footer.services.warranty, href: getLocalizedPath("/contact", language) },
+        { name: t.footer.services.maintenance, href: getLocalizedPath("/contact", language) }
+      ]
+    }
   ];
 
   const socialLinks = [
@@ -106,6 +115,22 @@ const Footer = () => {
                 </div>
               </div>
 
+              {/* Social Links */}
+              <div className="flex space-x-4">
+                {socialLinks.map((social) => {
+                  const IconComponent = social.icon;
+                  return (
+                    <a
+                      key={social.name}
+                      href={social.href}
+                      className="w-10 h-10 bg-copper/10 hover:bg-copper hover:text-black rounded-lg flex items-center justify-center transition-colors"
+                      aria-label={social.name}
+                    >
+                      <IconComponent className="w-5 h-5" />
+                    </a>
+                  );
+                })}
+              </div>
             </div>
 
             {/* Footer Links */}
