@@ -1,13 +1,177 @@
 import { useState } from 'react';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Package, Download, Plus } from 'lucide-react';
+import { Package, Download, Plus, Edit, Trash2 } from 'lucide-react';
+import { toast } from 'sonner';
 import { useVehicles } from '@/hooks/useSupabaseVehicles';
+import { supabase } from '@/integrations/supabase/client';
+
+interface VehicleFormData {
+  name: string;
+  type: 'truck' | 'van' | 'trailer';
+  price: number;
+  year?: number;
+  mileage?: number;
+  capacity?: string;
+  transmission?: string;
+  fuel?: string;
+  power?: string;
+  description?: string;
+  available: boolean;
+  featured: boolean;
+}
 
 const ProductsManager = () => {
   const { vehicles: products, loading, error } = useVehicles();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [isCreateDialogOpen, setIsCreateDialogOpen] = useState(false);
+  const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
+  const [editingProduct, setEditingProduct] = useState<any>(null);
+  
+  const queryClient = useQueryClient();
+
+  const [formData, setFormData] = useState<VehicleFormData>({
+    name: '',
+    type: 'truck',
+    price: 0,
+    year: new Date().getFullYear(),
+    mileage: 0,
+    capacity: '',
+    transmission: '',
+    fuel: 'diesel',
+    power: '',
+    description: '',
+    available: true,
+    featured: false,
+  });
+
+  const createVehicleMutation = useMutation({
+    mutationFn: async (data: VehicleFormData) => {
+      const { data: vehicle, error } = await supabase
+        .from('vehicles')
+        .insert([data])
+        .select()
+        .single();
+      
+      if (error) throw error;
+      return vehicle;
+    },
+    onSuccess: () => {
+      toast.success('Véhicule créé avec succès');
+      setIsCreateDialogOpen(false);
+      resetForm();
+      queryClient.invalidateQueries({ queryKey: ['vehicles'] });
+    },
+    onError: (error) => {
+      toast.error('Erreur lors de la création: ' + error.message);
+    },
+  });
+
+  const updateVehicleMutation = useMutation({
+    mutationFn: async ({ id, data }: { id: string; data: Partial<VehicleFormData> }) => {
+      const { data: vehicle, error } = await supabase
+        .from('vehicles')
+        .update(data)
+        .eq('id', id)
+        .select()
+        .single();
+      
+      if (error) throw error;
+      return vehicle;
+    },
+    onSuccess: () => {
+      toast.success('Véhicule modifié avec succès');
+      setIsEditDialogOpen(false);
+      setEditingProduct(null);
+      resetForm();
+      queryClient.invalidateQueries({ queryKey: ['vehicles'] });
+    },
+    onError: (error) => {
+      toast.error('Erreur lors de la modification: ' + error.message);
+    },
+  });
+
+  const deleteVehicleMutation = useMutation({
+    mutationFn: async (id: string) => {
+      const { error } = await supabase
+        .from('vehicles')
+        .delete()
+        .eq('id', id);
+      
+      if (error) throw error;
+    },
+    onSuccess: () => {
+      toast.success('Véhicule supprimé avec succès');
+      queryClient.invalidateQueries({ queryKey: ['vehicles'] });
+    },
+    onError: (error) => {
+      toast.error('Erreur lors de la suppression: ' + error.message);
+    },
+  });
+
+  const resetForm = () => {
+    setFormData({
+      name: '',
+      type: 'truck',
+      price: 0,
+      year: new Date().getFullYear(),
+      mileage: 0,
+      capacity: '',
+      transmission: '',
+      fuel: 'diesel',
+      power: '',
+      description: '',
+      available: true,
+      featured: false,
+    });
+  };
+
+  const handleCreate = () => {
+    createVehicleMutation.mutate(formData);
+  };
+
+  const handleEdit = (product: any) => {
+    setEditingProduct(product);
+    setFormData({
+      name: product.name || '',
+      type: product.type || 'truck',
+      price: Number(product.price) || 0,
+      year: product.year || new Date().getFullYear(),
+      mileage: product.mileage || 0,
+      capacity: product.capacity || '',
+      transmission: product.transmission || '',
+      fuel: product.fuel || 'diesel',
+      power: product.power || '',
+      description: product.description || '',
+      available: product.availability === 'available_immediately',
+      featured: product.featured || false,
+    });
+    setIsEditDialogOpen(true);
+  };
+
+  const handleUpdate = () => {
+    if (!editingProduct) return;
+    updateVehicleMutation.mutate({ 
+      id: editingProduct.id, 
+      data: {
+        ...formData,
+        available: formData.available,
+      }
+    });
+  };
+
+  const handleDelete = (id: string) => {
+    if (confirm('Êtes-vous sûr de vouloir supprimer ce véhicule ?')) {
+      deleteVehicleMutation.mutate(id);
+    }
+  };
 
   const filteredProducts = products.filter(product =>
     product.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
@@ -31,10 +195,142 @@ const ProductsManager = () => {
             <Download className="h-4 w-4 mr-2" />
             Exporter
           </Button>
-          <Button>
-            <Plus className="h-4 w-4 mr-2" />
-            Nouveau Véhicule
-          </Button>
+          <Dialog open={isCreateDialogOpen} onOpenChange={setIsCreateDialogOpen}>
+            <DialogTrigger asChild>
+              <Button>
+                <Plus className="h-4 w-4 mr-2" />
+                Nouveau Véhicule
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="max-w-2xl">
+              <DialogHeader>
+                <DialogTitle>Ajouter un nouveau véhicule</DialogTitle>
+                <DialogDescription>
+                  Remplissez les informations du véhicule
+                </DialogDescription>
+              </DialogHeader>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="name">Nom *</Label>
+                  <Input
+                    id="name"
+                    value={formData.name}
+                    onChange={(e) => setFormData({...formData, name: e.target.value})}
+                    placeholder="Ex: Renault Master L3H2"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="type">Type *</Label>
+                  <Select value={formData.type} onValueChange={(value: 'truck' | 'van' | 'trailer') => setFormData({...formData, type: value})}>
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="truck">Camion</SelectItem>
+                      <SelectItem value="van">Van</SelectItem>
+                      <SelectItem value="trailer">Remorque</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="price">Prix *</Label>
+                  <Input
+                    id="price"
+                    type="number"
+                    value={formData.price}
+                    onChange={(e) => setFormData({...formData, price: Number(e.target.value)})}
+                    placeholder="Ex: 45000"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="year">Année</Label>
+                  <Input
+                    id="year"
+                    type="number"
+                    value={formData.year}
+                    onChange={(e) => setFormData({...formData, year: Number(e.target.value)})}
+                    placeholder="Ex: 2023"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="mileage">Kilométrage</Label>
+                  <Input
+                    id="mileage"
+                    type="number"
+                    value={formData.mileage}
+                    onChange={(e) => setFormData({...formData, mileage: Number(e.target.value)})}
+                    placeholder="Ex: 45000"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="capacity">Capacité</Label>
+                  <Input
+                    id="capacity"
+                    value={formData.capacity}
+                    onChange={(e) => setFormData({...formData, capacity: e.target.value})}
+                    placeholder="Ex: 3 chevaux"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="power">Puissance</Label>
+                  <Input
+                    id="power"
+                    value={formData.power}
+                    onChange={(e) => setFormData({...formData, power: e.target.value})}
+                    placeholder="Ex: 170 CV"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="fuel">Carburant</Label>
+                  <Select value={formData.fuel} onValueChange={(value) => setFormData({...formData, fuel: value})}>
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="diesel">Diesel</SelectItem>
+                      <SelectItem value="essence">Essence</SelectItem>
+                      <SelectItem value="electrique">Électrique</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="col-span-2 space-y-2">
+                  <Label htmlFor="description">Description</Label>
+                  <Textarea
+                    id="description"
+                    value={formData.description}
+                    onChange={(e) => setFormData({...formData, description: e.target.value})}
+                    placeholder="Description du véhicule..."
+                  />
+                </div>
+                <div className="flex items-center space-x-2">
+                  <input
+                    type="checkbox"
+                    id="available"
+                    checked={formData.available}
+                    onChange={(e) => setFormData({...formData, available: e.target.checked})}
+                  />
+                  <Label htmlFor="available">Disponible</Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <input
+                    type="checkbox"
+                    id="featured"
+                    checked={formData.featured}
+                    onChange={(e) => setFormData({...formData, featured: e.target.checked})}
+                  />
+                  <Label htmlFor="featured">En vedette</Label>
+                </div>
+              </div>
+              <DialogFooter>
+                <Button variant="outline" onClick={() => setIsCreateDialogOpen(false)}>
+                  Annuler
+                </Button>
+                <Button onClick={handleCreate} disabled={createVehicleMutation.isPending}>
+                  {createVehicleMutation.isPending ? 'Création...' : 'Créer'}
+                </Button>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
         </div>
       </div>
 
@@ -128,21 +424,26 @@ const ProductsManager = () => {
                 <div className="flex-1 space-y-1">
                   <p className="font-medium">{product.name}</p>
                   <p className="text-sm text-muted-foreground">
-                    {product.type} • {product.year} • {product.mileage}
+                    {product.type} • {product.year} • {product.mileage} km
                   </p>
                 </div>
                 <div className="text-right">
-                  <p className="font-medium">{product.price}</p>
+                  <p className="font-medium">{product.price}€</p>
                   <p className="text-sm text-muted-foreground">
                     {product.availability === 'available_immediately' ? 'Disponible' : 'Non disponible'}
                   </p>
                 </div>
                 <div className="flex gap-2">
-                  <Button variant="outline" size="sm">
-                    Modifier
+                  <Button variant="outline" size="sm" onClick={() => handleEdit(product)}>
+                    <Edit className="h-4 w-4" />
                   </Button>
-                  <Button variant="outline" size="sm" className="text-red-600">
-                    Supprimer
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    className="text-red-600"
+                    onClick={() => handleDelete(product.id.toString())}
+                  >
+                    <Trash2 className="h-4 w-4" />
                   </Button>
                 </div>
               </div>
@@ -150,6 +451,98 @@ const ProductsManager = () => {
           </div>
         </CardContent>
       </Card>
+
+      {/* Edit Dialog */}
+      <Dialog open={isEditDialogOpen} onOpenChange={setIsEditDialogOpen}>
+        <DialogContent className="max-w-2xl">
+          <DialogHeader>
+            <DialogTitle>Modifier le véhicule</DialogTitle>
+            <DialogDescription>
+              Modifiez les informations du véhicule
+            </DialogDescription>
+          </DialogHeader>
+          <div className="grid grid-cols-2 gap-4">
+            {/* Same form fields as create dialog */}
+            <div className="space-y-2">
+              <Label htmlFor="edit-name">Nom *</Label>
+              <Input
+                id="edit-name"
+                value={formData.name}
+                onChange={(e) => setFormData({...formData, name: e.target.value})}
+                placeholder="Ex: Renault Master L3H2"
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="edit-type">Type *</Label>
+              <Select value={formData.type} onValueChange={(value: 'truck' | 'van' | 'trailer') => setFormData({...formData, type: value})}>
+                <SelectTrigger>
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="truck">Camion</SelectItem>
+                  <SelectItem value="van">Van</SelectItem>
+                  <SelectItem value="trailer">Remorque</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="edit-price">Prix *</Label>
+              <Input
+                id="edit-price"
+                type="number"
+                value={formData.price}
+                onChange={(e) => setFormData({...formData, price: Number(e.target.value)})}
+                placeholder="Ex: 45000"
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="edit-year">Année</Label>
+              <Input
+                id="edit-year"
+                type="number"
+                value={formData.year}
+                onChange={(e) => setFormData({...formData, year: Number(e.target.value)})}
+                placeholder="Ex: 2023"
+              />
+            </div>
+            <div className="col-span-2 space-y-2">
+              <Label htmlFor="edit-description">Description</Label>
+              <Textarea
+                id="edit-description"
+                value={formData.description}
+                onChange={(e) => setFormData({...formData, description: e.target.value})}
+                placeholder="Description du véhicule..."
+              />
+            </div>
+            <div className="flex items-center space-x-2">
+              <input
+                type="checkbox"
+                id="edit-available"
+                checked={formData.available}
+                onChange={(e) => setFormData({...formData, available: e.target.checked})}
+              />
+              <Label htmlFor="edit-available">Disponible</Label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <input
+                type="checkbox"
+                id="edit-featured"
+                checked={formData.featured}
+                onChange={(e) => setFormData({...formData, featured: e.target.checked})}
+              />
+              <Label htmlFor="edit-featured">En vedette</Label>
+            </div>
+          </div>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setIsEditDialogOpen(false)}>
+              Annuler
+            </Button>
+            <Button onClick={handleUpdate} disabled={updateVehicleMutation.isPending}>
+              {updateVehicleMutation.isPending ? 'Modification...' : 'Modifier'}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
