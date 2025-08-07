@@ -51,10 +51,11 @@ export const WatermarkedImage: React.FC<WatermarkedImageProps> = ({
             const watermarkWidth = watermarkSize;
             const watermarkHeight = watermarkSize / logoAspectRatio;
 
-            // Position watermark in bottom right corner
+            // Position watermark plus haut (augmentation du padding vertical)
             const padding = 15;
+            const verticalPadding = 60; // Plus de padding vertical pour remonter le logo
             const x = canvas.width - watermarkWidth - padding;
-            const y = canvas.height - watermarkHeight - padding;
+            const y = canvas.height - watermarkHeight - verticalPadding;
 
             // Set transparency (moins transparent pour plus de visibilité)
             ctx.globalAlpha = 0.8;

@@ -59,10 +59,11 @@ serve(async (req) => {
     const watermarkWidth = watermarkSize
     const watermarkHeight = watermarkSize / logoAspectRatio
 
-    // Position watermark in bottom right corner with padding
+    // Position watermark plus haut (augmentation du padding vertical)
     const padding = 20
+    const verticalPadding = 80 // Plus de padding vertical pour remonter le logo
     const x = canvas.width - watermarkWidth - padding
-    const y = canvas.height - watermarkHeight - padding
+    const y = canvas.height - watermarkHeight - verticalPadding
 
     // Set transparency for watermark (plus visible)
     ctx.globalAlpha = 0.8
