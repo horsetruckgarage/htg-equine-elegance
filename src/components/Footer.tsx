@@ -26,15 +26,6 @@ const Footer = () => {
         { name: t.nav.getQuote, href: getLocalizedPath("/devis", language) }
       ]
     },
-    {
-      title: t.footer.services.title,
-      links: [
-        { name: t.footer.services.financing, href: getLocalizedPath("/devis", language) },
-        { name: t.footer.services.insurance, href: getLocalizedPath("/contact", language) },
-        { name: t.footer.services.warranty, href: getLocalizedPath("/contact", language) },
-        { name: t.footer.services.maintenance, href: getLocalizedPath("/contact", language) }
-      ]
-    }
   ];
 
   const socialLinks = [
