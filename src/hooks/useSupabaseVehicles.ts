@@ -61,10 +61,10 @@ export const useVehicles = (filter?: VehicleFilter) => {
           condition: 'Excellent',
           availability: 'Disponible',
           featured: vehicle.featured,
-          images: vehicle.vehicle_images
+          images: (vehicle.vehicle_images || [])
             .sort((a: any, b: any) => a.sort_order - b.sort_order)
             .map((img: any) => img.image_url),
-          features: vehicle.vehicle_features.map((f: any) => f.feature),
+          features: (vehicle.vehicle_features || []).map((f: any) => f.feature),
         }));
 
         setVehicles(transformedVehicles);
@@ -76,6 +76,18 @@ export const useVehicles = (filter?: VehicleFilter) => {
     };
 
     fetchVehicles();
+
+    // Subscribe to realtime changes to auto-refresh lists
+    const channel = supabase
+      .channel('vehicles-changes')
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'vehicles' }, fetchVehicles)
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'vehicle_images' }, fetchVehicles)
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'vehicle_features' }, fetchVehicles)
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
   }, [filter?.type, filter?.featured]);
 
   return { vehicles, loading, error };
@@ -146,6 +158,18 @@ export const useVehicle = (id: string) => {
 
     if (id) {
       fetchVehicle();
+
+      // Subscribe to realtime changes for this vehicle
+      const channel = supabase
+        .channel(`vehicle-${id}-changes`)
+        .on('postgres_changes', { event: '*', schema: 'public', table: 'vehicles', filter: `id=eq.${id}` }, fetchVehicle)
+        .on('postgres_changes', { event: '*', schema: 'public', table: 'vehicle_images', filter: `vehicle_id=eq.${id}` }, fetchVehicle)
+        .on('postgres_changes', { event: '*', schema: 'public', table: 'vehicle_features', filter: `vehicle_id=eq.${id}` }, fetchVehicle)
+        .subscribe();
+
+      return () => {
+        supabase.removeChannel(channel);
+      };
     }
   }, [id]);
 
