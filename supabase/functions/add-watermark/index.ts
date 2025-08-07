@@ -59,15 +59,13 @@ serve(async (req) => {
     const watermarkWidth = watermarkSize
     const watermarkHeight = watermarkSize / logoAspectRatio
 
-    // Position watermark plus haut (augmentation du padding vertical)
-    const padding = 20
-    const verticalPadding = 80 // Plus de padding vertical pour remonter le logo
-    const x = canvas.width - watermarkWidth - padding
-    const y = canvas.height - watermarkHeight - verticalPadding
+    // Position watermark au centre de l'image
+    const x = (canvas.width - watermarkWidth) / 2
+    const y = (canvas.height - watermarkHeight) / 2
 
-    // Ajouter un fond semi-transparent derrière le logo pour améliorer la visibilité
-    const backgroundPadding = 10
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.8)' // Fond blanc semi-transparent
+    // Ajouter un fond semi-transparent derrière le logo (centré)
+    const backgroundPadding = 15
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.85)' // Fond blanc plus opaque pour le centre
     ctx.fillRect(
       x - backgroundPadding, 
       y - backgroundPadding, 
