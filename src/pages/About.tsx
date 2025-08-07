@@ -1,11 +1,13 @@
 import { Award, Users, Calendar, MapPin, Shield, Wrench, Heart, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { useTranslation } from "@/hooks/useTranslation";
+import { getLocalizedPath } from "@/hooks/useLocalizedRouting";
 
 const About = () => {
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
   
   const stats = [
     { icon: Calendar, value: "15+", label: t.aboutPage.stats.experience },
@@ -118,9 +120,11 @@ const About = () => {
               <p className="text-lg text-muted-foreground leading-relaxed">
                 {t.aboutPage.story.paragraph2}
               </p>
-              <Button className="htg-button-primary">
-                {t.aboutPage.story.cta}
-              </Button>
+              <Link to={getLocalizedPath("/contact", language)}>
+                <Button className="htg-button-primary">
+                  {t.aboutPage.story.cta}
+                </Button>
+              </Link>
             </div>
             <div className="relative">
               <div className="htg-card p-8 space-y-6">
@@ -218,12 +222,16 @@ const About = () => {
               {t.aboutPage.cta.description}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="htg-button-primary">
-                {t.aboutPage.cta.button1}
-              </Button>
-              <Button variant="outline" className="htg-button-secondary">
-                {t.aboutPage.cta.button2}
-              </Button>
+              <Link to={getLocalizedPath("/devis", language)}>
+                <Button className="htg-button-primary">
+                  {t.aboutPage.cta.button1}
+                </Button>
+              </Link>
+              <Link to={getLocalizedPath("/contact", language)}>
+                <Button variant="outline" className="htg-button-secondary">
+                  {t.aboutPage.cta.button2}
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
