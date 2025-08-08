@@ -1,13 +1,8 @@
 import { useCallback } from 'react';
-import { createClient } from '@supabase/supabase-js';
+
 import { toast } from 'sonner';
 // @ts-ignore - heic2any has no TS types
 import heic2any from 'heic2any';
-
-const supabase = createClient(
-  'https://cfftjfvrzbbtrjkuzdwa.supabase.co',
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNmZnRqZnZyemJidHJqa3V6ZHdhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ1NTE3ODMsImV4cCI6MjA3MDEyNzc4M30.CRq8200xhr3uZelaFB3B1b0Y-EyDGbsKh5FulQovriA'
-);
 
 export type WatermarkPosition = 'center' | 'bottom-right' | 'bottom-left' | 'top-right' | 'top-left';
 
