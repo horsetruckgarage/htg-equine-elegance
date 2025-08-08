@@ -226,6 +226,25 @@ const ProductsManager = () => {
     return idx !== -1 ? url.substring(idx + marker.length) : null;
   };
 
+  // Process watermarking in small batches to avoid mobile freezes
+  const watermarkInBatches = async (files: File[], batchSize = 3) => {
+    const results: File[] = [];
+    for (let i = 0; i < files.length; i += batchSize) {
+      const slice = files.slice(i, i + batchSize);
+      const processed = await Promise.all(
+        slice.map(async (f) => {
+          try {
+            return await addWatermarkToImage(f);
+          } catch {
+            return f; // fallback to original if watermark fails
+          }
+        })
+      );
+      results.push(...processed);
+    }
+    return results;
+  };
+
   const uploadAndInsertImages = async (vehicleId: string, files: File[]) => {
     setIsUploading(true);
     try {
@@ -236,19 +255,46 @@ const ProductsManager = () => {
       let start = existing?.length || 0;
 
       const CHUNK_SIZE = 4;
+      let uploadedCount = 0;
+      const uploadOnce = (path: string, file: File, timeoutMs = 60000) =>
+        new Promise<void>((resolve, reject) => {
+          const timer = setTimeout(() => reject(new Error('Timeout upload')), timeoutMs);
+          supabase.storage
+            .from('vehicles')
+            .upload(path, file, { cacheControl: '31536000', upsert: false })
+            .then(({ error }) => {
+              clearTimeout(timer);
+              error ? reject(error) : resolve();
+            })
+            .catch((err) => {
+              clearTimeout(timer);
+              reject(err);
+            });
+        });
+
       for (let i = 0; i < files.length; i += CHUNK_SIZE) {
         const slice = files.slice(i, i + CHUNK_SIZE);
-        await Promise.all(
+        await Promise.allSettled(
           slice.map(async (file, idx) => {
             const globalIndex = i + idx;
             const safeName = file.name.replace(/[^a-zA-Z0-9.\-_]/g, '-').toLowerCase();
-            const path = `${vehicleId}/${Date.now()}_${globalIndex}_${safeName}`;
-            const { error: upErr } = await supabase.storage.from('vehicles').upload(path, file, {
-              cacheControl: '31536000',
-              upsert: false,
-            });
-            if (upErr) throw upErr;
-            const { data: pub } = supabase.storage.from('vehicles').getPublicUrl(path);
+            const basePath = `${vehicleId}/${Date.now()}_${globalIndex}_${safeName}`;
+            let usedPath = basePath;
+
+            try {
+              await uploadOnce(basePath, file);
+            } catch (err) {
+              const retryPath = `${vehicleId}/${Date.now()}_${globalIndex}_r_${safeName}`;
+              try {
+                await uploadOnce(retryPath, file);
+                usedPath = retryPath;
+              } catch (e) {
+                console.error('Upload failed:', e);
+                return;
+              }
+            }
+
+            const { data: pub } = supabase.storage.from('vehicles').getPublicUrl(usedPath);
             const isPrimary = start === 0 && globalIndex === 0;
             const { error: insErr } = await supabase.from('vehicle_images').insert({
               vehicle_id: vehicleId,
@@ -256,11 +302,11 @@ const ProductsManager = () => {
               image_url: pub.publicUrl,
               is_primary: isPrimary,
             });
-            if (insErr) throw insErr;
+            if (!insErr) uploadedCount++;
           })
         );
       }
-      toast.success('Images ajoutées');
+      toast.success(`Images ajoutées (${uploadedCount}/${files.length})`);
     } finally {
       setIsUploading(false);
     }
@@ -435,9 +481,7 @@ const ProductsManager = () => {
                       const files = Array.from(e.target.files || []);
                       if (files.length > 0) {
                         toast.info('Ajout des filigranes en cours...');
-                        const watermarkedFiles = await Promise.all(
-                          files.map(file => addWatermarkToImage(file))
-                        );
+                        const watermarkedFiles = await watermarkInBatches(files, 3);
                         setImageFiles(watermarkedFiles);
                       }
                     }}
@@ -689,7 +733,7 @@ const ProductsManager = () => {
                   const files = Array.from(e.target.files || []);
                   if (!editingProduct || files.length === 0) return;
                   toast.info('Ajout des filigranes en cours...');
-                  const watermarkedFiles = await Promise.all(files.map((f) => addWatermarkToImage(f)));
+                  const watermarkedFiles = await watermarkInBatches(files, 3);
                   await uploadAndInsertImages(editingProduct.id, watermarkedFiles);
                   await fetchEditImages(editingProduct.id);
                   (e.target as HTMLInputElement).value = '';
