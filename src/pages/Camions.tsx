@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "@/hooks/useTranslation";
 import { getLocalizedPath } from "@/hooks/useLocalizedRouting";
 import { useVehicles } from "@/hooks/useVehicles";
+import VehicleImage from "@/components/VehicleImage";
 
 const Camions = () => {
   const { t, language } = useTranslation();
@@ -128,12 +129,24 @@ const Camions = () => {
               >
                 {/* Image */}
                 <div className="relative aspect-[4/3] overflow-hidden">
-                  <div className="w-full h-full bg-gradient-to-br from-leather/30 to-copper/10 flex items-center justify-center">
-                    <div className="text-center space-y-2">
-                      <Truck className="w-16 h-16 text-copper mx-auto" />
-                      <p className="text-copper font-semibold text-lg">{t.trucksPage.vehicle.horseTruck}</p>
+                  {camion.images && camion.images.length > 0 ? (
+                    <>
+                      <img
+                        src={camion.images[0]}
+                        alt={`${camion.name} - camion chevaux HTG`}
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                    </>
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-leather/30 to-copper/10 flex items-center justify-center">
+                      <div className="text-center space-y-2">
+                        <Truck className="w-16 h-16 text-copper mx-auto" />
+                        <p className="text-copper font-semibold text-lg">{t.trucksPage.vehicle.horseTruck}</p>
+                      </div>
                     </div>
-                  </div>
+                  )}
                   
                    {/* Badges */}
                    {camion.featured && (
