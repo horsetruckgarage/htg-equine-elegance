@@ -17,36 +17,69 @@ export const useWatermark = () => {
         return file;
       }
 
-      // Create FormData with the image
-      const formData = new FormData();
-      formData.append('image', file);
-
-      // Call the watermark edge function
-      const { data, error } = await supabase.functions.invoke('add-watermark', {
-        body: formData,
+      // Load original image
+      const loadImage = (src: string) => new Promise<HTMLImageElement>((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => resolve(img);
+        img.onerror = reject;
+        img.src = src;
       });
 
-      if (error || !data) {
-        console.error('Error adding watermark:', error);
-        toast.error("Erreur lors de l'ajout du filigrane");
-        return file; // Return original file if watermark fails
-      }
+      const objectUrl = URL.createObjectURL(file);
+      const img = await loadImage(objectUrl);
+      URL.revokeObjectURL(objectUrl);
 
-      // Convert the response blob to a File object
-      const watermarkedBlob = new Blob([data], { type: 'image/jpeg' });
-      const watermarkedFile = new File(
-        [watermarkedBlob], 
-        file.name.replace(/\.[^/.]+$/, '_watermarked.jpg'),
-        { type: 'image/jpeg' }
+      // Prepare canvas (client-side)
+      const MAX = 1920;
+      let width = img.naturalWidth;
+      let height = img.naturalHeight;
+      const scale = Math.min(1, MAX / Math.max(width, height));
+      width = Math.round(width * scale);
+      height = Math.round(height * scale);
+
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      if (!ctx) throw new Error('Canvas context indisponible');
+      canvas.width = width;
+      canvas.height = height;
+      ctx.drawImage(img, 0, 0, width, height);
+
+      // Load watermark logo (same-origin)
+      const logo = await loadImage('/lovable-uploads/cf145a57-409b-41c6-9c1d-bc4fb00db3ed.png');
+      const logoAR = logo.naturalWidth / logo.naturalHeight;
+      const watermarkWidth = Math.min(Math.round(width * 0.15), 300);
+      const watermarkHeight = Math.round(watermarkWidth / logoAR);
+
+      // Center position
+      const x = Math.round((width - watermarkWidth) / 2);
+      const y = Math.round((height - watermarkHeight) / 2);
+
+      // Background panel
+      const padding = Math.max(8, Math.round(width * 0.008));
+      ctx.fillStyle = 'rgba(255,255,255,0.85)';
+      ctx.fillRect(x - padding, y - padding, watermarkWidth + padding * 2, watermarkHeight + padding * 2);
+      ctx.strokeStyle = 'rgba(0,0,0,0.3)';
+      ctx.lineWidth = 1;
+      ctx.strokeRect(x - padding, y - padding, watermarkWidth + padding * 2, watermarkHeight + padding * 2);
+
+      // Draw logo
+      ctx.globalAlpha = 1;
+      ctx.drawImage(logo, x, y, watermarkWidth, watermarkHeight);
+      ctx.globalAlpha = 1;
+
+      // Export to JPEG and wrap into File
+      const blob: Blob = await new Promise((resolve, reject) =>
+        canvas.toBlob((b) => (b ? resolve(b) : reject(new Error('Export JPEG échoué'))), 'image/jpeg', 0.9)
       );
 
+      const watermarkedFile = new File([blob], file.name.replace(/\.[^/.]+$/, '_watermarked.jpg'), { type: 'image/jpeg' });
       toast.success('Filigrane ajouté avec succès');
       return watermarkedFile;
 
     } catch (error) {
-      console.error('Error in watermark process:', error);
+      console.error('Error in watermark process (client):', error);
       toast.error('Erreur lors du traitement du filigrane');
-      return file; // Return original file if error occurs
+      return file; // Fallback to original file on any error
     }
   }, []);
 
