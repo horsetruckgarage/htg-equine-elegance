@@ -30,13 +30,28 @@ const AdminDashboard = () => {
   
   const { vehicles: products, loading } = useVehicles();
 
+  // Fallback: allow admin UI if email matches the official admin list
+  const ADMIN_EMAILS = ['info@horsetruckgarage.com'];
+  const isFallbackAdmin = (email?: string | null) =>
+    !!email && ADMIN_EMAILS.includes(email.toLowerCase());
+
   useEffect(() => {
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      const email = session?.user?.email ?? null;
+      if (isFallbackAdmin(email)) {
+        setIsAdmin(true);
+        setLoadingAuth(false);
+      }
       setUserId(session?.user?.id ?? null);
       setAuthReady(true);
     });
 
     supabase.auth.getSession().then(({ data: { session } }) => {
+      const email = session?.user?.email ?? null;
+      if (isFallbackAdmin(email)) {
+        setIsAdmin(true);
+        setLoadingAuth(false);
+      }
       setUserId(session?.user?.id ?? null);
       setAuthReady(true);
     });
@@ -62,6 +77,15 @@ const AdminDashboard = () => {
   }, [authReady, userId]);
 
   const checkAdmin = async (userId: string) => {
+    // If email matches fallback admin list, skip RPC check
+    const { data: userInfo } = await supabase.auth.getUser();
+    const email = userInfo.user?.email ?? null;
+    if (isFallbackAdmin(email)) {
+      setIsAdmin(true);
+      setLoadingAuth(false);
+      return;
+    }
+
     const { data, error } = await supabase.rpc('has_role', { _user_id: userId, _role: 'admin' });
 
     if (error) {
