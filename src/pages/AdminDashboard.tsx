@@ -26,6 +26,7 @@ const AdminDashboard = () => {
   const [isAdmin, setIsAdmin] = useState(false);
   const [userId, setUserId] = useState<string | null>(null);
   const [authReady, setAuthReady] = useState(false);
+  const [roleChecked, setRoleChecked] = useState(false);
   const navigate = useNavigate();
   
   const { vehicles: products, loading } = useVehicles();
@@ -41,6 +42,7 @@ const AdminDashboard = () => {
       if (isFallbackAdmin(email)) {
         setIsAdmin(true);
         setLoadingAuth(false);
+        setRoleChecked(true);
       }
       setUserId(session?.user?.id ?? null);
       setAuthReady(true);
@@ -51,6 +53,7 @@ const AdminDashboard = () => {
       if (isFallbackAdmin(email)) {
         setIsAdmin(true);
         setLoadingAuth(false);
+        setRoleChecked(true);
       }
       setUserId(session?.user?.id ?? null);
       setAuthReady(true);
@@ -67,6 +70,7 @@ const AdminDashboard = () => {
     if (!userId) {
       // Ne force pas la déconnexion ici (évite les bascules Safari)
       setLoadingAuth(false);
+      setRoleChecked(true);
       return;
     }
     setLoadingAuth(true);
@@ -82,6 +86,7 @@ const AdminDashboard = () => {
     if (isFallbackAdmin(email)) {
       setIsAdmin(true);
       setLoadingAuth(false);
+      setRoleChecked(true);
       return;
     }
 
@@ -97,6 +102,7 @@ const AdminDashboard = () => {
       }
     }
     setLoadingAuth(false);
+    setRoleChecked(true);
   };
 
   const handleLogout = async () => {
@@ -106,7 +112,7 @@ const AdminDashboard = () => {
     navigate('/');
   };
 
-if (loadingAuth) {
+if (loadingAuth || !roleChecked) {
   return (
     <div className="min-h-[100svh] bg-background flex items-center justify-center p-6">
       <span className="text-sm text-muted-foreground">Chargement…</span>
