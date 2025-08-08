@@ -78,8 +78,8 @@ const Auth = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-6">
-      <Card className="w-full max-w-md">
+    <div className="min-h-[100svh] bg-background flex items-center justify-center p-6">
+      <Card className="w-full max-w-md relative z-50 shadow-lg">
         <CardHeader>
           <CardTitle>{mode === 'signin' ? 'Connexion' : 'Inscription'}</CardTitle>
           <CardDescription>
