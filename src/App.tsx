@@ -12,7 +12,7 @@ import DemandeDevis from "./pages/DemandeDevis";
 import NotFound from "./pages/NotFound";
 import Camions from "./pages/Camions";
 import Vans from "./pages/Vans";
-import Remorques from "./pages/Remorques";
+
 import Occasions from "./pages/Occasions";
 import VehicleDetail from "./pages/VehicleDetail";
 import AdminDashboard from "./pages/AdminDashboard";

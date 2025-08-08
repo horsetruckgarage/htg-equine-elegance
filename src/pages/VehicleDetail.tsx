@@ -218,7 +218,6 @@ const VehicleDetail = () => {
               </div>
             </div>
           </div>
-        </div>
       </section>
 
       <Footer />
