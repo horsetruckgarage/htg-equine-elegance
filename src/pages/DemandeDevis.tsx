@@ -118,7 +118,6 @@ const DemandeDevis = () => {
                         <SelectContent>
                           <SelectItem value="camion">{t.quoteRequest.form.vehicleInfo.typeOptions.truck}</SelectItem>
                           <SelectItem value="van">{t.quoteRequest.form.vehicleInfo.typeOptions.van}</SelectItem>
-                          <SelectItem value="remorque">{t.quoteRequest.form.vehicleInfo.typeOptions.trailer}</SelectItem>
                           <SelectItem value="hesitant">{t.quoteRequest.form.vehicleInfo.typeOptions.unsure}</SelectItem>
                         </SelectContent>
                       </Select>

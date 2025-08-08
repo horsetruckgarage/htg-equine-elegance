@@ -13,7 +13,6 @@ const Footer = () => {
       links: [
         { name: t.footer.vehicles.horseTrucks, href: getLocalizedPath("/camions", language) },
         { name: t.footer.vehicles.horseVans, href: getLocalizedPath("/vans", language) },
-        { name: t.footer.vehicles.horseTrailers, href: getLocalizedPath("/remorques", language) },
         { name: t.footer.vehicles.occasions, href: getLocalizedPath("/occasions", language) },
         { name: t.nav.getQuote, href: getLocalizedPath("/devis", language) }
       ]

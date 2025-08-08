@@ -58,7 +58,7 @@ const VehicleDetail = () => {
     switch (vehicle.type) {
       case 'truck': return getLocalizedPath('/camions-chevaux', language);
       case 'van': return getLocalizedPath('/vans-chevaux', language);
-      case 'trailer': return getLocalizedPath('/remorques-chevaux', language);
+      case 'trailer': return getLocalizedPath('/vans-chevaux', language);
       default: return getLocalizedPath('/', language);
     }
   };
@@ -120,12 +120,11 @@ const VehicleDetail = () => {
 
             {/* Informations */}
             <div className="space-y-6">
-              <div>
+              {(vehicle.type === 'truck' || vehicle.type === 'van') && (
                 <Badge className="mb-2">
-                  {vehicle.type === 'truck' ? t.categories.horseTrucks.title : 
-                   vehicle.type === 'van' ? t.categories.horseVans.title : 
-                   t.categories.horseTrailers.title}
+                  {vehicle.type === 'truck' ? t.categories.horseTrucks.title : t.categories.horseVans.title}
                 </Badge>
+              )}
                 <h1 className="text-3xl font-bold text-foreground mb-2">{vehicle.name}</h1>
                 <div className="flex items-center gap-4">
                   <span className="text-3xl font-bold text-copper">{vehicle.price}€</span>

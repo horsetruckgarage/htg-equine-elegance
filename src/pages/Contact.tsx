@@ -254,7 +254,6 @@ const Contact = () => {
                       <SelectContent>
                         <SelectItem value="camion">{t.contactPage.form.vehicleTypes.truck}</SelectItem>
                         <SelectItem value="van">{t.contactPage.form.vehicleTypes.van}</SelectItem>
-                        <SelectItem value="remorque">{t.contactPage.form.vehicleTypes.trailer}</SelectItem>
                         <SelectItem value="autre">{t.contactPage.form.vehicleTypes.other}</SelectItem>
                       </SelectContent>
                     </Select>

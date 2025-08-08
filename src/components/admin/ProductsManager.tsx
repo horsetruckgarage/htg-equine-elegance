@@ -415,7 +415,6 @@ const ProductsManager = () => {
                     <SelectContent>
                       <SelectItem value="truck">Camion</SelectItem>
                       <SelectItem value="van">Van</SelectItem>
-                      <SelectItem value="trailer">Remorque</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -688,7 +687,7 @@ const ProductsManager = () => {
                 <SelectContent>
                   <SelectItem value="truck">Camion</SelectItem>
                   <SelectItem value="van">Van</SelectItem>
-                  <SelectItem value="trailer">Remorque</SelectItem>
+                  
                 </SelectContent>
               </Select>
             </div>

@@ -14,7 +14,6 @@ const Navigation = () => {
     { name: t.nav.home, href: getLocalizedPath("/", language) },
     { name: t.nav.horseTrucks, href: getLocalizedPath("/camions", language) },
     { name: t.nav.horseVans, href: getLocalizedPath("/vans", language) },
-    { name: t.nav.horseTrailers, href: getLocalizedPath("/remorques", language) },
     { name: t.nav.about, href: getLocalizedPath("/about", language) },
     { name: t.nav.contact, href: getLocalizedPath("/contact", language) },
   ];

@@ -6,13 +6,13 @@ import { getLocalizedPath } from "@/hooks/useLocalizedRouting";
 import { useVehicles } from "@/hooks/useSupabaseVehicles";
 import camionChevaux from "@/assets/camion-chevaux.jpg";
 import vanChevaux from "@/assets/van-chevaux.jpg";
-import remorqueChevaux from "@/assets/remorque-chevaux.jpg";
+
 
 const VehicleCategories = () => {
   const { t, language } = useTranslation();
   const { vehicles: truckVehicles } = useVehicles({ type: 'truck' });
   const { vehicles: vanVehicles } = useVehicles({ type: 'van' });
-  const { vehicles: trailerVehicles } = useVehicles({ type: 'trailer' });
+  
   
   const categories = [
     {
@@ -36,17 +36,6 @@ const VehicleCategories = () => {
       promo: t.common.specialOffers,
       startingPrice: t.categories.horseVans.from + " 28 000€",
       highlight: t.common.mostRequested
-    },
-    {
-      id: "remorques",
-      title: t.categories.horseTrailers.title,
-      description: t.categories.horseTrailers.description,
-      image: remorqueChevaux,
-      features: t.categories.horseTrailers.features,
-      count: trailerVehicles.length + "+ " + t.common.models,
-      promo: t.common.newArrivals2024,
-      startingPrice: t.categories.horseTrailers.from + " 15 000€",
-      highlight: t.common.bestPrice
     }
   ];
 
@@ -68,7 +57,7 @@ const VehicleCategories = () => {
         </div>
 
         {/* Categories Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
         {categories.map((category, index) => {
           return (
             <div 
@@ -106,9 +95,7 @@ const VehicleCategories = () => {
                   <div className="absolute inset-0 bg-copper/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                     <Link to={getLocalizedPath(`/${category.id}`, language)}>
                       <Button className="htg-button-primary">
-                        {category.id === 'camions' ? t.categories.horseTrucks.explore : 
-                         category.id === 'vans' ? t.categories.horseVans.explore : 
-                         t.categories.horseTrailers.explore}
+                        {category.id === 'camions' ? t.categories.horseTrucks.explore : t.categories.horseVans.explore}
                         <ArrowRight className="w-4 h-4 ml-2" />
                       </Button>
                     </Link>

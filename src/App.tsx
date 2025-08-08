@@ -41,7 +41,7 @@ const App = () => (
             <Route path="/fr" element={<Index />} />
             <Route path="/fr/camions-chevaux" element={<Camions />} />
             <Route path="/fr/vans-chevaux" element={<Vans />} />
-            <Route path="/fr/remorques-chevaux" element={<Remorques />} />
+            <Route path="/fr/remorques-chevaux" element={<Navigate to="/fr/vans-chevaux" replace />} />
             <Route path="/fr/a-propos" element={<About />} />
             <Route path="/fr/contact" element={<Contact />} />
             <Route path="/fr/demande-devis" element={<DemandeDevis />} />
@@ -53,7 +53,7 @@ const App = () => (
             <Route path="/en" element={<Index />} />
             <Route path="/en/horse-trucks" element={<Camions />} />
             <Route path="/en/horse-vans" element={<Vans />} />
-            <Route path="/en/horse-trailers" element={<Remorques />} />
+            <Route path="/en/horse-trailers" element={<Navigate to="/en/horse-vans" replace />} />
             <Route path="/en/about" element={<About />} />
             <Route path="/en/contact" element={<Contact />} />
             <Route path="/en/quote" element={<DemandeDevis />} />
@@ -65,7 +65,7 @@ const App = () => (
             <Route path="/es" element={<Index />} />
             <Route path="/es/camiones-para-caballos" element={<Camions />} />
             <Route path="/es/furgonetas-para-caballos" element={<Vans />} />
-            <Route path="/es/remolques-para-caballos" element={<Remorques />} />
+            <Route path="/es/remolques-para-caballos" element={<Navigate to="/es/furgonetas-para-caballos" replace />} />
             <Route path="/es/acerca-de" element={<About />} />
             <Route path="/es/contacto" element={<Contact />} />
             <Route path="/es/presupuesto" element={<DemandeDevis />} />
@@ -77,7 +77,7 @@ const App = () => (
             <Route path="/de" element={<Index />} />
             <Route path="/de/pferdetransporter" element={<Camions />} />
             <Route path="/de/pferde-vans" element={<Vans />} />
-            <Route path="/de/pferde-anhaenger" element={<Remorques />} />
+            <Route path="/de/pferde-anhaenger" element={<Navigate to="/de/pferde-vans" replace />} />
             <Route path="/de/ueber-uns" element={<About />} />
             <Route path="/de/kontakt" element={<Contact />} />
             <Route path="/de/angebot" element={<DemandeDevis />} />
@@ -88,7 +88,7 @@ const App = () => (
             {/* Legacy redirects (without language prefix) */}
             <Route path="/camions" element={<Navigate to="/fr/camions-chevaux" replace />} />
             <Route path="/vans" element={<Navigate to="/fr/vans-chevaux" replace />} />
-            <Route path="/remorques" element={<Navigate to="/fr/remorques-chevaux" replace />} />
+            <Route path="/remorques" element={<Navigate to="/fr/vans-chevaux" replace />} />
             <Route path="/about" element={<Navigate to="/fr/a-propos" replace />} />
             <Route path="/contact" element={<Navigate to="/fr/contact" replace />} />
             <Route path="/devis" element={<Navigate to="/fr/demande-devis" replace />} />

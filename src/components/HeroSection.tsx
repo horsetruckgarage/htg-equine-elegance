@@ -9,7 +9,7 @@ import { getLocalizedPath } from "@/hooks/useLocalizedRouting";
 import heroTruck from "@/assets/hero-truck.jpg";
 import heroTruck2 from "@/assets/hero-truck-2.jpg";
 import heroVan from "@/assets/hero-van.jpg";
-import heroTrailer from "@/assets/hero-trailer.jpg";
+
 
 const HeroSection = () => {
   const [api, setApi] = useState<CarouselApi>();
@@ -37,13 +37,6 @@ const HeroSection = () => {
       title: t.hero.slide3.title,
       subtitle: t.hero.slide3.subtitle,
       description: t.hero.slide3.description,
-    },
-    {
-      id: 4,
-      image: heroTrailer,
-      title: t.hero.slide4.title,
-      subtitle: t.hero.slide4.subtitle,
-      description: t.hero.slide4.description,
     },
   ];
 

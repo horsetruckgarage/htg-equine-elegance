@@ -45,7 +45,7 @@ const Occasions = () => {
     {
       id: 3,
       title: "Ifor Williams HB511",
-      category: "Remorque Chevaux",
+      category: "Van Chevaux",
       price: "28 500",
       originalPrice: "31 900",
       promo: true,
@@ -94,7 +94,7 @@ const Occasions = () => {
     {
       id: 6,
       title: "Westfalia BC 60",
-      category: "Remorque Chevaux",
+      category: "Van Chevaux",
       price: "24 900",
       originalPrice: "27 500",
       promo: true,
