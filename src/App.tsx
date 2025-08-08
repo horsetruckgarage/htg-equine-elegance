@@ -16,6 +16,7 @@ import Remorques from "./pages/Remorques";
 import Occasions from "./pages/Occasions";
 import VehicleDetail from "./pages/VehicleDetail";
 import AdminDashboard from "./pages/AdminDashboard";
+import Auth from "./pages/Auth";
 
 const queryClient = new QueryClient();
 
@@ -31,7 +32,8 @@ const App = () => (
             {/* Redirect root to French */}
             <Route path="/" element={<Navigate to="/fr" replace />} />
             
-            {/* Admin route */}
+            {/* Auth & Admin routes */}
+            <Route path="/auth" element={<Auth />} />
             <Route path="/admin" element={<AdminDashboard />} />
             
             

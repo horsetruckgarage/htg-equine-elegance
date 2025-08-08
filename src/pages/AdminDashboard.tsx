@@ -15,37 +15,92 @@ import {
   BarChart3
 } from 'lucide-react';
 import { toast } from 'sonner';
-import AdminLogin from '@/components/admin/AdminLogin';
+import { useNavigate } from 'react-router-dom';
+import { supabase } from '@/integrations/supabase/client';
 import ProductsManager from '@/components/admin/ProductsManager';
 import { useVehicles } from '@/hooks/useSupabaseVehicles';
 
 const AdminDashboard = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [activeTab, setActiveTab] = useState('dashboard');
+  const [loadingAuth, setLoadingAuth] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const navigate = useNavigate();
   
   const { vehicles: products, loading } = useVehicles();
 
   useEffect(() => {
-    const authStatus = localStorage.getItem('admin-authenticated');
-    if (authStatus === 'true') {
-      setIsAuthenticated(true);
-    }
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (!session) {
+        setIsAdmin(false);
+        setLoadingAuth(false);
+        navigate('/auth', { replace: true });
+      } else {
+        checkAdmin(session.user.id);
+      }
+    });
+
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (!session) {
+        setLoadingAuth(false);
+        navigate('/auth', { replace: true });
+      } else {
+        checkAdmin(session.user.id);
+      }
+    });
+
+    return () => {
+      subscription.unsubscribe();
+    };
   }, []);
 
-  const handleLogin = () => {
-    setIsAuthenticated(true);
+  const checkAdmin = async (userId: string) => {
+    const { data, error } = await supabase
+      .from('user_roles')
+      .select('role')
+      .eq('user_id', userId)
+      .eq('role', 'admin')
+      .maybeSingle();
+
+    if (error) {
+      console.error('Role check error', error);
+      toast.error("Erreur d'authentification");
+      setIsAdmin(false);
+    } else {
+      setIsAdmin(!!data);
+      if (!data) {
+        toast.error('Accès réservé aux administrateurs');
+      }
+    }
+    setLoadingAuth(false);
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem('admin-authenticated');
-    setIsAuthenticated(false);
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
     setActiveTab('dashboard');
     toast.success('Déconnexion réussie');
+    navigate('/');
   };
 
-  if (!isAuthenticated) {
-    return <AdminLogin onLogin={handleLogin} />;
-  }
+if (loadingAuth) {
+  return <div className="p-6">Chargement…</div>;
+}
+
+if (!isAdmin) {
+  return (
+    <div className="min-h-screen flex items-center justify-center p-6">
+      <Card className="max-w-md w-full">
+        <CardHeader>
+          <CardTitle>Accès refusé</CardTitle>
+          <CardDescription>Cette section est réservée aux administrateurs.</CardDescription>
+        </CardHeader>
+        <CardContent className="space-x-2">
+          <Button variant="outline" onClick={() => navigate('/')}>Retour à l'accueil</Button>
+          <Button onClick={() => navigate('/auth')}>Se connecter</Button>
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
 
   const sidebarItems = [
     { id: 'dashboard', title: 'Tableau de bord', icon: LayoutDashboard },
