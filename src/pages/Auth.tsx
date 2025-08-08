@@ -33,30 +33,40 @@ const Auth = () => {
   const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
-    setIsLoading(false);
-    if (error) {
-      toast.error(error.message);
-    } else {
+    try {
+      const { error } = await supabase.auth.signInWithPassword({ email, password });
+      if (error) {
+        toast.error(error.message);
+        return;
+      }
       toast.success('Connexion réussie');
       navigate('/admin', { replace: true });
+    } catch (err: any) {
+      toast.error(err?.message || 'Connexion impossible. Vérifiez votre réseau et réessayez.');
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    const redirectUrl = `${window.location.origin}/admin`;
-    const { error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: { emailRedirectTo: redirectUrl },
-    });
-    setIsLoading(false);
-    if (error) {
-      toast.error(error.message);
-    } else {
+    try {
+      const redirectUrl = `${window.location.origin}/admin`;
+      const { error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: { emailRedirectTo: redirectUrl },
+      });
+      if (error) {
+        toast.error(error.message);
+        return;
+      }
       toast.success('Inscription réussie. Vérifiez votre e-mail pour confirmer.');
+    } catch (err: any) {
+      toast.error(err?.message || "Inscription impossible pour le moment.");
+    } finally {
+      setIsLoading(false);
     }
   };
 
