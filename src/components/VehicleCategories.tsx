@@ -5,7 +5,7 @@ import { useTranslation } from "@/hooks/useTranslation";
 import { getLocalizedPath } from "@/hooks/useLocalizedRouting";
 import { useVehicles } from "@/hooks/useSupabaseVehicles";
 import camionChevaux from "@/assets/camion-chevaux.jpg";
-import vanChevaux from "@/assets/van-chevaux.jpg";
+const vanChevaux = "/lovable-uploads/a798fa0f-64d7-494e-8ef2-0f34b2b4c44d.png";
 
 
 const VehicleCategories = () => {
