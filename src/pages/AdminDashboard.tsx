@@ -25,6 +25,7 @@ const AdminDashboard = () => {
   const [loadingAuth, setLoadingAuth] = useState(true);
   const [isAdmin, setIsAdmin] = useState(false);
   const [userId, setUserId] = useState<string | null>(null);
+  const [authReady, setAuthReady] = useState(false);
   const navigate = useNavigate();
   
   const { vehicles: products, loading } = useVehicles();
@@ -32,10 +33,12 @@ const AdminDashboard = () => {
   useEffect(() => {
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       setUserId(session?.user?.id ?? null);
+      setAuthReady(true);
     });
 
     supabase.auth.getSession().then(({ data: { session } }) => {
       setUserId(session?.user?.id ?? null);
+      setAuthReady(true);
     });
 
     return () => {
@@ -44,10 +47,11 @@ const AdminDashboard = () => {
   }, []);
 
   useEffect(() => {
-    if (userId === null) {
+    if (!authReady) return; // attendre l'init auth
+
+    if (!userId) {
       setIsAdmin(false);
       setLoadingAuth(false);
-      // Redirige seulement si l'utilisateur est déconnecté
       navigate('/auth', { replace: true });
       return;
     }
@@ -55,7 +59,7 @@ const AdminDashboard = () => {
     setTimeout(() => {
       checkAdmin(userId);
     }, 0);
-  }, [userId]);
+  }, [authReady, userId]);
 
   const checkAdmin = async (userId: string) => {
     const { data, error } = await supabase.rpc('has_role', { _user_id: userId, _role: 'admin' });
