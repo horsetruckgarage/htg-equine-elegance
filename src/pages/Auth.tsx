@@ -11,6 +11,7 @@ const Auth = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isResending, setIsResending] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -59,6 +60,23 @@ const Auth = () => {
     }
   };
 
+  const handleResendConfirmation = async () => {
+    if (!email) {
+      toast.error("Entrez votre e-mail d’abord");
+      return;
+    }
+    try {
+      setIsResending(true);
+      const { error } = await supabase.auth.resend({ type: 'signup', email });
+      if (error) throw error;
+      toast.success("E‑mail de confirmation renvoyé. Vérifiez votre boîte et les spams.");
+    } catch (e: any) {
+      toast.error(e.message || "Impossible de renvoyer l’e‑mail pour le moment.");
+    } finally {
+      setIsResending(false);
+    }
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center p-6">
       <Card className="w-full max-w-md">
@@ -91,6 +109,12 @@ const Auth = () => {
               {isLoading ? 'Veuillez patienter…' : mode === 'signin' ? 'Se connecter' : "S'inscrire"}
             </Button>
           </form>
+
+          <div className="mt-3">
+            <Button variant="ghost" size="sm" disabled={!email || isResending} onClick={handleResendConfirmation}>
+              {isResending ? "Renvoi en cours…" : "Renvoyer l'e-mail de confirmation"}
+            </Button>
+          </div>
 
           <p className="text-xs text-muted-foreground mt-4">
             Astuce: seul l'e-mail admin autorisé peut gérer les contenus: <strong>info@horsetruckgarage.com</strong>
