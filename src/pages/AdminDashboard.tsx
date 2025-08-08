@@ -80,12 +80,16 @@ const AdminDashboard = () => {
   };
 
 if (loadingAuth) {
-  return <div className="p-6">Chargement…</div>;
+  return (
+    <div className="min-h-[100svh] bg-background flex items-center justify-center p-6">
+      <span className="text-sm text-muted-foreground">Chargement…</span>
+    </div>
+  );
 }
 
 if (!isAdmin) {
   return (
-    <div className="min-h-screen flex items-center justify-center p-6">
+    <div className="min-h-[100svh] bg-background flex items-center justify-center p-6">
       <Card className="max-w-md w-full">
         <CardHeader>
           <CardTitle>Accès refusé</CardTitle>
