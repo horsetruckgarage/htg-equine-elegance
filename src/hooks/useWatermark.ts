@@ -20,7 +20,7 @@ export const useWatermark = () => {
       try {
         const position: WatermarkPosition = opts?.position ?? 'center';
         const opacity = typeof opts?.opacity === 'number' ? Math.min(1, Math.max(0, opts.opacity)) : 1;
-        const MAX = opts?.maxSize ?? 1920;
+        const MAX = opts?.maxSize ?? 1600;
 
         // Convert HEIC/HEIF to JPEG first
         const isHeic =
@@ -29,7 +29,7 @@ export const useWatermark = () => {
         if (isHeic) {
           try {
             toast.message('Conversion HEIC → JPEG…');
-            baseBlob = (await heic2any({ blob: file, toType: 'image/jpeg', quality: 0.9 })) as Blob;
+            baseBlob = (await heic2any({ blob: file, toType: 'image/jpeg', quality: 0.85 })) as Blob;
           } catch (convErr) {
             console.error('HEIC conversion failed, using original:', convErr);
             toast.error('Conversion HEIC échouée, image originale utilisée');
@@ -63,8 +63,14 @@ export const useWatermark = () => {
         canvas.height = height;
         ctx.drawImage(img, 0, 0, width, height);
 
-        // Load watermark logo (same-origin)
-        const logo = await loadImage('/lovable-uploads/cf145a57-409b-41c6-9c1d-bc4fb00db3ed.png');
+        // Load watermark logo with cache
+        const logo = await (async () => {
+          const w = typeof window !== 'undefined' ? (window as any) : undefined;
+          if (w && w.__htgLogo) return w.__htgLogo as HTMLImageElement;
+          const l = await loadImage('/lovable-uploads/cf145a57-409b-41c6-9c1d-bc4fb00db3ed.png');
+          if (w) w.__htgLogo = l;
+          return l;
+        })();
         const logoAR = logo.naturalWidth / logo.naturalHeight;
         const watermarkWidth = Math.min(Math.round(width * 0.15), 300);
         const watermarkHeight = Math.round(watermarkWidth / logoAR);
@@ -110,12 +116,12 @@ export const useWatermark = () => {
 
         // Export to JPEG and wrap into File
         const blob: Blob = await new Promise((resolve, reject) =>
-          canvas.toBlob((b) => (b ? resolve(b) : reject(new Error('Export JPEG échoué'))), 'image/jpeg', 0.9)
+          canvas.toBlob((b) => (b ? resolve(b) : reject(new Error('Export JPEG échoué'))), 'image/jpeg', 0.8)
         );
 
         const baseName = file.name.replace(/\.[^/.]+$/, '') || 'image';
         const watermarkedFile = new File([blob], `${baseName}_watermarked.jpg`, { type: 'image/jpeg' });
-        toast.success('Filigrane appliqué');
+        
         return watermarkedFile;
       } catch (error) {
         console.error('Error in watermark process (client):', error);

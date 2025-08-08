@@ -235,24 +235,30 @@ const ProductsManager = () => {
         .eq('vehicle_id', vehicleId);
       let start = existing?.length || 0;
 
-      for (let i = 0; i < files.length; i++) {
-        const file = files[i];
-        const safeName = file.name.replace(/[^a-zA-Z0-9.\-_]/g, '-').toLowerCase();
-        const path = `${vehicleId}/${Date.now()}_${i}_${safeName}`;
-        const { error: upErr } = await supabase.storage.from('vehicles').upload(path, file, {
-          cacheControl: '3600',
-          upsert: false,
-        });
-        if (upErr) throw upErr;
-        const { data: pub } = supabase.storage.from('vehicles').getPublicUrl(path);
-        const isPrimary = start === 0 && i === 0;
-        const { error: insErr } = await supabase.from('vehicle_images').insert({
-          vehicle_id: vehicleId,
-          sort_order: start + i + 1,
-          image_url: pub.publicUrl,
-          is_primary: isPrimary,
-        });
-        if (insErr) throw insErr;
+      const CHUNK_SIZE = 4;
+      for (let i = 0; i < files.length; i += CHUNK_SIZE) {
+        const slice = files.slice(i, i + CHUNK_SIZE);
+        await Promise.all(
+          slice.map(async (file, idx) => {
+            const globalIndex = i + idx;
+            const safeName = file.name.replace(/[^a-zA-Z0-9.\-_]/g, '-').toLowerCase();
+            const path = `${vehicleId}/${Date.now()}_${globalIndex}_${safeName}`;
+            const { error: upErr } = await supabase.storage.from('vehicles').upload(path, file, {
+              cacheControl: '31536000',
+              upsert: false,
+            });
+            if (upErr) throw upErr;
+            const { data: pub } = supabase.storage.from('vehicles').getPublicUrl(path);
+            const isPrimary = start === 0 && globalIndex === 0;
+            const { error: insErr } = await supabase.from('vehicle_images').insert({
+              vehicle_id: vehicleId,
+              sort_order: start + globalIndex + 1,
+              image_url: pub.publicUrl,
+              is_primary: isPrimary,
+            });
+            if (insErr) throw insErr;
+          })
+        );
       }
       toast.success('Images ajoutées');
     } finally {
