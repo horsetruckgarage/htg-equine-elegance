@@ -755,7 +755,7 @@ const translations: Record<Language, Translations> = {
       },
       horseVans: {
         title: "Vans Chevaux",
-        description: "Solutions compactes et polyvalentes pour 1-3 chevaux, parfaites pour l'usage quotidien",
+        description: "Remorques tractées légères et sécurisées pour 1 à 2 chevaux, idéales avec permis B et attelage. Robustesse, confort et facilité de manœuvre.",
         features: ["Format compact", "Conduite permis B", "Aménagement modulable", "Économique"],
         from: "À partir de",
         explore: "Explorer les Vans"
@@ -1082,7 +1082,7 @@ const translations: Record<Language, Translations> = {
     vansPage: {
       title: "Vans Chevaux",
       subtitle: "Polyvalents",
-      description: "Découvrez notre gamme de vans chevaux alliant polyvalence et maniabilité. Parfaits pour vos déplacements urbains et ruraux avec 2 à 4 chevaux.",
+      description: "Découvrez notre gamme de vans chevaux (remorques tractées) légers et sécurisés pour 1 à 2 chevaux. Permis B + attelage, confort et sécurité optimisés.",
       filters: {
         allFilters: "Tous les filtres",
         capacity: "Capacité",
