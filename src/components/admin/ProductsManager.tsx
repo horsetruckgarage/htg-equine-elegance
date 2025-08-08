@@ -59,14 +59,30 @@ const ProductsManager = () => {
 
   const createVehicleMutation = useMutation({
     mutationFn: async (data: VehicleFormData) => {
-      const { data: vehicle, error } = await supabase
-        .from('vehicles')
-        .insert([data])
-        .select()
-        .single();
-      
-      if (error) throw error;
-      return vehicle;
+      let lastErr: any = null;
+      for (let attempt = 0; attempt < 3; attempt++) {
+        try {
+          const { data: vehicle, error } = await supabase
+            .from('vehicles')
+            .insert([data])
+            .select()
+            .maybeSingle();
+
+          if (error) throw error;
+          if (!vehicle) throw new Error('Insertion échouée (aucune donnée retournée)');
+          return vehicle;
+        } catch (e: any) {
+          lastErr = e;
+          const msg = String(e?.message || e);
+          // Retry on transient network errors (Safari: "TypeError: Load failed")
+          if (e?.name === 'TypeError' || /load failed/i.test(msg)) {
+            await new Promise((r) => setTimeout(r, 500 + attempt * 300));
+            continue;
+          }
+          throw e;
+        }
+      }
+      throw lastErr;
     },
     onSuccess: async (vehicle) => {
       try {

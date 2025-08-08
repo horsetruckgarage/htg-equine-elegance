@@ -10,6 +10,13 @@ const supabase = createClient(
 export const useWatermark = () => {
   const addWatermarkToImage = useCallback(async (file: File): Promise<File> => {
     try {
+      // Skip watermark for HEIC/HEIF which are not widely supported in canvases/runtime
+      const isHeic = /heic|heif/i.test(file.type) || /\.heic$/i.test(file.name)
+      if (isHeic) {
+        toast.message('Format HEIC détecté — filigrane ignoré');
+        return file;
+      }
+
       // Create FormData with the image
       const formData = new FormData();
       formData.append('image', file);
@@ -19,9 +26,9 @@ export const useWatermark = () => {
         body: formData,
       });
 
-      if (error) {
+      if (error || !data) {
         console.error('Error adding watermark:', error);
-        toast.error('Erreur lors de l\'ajout du filigrane');
+        toast.error("Erreur lors de l'ajout du filigrane");
         return file; // Return original file if watermark fails
       }
 
