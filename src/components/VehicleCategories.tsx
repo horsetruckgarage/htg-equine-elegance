@@ -23,7 +23,7 @@ const VehicleCategories = () => {
       features: t.categories.horseTrucks.features,
       count: truckVehicles.length + "+ " + t.common.models,
       promo: t.common.upTo15Off,
-      startingPrice: t.categories.horseTrucks.from + " 45 000€",
+      
       highlight: t.common.bestseller
     },
     {
@@ -34,7 +34,7 @@ const VehicleCategories = () => {
       features: t.categories.horseVans.features,
       count: vanVehicles.length + "+ " + t.common.models,
       promo: t.common.specialOffers,
-      startingPrice: t.categories.horseVans.from + " 28 000€",
+      
       highlight: t.common.mostRequested
     }
   ];
@@ -125,8 +125,7 @@ const VehicleCategories = () => {
 
                   {/* Action */}
                   <div className="pt-4 space-y-4">
-                    <div className="text-center space-y-1">
-                      <p className="text-copper font-bold text-lg">{category.startingPrice}</p>
+                    <div className="text-center">
                       <p className="text-xs text-muted-foreground">{category.promo}</p>
                     </div>
                     <p className="text-sm text-muted-foreground leading-relaxed">
