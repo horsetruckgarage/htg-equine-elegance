@@ -20,6 +20,19 @@ import Auth from "./pages/Auth";
 
 const queryClient = new QueryClient();
 
+const CANONICAL_HOST = "w--htg-equine-elegance.lovable.app";
+const CanonicalDomainGuard = () => {
+  if (typeof window === 'undefined') return null;
+  const { protocol, hostname, pathname, search, hash } = window.location;
+  if (
+    hostname !== CANONICAL_HOST &&
+    (hostname.endsWith('.lovable.app') || hostname.endsWith('.lovableproject.com'))
+  ) {
+    window.location.replace(`${protocol}//${CANONICAL_HOST}${pathname}${search}${hash}`);
+  }
+  return null;
+};
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <BrowserRouter>
@@ -28,6 +41,7 @@ const App = () => (
           <Toaster />
           <Sonner />
           <ScrollToTop />
+          <CanonicalDomainGuard />
           <Routes>
             {/* Redirect root to French */}
             <Route path="/" element={<Navigate to="/fr" replace />} />
