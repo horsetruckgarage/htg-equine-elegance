@@ -245,13 +245,29 @@ const ProductsManager = () => {
     return results;
   };
 
+  // Promise timeout wrapper to avoid infinite waits on poor networks
+  const withTimeout = <T,>(p: PromiseLike<T>, ms = 60000) =>
+    new Promise<T>((resolve, reject) => {
+      const t = setTimeout(() => reject(new Error('Timeout')), ms);
+      p.then(
+        (v) => {
+          clearTimeout(t);
+          resolve(v);
+        },
+        (e) => {
+          clearTimeout(t);
+          reject(e);
+        }
+      );
+    });
+
   const uploadAndInsertImages = async (vehicleId: string, files: File[]) => {
     setIsUploading(true);
     try {
-      const { data: existing } = await supabase
-        .from('vehicle_images')
-        .select('id')
-        .eq('vehicle_id', vehicleId);
+      const { data: existing } = await withTimeout(
+        supabase.from('vehicle_images').select('id').eq('vehicle_id', vehicleId),
+        20000
+      );
       let start = existing?.length || 0;
 
       const CHUNK_SIZE = 4;
@@ -296,12 +312,15 @@ const ProductsManager = () => {
 
             const { data: pub } = supabase.storage.from('vehicles').getPublicUrl(usedPath);
             const isPrimary = start === 0 && globalIndex === 0;
-            const { error: insErr } = await supabase.from('vehicle_images').insert({
-              vehicle_id: vehicleId,
-              sort_order: start + globalIndex + 1,
-              image_url: pub.publicUrl,
-              is_primary: isPrimary,
-            });
+            const { error: insErr } = await withTimeout(
+              supabase.from('vehicle_images').insert({
+                vehicle_id: vehicleId,
+                sort_order: start + globalIndex + 1,
+                image_url: pub.publicUrl,
+                is_primary: isPrimary,
+              }),
+              20000
+            );
             if (!insErr) uploadedCount++;
           })
         );
