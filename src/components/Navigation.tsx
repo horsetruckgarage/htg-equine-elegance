@@ -57,7 +57,7 @@ const Navigation = () => {
                 {t.nav.getQuote}
               </Button>
             </Link>
-            <Link to="/auth" className="text-sm text-gray-700 hover:text-copper transition-colors">Admin</Link>
+            
           </div>
 
           {/* Mobile Actions */}
@@ -91,9 +91,6 @@ const Navigation = () => {
                   <Button className="w-full htg-button-primary">
                     {t.nav.getQuote}
                   </Button>
-                </Link>
-                <Link to="/auth" className="block text-gray-700 hover:text-copper transition-colors duration-300 font-medium py-2" onClick={() => setIsMenuOpen(false)}>
-                  Admin
                 </Link>
               </div>
             </div>
