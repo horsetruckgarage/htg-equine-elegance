@@ -65,9 +65,8 @@ const AdminDashboard = () => {
     if (!authReady) return; // attendre l'init auth
 
     if (!userId) {
-      setIsAdmin(false);
+      // Ne force pas la déconnexion ici (évite les bascules Safari)
       setLoadingAuth(false);
-      navigate('/auth', { replace: true });
       return;
     }
     setLoadingAuth(true);
