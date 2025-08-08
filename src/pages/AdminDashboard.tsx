@@ -24,28 +24,18 @@ const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState('dashboard');
   const [loadingAuth, setLoadingAuth] = useState(true);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [userId, setUserId] = useState<string | null>(null);
   const navigate = useNavigate();
   
   const { vehicles: products, loading } = useVehicles();
 
   useEffect(() => {
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      if (!session) {
-        setIsAdmin(false);
-        setLoadingAuth(false);
-        navigate('/auth', { replace: true });
-      } else {
-        checkAdmin(session.user.id);
-      }
+      setUserId(session?.user?.id ?? null);
     });
 
     supabase.auth.getSession().then(({ data: { session } }) => {
-      if (!session) {
-        setLoadingAuth(false);
-        navigate('/auth', { replace: true });
-      } else {
-        checkAdmin(session.user.id);
-      }
+      setUserId(session?.user?.id ?? null);
     });
 
     return () => {
@@ -53,17 +43,25 @@ const AdminDashboard = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (userId === null) {
+      setIsAdmin(false);
+      setLoadingAuth(false);
+      // Redirige seulement si l'utilisateur est déconnecté
+      navigate('/auth', { replace: true });
+      return;
+    }
+    setLoadingAuth(true);
+    setTimeout(() => {
+      checkAdmin(userId);
+    }, 0);
+  }, [userId]);
+
   const checkAdmin = async (userId: string) => {
-    const { data, error } = await supabase
-      .from('user_roles')
-      .select('role')
-      .eq('user_id', userId)
-      .eq('role', 'admin')
-      .maybeSingle();
+    const { data, error } = await supabase.rpc('has_role', { _user_id: userId, _role: 'admin' });
 
     if (error) {
       console.error('Role check error', error);
-      toast.error("Erreur d'authentification");
       setIsAdmin(false);
     } else {
       setIsAdmin(!!data);
