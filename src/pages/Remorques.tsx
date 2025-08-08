@@ -163,12 +163,24 @@ const Remorques = () => {
               >
                 {/* Image */}
                 <div className="relative aspect-[4/3] overflow-hidden">
-                  <div className="w-full h-full bg-gradient-to-br from-leather/30 to-copper/10 flex items-center justify-center">
-                    <div className="text-center space-y-2">
-                      <Zap className="w-16 h-16 text-copper mx-auto" />
-                      <p className="text-copper font-semibold text-lg">{t.nav.horseTrailers}</p>
+                  {remorque.images && remorque.images.length > 0 ? (
+                    <>
+                      <img
+                        src={remorque.images[0]}
+                        alt={`${remorque.name} - remorque chevaux HTG`}
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                    </>
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-leather/30 to-copper/10 flex items-center justify-center">
+                      <div className="text-center space-y-2">
+                        <Zap className="w-16 h-16 text-copper mx-auto" />
+                        <p className="text-copper font-semibold text-lg">{t.nav.horseTrailers}</p>
+                      </div>
                     </div>
-                  </div>
+                  )}
                   
                    {/* Badges */}
                    {remorque.featured && (
