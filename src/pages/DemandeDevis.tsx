@@ -7,9 +7,83 @@ import { Badge } from "@/components/ui/badge";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { useTranslation } from "@/hooks/useTranslation";
+import { useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/components/ui/use-toast";
 
 const DemandeDevis = () => {
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
+  const { toast } = useToast();
+
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [region, setRegion] = useState("");
+  const [vehicleType, setVehicleType] = useState<string | undefined>();
+  const [capacity, setCapacity] = useState<string | undefined>();
+  const [condition, setCondition] = useState<string | undefined>();
+  const [budget, setBudget] = useState<string | undefined>();
+  const [usage, setUsage] = useState<string | undefined>();
+  const [timeline, setTimeline] = useState<string | undefined>();
+  const [message, setMessage] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!firstName || !lastName || !email || !vehicleType || !capacity) {
+      toast({
+        title: "Champs requis manquants",
+        description: "Prénom, nom, email, type de véhicule et capacité sont requis.",
+      });
+      return;
+    }
+    try {
+      setSubmitting(true);
+      const { error } = await supabase.functions.invoke("send-contact-email", {
+        body: {
+          type: "quote",
+          locale: language,
+          firstName,
+          lastName,
+          email,
+          phone,
+          region,
+          vehicleType,
+          capacity,
+          condition,
+          budget,
+          usage,
+          timeline,
+          message,
+        },
+      });
+      if (error) throw error;
+      toast({
+        title: "Demande envoyée",
+        description: "Nous revenons vers vous sous 24h. Un email de confirmation vous a été envoyé.",
+      });
+      setFirstName("");
+      setLastName("");
+      setEmail("");
+      setPhone("");
+      setRegion("");
+      setVehicleType(undefined);
+      setCapacity(undefined);
+      setCondition(undefined);
+      setBudget(undefined);
+      setUsage(undefined);
+      setTimeline(undefined);
+      setMessage("");
+    } catch (err: any) {
+      toast({
+        title: "Erreur d'envoi",
+        description: err?.message ?? "Veuillez réessayer plus tard.",
+      });
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -65,7 +139,7 @@ const DemandeDevis = () => {
                 </p>
               </div>
 
-              <form className="space-y-8">
+              <form className="space-y-8" onSubmit={handleSubmit}>
                 {/* Personal Info */}
                 <div className="space-y-6">
                   <h3 className="text-xl font-semibold text-foreground border-b border-border pb-2">

@@ -6,9 +6,68 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { useTranslation } from "@/hooks/useTranslation";
+import { useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/components/ui/use-toast";
 
 const Contact = () => {
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
+  const { toast } = useToast();
+  
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [vehicleType, setVehicleType] = useState<string | undefined>();
+  const [budget, setBudget] = useState<string | undefined>();
+  const [message, setMessage] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!firstName || !lastName || !email || !message) {
+      toast({
+        title: "Champs requis manquants",
+        description: "Veuillez remplir prénom, nom, email et message.",
+      });
+      return;
+    }
+    try {
+      setSubmitting(true);
+      const { error } = await supabase.functions.invoke("send-contact-email", {
+        body: {
+          type: "contact",
+          locale: language,
+          firstName,
+          lastName,
+          email,
+          phone,
+          vehicleType,
+          budget,
+          message,
+        },
+      });
+      if (error) throw error;
+      toast({
+        title: "Message envoyé",
+        description: "Nous vous répondons rapidement. Un email de confirmation vous a été envoyé.",
+      });
+      setFirstName("");
+      setLastName("");
+      setEmail("");
+      setPhone("");
+      setVehicleType(undefined);
+      setBudget(undefined);
+      setMessage("");
+    } catch (err: any) {
+      toast({
+        title: "Erreur d'envoi",
+        description: err?.message ?? "Veuillez réessayer plus tard.",
+      });
+    } finally {
+      setSubmitting(false);
+    }
+  };
   
   const contactMethods = [
     {
@@ -223,31 +282,31 @@ const Contact = () => {
                   </p>
                 </div>
 
-                <form className="space-y-6">
+                <form className="space-y-6" onSubmit={handleSubmit}>
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-foreground">{t.contactPage.form.fields.firstName} {t.contactPage.form.required}</label>
-                      <Input placeholder={t.contactPage.form.placeholders.firstName} />
+                      <Input placeholder={t.contactPage.form.placeholders.firstName} value={firstName} onChange={(e) => setFirstName(e.target.value)} />
                     </div>
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-foreground">{t.contactPage.form.fields.lastName} {t.contactPage.form.required}</label>
-                      <Input placeholder={t.contactPage.form.placeholders.lastName} />
+                      <Input placeholder={t.contactPage.form.placeholders.lastName} value={lastName} onChange={(e) => setLastName(e.target.value)} />
                     </div>
                   </div>
 
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-foreground">{t.contactPage.form.fields.email} {t.contactPage.form.required}</label>
-                    <Input type="email" placeholder={t.contactPage.form.placeholders.email} />
+                    <Input type="email" placeholder={t.contactPage.form.placeholders.email} value={email} onChange={(e) => setEmail(e.target.value)} />
                   </div>
 
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-foreground">{t.contactPage.form.fields.phone}</label>
-                    <Input placeholder={t.contactPage.form.placeholders.phone} />
+                    <Input placeholder={t.contactPage.form.placeholders.phone} value={phone} onChange={(e) => setPhone(e.target.value)} />
                   </div>
 
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-foreground">{t.contactPage.form.fields.vehicleType}</label>
-                    <Select>
+                    <Select value={vehicleType} onValueChange={setVehicleType}>
                       <SelectTrigger>
                         <SelectValue placeholder={t.contactPage.form.placeholders.vehicleTypeSelect} />
                       </SelectTrigger>
@@ -261,7 +320,7 @@ const Contact = () => {
 
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-foreground">{t.contactPage.form.fields.budget}</label>
-                    <Select>
+                    <Select value={budget} onValueChange={setBudget}>
                       <SelectTrigger>
                         <SelectValue placeholder={t.contactPage.form.placeholders.budgetSelect} />
                       </SelectTrigger>
@@ -279,6 +338,8 @@ const Contact = () => {
                     <Textarea 
                       placeholder={t.contactPage.form.placeholders.message}
                       rows={4}
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
                     />
                   </div>
 
@@ -287,7 +348,7 @@ const Contact = () => {
                       <p className="text-copper font-medium">{t.contactPage.form.submitInfo}</p>
                       <p className="text-sm text-muted-foreground">{t.contactPage.form.submitSubtitle}</p>
                     </div>
-                    <Button className="htg-button-primary w-full text-lg py-3">
+                    <Button className="htg-button-primary w-full text-lg py-3" type="submit" disabled={submitting}>
                       {t.contactPage.form.submitButton}
                     </Button>
                   </div>
