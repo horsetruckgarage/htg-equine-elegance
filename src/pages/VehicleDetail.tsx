@@ -23,7 +23,7 @@ const VehicleDetail = () => {
         <div className="container mx-auto px-6 py-20">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-copper mx-auto mb-4"></div>
-            <p className="text-muted-foreground">Chargement...</p>
+            
           </div>
         </div>
         <Footer />
@@ -93,7 +93,7 @@ const VehicleDetail = () => {
                       <div className="aspect-[4/3] rounded-xl overflow-hidden">
                         <img 
                           src={image} 
-                          alt={`${vehicle.name} - Photo ${index + 1}`}
+                          alt={vehicle.name}
                           className="w-full h-full object-cover"
                         />
                       </div>
@@ -110,7 +110,7 @@ const VehicleDetail = () => {
                   <div key={index} className="aspect-[4/3] rounded-lg overflow-hidden cursor-pointer hover:opacity-80 transition-opacity">
                     <img 
                       src={image} 
-                      alt={`Miniature ${index + 1}`}
+                      alt={`${vehicle.name} - ${index + 1}`}
                       className="w-full h-full object-cover"
                     />
                   </div>
