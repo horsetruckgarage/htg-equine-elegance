@@ -42,32 +42,41 @@ export default function GoogleLanguageSelector() {
   const triggerTranslate = useCallback((lang: string, tries = 0) => {
     const select = getGoogleSelect();
     if (!select) {
+      console.log(`[GT] .goog-te-combo not found (try ${tries})`);
+      if ((window as any).googleTranslateElementInit) {
+        try { (window as any).googleTranslateElementInit(); } catch {}
+      }
       if (tries < 60) {
         window.setTimeout(() => triggerTranslate(lang, tries + 1), 200);
       } else {
         // give up: hide loader
-        hideLoaderSmoothly();
+        setLoading(false);
       }
       return;
     }
 
     try {
+      console.log("[GT] Found combo, switching to:", lang);
       select.value = lang;
       select.dispatchEvent(new Event("change"));
       // allow DOM to update then hide
       window.setTimeout(hideLoaderSmoothly, 300);
-    } catch {
+    } catch (e) {
+      console.warn("[GT] Error switching language", e);
       hideLoaderSmoothly();
     }
   }, [hideLoaderSmoothly]);
 
   const onChoose = useCallback((code: (typeof LANGUAGES)[number]["code"]) => {
-    if (code === active) return;
     setActive(code);
     setLoading(true);
     startTimeRef.current = Date.now();
+    // Ensure widget is initialized if needed
+    if (!getGoogleSelect() && (window as any).googleTranslateElementInit) {
+      (window as any).googleTranslateElementInit();
+    }
     triggerTranslate(code);
-  }, [active, triggerTranslate]);
+  }, [triggerTranslate]);
 
   return (
     <>

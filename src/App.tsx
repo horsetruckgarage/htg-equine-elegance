@@ -33,7 +33,7 @@ const App = () => (
           <div
             id="google_translate_element"
             className="fixed top-3 right-3 z-[60]"
-            style={{ position: 'fixed', opacity: 0, pointerEvents: 'none', width: 0, height: 0, overflow: 'hidden' }}
+            style={{ position: 'fixed', opacity: 0, pointerEvents: 'none' }}
           />
           <GoogleTranslate />
           

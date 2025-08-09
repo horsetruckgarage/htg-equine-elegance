@@ -82,20 +82,27 @@ const appendScriptOnce = () => {
 const GoogleTranslate = ({ containerId = "google_translate_element" }: { containerId?: string }) => {
   useEffect(() => {
     // Ensure the container exists early
+    console.log("[GT] useEffect mount, ensuring container", containerId);
     ensureContainerExists(containerId);
 
     // Define global init callback (called by Google script)
-    window.googleTranslateElementInit = () => initTranslate(containerId);
+    window.googleTranslateElementInit = () => {
+      console.log("[GT] googleTranslateElementInit called");
+      initTranslate(containerId);
+    };
 
     // If google is already available (HMR or cached), init directly
     if (window.google && window.google.translate) {
+      console.log("[GT] google.translate already available, init now");
       initTranslate(containerId);
     } else {
+      console.log("[GT] Appending Google script");
       appendScriptOnce();
     }
 
     return () => {
       // Keep widget across route changes; no cleanup to avoid reloading script
+      console.log("[GT] unmount (no cleanup)");
     };
   }, [containerId]);
 
