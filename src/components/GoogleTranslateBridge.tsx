@@ -78,6 +78,23 @@ const GoogleTranslateBridge: React.FC = () => {
       s.async = true;
       document.body.appendChild(s);
     }
+
+    // Force-hide any banner/tooltips injected after init
+    const hideGoogleToolbar = () => {
+      const banner = document.querySelector<HTMLIFrameElement>("iframe.goog-te-banner-frame");
+      if (banner) (banner.style.display = "none");
+      const tooltip = document.getElementById("goog-gt-tt");
+      if (tooltip) (tooltip.style.display = "none");
+      document.body.style.top = "0px";
+    };
+    hideGoogleToolbar();
+
+    const mo = new MutationObserver(() => hideGoogleToolbar());
+    mo.observe(document.body, { childList: true, subtree: true });
+
+    return () => {
+      mo.disconnect();
+    };
   }, []);
 
   return null; // hidden bridge
