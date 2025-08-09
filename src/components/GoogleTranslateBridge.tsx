@@ -41,6 +41,7 @@ const GoogleTranslateBridge: React.FC = () => {
 
     // Expose a function to programmatically switch language without reloading when possible
     (window as any).__setGoogleTranslateLanguage = (lang: "fr" | "en" | "es" | "de") => {
+      (window as any).__gtgCurrentLang = lang; // remember current target language
       const select = document.querySelector<HTMLSelectElement>(".goog-te-combo");
       if (lang === "fr") {
         // Reset to original by clearing cookie and resetting the select
@@ -92,8 +93,51 @@ const GoogleTranslateBridge: React.FC = () => {
     const mo = new MutationObserver(() => hideGoogleToolbar());
     mo.observe(document.body, { childList: true, subtree: true });
 
+    // Helper to re-apply translation on SPA updates
+    const reapplyTranslation = () => {
+      const lang = (window as any).__gtgCurrentLang;
+      const select = document.querySelector<HTMLSelectElement>(".goog-te-combo");
+      if (!select) return;
+      if (!lang || lang === "fr") {
+        select.value = ""; // original
+      } else {
+        select.value = lang;
+      }
+      select.dispatchEvent(new Event("change"));
+    };
+
+    // Fire on history changes (pushState/replaceState/popstate)
+    const emitLocationChange = () => window.dispatchEvent(new Event("gtg:locationchange"));
+    const originalPushState = history.pushState.bind(history) as any;
+    const originalReplaceState = history.replaceState.bind(history) as any;
+    (history as any).pushState = (...args: any[]) => { originalPushState(...args); emitLocationChange(); };
+    (history as any).replaceState = (...args: any[]) => { originalReplaceState(...args); emitLocationChange(); };
+    window.addEventListener("popstate", emitLocationChange);
+
+    const onLocationChange = () => {
+      setTimeout(reapplyTranslation, 50);
+      setTimeout(reapplyTranslation, 300);
+    };
+    window.addEventListener("gtg:locationchange", onLocationChange);
+
+    // Observe #root for big DOM mutations and re-apply translation
+    let domDebounce: number | undefined;
+    const rootEl = document.getElementById("root");
+    const domMo = rootEl
+      ? new MutationObserver(() => {
+          if (domDebounce) window.clearTimeout(domDebounce);
+          domDebounce = window.setTimeout(reapplyTranslation, 120);
+        })
+      : null;
+    if (rootEl && domMo) domMo.observe(rootEl, { childList: true, subtree: true });
+
     return () => {
       mo.disconnect();
+      if (domMo) domMo.disconnect();
+      window.removeEventListener("popstate", emitLocationChange);
+      window.removeEventListener("gtg:locationchange", onLocationChange);
+      (history as any).pushState = originalPushState;
+      (history as any).replaceState = originalReplaceState;
     };
   }, []);
 
