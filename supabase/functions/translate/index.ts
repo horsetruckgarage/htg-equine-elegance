@@ -7,6 +7,7 @@ const corsHeaders = {
 };
 
 const OPENAI_API_KEY = Deno.env.get("OPENAI_API_KEY");
+const GOOGLE_API_KEY = Deno.env.get("GOOGLE_API_KEY");
 
 serve(async (req) => {
   // CORS preflight
@@ -42,11 +43,37 @@ serve(async (req) => {
       });
     }
 
+    // Try Google Translate first if configured
+    if (GOOGLE_API_KEY) {
+      try {
+        const gResp = await fetch(`https://translation.googleapis.com/language/translate/v2?key=${GOOGLE_API_KEY}` , {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ q: text, target: lang, format: 'text' })
+        });
+        if (gResp.ok) {
+          const gData = await gResp.json();
+          const gTranslated = gData?.data?.translations?.[0]?.translatedText;
+          if (gTranslated) {
+            return new Response(JSON.stringify({ translatedText: gTranslated, provider: 'google', fallback: false }), {
+              headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+            });
+          }
+          log('google no content');
+        } else {
+          const gErr = await gResp.text();
+          log('google bad status', gResp.status, gErr.slice(0, 200));
+        }
+      } catch (e: any) {
+        log('google error', String(e?.message || e));
+      }
+    }
+
     if (!OPENAI_API_KEY) {
-      log("missing OPENAI_API_KEY");
-      return new Response(JSON.stringify({ error: "OPENAI_API_KEY not set", translatedText: text, fallback: true }), {
+      // No provider available, return original as fallback
+      return new Response(JSON.stringify({ error: 'no_provider', translatedText: text, fallback: true }), {
         status: 200,
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       });
     }
 
