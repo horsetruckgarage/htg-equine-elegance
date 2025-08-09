@@ -8,8 +8,6 @@ import Footer from "@/components/Footer";
 import { useTranslation } from "@/hooks/useTranslation";
 import { getLocalizedPath } from "@/hooks/useLocalizedRouting";
 import { useVehicle } from "@/hooks/useSupabaseVehicles";
-import { useEffect, useState } from "react";
-import { supabase } from "@/integrations/supabase/client";
 
 const VehicleDetail = () => {
   const { t, language } = useTranslation();
@@ -17,37 +15,6 @@ const VehicleDetail = () => {
   const navigate = useNavigate();
   
   const { vehicle, loading, error } = useVehicle(id || '');
-
-  const [translatedName, setTranslatedName] = useState<string>('');
-  const [translatedDesc, setTranslatedDesc] = useState<string>('');
-
-  useEffect(() => {
-    if (!vehicle) return;
-
-    if (language === 'fr') {
-      setTranslatedName(vehicle.name);
-      setTranslatedDesc(vehicle.description?.fr || '');
-      return;
-    }
-
-    const run = async () => {
-      try {
-        const { data: nameData } = await supabase.functions.invoke('translate', {
-          body: { text: vehicle.name, targetLang: language },
-        });
-        const { data: descData } = await supabase.functions.invoke('translate', {
-          body: { text: vehicle.description?.fr || '', targetLang: language },
-        });
-        setTranslatedName(nameData?.translatedText || vehicle.name);
-        setTranslatedDesc(descData?.translatedText || vehicle.description?.fr || '');
-      } catch (e) {
-        setTranslatedName(vehicle.name);
-        setTranslatedDesc(vehicle.description?.fr || '');
-      }
-    };
-
-    run();
-  }, [vehicle?.id, language]);
 
   if (loading) {
     return (
@@ -158,7 +125,7 @@ const VehicleDetail = () => {
                   {vehicle.type === 'truck' ? t.categories.horseTrucks.title : t.categories.horseVans.title}
                 </Badge>
               )}
-                <h1 className="text-3xl font-bold text-foreground mb-2">{translatedName || vehicle.name}</h1>
+                <h1 className="text-3xl font-bold text-foreground mb-2">{vehicle.name}</h1>
                 <div className="flex items-center gap-4">
                   <span className="text-3xl font-bold text-copper">{vehicle.price}€</span>
                   {vehicle.originalPrice && (
@@ -206,7 +173,7 @@ const VehicleDetail = () => {
               {/* Description */}
               <div className="htg-card p-6">
                 <h3 className="text-xl font-bold mb-4">{t.vehicleDetail.description}</h3>
-                <p className="text-muted-foreground leading-relaxed">{translatedDesc || vehicle.description.fr}</p>
+                <p className="text-muted-foreground leading-relaxed">{vehicle.description.fr}</p>
               </div>
 
               {/* Équipements */}
