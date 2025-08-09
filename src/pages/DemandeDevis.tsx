@@ -148,22 +148,22 @@ const DemandeDevis = () => {
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-foreground">{t.quoteRequest.form.personalInfo.firstName} *</label>
-                      <Input placeholder={t.quoteRequest.form.personalInfo.firstNamePlaceholder} required />
+                      <Input placeholder={t.quoteRequest.form.personalInfo.firstNamePlaceholder} required value={firstName} onChange={(e) => setFirstName(e.target.value)} />
                     </div>
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-foreground">{t.quoteRequest.form.personalInfo.lastName} *</label>
-                      <Input placeholder={t.quoteRequest.form.personalInfo.lastNamePlaceholder} required />
+                      <Input placeholder={t.quoteRequest.form.personalInfo.lastNamePlaceholder} required value={lastName} onChange={(e) => setLastName(e.target.value)} />
                     </div>
                   </div>
                   
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-foreground">{t.quoteRequest.form.personalInfo.email} *</label>
-                      <Input type="email" placeholder={t.quoteRequest.form.personalInfo.emailPlaceholder} required />
+                      <Input type="email" placeholder={t.quoteRequest.form.personalInfo.emailPlaceholder} required value={email} onChange={(e) => setEmail(e.target.value)} />
                     </div>
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-foreground">{t.quoteRequest.form.personalInfo.phone}</label>
-                      <Input placeholder={t.quoteRequest.form.personalInfo.phonePlaceholder} />
+                      <Input placeholder={t.quoteRequest.form.personalInfo.phonePlaceholder} value={phone} onChange={(e) => setPhone(e.target.value)} />
                     </div>
                   </div>
 
@@ -171,7 +171,7 @@ const DemandeDevis = () => {
                     <label className="text-sm font-medium text-foreground">{t.quoteRequest.form.personalInfo.region}</label>
                     <div className="flex items-center space-x-2">
                       <MapPin className="w-4 h-4 text-copper" />
-                      <Input placeholder={t.quoteRequest.form.personalInfo.regionPlaceholder} />
+                      <Input placeholder={t.quoteRequest.form.personalInfo.regionPlaceholder} value={region} onChange={(e) => setRegion(e.target.value)} />
                     </div>
                   </div>
                 </div>
@@ -185,7 +185,7 @@ const DemandeDevis = () => {
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-foreground">{t.quoteRequest.form.vehicleInfo.type} *</label>
-                      <Select required>
+                      <Select required value={vehicleType} onValueChange={setVehicleType}>
                         <SelectTrigger>
                           <SelectValue placeholder={t.quoteRequest.form.vehicleInfo.typePlaceholder} />
                         </SelectTrigger>
@@ -199,7 +199,7 @@ const DemandeDevis = () => {
                     
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-foreground">{t.quoteRequest.form.vehicleInfo.capacity} *</label>
-                      <Select required>
+                      <Select required value={capacity} onValueChange={setCapacity}>
                         <SelectTrigger>
                           <SelectValue placeholder={t.quoteRequest.form.vehicleInfo.capacityPlaceholder} />
                         </SelectTrigger>
@@ -218,7 +218,7 @@ const DemandeDevis = () => {
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-foreground">{t.quoteRequest.form.vehicleInfo.condition}</label>
-                      <Select>
+                      <Select value={condition} onValueChange={setCondition}>
                         <SelectTrigger>
                           <SelectValue placeholder={t.quoteRequest.form.vehicleInfo.conditionPlaceholder} />
                         </SelectTrigger>
@@ -232,7 +232,7 @@ const DemandeDevis = () => {
                     
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-foreground">{t.quoteRequest.form.vehicleInfo.budget}</label>
-                      <Select>
+                      <Select value={budget} onValueChange={setBudget}>
                         <SelectTrigger>
                           <SelectValue placeholder={t.quoteRequest.form.vehicleInfo.budgetPlaceholder} />
                         </SelectTrigger>
@@ -257,7 +257,7 @@ const DemandeDevis = () => {
                   
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-foreground">{t.quoteRequest.form.usage.primary}</label>
-                    <Select>
+                    <Select value={usage} onValueChange={setUsage}>
                       <SelectTrigger>
                         <SelectValue placeholder={t.quoteRequest.form.usage.primaryPlaceholder} />
                       </SelectTrigger>
@@ -280,7 +280,7 @@ const DemandeDevis = () => {
                   
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-foreground">{t.quoteRequest.form.additional.timeline}</label>
-                    <Select>
+                    <Select value={timeline} onValueChange={setTimeline}>
                       <SelectTrigger>
                         <SelectValue placeholder={t.quoteRequest.form.additional.timelinePlaceholder} />
                       </SelectTrigger>
@@ -300,6 +300,8 @@ const DemandeDevis = () => {
                     <Textarea 
                       placeholder={t.quoteRequest.form.additional.messagePlaceholder}
                       rows={4}
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
                     />
                   </div>
                 </div>
@@ -314,7 +316,7 @@ const DemandeDevis = () => {
                   </div>
                   
                   <div className="flex justify-center">
-                    <Button className="htg-button-primary text-lg px-12 py-4 group">
+                    <Button className="htg-button-primary text-lg px-12 py-4 group" type="submit" disabled={submitting}>
                       <Calculator className="w-5 h-5 mr-2" />
                       {t.quoteRequest.form.submit.button}
                       <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
