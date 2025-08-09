@@ -57,14 +57,26 @@ const appendScriptOnce = () => {
   ) as HTMLScriptElement | null;
   if (existing) {
     window.__googleTranslateScriptAppended__ = true;
+    if (window.google && window.google.translate && window.googleTranslateElementInit) {
+      window.googleTranslateElementInit();
+    }
     return;
   }
   const script = document.createElement("script");
   script.src =
     "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
   script.async = true;
+  script.onload = () => {
+    window.__googleTranslateScriptAppended__ = true;
+    // Safety: invoke init in case callback not triggered
+    if (window.googleTranslateElementInit) {
+      window.googleTranslateElementInit();
+    }
+  };
+  script.onerror = () => {
+    window.__googleTranslateScriptAppended__ = false;
+  };
   document.head.appendChild(script);
-  window.__googleTranslateScriptAppended__ = true;
 };
 
 const GoogleTranslate = ({ containerId = "google_translate_element" }: { containerId?: string }) => {
