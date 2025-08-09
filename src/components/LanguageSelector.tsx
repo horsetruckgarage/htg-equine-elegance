@@ -18,6 +18,19 @@ const languages = [
 const LanguageSelector = () => {
   const { language, setLanguage } = useTranslation();
   
+  const setGoogleTranslateLanguage = (lang: Language) => {
+    try {
+      if (typeof window !== 'undefined' && (window as any).__setGoogleTranslateLanguage) {
+        (window as any).__setGoogleTranslateLanguage(lang);
+      }
+    } catch {}
+  };
+
+  const handleSelect = (lang: Language) => {
+    setLanguage(lang);
+    setGoogleTranslateLanguage(lang);
+  };
+
   const currentLanguage = languages.find(lang => lang.code === language);
 
   return (
@@ -40,7 +53,7 @@ const LanguageSelector = () => {
         {languages.map((lang) => (
           <DropdownMenuItem
             key={lang.code}
-            onClick={() => setLanguage(lang.code)}
+            onClick={() => handleSelect(lang.code)}
             className={`flex items-center space-x-3 px-4 py-3 hover:bg-gray-100 cursor-pointer text-gray-900 ${
               language === lang.code ? 'bg-gray-50 font-medium' : ''
             }`}

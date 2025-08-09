@@ -18,6 +18,7 @@ import VehicleDetail from "./pages/VehicleDetail";
 import AdminDashboard from "./pages/AdminDashboard";
 import Auth from "./pages/Auth";
 import LegacyVehicleRedirect from "./components/LegacyVehicleRedirect";
+import GoogleTranslateBridge from "./components/GoogleTranslateBridge";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +30,7 @@ const App = () => (
           <Toaster />
           <Sonner />
           <ScrollToTop />
+          <GoogleTranslateBridge />
           <Routes>
             {/* Redirect root to French */}
             <Route path="/" element={<Navigate to="/fr" replace />} />
