@@ -3,12 +3,11 @@ import Footer from "@/components/Footer";
 import FloatingCTA from "@/components/FloatingCTA";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Truck, Calendar, Gauge, Users, Eye, Heart, Star, Filter, ArrowRight } from "lucide-react";
+import { Truck, Calendar, Gauge, Users, Eye, Heart, Filter, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "@/hooks/useTranslation";
 import { getLocalizedPath } from "@/hooks/useLocalizedRouting";
 import { useVehicles } from "@/hooks/useVehicles";
-import VehicleImage from "@/components/VehicleImage";
 import { Vehicle } from "@/types/vehicle";
 import { useAutoTranslate, useAutoTranslateArray } from "@/hooks/useAutoTranslate";
 import type { Language } from "@/hooks/useTranslation";
@@ -242,7 +241,7 @@ const Camions = () => {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {!loading && camions.map((camion, index) => (
-              <TruckCard key={camion.id} camion={camion} index={index} language={language} t={t} />
+              <TruckCard key={camion.id} camion={camion} index={index} language={language as Language} t={t} />
             ))}
           </div>
 

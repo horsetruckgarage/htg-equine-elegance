@@ -32,6 +32,13 @@ serve(async (req) => {
     const isArray = Array.isArray(text);
     const payloadText = isArray ? (text as string[]).join('\n---\n') : String(text);
 
+    // Short-circuit if target language is French (base language)
+    if (String(targetLang).toLowerCase() === 'fr') {
+      return new Response(JSON.stringify({ translated: text }), {
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
+
     const system = `You are a professional translator. Translate the user-provided French product text into ${targetLang}.
 - Keep numbers, years, units (t, km, hp) intact.
 - Preserve brand and model names.
@@ -39,6 +46,7 @@ serve(async (req) => {
 - Return only the translation without additional commentary.
 `;
 
+    const ctrl = new AbortController();
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: {
@@ -53,18 +61,24 @@ serve(async (req) => {
         ],
         temperature: 0.2,
       }),
+      signal: ctrl.signal,
     });
 
-    const data = await response.json();
+    const raw = await response.text();
+    let data: any = null;
+    try { data = JSON.parse(raw); } catch (_) {}
+
     if (!response.ok) {
-      console.error('OpenAI error', data);
-      return new Response(JSON.stringify({ error: data?.error?.message || 'Translation failed' }), {
+      const message = data?.error?.message || raw || 'Translation failed';
+      console.error('OpenAI error', { status: response.status, message });
+      return new Response(JSON.stringify({ error: message }), {
         status: 500,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       });
     }
 
-    const full = data.choices?.[0]?.message?.content || '';
+    const parsed = data ?? {};
+    const full = parsed.choices?.[0]?.message?.content || '';
     let translated: string | string[] = full;
 
     if (isArray) {
