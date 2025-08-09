@@ -42,8 +42,8 @@ export default function GoogleLanguageSelector() {
   const triggerTranslate = useCallback((lang: string, tries = 0) => {
     const select = getGoogleSelect();
     if (!select) {
-      if (tries < 12) {
-        window.setTimeout(() => triggerTranslate(lang, tries + 1), 150);
+      if (tries < 60) {
+        window.setTimeout(() => triggerTranslate(lang, tries + 1), 200);
       } else {
         // give up: hide loader
         hideLoaderSmoothly();
