@@ -39,10 +39,40 @@ const GoogleTranslateBridge: React.FC = () => {
       document.cookie = cookie;
     };
 
+    // Loading state management for overlay visibility until translation settles
+    let loadingLang: "fr" | "en" | "es" | "de" | null = null;
+    let loadingIdleTimer: number | undefined;
+    let loadingMaxTimer: number | undefined;
+
+    const scheduleMaybeFinish = () => {
+      if (!loadingLang) return;
+      if (loadingIdleTimer) window.clearTimeout(loadingIdleTimer);
+      loadingIdleTimer = window.setTimeout(() => {
+        try {
+          const select = document.querySelector<HTMLSelectElement>(".goog-te-combo");
+          const expected = loadingLang === "fr" ? "" : loadingLang;
+          if (select && select.value === expected) {
+            window.dispatchEvent(new Event("gtg:loadingend"));
+            loadingLang = null;
+            if (loadingMaxTimer) window.clearTimeout(loadingMaxTimer);
+            loadingMaxTimer = undefined;
+          }
+        } catch {}
+      }, 400);
+    };
+
     // Expose a function to programmatically switch language without reloading when possible
     (window as any).__setGoogleTranslateLanguage = (lang: "fr" | "en" | "es" | "de") => {
       (window as any).__gtgCurrentLang = lang; // remember current target language
       window.dispatchEvent(new Event("gtg:loadingstart"));
+      loadingLang = lang;
+      if (loadingIdleTimer) window.clearTimeout(loadingIdleTimer);
+      if (loadingMaxTimer) window.clearTimeout(loadingMaxTimer);
+      loadingMaxTimer = window.setTimeout(() => {
+        // Fallback safety to avoid locking the UI
+        window.dispatchEvent(new Event("gtg:loadingend"));
+        loadingLang = null;
+      }, 12000);
       const select = document.querySelector<HTMLSelectElement>(".goog-te-combo");
       if (lang === "fr") {
         // Reset to original by clearing cookie and resetting the select
@@ -53,9 +83,7 @@ const GoogleTranslateBridge: React.FC = () => {
         if (select) {
           select.value = ""; // empty restores original language
           select.dispatchEvent(new Event("change"));
-          // Hide overlay shortly after Google applies the translation
-          setTimeout(() => window.dispatchEvent(new Event("gtg:loadingend")), 900);
-          setTimeout(() => window.dispatchEvent(new Event("gtg:loadingend")), 1500);
+          scheduleMaybeFinish();
           return;
         }
         window.location.reload();
@@ -65,9 +93,7 @@ const GoogleTranslateBridge: React.FC = () => {
       if (select) {
         select.value = lang;
         select.dispatchEvent(new Event("change"));
-        // Hide overlay shortly after Google applies the translation
-        setTimeout(() => window.dispatchEvent(new Event("gtg:loadingend")), 900);
-        setTimeout(() => window.dispatchEvent(new Event("gtg:loadingend")), 1500);
+        scheduleMaybeFinish();
       } else {
         try {
           setCookie("googtrans", `/fr/${lang}`, 365);
@@ -132,6 +158,7 @@ const GoogleTranslateBridge: React.FC = () => {
     const rootEl = document.getElementById("root");
     const domMo = rootEl
       ? new MutationObserver(() => {
+          scheduleMaybeFinish();
           if (domDebounce) window.clearTimeout(domDebounce);
           domDebounce = window.setTimeout(reapplyTranslation, 120);
         })

@@ -13,7 +13,7 @@ const TranslationLoadingOverlay: React.FC = () => {
       }
       setVisible(true);
       // Safety auto-hide in case the end event never fires
-      hideTimerRef.current = window.setTimeout(() => setVisible(false), 2000);
+      hideTimerRef.current = window.setTimeout(() => setVisible(false), 12000);
     };
 
     const onEnd = () => {
