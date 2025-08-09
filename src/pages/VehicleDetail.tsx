@@ -17,6 +17,16 @@ const VehicleDetail = () => {
   
   const { vehicle, loading, error } = useVehicle(id || '');
 
+  // Ensure hooks are called on every render (even during loading/error)
+  const baseDesc = typeof (vehicle as any)?.description === 'string'
+    ? (vehicle as any).description
+    : ((vehicle as any)?.description?.[language] || (vehicle as any)?.description?.fr || '');
+  const translatedName = useAutoTranslate(vehicle?.name || '', language);
+  const translatedDesc = useAutoTranslate(baseDesc, language);
+  const translatedFeatures = useAutoTranslateArray(vehicle?.features || [], language);
+  const translatedCondition = useAutoTranslate(vehicle?.condition || '', language);
+  const translatedAvailability = useAutoTranslate(vehicle?.availability || '', language);
+
   if (loading) {
     return (
       <div className="min-h-screen bg-background">
@@ -64,14 +74,6 @@ const VehicleDetail = () => {
     }
   };
 
-  const baseDesc = typeof (vehicle as any).description === 'string'
-    ? (vehicle as any).description
-    : ((vehicle as any).description?.[language] || (vehicle as any).description?.fr || '');
-  const translatedName = useAutoTranslate(vehicle.name, language);
-  const translatedDesc = useAutoTranslate(baseDesc, language);
-  const translatedFeatures = useAutoTranslateArray(vehicle.features || [], language);
-  const translatedCondition = useAutoTranslate(vehicle.condition || '', language);
-  const translatedAvailability = useAutoTranslate(vehicle.availability || '', language);
 
   return (
     <div className="min-h-screen bg-background">
