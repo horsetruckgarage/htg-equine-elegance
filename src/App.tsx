@@ -19,6 +19,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import Auth from "./pages/Auth";
 import LegacyVehicleRedirect from "./components/LegacyVehicleRedirect";
 import GoogleTranslateBridge from "./components/GoogleTranslateBridge";
+import TranslationLoadingOverlay from "./components/TranslationLoadingOverlay";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +31,7 @@ const App = () => (
           <Toaster />
           <Sonner />
           <ScrollToTop />
+          <TranslationLoadingOverlay />
           <GoogleTranslateBridge />
           <Routes>
             {/* Redirect root to French */}
