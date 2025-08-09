@@ -51,17 +51,17 @@ export const routeTranslations: Record<Language, Record<string, string>> = {
 
 // Fonction pour obtenir le chemin localisé
 export const getLocalizedPath = (path: string, language: Language): string => {
-  // Gérer les chemins avec paramètres (comme /vehicule/trucks/1)
-  const vehicleRoutePattern = /^\/vehicule\/([^\/]+)\/([^\/]+)$/;
-  const match = path.match(vehicleRoutePattern);
+  // Vehicle detail: /vehicule/:id
+  const vehicleDetailPattern = /^\/vehicule\/([^\/]+)$/;
+  const vehicleMatch = path.match(vehicleDetailPattern);
   
-  if (match) {
-    const [, type, id] = match;
+  if (vehicleMatch) {
+    const [, id] = vehicleMatch;
     const vehicleBasePath = routeTranslations[language]['/vehicule'] || '/vehicule';
-    return `/${language}${vehicleBasePath}/${type}/${id}`;
+    return `/${language}${vehicleBasePath}/${id}`;
   }
   
-  // Pour les routes simples
+  // Simple routes
   const translatedPath = routeTranslations[language][path] || path;
   return `/${language}${translatedPath === '/' ? '' : translatedPath}`;
 };
@@ -74,22 +74,22 @@ export const extractLanguageFromPath = (pathname: string): { language: Language;
   if (['fr', 'en', 'es', 'de'].includes(possibleLang)) {
     const pathWithoutLang = '/' + segments.slice(2).join('/');
     
-    // Gestion spéciale pour les routes de véhicules avec paramètres
-    // Patterns: /vehicle/trucks/1, /vehiculo/trucks/1, /vehicule/trucks/1, /fahrzeug/trucks/1
-    const vehicleRoutePattern = /^\/([^\/]+)\/([^\/]+)\/([^\/]+)$/;
-    const match = pathWithoutLang.match(vehicleRoutePattern);
+    // Gestion spéciale pour la route de détail véhicule avec paramètre :id
+    // Patterns: /vehicle/123, /vehiculo/123, /vehicule/123, /fahrzeug/123
+    const vehicleDetailPattern = /^\/([^\/]+)\/([^\/]+)$/;
+    const match = pathWithoutLang.match(vehicleDetailPattern);
     
     if (match) {
-      const [, vehicleBase, type, id] = match;
-      // Vérifier si le premier segment correspond à une route de véhicule traduite
+      const [, vehicleBase, id] = match;
+      // Essayer de retrouver la route de base du véhicule dans la langue actuelle
       const vehicleBaseRoute = '/' + vehicleBase;
       const reverseMapping = Object.entries(routeTranslations[possibleLang]).find(
         ([basePath, translatedPath]) => translatedPath === vehicleBaseRoute
       );
       
-      if (reverseMapping) {
-        // Préserver les paramètres type et id dans le basePath
-        const basePath = `${reverseMapping[0]}/${type}/${id}`;
+      // Si la route correspond à la ressource véhicule, retourner le chemin de base canonique
+      if ((reverseMapping && reverseMapping[0] === '/vehicule') || vehicleBaseRoute === '/vehicule') {
+        const basePath = `/vehicule/${id}`;
         return { language: possibleLang, basePath };
       }
     }
