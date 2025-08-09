@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { Globe } from "lucide-react";
+import { Globe, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLocation } from "react-router-dom";
 import {
@@ -151,25 +151,41 @@ export default function GoogleLanguageSelector() {
 
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="outline" size="sm" className="flex items-center gap-2">
-            <Globe className="w-4 h-4" />
-            <span className="text-base" aria-hidden>
+          <Button
+            variant="outline"
+            size="sm"
+            className="flex items-center gap-2 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-border hover:bg-muted/70"
+            aria-label={`Langue: ${current?.label || ""}`}
+          >
+            <span
+              className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-muted text-base"
+              aria-hidden
+            >
               {current?.flag}
             </span>
             <span className="hidden sm:inline font-medium">{current?.label}</span>
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="end" className="z-[75]">
+        <DropdownMenuContent align="end" className="z-[90] bg-popover border border-border shadow-luxury min-w-[180px]">
           {LANGUAGES.map((l) => (
             <DropdownMenuItem
               key={l.code}
               onClick={() => onChoose(l.code)}
-              className={active === l.code ? "font-medium" : undefined}
+              className={active === l.code ? "bg-muted/60 font-medium" : undefined}
+              role="menuitemradio"
+              aria-checked={active === l.code}
             >
-              <span className="mr-2" aria-hidden>
+              <span
+                className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-muted mr-2"
+                aria-hidden
+              >
                 {l.flag}
               </span>
-              {l.label}
+              <span>{l.label}</span>
+              <Check
+                className={`ml-auto h-4 w-4 ${active === l.code ? "text-primary opacity-100" : "opacity-0"}`}
+                aria-hidden
+              />
             </DropdownMenuItem>
           ))}
         </DropdownMenuContent>
