@@ -10,6 +10,7 @@ import { getLocalizedPath } from "@/hooks/useLocalizedRouting";
 import { useVehicles } from "@/hooks/useVehicles";
 import { Vehicle } from "@/types/vehicle";
 import { useAutoTranslate, useAutoTranslateArray } from "@/hooks/useAutoTranslate";
+import type { Language } from "@/hooks/useTranslation";
 
 const Vans = () => {
   const { t, language } = useTranslation();
@@ -54,7 +55,7 @@ const Vans = () => {
     return badgeMap[badge] || badge;
   };
 
-  const VanCard = ({ van, index, language, t }: { van: Vehicle; index: number; language: string; t: any }) => {
+  const VanCard = ({ van, index, language, t }: { van: Vehicle; index: number; language: Language; t: any }) => {
     const tName = useAutoTranslate(van.name || '', language);
     const tFeatures = useAutoTranslateArray(van.features || [], language);
 
