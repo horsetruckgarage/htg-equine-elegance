@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "@/hooks/useTranslation";
 import { getLocalizedPath } from "@/hooks/useLocalizedRouting";
 import LanguageSelector from "@/components/LanguageSelector";
+import GoogleTranslate from "@/components/GoogleTranslate";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -51,12 +52,12 @@ const Navigation = () => {
           {/* Actions */}
           <div className="hidden md:flex items-center space-x-4">
             <LanguageSelector />
+            <GoogleTranslate />
             <Link to={getLocalizedPath("/devis", language)}>
               <Button className="htg-button-primary">
                 {t.nav.getQuote}
               </Button>
             </Link>
-            
           </div>
 
           {/* Mobile Actions */}
