@@ -55,6 +55,24 @@ const ensureGoogleTranslateLoaded = () => {
   }
 };
 
+const ensureGoogleTranslateReady = (): Promise<void> => {
+  return new Promise((resolve) => {
+    ensureGoogleTranslateLoaded();
+    let attempts = 0;
+    const check = () => {
+      const combo = document.querySelector("select.goog-te-combo");
+      if (combo || attempts > 100) {
+        resolve();
+        return;
+      }
+      attempts++;
+      setTimeout(check, 100);
+    };
+    check();
+  });
+};
+
+
 const applyGoogleTranslate = (lang: Language) => {
   const map = { fr: "fr", en: "en", es: "es", de: "de" } as const;
   const target = map[lang];
@@ -95,11 +113,11 @@ const LanguageSelector = () => {
     ensureGoogleTranslateLoaded();
   }, []);
 
-  const handleLanguageChange = (code: Language) => {
+  const handleLanguageChange = async (code: Language) => {
     setLanguage(code);
+    await ensureGoogleTranslateReady();
     applyGoogleTranslate(code);
   };
-  
   const currentLanguage = languages.find(lang => lang.code === language);
 
   return (
