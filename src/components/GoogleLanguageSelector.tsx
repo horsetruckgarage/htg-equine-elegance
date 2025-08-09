@@ -1,6 +1,7 @@
-import { useCallback, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLocation } from "react-router-dom";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -22,6 +23,18 @@ const LOADER_MIN_MS = 700;
 
 const getGoogleSelect = (): HTMLSelectElement | null => {
   return document.querySelector(".goog-te-combo") as HTMLSelectElement | null;
+};
+
+const getCookie = (name: string) =>
+  document.cookie.split("; ").find((row) => row.startsWith(name + "="))?.split("=")[1];
+
+const setCookie = (name: string, value: string) => {
+  try {
+    const domain = window.location.hostname;
+    // set with and without domain for reliability
+    document.cookie = `${name}=${value}; path=/; max-age=31536000`;
+    document.cookie = `${name}=${value}; path=/; domain=${domain}; max-age=31536000`;
+  } catch {}
 };
 
 export default function GoogleLanguageSelector() {
@@ -71,12 +84,56 @@ export default function GoogleLanguageSelector() {
     setActive(code);
     setLoading(true);
     startTimeRef.current = Date.now();
+
+    // Persist selection for SPA route changes and reloads
+    try { localStorage.setItem("gt_lang", code); } catch {}
+    if (code === "fr") {
+      setCookie("googtrans", "/fr/fr");
+      setCookie("googtrans", "/auto/fr");
+    } else {
+      setCookie("googtrans", `/fr/${code}`);
+      setCookie("googtrans", `/auto/${code}`);
+    }
+
     // Ensure widget is initialized if needed
     if (!getGoogleSelect() && (window as any).googleTranslateElementInit) {
       (window as any).googleTranslateElementInit();
     }
     triggerTranslate(code);
   }, [triggerTranslate]);
+
+  const location = useLocation();
+
+  // Restore language on first mount and apply translation if needed
+  useEffect(() => {
+    let saved: string | null = null;
+    try { saved = localStorage.getItem("gt_lang"); } catch {}
+    if (!saved) {
+      const c = getCookie("googtrans");
+      if (c) {
+        try {
+          const parts = decodeURIComponent(c).split("/");
+          saved = parts[parts.length - 1] || "fr";
+        } catch { /* noop */ }
+      }
+    }
+    if (saved) {
+      setActive(saved as any);
+      if (saved !== "fr") {
+        setLoading(true);
+        startTimeRef.current = Date.now();
+        triggerTranslate(saved);
+      }
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Re-apply translation on SPA route changes (Google widget misses new DOM)
+  useEffect(() => {
+    if (active && active !== "fr") {
+      triggerTranslate(active);
+    }
+  }, [active, location.pathname, triggerTranslate]);
 
   return (
     <>
