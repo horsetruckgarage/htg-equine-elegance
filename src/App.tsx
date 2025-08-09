@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { TranslationProvider } from "@/components/TranslationProvider";
+import GoogleTranslateProvider from "@/components/GoogleTranslateProvider";
 import ScrollToTop from "@/components/ScrollToTop";
 import Index from "./pages/Index";
 import About from "./pages/About";
@@ -24,6 +25,7 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <BrowserRouter>
       <TranslationProvider>
+        <GoogleTranslateProvider />
         <TooltipProvider>
           <Toaster />
           <Sonner />

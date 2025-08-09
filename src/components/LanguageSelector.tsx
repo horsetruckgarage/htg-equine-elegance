@@ -20,6 +20,18 @@ const LanguageSelector = () => {
   
   const currentLanguage = languages.find(lang => lang.code === language);
 
+  const applyGoogleTranslate = (code: Language) => {
+    const w = window as any;
+    if (w && typeof w.HTG_applyGoogleTranslate === 'function') {
+      w.HTG_applyGoogleTranslate(code);
+    }
+  };
+
+  const handleSelect = (code: Language) => {
+    setLanguage(code);
+    applyGoogleTranslate(code);
+  };
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -40,7 +52,7 @@ const LanguageSelector = () => {
         {languages.map((lang) => (
           <DropdownMenuItem
             key={lang.code}
-            onClick={() => setLanguage(lang.code)}
+            onClick={() => handleSelect(lang.code)}
             className={`flex items-center space-x-3 px-4 py-3 hover:bg-gray-100 cursor-pointer text-gray-900 ${
               language === lang.code ? 'bg-gray-50 font-medium' : ''
             }`}
