@@ -114,6 +114,10 @@ export type Database = {
           id: string
           mileage: number | null
           name: string
+          name_de: string | null
+          name_en: string | null
+          name_es: string | null
+          name_fr: string | null
           power: string | null
           price: number
           transmission: string | null
@@ -135,6 +139,10 @@ export type Database = {
           id?: string
           mileage?: number | null
           name: string
+          name_de?: string | null
+          name_en?: string | null
+          name_es?: string | null
+          name_fr?: string | null
           power?: string | null
           price: number
           transmission?: string | null
@@ -156,6 +164,10 @@ export type Database = {
           id?: string
           mileage?: number | null
           name?: string
+          name_de?: string | null
+          name_en?: string | null
+          name_es?: string | null
+          name_fr?: string | null
           power?: string | null
           price?: number
           transmission?: string | null

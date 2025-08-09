@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import type { Vehicle } from '@/types/vehicle';
-
+import { useTranslation } from '@/hooks/useTranslation';
 export interface VehicleFilter {
   type?: 'truck' | 'van' | 'trailer';
   featured?: boolean;
@@ -11,6 +11,7 @@ export const useVehicles = (filter?: VehicleFilter) => {
   const [vehicles, setVehicles] = useState<Vehicle[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const { language } = useTranslation();
 
   useEffect(() => {
     const fetchVehicles = async () => {
@@ -44,7 +45,7 @@ export const useVehicles = (filter?: VehicleFilter) => {
         const transformedVehicles: Vehicle[] = data.map((vehicle: any) => ({
           id: vehicle.id,
           type: vehicle.type as 'truck' | 'van' | 'trailer',
-          name: vehicle.name,
+          name: ((language === 'en' ? (vehicle.name_en ?? '') : language === 'es' ? (vehicle.name_es ?? '') : language === 'de' ? (vehicle.name_de ?? '') : (vehicle.name_fr ?? '')) || vehicle.name_fr || vehicle.name || ''),
           price: vehicle.price.toString(),
           year: vehicle.year?.toString() || '',
           mileage: vehicle.mileage?.toString() || '',
@@ -88,7 +89,7 @@ export const useVehicles = (filter?: VehicleFilter) => {
     return () => {
       supabase.removeChannel(channel);
     };
-  }, [filter?.type, filter?.featured]);
+  }, [filter?.type, filter?.featured, language]);
 
   return { vehicles, loading, error };
 };
@@ -97,6 +98,7 @@ export const useVehicle = (id: string) => {
   const [vehicle, setVehicle] = useState<Vehicle | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const { language } = useTranslation();
 
   useEffect(() => {
     const fetchVehicle = async () => {
@@ -125,7 +127,7 @@ export const useVehicle = (id: string) => {
         const transformedVehicle: Vehicle = {
           id: data.id,
           type: data.type as 'truck' | 'van' | 'trailer',
-          name: data.name,
+          name: ((language === 'en' ? (data.name_en ?? '') : language === 'es' ? (data.name_es ?? '') : language === 'de' ? (data.name_de ?? '') : (data.name_fr ?? '')) || data.name_fr || data.name || ''),
           price: data.price.toString(),
           year: data.year?.toString() || '',
           mileage: data.mileage?.toString() || '',
@@ -171,7 +173,7 @@ export const useVehicle = (id: string) => {
         supabase.removeChannel(channel);
       };
     }
-  }, [id]);
+  }, [id, language]);
 
   return { vehicle, loading, error };
 };
