@@ -105,19 +105,11 @@ export type Database = {
           capacity: string | null
           created_at: string
           description: string | null
-          description_de: string | null
-          description_en: string | null
-          description_es: string | null
-          description_fr: string | null
           featured: boolean | null
           fuel: string | null
           id: string
           mileage: number | null
           name: string
-          name_de: string | null
-          name_en: string | null
-          name_es: string | null
-          name_fr: string | null
           power: string | null
           price: number
           transmission: string | null
@@ -130,19 +122,11 @@ export type Database = {
           capacity?: string | null
           created_at?: string
           description?: string | null
-          description_de?: string | null
-          description_en?: string | null
-          description_es?: string | null
-          description_fr?: string | null
           featured?: boolean | null
           fuel?: string | null
           id?: string
           mileage?: number | null
           name: string
-          name_de?: string | null
-          name_en?: string | null
-          name_es?: string | null
-          name_fr?: string | null
           power?: string | null
           price: number
           transmission?: string | null
@@ -155,19 +139,11 @@ export type Database = {
           capacity?: string | null
           created_at?: string
           description?: string | null
-          description_de?: string | null
-          description_en?: string | null
-          description_es?: string | null
-          description_fr?: string | null
           featured?: boolean | null
           fuel?: string | null
           id?: string
           mileage?: number | null
           name?: string
-          name_de?: string | null
-          name_en?: string | null
-          name_es?: string | null
-          name_fr?: string | null
           power?: string | null
           price?: number
           transmission?: string | null

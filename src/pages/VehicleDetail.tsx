@@ -173,7 +173,7 @@ const VehicleDetail = () => {
               {/* Description */}
               <div className="htg-card p-6">
                 <h3 className="text-xl font-bold mb-4">{t.vehicleDetail.description}</h3>
-                <p className="text-muted-foreground leading-relaxed">{vehicle.description[language] || vehicle.description.fr}</p>
+                <p className="text-muted-foreground leading-relaxed">{vehicle.description.fr}</p>
               </div>
 
               {/* Équipements */}
