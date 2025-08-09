@@ -8,7 +8,6 @@ import Footer from "@/components/Footer";
 import { useTranslation } from "@/hooks/useTranslation";
 import { getLocalizedPath } from "@/hooks/useLocalizedRouting";
 import { useVehicle } from "@/hooks/useSupabaseVehicles";
-import { useAutoTranslate, useAutoTranslateArray } from "@/hooks/useAutoTranslate";
 
 const VehicleDetail = () => {
   const { t, language } = useTranslation();
@@ -17,16 +16,6 @@ const VehicleDetail = () => {
   
   const { vehicle, loading, error } = useVehicle(id || '');
 
-  // Ensure hooks are called on every render (even during loading/error)
-  const baseDesc = typeof (vehicle as any)?.description === 'string'
-    ? (vehicle as any).description
-    : ((vehicle as any)?.description?.[language] || (vehicle as any)?.description?.fr || '');
-  const translatedName = useAutoTranslate(vehicle?.name || '', language);
-  const translatedDesc = useAutoTranslate(baseDesc, language);
-  const translatedFeatures = useAutoTranslateArray(vehicle?.features || [], language);
-  const translatedCondition = useAutoTranslate(vehicle?.condition || '', language);
-  const translatedAvailability = useAutoTranslate(vehicle?.availability || '', language);
-
   if (loading) {
     return (
       <div className="min-h-screen bg-background">
@@ -34,7 +23,7 @@ const VehicleDetail = () => {
         <div className="container mx-auto px-6 py-20">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-copper mx-auto mb-4"></div>
-            
+            <p className="text-muted-foreground">Chargement...</p>
           </div>
         </div>
         <Footer />
@@ -52,7 +41,7 @@ const VehicleDetail = () => {
             <p className="text-muted-foreground mb-6">{error || "Ce véhicule n'existe pas ou n'est plus disponible."}</p>
             <Link to={getLocalizedPath("/occasions", language)}>
               <Button className="htg-button-primary">
-                {t.vehicleDetail.backToCatalogue}
+                Retour au catalogue
               </Button>
             </Link>
           </div>
@@ -73,7 +62,6 @@ const VehicleDetail = () => {
       default: return getLocalizedPath('/', language);
     }
   };
-
 
   return (
     <div className="min-h-screen bg-background">
@@ -105,7 +93,7 @@ const VehicleDetail = () => {
                       <div className="aspect-[4/3] rounded-xl overflow-hidden">
                         <img 
                           src={image} 
-                          alt={vehicle.name}
+                          alt={`${vehicle.name} - Photo ${index + 1}`}
                           className="w-full h-full object-cover"
                         />
                       </div>
@@ -122,7 +110,7 @@ const VehicleDetail = () => {
                   <div key={index} className="aspect-[4/3] rounded-lg overflow-hidden cursor-pointer hover:opacity-80 transition-opacity">
                     <img 
                       src={image} 
-                      alt={`${vehicle.name} - ${index + 1}`}
+                      alt={`Miniature ${index + 1}`}
                       className="w-full h-full object-cover"
                     />
                   </div>
@@ -137,7 +125,7 @@ const VehicleDetail = () => {
                   {vehicle.type === 'truck' ? t.categories.horseTrucks.title : t.categories.horseVans.title}
                 </Badge>
               )}
-                <h1 className="text-3xl font-bold text-foreground mb-2">{translatedName}</h1>
+                <h1 className="text-3xl font-bold text-foreground mb-2">{vehicle.name}</h1>
                 <div className="flex items-center gap-4">
                   <span className="text-3xl font-bold text-copper">{vehicle.price}€</span>
                   {vehicle.originalPrice && (
@@ -185,14 +173,14 @@ const VehicleDetail = () => {
               {/* Description */}
               <div className="htg-card p-6">
                 <h3 className="text-xl font-bold mb-4">{t.vehicleDetail.description}</h3>
-                <p className="text-muted-foreground leading-relaxed">{translatedDesc}</p>
+                <p className="text-muted-foreground leading-relaxed">{vehicle.description.fr}</p>
               </div>
 
               {/* Équipements */}
               <div className="htg-card p-6">
                 <h3 className="text-xl font-bold mb-4">{t.vehicleDetail.includedEquipment}</h3>
                 <div className="grid grid-cols-2 gap-2">
-                  {translatedFeatures.map((feature, index) => (
+                  {vehicle.features.map((feature, index) => (
                     <div key={index} className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-copper rounded-full"></div>
                       <span className="text-sm">{feature}</span>
@@ -206,12 +194,12 @@ const VehicleDetail = () => {
                 <div className="htg-card p-4 text-center">
                   <Shield className="w-6 h-6 text-copper mx-auto mb-2" />
                   <div className="font-semibold">{t.vehicleDetail.condition}</div>
-                  <div className="text-sm text-muted-foreground">{translatedCondition}</div>
+                  <div className="text-sm text-muted-foreground">{vehicle.condition}</div>
                 </div>
                 <div className="htg-card p-4 text-center">
                   <Calendar className="w-6 h-6 text-copper mx-auto mb-2" />
                   <div className="font-semibold">{t.vehicleDetail.availability}</div>
-                  <div className="text-sm text-muted-foreground">{translatedAvailability}</div>
+                  <div className="text-sm text-muted-foreground">{vehicle.availability}</div>
                 </div>
               </div>
 
