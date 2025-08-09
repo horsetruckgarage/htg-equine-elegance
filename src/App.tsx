@@ -19,7 +19,6 @@ import AdminDashboard from "./pages/AdminDashboard";
 import Auth from "./pages/Auth";
 import LegacyVehicleRedirect from "./components/LegacyVehicleRedirect";
 import GoogleTranslateBridge from "./components/GoogleTranslateBridge";
-import TranslationLoadingOverlay from "./components/TranslationLoadingOverlay";
 
 const queryClient = new QueryClient();
 
@@ -32,8 +31,8 @@ const App = () => (
           <Sonner />
           <ScrollToTop />
           <GoogleTranslateBridge />
-          <TranslationLoadingOverlay />
           <Routes>
+            {/* Redirect root to French */}
             <Route path="/" element={<Navigate to="/fr" replace />} />
             
             {/* Auth & Admin routes */}
