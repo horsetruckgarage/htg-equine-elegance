@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -108,17 +108,36 @@ const languages = [
 
 const LanguageSelector = () => {
   const { language, setLanguage } = useTranslation();
+  const [displayLang, setDisplayLang] = useState<Language>(language);
 
   useEffect(() => {
     ensureGoogleTranslateLoaded();
+    // Initialize display language from cookie if Google Translate is active
+    const match = document.cookie.match(/(?:^|; )googtrans=([^;]+)/);
+    if (match && match[1]) {
+      const val = decodeURIComponent(match[1]); // e.g. "/fr/en"
+      const target = val.split("/").pop();
+      if (target === "en" || target === "es" || target === "de") {
+        setDisplayLang(target as Language);
+      } else {
+        setDisplayLang('fr');
+      }
+    }
   }, []);
 
   const handleLanguageChange = async (code: Language) => {
-    setLanguage(code);
     await ensureGoogleTranslateReady();
-    applyGoogleTranslate(code);
+    if (code === 'fr') {
+      applyGoogleTranslate('fr');
+      setDisplayLang('fr');
+      setLanguage('fr');
+    } else {
+      applyGoogleTranslate(code);
+      setDisplayLang(code);
+      // Do not call setLanguage to avoid overriding Google Translate
+    }
   };
-  const currentLanguage = languages.find(lang => lang.code === language);
+  const currentLanguage = languages.find(lang => lang.code === displayLang);
 
   return (
     <DropdownMenu>
@@ -142,7 +161,7 @@ const LanguageSelector = () => {
             key={lang.code}
             onClick={() => handleLanguageChange(lang.code)}
             className={`flex items-center space-x-3 px-4 py-3 hover:bg-gray-100 cursor-pointer text-gray-900 ${
-              language === lang.code ? 'bg-gray-50 font-medium' : ''
+              displayLang === lang.code ? 'bg-gray-50 font-medium' : ''
             }`}
           >
             <span className="text-lg">{lang.flag}</span>
