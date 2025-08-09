@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 // Loads Google Translate widget (no API key) and exposes a bridge to switch languages
 // Usage: (window as any).__setGoogleTranslateLanguage('en' | 'fr' | 'es' | 'de')
 const GoogleTranslateBridge: React.FC = () => {
+  const location = useLocation();
   useEffect(() => {
     // Create hidden container for the Google widget
     let container = document.getElementById("google_translate_element");
@@ -79,6 +81,39 @@ const GoogleTranslateBridge: React.FC = () => {
       document.body.appendChild(s);
     }
   }, []);
+
+  // Sync translation on route changes (SPA navigation)
+  const parseLangFromPath = (pathname: string): "fr" | "en" | "es" | "de" => {
+    const seg = pathname.split("/")[1]?.toLowerCase();
+    if (seg === "en" || seg === "es" || seg === "de" || seg === "fr") return seg as any;
+    return "fr";
+  };
+
+  useEffect(() => {
+    const lang = parseLangFromPath(location.pathname) as any;
+    let attempts = 0;
+
+    const tryApply = () => {
+      try {
+        const fn = (window as any).__setGoogleTranslateLanguage;
+        if (typeof fn === "function") {
+          fn(lang);
+          return true;
+        }
+      } catch {}
+      return false;
+    };
+
+    if (!tryApply()) {
+      const id = setInterval(() => {
+        attempts++;
+        if (tryApply() || attempts > 50) {
+          clearInterval(id);
+        }
+      }, 150);
+      return () => clearInterval(id);
+    }
+  }, [location.pathname]);
 
   return null; // hidden bridge
 };
