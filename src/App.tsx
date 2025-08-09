@@ -30,7 +30,7 @@ const App = () => (
           <Toaster />
           <Sonner />
           <ScrollToTop />
-          <div id="google_translate_element" className="fixed top-3 right-3 z-[60] hidden" />
+          <div id="google_translate_element" className="fixed top-3 right-3 z-[60] hidden" style={{ display: 'none' }} />
           <GoogleTranslate />
           <CustomTranslateMenu />
           <Routes>

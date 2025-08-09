@@ -269,3 +269,48 @@ body {
   outline: 2px solid hsl(var(--ring));
   outline-offset: 1px;
 }
+
+/* Fullscreen loader for translation */
+#loader {
+  display: flex;
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+  background: hsl(var(--header-bg));
+  align-items: center;
+  justify-content: center;
+}
+
+#loader img {
+  max-width: 150px;
+}
+
+/* Custom language menu with flags */
+#custom_translate {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+#custom_translate a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  padding: 6px 10px;
+  background: hsl(var(--sidebar-accent));
+  color: hsl(var(--header-foreground));
+  border: 1px solid hsl(var(--sidebar-border));
+  border-radius: 6px;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+#custom_translate a:hover {
+  background: hsl(var(--sidebar-border));
+}
+
+#custom_translate img {
+  border-radius: 3px;
+}

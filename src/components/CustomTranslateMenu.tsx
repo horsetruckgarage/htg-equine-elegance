@@ -10,6 +10,8 @@ const LANGUAGES = [
   { code: "de", label: "Deutsch", flag: "🇩🇪" },
 ] as const;
 
+const flagCode = (code: string) => (code === "en" ? "gb" : code);
+
 const LOADER_MIN_MS = 700; // minimal display to smooth the flash
 
 const CustomTranslateMenu = () => {
@@ -83,15 +85,13 @@ const CustomTranslateMenu = () => {
     <>
       {/* Loader overlay */}
       {loading && (
-        <div id="loader" className="fixed inset-0 z-[70] bg-black/20 backdrop-blur-sm flex items-center justify-center">
-          <div className="htg-card p-6 flex items-center justify-center rounded-xl">
-            <img
-              src="/lovable-uploads/a0f80a95-a142-4cef-ae8c-1b305dc07a0e.png"
-              alt="HTG - Chargement de la traduction"
-              className="w-16 h-16 object-contain animate-pulse"
-              loading="eager"
-            />
-          </div>
+        <div id="loader" className="fixed inset-0 z-[70] flex items-center justify-center">
+          <img
+            src="/lovable-uploads/a0f80a95-a142-4cef-ae8c-1b305dc07a0e.png"
+            alt="HTG - Chargement de la traduction"
+            className="max-w-[150px] h-auto"
+            loading="eager"
+          />
         </div>
       )}
 
@@ -99,28 +99,29 @@ const CustomTranslateMenu = () => {
       <nav
         id="custom_translate"
         aria-label="Sélecteur de langue (Google Translate)"
-        className="fixed top-3 right-3 z-[65] htg-card px-2 py-1 rounded-lg flex items-center gap-1"
+        className="fixed top-3 right-3 z-[65] flex flex-wrap gap-2"
       >
         {LANGUAGES.map((l) => (
-          <button
+          <a
             key={l.code}
+            href="#"
+            data-lang={l.code}
             onClick={(e) => {
               e.preventDefault();
               onChoose(l.code);
             }}
-            className={`px-2 py-1 rounded-md text-sm transition-colors ${
-              active === l.code
-                ? "bg-copper text-black"
-                : "htg-button-secondary border px-2 py-1"
-            }`}
             aria-current={active === l.code ? "true" : undefined}
             aria-label={`Traduire en ${l.label}`}
           >
-            <span className="mr-1" aria-hidden>
-              {l.flag}
-            </span>
-            <span className="hidden sm:inline">{l.label}</span>
-          </button>
+            <img
+              src={`https://flagcdn.com/${flagCode(l.code)}.svg`}
+              alt={l.label}
+              width={24}
+              height={16}
+              loading="lazy"
+            />
+            <span>{l.label}</span>
+          </a>
         ))}
       </nav>
     </>
