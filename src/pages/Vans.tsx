@@ -8,10 +8,12 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "@/hooks/useTranslation";
 import { getLocalizedPath } from "@/hooks/useLocalizedRouting";
 import { useVehicles } from "@/hooks/useVehicles";
+import { useAutoTranslateArray } from "@/hooks/useAutoTranslate";
 
 const Vans = () => {
   const { t, language } = useTranslation();
   const { vehicles: vans, loading, error } = useVehicles({ type: 'van' });
+  const translatedNames = useAutoTranslateArray(vans.map(v => v.name), language);
   
   const getLocalizedFeatures = (features: string[]) => {
     const featureMap: { [key: string]: string } = {
@@ -171,7 +173,7 @@ const Vans = () => {
                   {/* Header */}
                   <div className="space-y-2">
                      <h3 className="text-xl font-bold text-foreground group-hover:text-copper transition-colors">
-                       {van.name}
+                       {translatedNames[index] || van.name}
                      </h3>
                     <p className="text-copper text-sm font-medium">{t.vansPage.vehicle.horseVan}</p>
                   </div>

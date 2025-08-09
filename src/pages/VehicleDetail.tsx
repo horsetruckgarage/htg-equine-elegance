@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import { useTranslation } from "@/hooks/useTranslation";
 import { getLocalizedPath } from "@/hooks/useLocalizedRouting";
 import { useVehicle } from "@/hooks/useSupabaseVehicles";
+import { useAutoTranslate, useAutoTranslateArray } from "@/hooks/useAutoTranslate";
 
 const VehicleDetail = () => {
   const { t, language } = useTranslation();
@@ -62,6 +63,15 @@ const VehicleDetail = () => {
       default: return getLocalizedPath('/', language);
     }
   };
+
+  const baseDesc = typeof (vehicle as any).description === 'string'
+    ? (vehicle as any).description
+    : ((vehicle as any).description?.[language] || (vehicle as any).description?.fr || '');
+  const translatedName = useAutoTranslate(vehicle.name, language);
+  const translatedDesc = useAutoTranslate(baseDesc, language);
+  const translatedFeatures = useAutoTranslateArray(vehicle.features || [], language);
+  const translatedCondition = useAutoTranslate(vehicle.condition || '', language);
+  const translatedAvailability = useAutoTranslate(vehicle.availability || '', language);
 
   return (
     <div className="min-h-screen bg-background">
@@ -125,7 +135,7 @@ const VehicleDetail = () => {
                   {vehicle.type === 'truck' ? t.categories.horseTrucks.title : t.categories.horseVans.title}
                 </Badge>
               )}
-                <h1 className="text-3xl font-bold text-foreground mb-2">{vehicle.name}</h1>
+                <h1 className="text-3xl font-bold text-foreground mb-2">{translatedName}</h1>
                 <div className="flex items-center gap-4">
                   <span className="text-3xl font-bold text-copper">{vehicle.price}€</span>
                   {vehicle.originalPrice && (
@@ -173,14 +183,14 @@ const VehicleDetail = () => {
               {/* Description */}
               <div className="htg-card p-6">
                 <h3 className="text-xl font-bold mb-4">{t.vehicleDetail.description}</h3>
-                <p className="text-muted-foreground leading-relaxed">{vehicle.description[language] || vehicle.description.fr}</p>
+                <p className="text-muted-foreground leading-relaxed">{translatedDesc}</p>
               </div>
 
               {/* Équipements */}
               <div className="htg-card p-6">
                 <h3 className="text-xl font-bold mb-4">{t.vehicleDetail.includedEquipment}</h3>
                 <div className="grid grid-cols-2 gap-2">
-                  {vehicle.features.map((feature, index) => (
+                  {translatedFeatures.map((feature, index) => (
                     <div key={index} className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-copper rounded-full"></div>
                       <span className="text-sm">{feature}</span>
@@ -194,12 +204,12 @@ const VehicleDetail = () => {
                 <div className="htg-card p-4 text-center">
                   <Shield className="w-6 h-6 text-copper mx-auto mb-2" />
                   <div className="font-semibold">{t.vehicleDetail.condition}</div>
-                  <div className="text-sm text-muted-foreground">{vehicle.condition}</div>
+                  <div className="text-sm text-muted-foreground">{translatedCondition}</div>
                 </div>
                 <div className="htg-card p-4 text-center">
                   <Calendar className="w-6 h-6 text-copper mx-auto mb-2" />
                   <div className="font-semibold">{t.vehicleDetail.availability}</div>
-                  <div className="text-sm text-muted-foreground">{vehicle.availability}</div>
+                  <div className="text-sm text-muted-foreground">{translatedAvailability}</div>
                 </div>
               </div>
 

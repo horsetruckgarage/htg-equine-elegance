@@ -9,6 +9,7 @@ import { useTranslation } from "@/hooks/useTranslation";
 import { getLocalizedPath } from "@/hooks/useLocalizedRouting";
 import { useVehicles } from "@/hooks/useVehicles";
 import VehicleImage from "@/components/VehicleImage";
+import { useAutoTranslateArray } from "@/hooks/useAutoTranslate";
 
 const Camions = () => {
   const { t, language } = useTranslation();
