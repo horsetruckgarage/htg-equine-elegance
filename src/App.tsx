@@ -17,6 +17,7 @@ import Occasions from "./pages/Occasions";
 import VehicleDetail from "./pages/VehicleDetail";
 import AdminDashboard from "./pages/AdminDashboard";
 import Auth from "./pages/Auth";
+import LegacyVehicleRedirect from "./components/LegacyVehicleRedirect";
 
 const queryClient = new QueryClient();
 
@@ -93,6 +94,9 @@ const App = () => (
             <Route path="/contact" element={<Navigate to="/fr/contact" replace />} />
             <Route path="/devis" element={<Navigate to="/fr/demande-devis" replace />} />
             <Route path="/occasions" element={<Navigate to="/fr/occasions" replace />} />
+
+            {/* Legacy vehicle redirect for wrong 'vehicule' segment in non-French locales */}
+            <Route path=":lang/vehicule/:id" element={<LegacyVehicleRedirect />} />
             
             {/* Catch-all */}
             <Route path="*" element={<NotFound />} />
