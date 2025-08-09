@@ -11,48 +11,24 @@ export const TranslationProvider: React.FC<TranslationProviderProps> = ({ childr
   const navigate = useNavigate();
   const location = useLocation();
   
-  const [language, setLanguage] = useState<Language>(() => {
-    // First, try to get language from URL
-    const { language: urlLang } = extractLanguageFromPath(window.location.pathname);
-    if (urlLang && ['fr', 'en', 'es', 'de'].includes(urlLang)) {
-      return urlLang;
-    }
-    
-    // Then try to get from localStorage
-    const savedLang = localStorage.getItem('htg-language') as Language;
-    if (savedLang && ['fr', 'en', 'es', 'de'].includes(savedLang)) {
-      return savedLang;
-    }
-    
-    // Then try to get from browser language
-    const browserLang = navigator.language.split('-')[0] as Language;
-    if (['fr', 'en', 'es', 'de'].includes(browserLang)) {
-      return browserLang;
-    }
-    
-    // Default to French
-    return 'fr';
-  });
+  const [language, setLanguage] = useState<Language>('fr');
 
-  // Synchroniser les changements de route avec la langue
+  // Désactivation de la synchronisation URL -> langue (on reste en FR pour Google Translate)
   useEffect(() => {
-    const { language: urlLang } = extractLanguageFromPath(location.pathname);
-    // Seulement changer la langue si on a une langue valide de l'URL et qu'elle est différente
-    if (urlLang && ['fr', 'en', 'es', 'de'].includes(urlLang) && urlLang !== language) {
-      setLanguage(urlLang);
-    }
-  }, [location.pathname, language]);
+    if (language !== 'fr') setLanguage('fr');
+  }, [language]);
 
   useEffect(() => {
     localStorage.setItem('htg-language', language);
   }, [language]);
 
-  // Fonction pour changer de langue avec redirection
-  const changeLanguage = (newLanguage: Language) => {
+  const changeLanguage = (_newLanguage: Language) => {
     const { basePath } = extractLanguageFromPath(location.pathname);
-    const newPath = getLocalizedPath(basePath, newLanguage);
-    setLanguage(newLanguage);
-    navigate(newPath, { replace: true });
+    const newPath = getLocalizedPath(basePath, 'fr');
+    if (language !== 'fr') setLanguage('fr');
+    if (location.pathname !== newPath) {
+      navigate(newPath, { replace: true });
+    }
   };
 
   const value = {
