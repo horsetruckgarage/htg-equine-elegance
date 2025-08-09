@@ -36,6 +36,8 @@ const ensureContainer = () => {
 
 const loadScript = () => {
   if (document.getElementById("google-translate-script")) return;
+  // If already loaded via inline snippet, skip injecting again
+  if ((window as any).google && (window as any).google.translate) return;
   const script = document.createElement("script");
   script.id = "google-translate-script";
   script.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
@@ -101,10 +103,19 @@ const GoogleTranslateProvider = () => {
     createApplyFunction();
   }, []);
 
-  // Re-apply selected translation after route changes in SPA
+  // Re-apply or auto-apply translation after route changes in SPA
   useEffect(() => {
+    const pathname = location.pathname || "/";
+    const pathLang = (pathname.split("/")[1] || "fr") as "fr" | "en" | "es" | "de";
+
     if (window.HTG_currentGTLang) {
       window.HTG_applyGoogleTranslate(window.HTG_currentGTLang);
+      return;
+    }
+
+    // Auto-apply based on URL language (FR resets)
+    if (typeof window.HTG_applyGoogleTranslate === "function") {
+      window.HTG_applyGoogleTranslate(pathLang);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname]);
