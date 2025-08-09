@@ -8,9 +8,6 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "@/hooks/useTranslation";
 import { getLocalizedPath } from "@/hooks/useLocalizedRouting";
 import { useVehicles } from "@/hooks/useVehicles";
-import { Vehicle } from "@/types/vehicle";
-import { useAutoTranslate, useAutoTranslateArray } from "@/hooks/useAutoTranslate";
-import type { Language } from "@/hooks/useTranslation";
 
 const Vans = () => {
   const { t, language } = useTranslation();
@@ -55,123 +52,6 @@ const Vans = () => {
     return badgeMap[badge] || badge;
   };
 
-  const VanCard = ({ van, index, language, t }: { van: Vehicle; index: number; language: Language; t: any }) => {
-    const tName = useAutoTranslate(van.name || '', language);
-    const tFeatures = useAutoTranslateArray(van.features || [], language);
-
-    const displayName = language === 'fr' ? van.name : (tName || van.name);
-    const displayFeatures = language === 'fr' ? (van.features || []) : ((tFeatures && tFeatures.length) ? tFeatures : (van.features || []));
-
-    return (
-      <div 
-        className="htg-card p-0 overflow-hidden group hover:scale-105 transition-all duration-300"
-        style={{ animationDelay: `${index * 0.1}s` }}
-      >
-        {/* Image */}
-        <div className="relative aspect-[4/3] overflow-hidden">
-          {van.images && van.images.length > 0 ? (
-            <>
-              <img
-                src={van.images[0]}
-                alt={`${displayName} - van chevaux HTG`}
-                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-            </>
-          ) : (
-            <div className="w-full h-full bg-gradient-to-br from-leather/30 to-copper/10 flex items-center justify-center">
-              <div className="text-center space-y-2">
-                <Car className="w-16 h-16 text-copper mx-auto" />
-                <p className="text-copper font-semibold text-lg">{t.vansPage.vehicle.horseVan}</p>
-              </div>
-            </div>
-          )}
-          
-          {/* Badges */}
-          {van.featured && (
-            <div className="absolute top-4 left-4 flex flex-col gap-2 z-10">
-              <Badge className="font-semibold bg-copper text-black">
-                En vedette
-              </Badge>
-            </div>
-          )}
-
-          {/* Actions */}
-          <div className="absolute top-4 right-4 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-            <Button size="sm" variant="secondary" className="w-10 h-10 p-0 bg-white/90 hover:bg-white">
-              <Heart className="w-4 h-4" />
-            </Button>
-            <Button size="sm" variant="secondary" className="w-10 h-10 p-0 bg-white/90 hover:bg-white">
-              <Eye className="w-4 h-4" />
-            </Button>
-          </div>
-        </div>
-
-        {/* Content */}
-        <div className="p-6 space-y-4">
-          {/* Header */}
-          <div className="space-y-2">
-            <h3 className="text-xl font-bold text-foreground group-hover:text-copper transition-colors">
-              {displayName}
-            </h3>
-            <p className="text-copper text-sm font-medium">{t.vansPage.vehicle.horseVan}</p>
-          </div>
-
-          {/* Specs */}
-          <div className="grid grid-cols-3 gap-4 text-sm">
-            <div className="text-center">
-              <Calendar className="w-4 h-4 text-copper mx-auto mb-1" />
-              <span className="text-muted-foreground">{van.year}</span>
-            </div>
-            <div className="text-center">
-              <Gauge className="w-4 h-4 text-copper mx-auto mb-1" />
-              <span className="text-muted-foreground">{van.mileage} {t.vansPage.vehicle.specs.km}</span>
-            </div>
-            <div className="text-center">
-              <Users className="w-4 h-4 text-copper mx-auto mb-1" />
-              <span className="text-muted-foreground">{van.capacity}</span>
-            </div>
-          </div>
-
-          {/* Features */}
-          <div className="space-y-1">
-            {displayFeatures.slice(0, 3).map((feature, idx) => (
-              <div key={idx} className="flex items-center space-x-2">
-                <div className="w-1.5 h-1.5 bg-copper rounded-full"></div>
-                <span className="text-sm text-muted-foreground">{feature}</span>
-              </div>
-            ))}
-          </div>
-
-          {/* Pricing */}
-          <div className="space-y-2 pt-4 border-t border-border">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <div className="text-2xl font-bold text-copper">
-                  {van.price}€
-                </div>
-              </div>
-            </div>
-            <div className="text-xs text-muted-foreground">
-              {t.vansPage.vehicle.pricing.financing} 590€{t.vansPage.vehicle.pricing.perMonth}
-            </div>
-          </div>
-          
-          <div className="flex gap-2 pt-2">
-            <Link to={`${getLocalizedPath('/vehicule', language)}/${van.id}`} className="flex-1">
-              <Button className="htg-button-primary w-full">
-                {t.vansPage.vehicle.actions.seeDetails}
-              </Button>
-            </Link>
-            <Button variant="outline" className="htg-button-secondary px-3">
-              <Heart className="w-4 h-4" />
-            </Button>
-          </div>
-        </div>
-      </div>
-    );
-  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -240,7 +120,114 @@ const Vans = () => {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {!loading && vans.map((van, index) => (
-              <VanCard key={van.id} van={van} index={index} language={language} t={t} />
+              <div 
+                key={van.id} 
+                className="htg-card p-0 overflow-hidden group hover:scale-105 transition-all duration-300"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                {/* Image */}
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  {van.images && van.images.length > 0 ? (
+                    <>
+                      <img
+                        src={van.images[0]}
+                        alt={`${van.name} - van chevaux HTG`}
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                    </>
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-leather/30 to-copper/10 flex items-center justify-center">
+                      <div className="text-center space-y-2">
+                        <Car className="w-16 h-16 text-copper mx-auto" />
+                        <p className="text-copper font-semibold text-lg">{t.vansPage.vehicle.horseVan}</p>
+                      </div>
+                    </div>
+                  )}
+                  
+                   {/* Badges */}
+                   {van.featured && (
+                     <div className="absolute top-4 left-4 flex flex-col gap-2 z-10">
+                        <Badge className="font-semibold bg-copper text-black">
+                          En vedette
+                        </Badge>
+                     </div>
+                   )}
+
+                   {/* Actions */}
+                   <div className="absolute top-4 right-4 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                     <Button size="sm" variant="secondary" className="w-10 h-10 p-0 bg-white/90 hover:bg-white">
+                       <Heart className="w-4 h-4" />
+                     </Button>
+                     <Button size="sm" variant="secondary" className="w-10 h-10 p-0 bg-white/90 hover:bg-white">
+                       <Eye className="w-4 h-4" />
+                     </Button>
+                   </div>
+                </div>
+
+                {/* Content */}
+                <div className="p-6 space-y-4">
+                  {/* Header */}
+                  <div className="space-y-2">
+                     <h3 className="text-xl font-bold text-foreground group-hover:text-copper transition-colors">
+                       {van.name}
+                     </h3>
+                    <p className="text-copper text-sm font-medium">{t.vansPage.vehicle.horseVan}</p>
+                  </div>
+
+                  {/* Specs */}
+                  <div className="grid grid-cols-3 gap-4 text-sm">
+                    <div className="text-center">
+                      <Calendar className="w-4 h-4 text-copper mx-auto mb-1" />
+                      <span className="text-muted-foreground">{van.year}</span>
+                    </div>
+                    <div className="text-center">
+                      <Gauge className="w-4 h-4 text-copper mx-auto mb-1" />
+                      <span className="text-muted-foreground">{van.mileage} {t.vansPage.vehicle.specs.km}</span>
+                    </div>
+                    <div className="text-center">
+                      <Users className="w-4 h-4 text-copper mx-auto mb-1" />
+                       <span className="text-muted-foreground">{van.capacity}</span>
+                    </div>
+                  </div>
+
+                   {/* Features */}
+                   <div className="space-y-1">
+                     {van.features && getLocalizedFeatures(van.features).slice(0, 3).map((feature, idx) => (
+                      <div key={idx} className="flex items-center space-x-2">
+                        <div className="w-1.5 h-1.5 bg-copper rounded-full"></div>
+                        <span className="text-sm text-muted-foreground">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                   {/* Pricing */}
+                   <div className="space-y-2 pt-4 border-t border-border">
+                     <div className="flex items-center justify-between">
+                       <div className="flex items-center gap-2">
+                         <div className="text-2xl font-bold text-copper">
+                           {van.price}€
+                         </div>
+                       </div>
+                     </div>
+                    <div className="text-xs text-muted-foreground">
+                      {t.vansPage.vehicle.pricing.financing} 590€{t.vansPage.vehicle.pricing.perMonth}
+                    </div>
+                  </div>
+                  
+                    <div className="flex gap-2 pt-2">
+                      <Link to={`${getLocalizedPath('/vehicule', language)}/${van.id}`} className="flex-1">
+                        <Button className="htg-button-primary w-full">
+                          {t.vansPage.vehicle.actions.seeDetails}
+                        </Button>
+                      </Link>
+                     <Button variant="outline" className="htg-button-secondary px-3">
+                       <Heart className="w-4 h-4" />
+                     </Button>
+                   </div>
+                </div>
+              </div>
             ))}
           </div>
 

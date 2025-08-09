@@ -8,7 +8,6 @@ import Footer from "@/components/Footer";
 import { useTranslation } from "@/hooks/useTranslation";
 import { getLocalizedPath } from "@/hooks/useLocalizedRouting";
 import { useVehicle } from "@/hooks/useSupabaseVehicles";
-import { useAutoTranslate, useAutoTranslateArray } from "@/hooks/useAutoTranslate";
 
 const VehicleDetail = () => {
   const { t, language } = useTranslation();
@@ -16,32 +15,6 @@ const VehicleDetail = () => {
   const navigate = useNavigate();
   
   const { vehicle, loading, error } = useVehicle(id || '');
-
-  // Auto-translation setup (always called to keep hook order stable)
-  const baseName = vehicle?.name || '';
-  const frDesc = (vehicle && (vehicle as any).description && typeof (vehicle as any).description === 'object'
-    ? (vehicle as any).description.fr || ''
-    : ((vehicle as any)?.description || ''));
-  const manualDesc = (vehicle && (vehicle as any).description && typeof (vehicle as any).description === 'object'
-    ? (vehicle as any).description[language as any] || ''
-    : '');
-  const featuresBase = vehicle?.features || [];
-  const baseCondition = vehicle?.condition || '';
-  const baseAvailability = vehicle?.availability || '';
-
-  const tName = useAutoTranslate(baseName, language);
-  const tDesc = useAutoTranslate(frDesc, language);
-  const tFeatures = useAutoTranslateArray(featuresBase, language);
-  const tCondition = useAutoTranslate(baseCondition, language);
-  const tAvailability = useAutoTranslate(baseAvailability, language);
-
-  const displayName = language === 'fr' ? baseName : (tName || baseName);
-  const displayDesc = language === 'fr'
-    ? frDesc
-    : (manualDesc && manualDesc !== frDesc ? manualDesc : (tDesc || frDesc));
-  const displayFeatures = language === 'fr' ? featuresBase : (tFeatures?.length ? tFeatures : featuresBase);
-  const displayCondition = language === 'fr' ? baseCondition : (tCondition || baseCondition);
-  const displayAvailability = language === 'fr' ? baseAvailability : (tAvailability || baseAvailability);
 
   if (loading) {
     return (
@@ -120,7 +93,7 @@ const VehicleDetail = () => {
                       <div className="aspect-[4/3] rounded-xl overflow-hidden">
                         <img 
                           src={image} 
-                          alt={`${displayName} - Photo ${index + 1}`}
+                          alt={`${vehicle.name} - Photo ${index + 1}`}
                           className="w-full h-full object-cover"
                         />
                       </div>
@@ -152,7 +125,7 @@ const VehicleDetail = () => {
                   {vehicle.type === 'truck' ? t.categories.horseTrucks.title : t.categories.horseVans.title}
                 </Badge>
               )}
-                <h1 className="text-3xl font-bold text-foreground mb-2">{displayName}</h1>
+                <h1 className="text-3xl font-bold text-foreground mb-2">{vehicle.name}</h1>
                 <div className="flex items-center gap-4">
                   <span className="text-3xl font-bold text-copper">{vehicle.price}€</span>
                   {vehicle.originalPrice && (
@@ -200,14 +173,14 @@ const VehicleDetail = () => {
               {/* Description */}
               <div className="htg-card p-6">
                 <h3 className="text-xl font-bold mb-4">{t.vehicleDetail.description}</h3>
-                <p className="text-muted-foreground leading-relaxed">{displayDesc}</p>
+                <p className="text-muted-foreground leading-relaxed">{vehicle.description.fr}</p>
               </div>
 
               {/* Équipements */}
               <div className="htg-card p-6">
                 <h3 className="text-xl font-bold mb-4">{t.vehicleDetail.includedEquipment}</h3>
                 <div className="grid grid-cols-2 gap-2">
-                  {displayFeatures.map((feature, index) => (
+                  {vehicle.features.map((feature, index) => (
                     <div key={index} className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-copper rounded-full"></div>
                       <span className="text-sm">{feature}</span>
@@ -221,12 +194,12 @@ const VehicleDetail = () => {
                 <div className="htg-card p-4 text-center">
                   <Shield className="w-6 h-6 text-copper mx-auto mb-2" />
                   <div className="font-semibold">{t.vehicleDetail.condition}</div>
-                  <div className="text-sm text-muted-foreground">{displayCondition}</div>
+                  <div className="text-sm text-muted-foreground">{vehicle.condition}</div>
                 </div>
                 <div className="htg-card p-4 text-center">
                   <Calendar className="w-6 h-6 text-copper mx-auto mb-2" />
                   <div className="font-semibold">{t.vehicleDetail.availability}</div>
-                  <div className="text-sm text-muted-foreground">{displayAvailability}</div>
+                  <div className="text-sm text-muted-foreground">{vehicle.availability}</div>
                 </div>
               </div>
 

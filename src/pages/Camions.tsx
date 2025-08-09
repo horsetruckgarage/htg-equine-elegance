@@ -3,14 +3,12 @@ import Footer from "@/components/Footer";
 import FloatingCTA from "@/components/FloatingCTA";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Truck, Calendar, Gauge, Users, Eye, Heart, Filter, ArrowRight } from "lucide-react";
+import { Truck, Calendar, Gauge, Users, Eye, Heart, Star, Filter, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "@/hooks/useTranslation";
 import { getLocalizedPath } from "@/hooks/useLocalizedRouting";
 import { useVehicles } from "@/hooks/useVehicles";
-import { Vehicle } from "@/types/vehicle";
-import { useAutoTranslate, useAutoTranslateArray } from "@/hooks/useAutoTranslate";
-import type { Language } from "@/hooks/useTranslation";
+import VehicleImage from "@/components/VehicleImage";
 
 const Camions = () => {
   const { t, language } = useTranslation();
@@ -56,123 +54,6 @@ const Camions = () => {
     return badgeMap[badge] || badge;
   };
 
-  const TruckCard = ({ camion, index, language, t }: { camion: Vehicle; index: number; language: Language; t: any }) => {
-    const tName = useAutoTranslate(camion.name || '', language);
-    const tFeatures = useAutoTranslateArray(camion.features || [], language);
-
-    const displayName = language === 'fr' ? camion.name : (tName || camion.name);
-    const displayFeatures = language === 'fr' ? (camion.features || []) : ((tFeatures && tFeatures.length) ? tFeatures : (camion.features || []));
-
-    return (
-      <div 
-        className="htg-card p-0 overflow-hidden group hover:scale-105 transition-all duration-300"
-        style={{ animationDelay: `${index * 0.1}s` }}
-      >
-        {/* Image */}
-        <div className="relative aspect-[4/3] overflow-hidden">
-          {camion.images && camion.images.length > 0 ? (
-            <>
-              <img
-                src={camion.images[0]}
-                alt={`${displayName} - camion chevaux HTG`}
-                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-            </>
-          ) : (
-            <div className="w-full h-full bg-gradient-to-br from-leather/30 to-copper/10 flex items-center justify-center">
-              <div className="text-center space-y-2">
-                <Truck className="w-16 h-16 text-copper mx-auto" />
-                <p className="text-copper font-semibold text-lg">{t.trucksPage.vehicle.horseTruck}</p>
-              </div>
-            </div>
-          )}
-          
-          {/* Badges */}
-          {camion.featured && (
-            <div className="absolute top-4 left-4 flex flex-col gap-2 z-10">
-              <Badge className="font-semibold bg-copper text-black">
-                En vedette
-              </Badge>
-            </div>
-          )}
-
-          {/* Actions */}
-          <div className="absolute top-4 right-4 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-            <Button size="sm" variant="secondary" className="w-10 h-10 p-0 bg-white/90 hover:bg-white">
-              <Heart className="w-4 h-4" />
-            </Button>
-            <Button size="sm" variant="secondary" className="w-10 h-10 p-0 bg-white/90 hover:bg-white">
-              <Eye className="w-4 h-4" />
-            </Button>
-          </div>
-        </div>
-
-        {/* Content */}
-        <div className="p-6 space-y-4">
-          {/* Header */}
-          <div className="space-y-2">
-            <h3 className="text-xl font-bold text-foreground group-hover:text-copper transition-colors">
-              {displayName}
-            </h3>
-            <p className="text-copper text-sm font-medium">{t.trucksPage.vehicle.horseTruck}</p>
-          </div>
-
-          {/* Specs */}
-          <div className="grid grid-cols-3 gap-4 text-sm">
-            <div className="text-center">
-              <Calendar className="w-4 h-4 text-copper mx-auto mb-1" />
-              <span className="text-muted-foreground">{camion.year}</span>
-            </div>
-            <div className="text-center">
-              <Gauge className="w-4 h-4 text-copper mx-auto mb-1" />
-              <span className="text-muted-foreground">{camion.mileage} {t.trucksPage.vehicle.specs.km}</span>
-            </div>
-            <div className="text-center">
-              <Users className="w-4 h-4 text-copper mx-auto mb-1" />
-              <span className="text-muted-foreground">{camion.capacity}</span>
-            </div>
-          </div>
-
-          {/* Features */}
-          <div className="space-y-1">
-            {displayFeatures.slice(0, 3).map((feature, idx) => (
-              <div key={idx} className="flex items-center space-x-2">
-                <div className="w-1.5 h-1.5 bg-copper rounded-full"></div>
-                <span className="text-sm text-muted-foreground">{feature}</span>
-              </div>
-            ))}
-          </div>
-
-          {/* Pricing */}
-          <div className="space-y-2 pt-4 border-t border-border">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <div className="text-2xl font-bold text-copper">
-                  {camion.price}€
-                </div>
-              </div>
-            </div>
-            <div className="text-xs text-muted-foreground">
-              {t.trucksPage.vehicle.pricing.financing} 890€{t.trucksPage.vehicle.pricing.perMonth}
-            </div>
-          </div>
-          
-          <div className="flex gap-2 pt-2">
-            <Link to={`${getLocalizedPath('/vehicule', language)}/${camion.id}`} className="flex-1">
-              <Button className="htg-button-primary w-full">
-                {t.trucksPage.vehicle.actions.seeDetails}
-              </Button>
-            </Link>
-            <Button variant="outline" className="htg-button-secondary px-3">
-              <Heart className="w-4 h-4" />
-            </Button>
-          </div>
-        </div>
-      </div>
-    );
-  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -241,7 +122,114 @@ const Camions = () => {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {!loading && camions.map((camion, index) => (
-              <TruckCard key={camion.id} camion={camion} index={index} language={language as Language} t={t} />
+              <div 
+                key={camion.id} 
+                className="htg-card p-0 overflow-hidden group hover:scale-105 transition-all duration-300"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                {/* Image */}
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  {camion.images && camion.images.length > 0 ? (
+                    <>
+                      <img
+                        src={camion.images[0]}
+                        alt={`${camion.name} - camion chevaux HTG`}
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                    </>
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-leather/30 to-copper/10 flex items-center justify-center">
+                      <div className="text-center space-y-2">
+                        <Truck className="w-16 h-16 text-copper mx-auto" />
+                        <p className="text-copper font-semibold text-lg">{t.trucksPage.vehicle.horseTruck}</p>
+                      </div>
+                    </div>
+                  )}
+                  
+                   {/* Badges */}
+                   {camion.featured && (
+                     <div className="absolute top-4 left-4 flex flex-col gap-2 z-10">
+                       <Badge className="font-semibold bg-copper text-black">
+                         En vedette
+                       </Badge>
+                     </div>
+                   )}
+
+                   {/* Actions */}
+                   <div className="absolute top-4 right-4 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                     <Button size="sm" variant="secondary" className="w-10 h-10 p-0 bg-white/90 hover:bg-white">
+                       <Heart className="w-4 h-4" />
+                     </Button>
+                     <Button size="sm" variant="secondary" className="w-10 h-10 p-0 bg-white/90 hover:bg-white">
+                       <Eye className="w-4 h-4" />
+                     </Button>
+                   </div>
+                </div>
+
+                {/* Content */}
+                <div className="p-6 space-y-4">
+                  {/* Header */}
+                  <div className="space-y-2">
+                     <h3 className="text-xl font-bold text-foreground group-hover:text-copper transition-colors">
+                       {camion.name}
+                     </h3>
+                    <p className="text-copper text-sm font-medium">{t.trucksPage.vehicle.horseTruck}</p>
+                  </div>
+
+                  {/* Specs */}
+                  <div className="grid grid-cols-3 gap-4 text-sm">
+                    <div className="text-center">
+                      <Calendar className="w-4 h-4 text-copper mx-auto mb-1" />
+                      <span className="text-muted-foreground">{camion.year}</span>
+                    </div>
+                    <div className="text-center">
+                      <Gauge className="w-4 h-4 text-copper mx-auto mb-1" />
+                      <span className="text-muted-foreground">{camion.mileage} {t.trucksPage.vehicle.specs.km}</span>
+                    </div>
+                    <div className="text-center">
+                      <Users className="w-4 h-4 text-copper mx-auto mb-1" />
+                      <span className="text-muted-foreground">{camion.capacity}</span>
+                    </div>
+                  </div>
+
+                   {/* Features */}
+                   <div className="space-y-1">
+                     {camion.features && getLocalizedFeatures(camion.features).slice(0, 3).map((feature, idx) => (
+                      <div key={idx} className="flex items-center space-x-2">
+                        <div className="w-1.5 h-1.5 bg-copper rounded-full"></div>
+                        <span className="text-sm text-muted-foreground">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                   {/* Pricing */}
+                   <div className="space-y-2 pt-4 border-t border-border">
+                     <div className="flex items-center justify-between">
+                       <div className="flex items-center gap-2">
+                         <div className="text-2xl font-bold text-copper">
+                           {camion.price}€
+                         </div>
+                       </div>
+                     </div>
+                    <div className="text-xs text-muted-foreground">
+                      {t.trucksPage.vehicle.pricing.financing} 890€{t.trucksPage.vehicle.pricing.perMonth}
+                    </div>
+                  </div>
+                  
+                    <div className="flex gap-2 pt-2">
+                      <Link to={`${getLocalizedPath('/vehicule', language)}/${camion.id}`} className="flex-1">
+                        <Button className="htg-button-primary w-full">
+                          {t.trucksPage.vehicle.actions.seeDetails}
+                        </Button>
+                      </Link>
+                     <Button variant="outline" className="htg-button-secondary px-3">
+                       <Heart className="w-4 h-4" />
+                     </Button>
+                   </div>
+                </div>
+              </div>
             ))}
           </div>
 
