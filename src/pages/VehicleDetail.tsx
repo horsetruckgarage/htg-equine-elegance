@@ -37,8 +37,8 @@ const VehicleDetail = () => {
         <Navigation />
         <div className="container mx-auto px-6 py-20">
           <div className="text-center">
-            <h1 className="text-2xl font-bold text-foreground mb-4">Véhicule non trouvé</h1>
-            <p className="text-muted-foreground mb-6">{error || "Ce véhicule n'existe pas ou n'est plus disponible."}</p>
+            <h1 className="text-2xl font-bold text-foreground mb-4">{{ fr: 'Véhicule non trouvé', en: 'Vehicle not found', es: 'Vehículo no encontrado', de: 'Fahrzeug nicht gefunden' }[language]}</h1>
+            <p className="text-muted-foreground mb-6">{error || ({ fr: "Ce véhicule n'existe pas ou n'est plus disponible.", en: "This vehicle does not exist or is no longer available.", es: "Este vehículo no existe o ya no está disponible.", de: "Dieses Fahrzeug existiert nicht oder ist nicht mehr verfügbar." } as const)[language]}</p>
             <Link to={getLocalizedPath("/occasions", language)}>
               <Button className="htg-button-primary">
                 Retour au catalogue
@@ -173,7 +173,7 @@ const VehicleDetail = () => {
               {/* Description */}
               <div className="htg-card p-6">
                 <h3 className="text-xl font-bold mb-4">{t.vehicleDetail.description}</h3>
-                <p className="text-muted-foreground leading-relaxed">{vehicle.description.fr}</p>
+                <p className="text-muted-foreground leading-relaxed">{vehicle.description[language]}</p>
               </div>
 
               {/* Équipements */}
@@ -194,12 +194,12 @@ const VehicleDetail = () => {
                 <div className="htg-card p-4 text-center">
                   <Shield className="w-6 h-6 text-copper mx-auto mb-2" />
                   <div className="font-semibold">{t.vehicleDetail.condition}</div>
-                  <div className="text-sm text-muted-foreground">{vehicle.condition}</div>
+                  <div className="text-sm text-muted-foreground">{t.vehicleDetail.excellent}</div>
                 </div>
                 <div className="htg-card p-4 text-center">
                   <Calendar className="w-6 h-6 text-copper mx-auto mb-2" />
                   <div className="font-semibold">{t.vehicleDetail.availability}</div>
-                  <div className="text-sm text-muted-foreground">{vehicle.availability}</div>
+                  <div className="text-sm text-muted-foreground">{t.vehicleDetail.availableImmediately}</div>
                 </div>
               </div>
 
