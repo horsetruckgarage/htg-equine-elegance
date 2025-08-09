@@ -105,6 +105,10 @@ export type Database = {
           capacity: string | null
           created_at: string
           description: string | null
+          description_de: string | null
+          description_en: string | null
+          description_es: string | null
+          description_fr: string | null
           featured: boolean | null
           fuel: string | null
           id: string
@@ -122,6 +126,10 @@ export type Database = {
           capacity?: string | null
           created_at?: string
           description?: string | null
+          description_de?: string | null
+          description_en?: string | null
+          description_es?: string | null
+          description_fr?: string | null
           featured?: boolean | null
           fuel?: string | null
           id?: string
@@ -139,6 +147,10 @@ export type Database = {
           capacity?: string | null
           created_at?: string
           description?: string | null
+          description_de?: string | null
+          description_en?: string | null
+          description_es?: string | null
+          description_fr?: string | null
           featured?: boolean | null
           fuel?: string | null
           id?: string
