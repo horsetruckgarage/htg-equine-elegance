@@ -21,8 +21,18 @@ const ensureGoogleTranslateLoaded = () => {
   if (!document.getElementById(containerId)) {
     const div = document.createElement("div");
     div.id = containerId;
-    div.style.display = "none";
     document.body.appendChild(div);
+  }
+  const container = document.getElementById(containerId) as HTMLDivElement | null;
+  if (container) {
+    container.style.position = "fixed";
+    container.style.top = "-1000px";
+    container.style.left = "-1000px";
+    container.style.width = "1px";
+    container.style.height = "1px";
+    container.style.opacity = "0";
+    container.style.pointerEvents = "none";
+    container.style.zIndex = "2147483647";
   }
 
   if (!window.googleTranslateElementInit) {
