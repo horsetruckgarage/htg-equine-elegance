@@ -18,6 +18,7 @@ import VehicleDetail from "./pages/VehicleDetail";
 import AdminDashboard from "./pages/AdminDashboard";
 import Auth from "./pages/Auth";
 import GoogleTranslate from "@/components/GoogleTranslate";
+import CustomTranslateMenu from "@/components/CustomTranslateMenu";
 
 const queryClient = new QueryClient();
 
@@ -29,8 +30,9 @@ const App = () => (
           <Toaster />
           <Sonner />
           <ScrollToTop />
-          <div id="google_translate_element" className="fixed top-3 right-3 z-[60]" />
+          <div id="google_translate_element" className="fixed top-3 right-3 z-[60] hidden" />
           <GoogleTranslate />
+          <CustomTranslateMenu />
           <Routes>
             {/* Redirect root to French */}
             <Route path="/" element={<Navigate to="/fr" replace />} />
