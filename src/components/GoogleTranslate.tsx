@@ -40,7 +40,7 @@ const initTranslate = (containerId: string) => {
         pageLanguage: "fr",
         autoDisplay: false,
         includedLanguages:
-          "fr,en,es,de,it,pt",
+          "fr,de,es,en",
         layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
       },
       containerId
