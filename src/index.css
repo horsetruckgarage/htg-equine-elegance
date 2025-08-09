@@ -229,3 +229,43 @@ All colors MUST be HSL.
     box-shadow: var(--shadow-copper);
   }
 }
+
+/* Google Translate overrides */
+/* Hide Google auto banner and icon */
+.goog-te-banner-frame.skiptranslate,
+.goog-te-gadget-icon {
+  display: none !important;
+}
+
+/* Prevent Google from offsetting the body */
+body {
+  top: 0 !important;
+}
+
+/* Container styling (the widget is positioned in App.tsx) */
+#google_translate_element {
+  display: inline-block;
+  font-size: 14px;
+}
+
+/* Inherit site typography and colors */
+.goog-te-gadget {
+  font-family: inherit !important;
+  color: inherit !important;
+}
+
+/* Select styling aligned with design tokens */
+.goog-te-combo {
+  padding: 6px 10px;
+  border-radius: var(--radius);
+  border: 1px solid hsl(var(--border));
+  background: hsl(var(--header-bg));
+  color: hsl(var(--header-foreground));
+  box-shadow: var(--shadow-header);
+  cursor: pointer;
+}
+
+.goog-te-combo:focus {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 1px;
+}

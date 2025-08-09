@@ -39,9 +39,8 @@ const initTranslate = (containerId: string) => {
       {
         pageLanguage: "fr",
         autoDisplay: false,
-        // Include a broad set; adjust as needed
         includedLanguages:
-          "fr,en,de,es,it,nl,pt,pl,sv,da,no,fi,cs,sk,sl,ro,hu,el,tr,ru,uk,ar,he,hi,th,vi,ko,ja,zh-CN,zh-TW",
+          "fr,en,es,de,it,pt",
         layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
       },
       containerId
