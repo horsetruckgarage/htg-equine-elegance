@@ -39,65 +39,33 @@ const GoogleTranslateBridge: React.FC = () => {
       document.cookie = cookie;
     };
 
-    // Wait for the Google combo to be available (avoid page reload flicker)
-    const waitForCombo = (timeout = 6000): Promise<HTMLSelectElement | null> => {
-      const start = performance.now();
-      return new Promise((resolve) => {
-        const check = () => {
-          const el = document.querySelector<HTMLSelectElement>(".goog-te-combo");
-          if (el) return resolve(el);
-          if (performance.now() - start >= timeout) return resolve(null);
-          requestAnimationFrame(check);
-        };
-        check();
-      });
-    };
-
-    const applyLanguage = (select: HTMLSelectElement, lang: "fr" | "en" | "es" | "de") => {
+    // Expose a function to programmatically switch language without reloading when possible
+    (window as any).__setGoogleTranslateLanguage = (lang: "fr" | "en" | "es" | "de") => {
+      const select = document.querySelector<HTMLSelectElement>(".goog-te-combo");
       if (lang === "fr") {
+        // Reset to original by clearing cookie and resetting the select
         try {
           setCookie("googtrans", "/fr/fr", 365);
           setCookie("googtrans", "/fr/fr", 365, window.location.hostname);
         } catch {}
-        select.value = ""; // empty restores original language
-        select.dispatchEvent(new Event("change"));
+        if (select) {
+          select.value = ""; // empty restores original language
+          select.dispatchEvent(new Event("change"));
+          return;
+        }
+        window.location.reload();
         return;
       }
-      try {
-        setCookie("googtrans", `/fr/${lang}`, 365);
-        setCookie("googtrans", `/fr/${lang}`, 365, window.location.hostname);
-      } catch {}
-      select.value = lang;
-      select.dispatchEvent(new Event("change"));
-    };
 
-    // Expose a function to programmatically switch language without full reload
-    (window as any).__setGoogleTranslateLanguage = async (lang: "fr" | "en" | "es" | "de") => {
-      // ensure script is requested (in case this runs very early)
-      const SCRIPT_ID = "google-translate-script";
-      if (!document.getElementById(SCRIPT_ID)) {
-        const s = document.createElement("script");
-        s.id = SCRIPT_ID;
-        s.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
-        s.async = true;
-        document.body.appendChild(s);
-      }
-
-      const select = await waitForCombo(6000);
       if (select) {
-        applyLanguage(select, lang);
+        select.value = lang;
+        select.dispatchEvent(new Event("change"));
       } else {
-        // Fallback: set cookie so when the widget finishes loading it picks the desired language
         try {
-          const cookieVal = lang === "fr" ? "/fr/fr" : `/fr/${lang}`;
-          setCookie("googtrans", cookieVal, 365);
-          setCookie("googtrans", cookieVal, 365, window.location.hostname);
+          setCookie("googtrans", `/fr/${lang}`, 365);
+          setCookie("googtrans", `/fr/${lang}`, 365, window.location.hostname);
         } catch {}
-        // Try once more shortly after in case the combo appears
-        setTimeout(async () => {
-          const later = await waitForCombo(6000);
-          if (later) applyLanguage(later, lang);
-        }, 50);
+        window.location.reload();
       }
     };
 
