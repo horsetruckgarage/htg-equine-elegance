@@ -104,19 +104,19 @@ const Camions = () => {
         <div className="container mx-auto px-6">
           {loading && (
             <div className="text-center py-12">
-              <div className="text-muted-foreground">Chargement...</div>
+              <div className="text-muted-foreground"></div>
             </div>
           )}
           
           {error && (
             <div className="text-center py-12">
-              <div className="text-red-600">Erreur: {error}</div>
+              <div className="text-red-600">{error}</div>
             </div>
           )}
           
           {!loading && !error && camions.length === 0 && (
             <div className="text-center py-12">
-              <div className="text-muted-foreground">Aucun camion disponible pour le moment.</div>
+              <div className="text-muted-foreground">—</div>
             </div>
           )}
           
@@ -133,7 +133,7 @@ const Camions = () => {
                     <>
                       <img
                         src={camion.images[0]}
-                        alt={`${camion.name} - camion chevaux HTG`}
+                        alt={`${camion.name} - ${t.trucksPage.vehicle.horseTruck} HTG`}
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                         loading="lazy"
                       />
@@ -152,7 +152,7 @@ const Camions = () => {
                    {camion.featured && (
                      <div className="absolute top-4 left-4 flex flex-col gap-2 z-10">
                        <Badge className="font-semibold bg-copper text-black">
-                         En vedette
+                         {t.common.bestseller}
                        </Badge>
                      </div>
                    )}

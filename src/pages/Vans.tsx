@@ -102,19 +102,19 @@ const Vans = () => {
         <div className="container mx-auto px-6">
           {loading && (
             <div className="text-center py-12">
-              <div className="text-muted-foreground">Chargement...</div>
+              <div className="text-muted-foreground"></div>
             </div>
           )}
           
           {error && (
             <div className="text-center py-12">
-              <div className="text-red-600">Erreur: {error}</div>
+              <div className="text-red-600">{error}</div>
             </div>
           )}
           
           {!loading && !error && vans.length === 0 && (
             <div className="text-center py-12">
-              <div className="text-muted-foreground">Aucun van disponible pour le moment.</div>
+              <div className="text-muted-foreground">—</div>
             </div>
           )}
           
@@ -131,7 +131,7 @@ const Vans = () => {
                     <>
                       <img
                         src={van.images[0]}
-                        alt={`${van.name} - van chevaux HTG`}
+                        alt={`${van.name} - ${t.vansPage.vehicle.horseVan} HTG`}
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                         loading="lazy"
                       />
@@ -150,7 +150,7 @@ const Vans = () => {
                    {van.featured && (
                      <div className="absolute top-4 left-4 flex flex-col gap-2 z-10">
                         <Badge className="font-semibold bg-copper text-black">
-                          En vedette
+                          {t.common.bestseller}
                         </Badge>
                      </div>
                    )}
