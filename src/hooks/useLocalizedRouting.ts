@@ -70,39 +70,68 @@ export const getLocalizedPath = (path: string, language: Language): string => {
 export const extractLanguageFromPath = (pathname: string): { language: Language; basePath: string } => {
   const segments = pathname.split('/');
   const possibleLang = segments[1] as Language;
-  
-  if (['fr', 'en', 'es', 'de'].includes(possibleLang)) {
-    const pathWithoutLang = '/' + segments.slice(2).join('/');
-    
-    // Gestion spéciale pour les routes de véhicules avec paramètres
-    // Patterns: /vehicle/trucks/1, /vehiculo/trucks/1, /vehicule/trucks/1, /fahrzeug/trucks/1
-    const vehicleRoutePattern = /^\/([^\/]+)\/([^\/]+)\/([^\/]+)$/;
-    const match = pathWithoutLang.match(vehicleRoutePattern);
-    
-    if (match) {
-      const [, vehicleBase, type, id] = match;
-      // Vérifier si le premier segment correspond à une route de véhicule traduite
-      const vehicleBaseRoute = '/' + vehicleBase;
-      const reverseMapping = Object.entries(routeTranslations[possibleLang]).find(
-        ([basePath, translatedPath]) => translatedPath === vehicleBaseRoute
-      );
-      
-      if (reverseMapping) {
-        // Préserver les paramètres type et id dans le basePath
-        const basePath = `${reverseMapping[0]}/${type}/${id}`;
-        return { language: possibleLang, basePath };
+
+  const findBaseFromAnyLanguage = (translated: string): string => {
+    // 1) Routes avec paramètres véhicule
+    const vehiclePattern = /^\/([^\/]+)\/([^\/]+)\/([^\/]+)$/;
+    const vm = translated.match(vehiclePattern);
+    if (vm) {
+      const [, vehicleBase, type, id] = vm;
+      for (const lang of Object.keys(routeTranslations) as Language[]) {
+        const entry = Object.entries(routeTranslations[lang]).find(([, tp]) => tp === '/' + vehicleBase);
+        if (entry) {
+          const [baseKey] = entry; // ex: '/vehicule'
+          return `${baseKey}/${type}/${id}`;
+        }
       }
     }
-    
-    // Pour les routes simples, essayer de trouver la correspondance directe
+
+    // 2) Routes simples
+    for (const lang of Object.keys(routeTranslations) as Language[]) {
+      const entry = Object.entries(routeTranslations[lang]).find(([, tp]) => tp === translated);
+      if (entry) {
+        const [baseKey] = entry; // ex: '/camions'
+        return baseKey;
+      }
+    }
+
+    // 3) Aucun match: retourner tel quel
+    return translated === '/' ? '/' : translated;
+  };
+
+  if (['fr', 'en', 'es', 'de'].includes(possibleLang)) {
+    const pathWithoutLang = '/' + segments.slice(2).join('/');
+
+    // D'abord, essayer dans la langue de l'URL
+    const vehicleRoutePattern = /^\/([^\/]+)\/([^\/]+)\/([^\/]+)$/;
+    const match = pathWithoutLang.match(vehicleRoutePattern);
+
+    if (match) {
+      const [, vehicleBase] = match;
+      const reverseMapping = Object.entries(routeTranslations[possibleLang]).find(
+        ([, translatedPath]) => translatedPath === '/' + vehicleBase
+      );
+      if (reverseMapping) {
+        const [basePath] = reverseMapping;
+        const [, , type, id] = match;
+        return { language: possibleLang, basePath: `${basePath}/${type}/${id}` };
+      }
+      // Sinon, tenter de trouver via toutes les langues
+      return { language: possibleLang, basePath: findBaseFromAnyLanguage(pathWithoutLang) };
+    }
+
+    // Routes simples
     const reverseMapping = Object.entries(routeTranslations[possibleLang]).find(
-      ([basePath, translatedPath]) => translatedPath === pathWithoutLang
+      ([, translatedPath]) => translatedPath === pathWithoutLang
     );
-    
-    const basePath = reverseMapping ? reverseMapping[0] : (pathWithoutLang === '/' ? '/' : pathWithoutLang);
-    return { language: possibleLang, basePath };
+    if (reverseMapping) {
+      return { language: possibleLang, basePath: reverseMapping[0] };
+    }
+
+    // Fallback: rechercher dans toutes les langues
+    return { language: possibleLang, basePath: findBaseFromAnyLanguage(pathWithoutLang) };
   }
-  
+
   // Si pas de langue dans l'URL, retourner français par défaut
   return { language: 'fr', basePath: pathname };
 };

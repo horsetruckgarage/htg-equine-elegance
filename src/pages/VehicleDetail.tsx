@@ -56,9 +56,9 @@ const VehicleDetail = () => {
     if (!vehicle) return getLocalizedPath('/', language);
     
     switch (vehicle.type) {
-      case 'truck': return getLocalizedPath('/camions-chevaux', language);
-      case 'van': return getLocalizedPath('/vans-chevaux', language);
-      case 'trailer': return getLocalizedPath('/vans-chevaux', language);
+      case 'truck': return getLocalizedPath('/camions', language);
+      case 'van': return getLocalizedPath('/vans', language);
+      case 'trailer': return getLocalizedPath('/vans', language);
       default: return getLocalizedPath('/', language);
     }
   };
