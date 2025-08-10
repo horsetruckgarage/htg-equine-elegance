@@ -110,7 +110,9 @@ serve(async (req: Request): Promise<Response> => {
       throw new Error(`Admin email failed: ${adminError.message ?? adminError}`);
     }
 
-    // Send to client
+    // Send to client (non-blocking if Resend refuses external recipients)
+    let clientEmailSent = true;
+    let clientEmailError: unknown = null;
     const { data: clientData, error: clientError } = await resend.emails.send({
       from: FROM,
       to: [payload.email],
@@ -118,15 +120,17 @@ serve(async (req: Request): Promise<Response> => {
       html: clientHtml,
     });
     if (clientError) {
+      clientEmailSent = false;
+      clientEmailError = clientError;
       console.error("Resend client error:", clientError);
-      throw new Error(`Client email failed: ${clientError.message ?? clientError}`);
+      // Do not throw: keep flow successful so the user is not blocked
     }
 
     console.log("Resend admin result:", adminData);
     console.log("Resend client result:", clientData);
 
     return new Response(
-      JSON.stringify({ ok: true }),
+      JSON.stringify({ ok: true, clientEmailSent, ...(clientEmailSent ? {} : { reason: "client_email_blocked_by_resend", clientEmailError }) }),
       { status: 200, headers: { "Content-Type": "application/json", ...corsHeaders } }
     );
   } catch (error: any) {
