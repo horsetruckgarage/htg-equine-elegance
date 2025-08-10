@@ -34,7 +34,7 @@ const Contact = () => {
     }
     try {
       setSubmitting(true);
-      const { error } = await supabase.functions.invoke("send-contact-email", {
+      const { data, error } = await supabase.functions.invoke("send-contact-email", {
         body: {
           type: "contact",
           locale: language,
@@ -48,9 +48,13 @@ const Contact = () => {
         },
       });
       if (error) throw error;
+      const clientEmailSent = (data as any)?.clientEmailSent ?? true;
+      const description = clientEmailSent
+        ? "Nous vous répondons rapidement. Un email de confirmation vous a été envoyé."
+        : "Nous vous répondons rapidement. (L’email de confirmation n’a pas pu être envoyé.)";
       toast({
         title: "Message envoyé",
-        description: "Nous vous répondons rapidement. Un email de confirmation vous a été envoyé.",
+        description,
       });
       setFirstName("");
       setLastName("");
