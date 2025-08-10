@@ -30,7 +30,7 @@ type QuotePayload = BasePayload & {
 
 const TEAM_EMAIL = "info@horsetruckgarage.com"; // Change if needed
 const BRAND = "Horse Truck Garage";
-const FROM = `${BRAND} <onboarding@resend.dev>`; // Replace with your domain once verified
+const FROM = (Deno.env.get("RESEND_FROM") as string) || `${BRAND} <onboarding@resend.dev>`; // Prefer a verified domain sender like noreply@yourdomain.com
 
 function htmlListFromObject(obj: Record<string, unknown>): string {
   const entries = Object.entries(obj)
@@ -98,24 +98,32 @@ serve(async (req: Request): Promise<Response> => {
     `;
 
     // Send to team
-    const adminSend = await resend.emails.send({
+    const { data: adminData, error: adminError } = await resend.emails.send({
       from: FROM,
       to: [TEAM_EMAIL],
       replyTo: payload.email,
       subject: subjectAdmin,
       html: adminHtml,
     });
+    if (adminError) {
+      console.error("Resend admin error:", adminError);
+      throw new Error(`Admin email failed: ${adminError.message ?? adminError}`);
+    }
 
     // Send to client
-    const clientSend = await resend.emails.send({
+    const { data: clientData, error: clientError } = await resend.emails.send({
       from: FROM,
       to: [payload.email],
       subject: subjectClient,
       html: clientHtml,
     });
+    if (clientError) {
+      console.error("Resend client error:", clientError);
+      throw new Error(`Client email failed: ${clientError.message ?? clientError}`);
+    }
 
-    console.log("Resend admin result:", adminSend);
-    console.log("Resend client result:", clientSend);
+    console.log("Resend admin result:", adminData);
+    console.log("Resend client result:", clientData);
 
     return new Response(
       JSON.stringify({ ok: true }),
