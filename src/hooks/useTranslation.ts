@@ -1279,7 +1279,7 @@ const translations: Record<Language, Translations> = {
         },
         email: {
           title: "Email",
-          address: "contact@htg-france.com"
+          address: "info@horsetruckgarage.com"
         }
       },
       services: {
@@ -2022,7 +2022,7 @@ const translations: Record<Language, Translations> = {
         },
         email: {
           title: "Email",
-          address: "contact@htg-france.com"
+          address: "info@horsetruckgarage.com"
         }
       },
       services: {
@@ -2715,7 +2715,7 @@ const translations: Record<Language, Translations> = {
         },
         email: {
           title: "Email",
-          address: "contact@htg-france.com"
+          address: "info@horsetruckgarage.com"
         }
       },
       services: {
@@ -3340,7 +3340,7 @@ const translations: Record<Language, Translations> = {
         },
         email: {
           title: "E-Mail",
-          address: "contact@htg-france.com"
+          address: "info@horsetruckgarage.com"
         }
       },
       services: {
