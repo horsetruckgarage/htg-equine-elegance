@@ -9,7 +9,7 @@ import Footer from "@/components/Footer";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { useToast } from "@/components/ui/use-toast";
+import { useToast } from "@/hooks/use-toast";
 
 const DemandeDevis = () => {
   const { t, language } = useTranslation();
@@ -31,11 +31,22 @@ const DemandeDevis = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!firstName || !lastName || !email || !vehicleType || !capacity) {
+    // Debug: log form values on submit
+    console.log("[DemandeDevis] Submit values", {
+      firstName, lastName, email, phone, region, vehicleType, capacity, condition, budget, usage, timeline, message
+    });
+    const missingFields: string[] = [];
+    if (!firstName.trim()) missingFields.push("firstName");
+    if (!lastName.trim()) missingFields.push("lastName");
+    if (!email.trim()) missingFields.push("email");
+    if (vehicleType === undefined) missingFields.push("vehicleType");
+    if (capacity === undefined) missingFields.push("capacity");
+    if (missingFields.length > 0) {
       toast({
         title: "Champs requis manquants",
         description: "Prénom, nom, email, type de véhicule et capacité sont requis.",
       });
+      console.warn("[DemandeDevis] Missing required fields:", missingFields);
       return;
     }
     try {
